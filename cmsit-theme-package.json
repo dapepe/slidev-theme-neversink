@@ -1,0 +1,38 @@
+{
+  "name": "slidev-theme-cmsit",
+  "version": "0.0.1",
+  "description": "CMSIT Theme for Slidev",
+  "keywords": [
+    "slidev-theme",
+    "slidev"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cmsit/slidev-theme-cmsit"
+  },
+  "author": "CMSIT",
+  "homepage": "https://cmsit.com",
+  "bugs": "https://github.com/cmsit/slidev-theme-cmsit/issues",
+  "engines": {
+    "node": ">=14.0.0",
+    "slidev": ">=0.19.3"
+  },
+  "slidev": {
+    "colorSchema": "both",
+    "highlighter": "shiki",
+    "defaults": {
+      "fonts": {
+        "sans": "Titillium Web",
+        "mono": "Fira Code"
+      }
+    }
+  },
+  "dependencies": {
+    "@slidev/types": "latest",
+    "codemirror-theme-vars": "^0.1.1"
+  },
+  "devDependencies": {
+    "@slidev/cli": "latest"
+  }
+} 

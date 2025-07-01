@@ -1,7 +1,14 @@
 <script setup>
-import { onMounted, ref } from 'vue'
+import { onMounted, ref, computed } from 'vue'
 import { useSlideContext } from '@slidev/client'
+import CMSITSlideBottom from './layouts/cmsit-slide-bottom.vue'
+
 const { $slidev, $frontmatter } = useSlideContext()
+
+// Check if using CMSIT theme
+const isCMSITTheme = computed(() => {
+  return $frontmatter.color && ($frontmatter.color.startsWith('cmsit-') || $slidev.configs.theme === 'cmsit');
+})
 
 //const frontmatter = ref('')
 const fg_default = 'text-neutral-800'
@@ -94,7 +101,8 @@ onMounted(() => {
 
 <!-- an example footer for pages -->
 <template>
-  <footer v-if="$frontmatter.slide_info !== false" class="absolute bottom-1 right-1 left-0 p-2 pr-3 full-width z-10">
+  <CMSITSlideBottom v-if="isCMSITTheme" />
+  <footer v-else-if="$frontmatter.slide_info !== false" class="absolute bottom-1 right-1 left-0 p-2 pr-3 full-width z-10">
     <div class="absolute bottom-0 right-0 p-2 pr-2">
       <span class="pl-3 pr-3 p-2 font-mono font-size-2" :class="fg + ' ' + bg">
         <mdi-orbit />&nbsp;<span class="fw-bold">{{ label }}</span> | {{ $slidev.nav.currentPage }} of
