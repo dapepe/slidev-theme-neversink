@@ -1,4 +1,5 @@
 import { defineAppSetup } from '@slidev/types'
+import '../styles/cmsit-theme.css'
 // import courseInfoPlugin from '../plugins/courseInfoPlugin'
 // import Cite from '../../src/components/Cite.vue'
 //import Bibliography from '../../src/components/Bibliography'

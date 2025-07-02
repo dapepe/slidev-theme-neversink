@@ -1,26 +1,49 @@
 <script setup lang="js">
 import { computed } from 'vue'
-//import { handleBackground } from '../layoutHelper'
+import { useSlideContext } from '@slidev/client'
 
 const props = defineProps({
-  // background: {
-  //   default: '',
-  // },
   color: {
     default: 'white',
   },
+  logoSize: {
+    default: 'large', // 'large', 'medium', 'small'
+  }
 })
 
-//const style = computed(() => handleBackground(props.background, true))
+const { $frontmatter, $slidev } = useSlideContext()
+
+const isCmsitTheme = computed(() => {
+  return props.color?.startsWith('cmsit-')
+})
 
 const colorscheme = computed(() => {
+  if (isCmsitTheme.value) {
+    const color = props.color?.startsWith('cmsit-') ? props.color : `cmsit-${props.color}`
+    return `${color}-scheme`
+  }
   return `neversink-${props.color}-scheme`
+})
+
+const logoClass = computed(() => {
+  switch(props.logoSize) {
+    case 'small':
+      return 'w-40';
+    case 'medium':
+      return 'w-60';
+    case 'large':
+    default:
+      return 'w-80';
+  }
 })
 </script>
 
 <template>
-  <div class="slidev-layout cover h-full slidecolor" :class="colorscheme">
-    <div class="myauto w-full">
+  <div class="slidev-layout cover h-full slidecolor" :class="[colorscheme, { 'cmsit-cover': isCmsitTheme }]">
+    <div v-if="$frontmatter.logo" class="logo-container mb-8">
+      <img :src="$frontmatter.logo" :class="logoClass" />
+    </div>
+    <div class="content w-full" :class="{ 'myauto': !isCmsitTheme }">
       <slot />
     </div>
     <div class="note absolute bottom-3">
@@ -108,5 +131,39 @@ const colorscheme = computed(() => {
 .slidev-layout.cover h3 {
   padding-bottom: 0.3em;
   border-bottom: 1px solid var(--neversink-highlight-color);
+}
+
+/* CMSIT theme overrides */
+.slidev-layout.cover.cmsit-cover {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.slidev-layout.cover.cmsit-cover .logo-container {
+  margin-bottom: 2rem;
+}
+
+.slidev-layout.cover.cmsit-cover h1 {
+  font-size: 3em;
+  font-weight: 600;
+  border-bottom: 3px solid var(--neversink-highlight-color);
+  display: inline-block;
+}
+
+.slidev-layout.cover.cmsit-cover h2 {
+  font-size: 2.5em;
+  font-weight: 500;
+  border-bottom: 3px solid var(--neversink-highlight-color);
+  display: inline-block;
+}
+
+.slidev-layout.cover.cmsit-cover h3 {
+  font-size: 1.8em;
+  font-weight: 400;
+  border-bottom: 3px solid var(--neversink-highlight-color);
+  display: inline-block;
 }
 </style>

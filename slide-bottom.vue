@@ -1,25 +1,36 @@
 <script setup>
 import { onMounted, ref, computed } from 'vue'
 import { useSlideContext } from '@slidev/client'
-import CMSITSlideBottom from './layouts/cmsit-slide-bottom.vue'
 
 const { $slidev, $frontmatter } = useSlideContext()
 
 // Check if using CMSIT theme
 const isCMSITTheme = computed(() => {
-  return $frontmatter.color && ($frontmatter.color.startsWith('cmsit-') || $slidev.configs.theme === 'cmsit');
+  return $frontmatter.color && $frontmatter.color.startsWith('cmsit-');
 })
 
-//const frontmatter = ref('')
 const fg_default = 'text-neutral-800'
 const bg_default = 'bg-neutral-100'
 const label = ref('')
 const fg = ref(fg_default)
 const bg = ref(bg_default)
+const logoPath = ref('/cms-it/logo-green.svg')
 
 function process_colors() {
   if ($frontmatter.color) {
-    if ($frontmatter.color == 'black') {
+    if ($frontmatter.color == 'cmsit-dark') {
+      fg.value = `text-gray-100`
+      bg.value = `bg-gray-800`
+      logoPath.value = '/cms-it/logo-white.svg'
+    } else if ($frontmatter.color == 'cmsit-light') {
+      fg.value = fg_default
+      bg.value = bg_default
+      logoPath.value = '/cms-it/logo-green.svg'
+    } else if ($frontmatter.color == 'cmsit-highlight') {
+      fg.value = `text-gray-100`
+      bg.value = `bg-green-500`
+      logoPath.value = '/cms-it/logo-white.svg'
+    } else if ($frontmatter.color == 'black') {
       fg.value = `text-gray-600`
       bg.value = `bg-gray-100`
     } else if ($frontmatter.color == 'white') {
@@ -83,7 +94,11 @@ function checkvars() {
 }
 
 function getlabel() {
-  if ($frontmatter.neversink_slug) {
+  if ($frontmatter.slug) {
+    label.value = $frontmatter.slug
+  } else if ($slidev.configs.slug) {
+    label.value = $slidev.configs.slug
+  } else if ($frontmatter.neversink_slug) {
     label.value = $frontmatter.neversink_slug
   } else if ($slidev.configs.neversink_slug) {
     label.value = $slidev.configs.neversink_slug
@@ -101,7 +116,18 @@ onMounted(() => {
 
 <!-- an example footer for pages -->
 <template>
-  <CMSITSlideBottom v-if="isCMSITTheme" />
+  <footer v-if="isCMSITTheme && $frontmatter.slide_info !== false" class="absolute bottom-0 right-0 left-0 p-2 pr-3 full-width z-10">
+    <div class="absolute bottom-2 right-2 p-1">
+      <span class="pl-3 pr-3 p-2 font-mono font-size-2 rounded" :class="fg + ' ' + bg">
+        <img :src="logoPath" class="inline h-4 mr-2" /> {{ $slidev.nav.currentPage }} / {{ $slidev.nav.total }}
+      </span>
+    </div>
+    <div v-if="label" class="absolute bottom-2 left-2 p-1">
+      <span class="pl-3 pr-3 p-2 font-mono font-size-2 rounded" :class="fg + ' ' + bg">
+        {{ label }}
+      </span>
+    </div>
+  </footer>
   <footer v-else-if="$frontmatter.slide_info !== false" class="absolute bottom-1 right-1 left-0 p-2 pr-3 full-width z-10">
     <div class="absolute bottom-0 right-0 p-2 pr-2">
       <span class="pl-3 pr-3 p-2 font-mono font-size-2" :class="fg + ' ' + bg">

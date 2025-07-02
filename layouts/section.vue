@@ -1,5 +1,6 @@
 <script setup lang="js">
 import { computed } from 'vue'
+import { useSlideContext } from '@slidev/client'
 
 const props = defineProps({
   color: {
@@ -7,15 +8,26 @@ const props = defineProps({
   },
 })
 
+const { $slidev } = useSlideContext()
+
+const isCmsitTheme = computed(() => {
+  return props.color?.startsWith('cmsit-')
+})
+
 const colorscheme = computed(() => {
+  if (isCmsitTheme.value) {
+    const color = props.color?.startsWith('cmsit-') ? props.color : `cmsit-${props.color}`
+    return `${color}-scheme`
+  }
   return `neversink-${props.color}-scheme`
 })
 </script>
 
 <template>
-  <div class="slidev-layout section slidecolor" :class="colorscheme">
-    <div class="my-auto">
+  <div class="slidev-layout section slidecolor" :class="[colorscheme, { 'cmsit-section': isCmsitTheme }]">
+    <div :class="{ 'my-auto': !isCmsitTheme }">
       <slot />
+      <hr v-if="isCmsitTheme" class="mt-2 border-2" :style="{ borderColor: 'var(--neversink-highlight-color)' }" />
     </div>
   </div>
 </template>
@@ -82,5 +94,30 @@ const colorscheme = computed(() => {
   padding: 0;
   margin: 0;
   opacity: 1;
+}
+
+/* CMSIT theme overrides */
+.slidev-layout.section.cmsit-section {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.slidev-layout.section.cmsit-section h1 {
+  font-size: 3rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.slidev-layout.section.cmsit-section h1 + p {
+  margin-top: 1.5rem;
+  opacity: 0.8;
+}
+
+.slidev-layout.section.cmsit-section hr {
+  width: 100%;
+  border-width: 2px;
 }
 </style>

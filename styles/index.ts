@@ -6,7 +6,6 @@ import './stickynote.css'
 import './base.css'
 import './colors.css'
 import './neversink-c.css'
-import './cmsit-theme.css' // CMSIT custom theme
 
 // import './code.css'
 // import './layout.css'
