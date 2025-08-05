@@ -1,5 +1,5 @@
 ---
-theme: neversink
+theme: ../
 colorSchema: light
 layout: cover
 styles: cmsit
@@ -113,7 +113,7 @@ color: light
 The system maintains full backward compatibility with existing color schemes.
 
 ---
-theme: neversink
+theme: ../
 colorSchema: light
 layout: cover
 color: cmsit-dark

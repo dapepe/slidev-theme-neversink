@@ -3,6 +3,14 @@
   "version": "0.3.6",
   "author": "gureckis",
   "type": "module",
+  "main": "./styles/index.ts",
+  "exports": {
+    ".": "./styles/index.ts",
+    "./layouts/*": "./layouts/*",
+    "./components/*": "./components/*",
+    "./styles/*": "./styles/*",
+    "./setup/*": "./setup/*"
+  },
   "keywords": [
     "slidev-theme",
     "slidev"
