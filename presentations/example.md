@@ -1,13 +1,13 @@
 ---
-theme: ./
+theme: neversink
 colorSchema: light
 layout: cover
 styles: cmsit
 color: dark
 routerMode: hash
 title: Dynamic CSS Theme Demo
-slug: "Dynamic Theme Loading"
-logo: "/cms-it/logo-white.svg"
+slug: "Subtitle Slug"
+logo: "cms-it/difo-logo_cms-it-bright.svg"
 ---
 
 # Dynamic CSS Theme System
@@ -67,7 +67,7 @@ color: light
 - Perfect for business presentations
 
 <div class="difo-card">
-  This is a DIFO-specific card with blue accents and professional styling.
+  This is a DIFO-specific card with blue accents and professional styling.lmölm,äöäö
 </div>
 
 <button class="difo-button">Professional Button</button>
@@ -113,14 +113,14 @@ color: light
 The system maintains full backward compatibility with existing color schemes.
 
 ---
-theme: ./
+theme: neversink
 colorSchema: light
 layout: cover
 color: cmsit-dark
 routerMode: hash
 title: CMS-IT Presentation
 slug: "CMS IT-Consulting GmbH"
-logo: "/cms-it/logo-green.svg"
+logo: "cms-it/logo-green.svg"
 ---
 
 # Welcome to CMS IT-Consulting GmbH
@@ -457,8 +457,8 @@ title: Full Layout - 2 Col Fig
 This is an example of using unocss atomic classes to put two figures side by side.
 
 <div class="grid w-full h-fit grid-cols-2 grid-rows-2 mt-10 mb-auto">
-<div class="grid-item grid-col-span-1"><img src="/images/scatter1.svg" /></div>
-<div class="grid-item grid-col-span-1"><img src="/images/scatter1.svg" /></div>
+<div class="grid-item grid-col-span-1"><!-- Image placeholder --></div>
+<div class="grid-item grid-col-span-1"><!-- Image placeholder --></div>
 <div class="grid-item grid-col-span-2 text-center h-fit">
 
 **Figure show this**: this is a two column figure
@@ -474,9 +474,9 @@ title: Full Layout - 3 Col Fig
 This is an example of using unocss atomic classes to put three figures side by side.
 
 <div class="grid w-full h-fit grid-cols-3 grid-rows-2 mt-20 mb-auto">
-<div class="grid-item grid-col-span-1"><img src="/images/scatter1.svg" /></div>
-<div class="grid-item grid-col-span-1"><img src="/images/scatter1.svg" /></div>
-<div class="grid-item grid-col-span-1"><img src="/images/scatter1.svg" /></div>
+<div class="grid-item grid-col-span-1"><!-- Image placeholder --></div>
+<div class="grid-item grid-col-span-1"><!-- Image placeholder --></div>
+<div class="grid-item grid-col-span-1"><!-- Image placeholder --></div>
 <div class="grid-item grid-col-span-3 text-center h-fit">
 
 **Figure show this**: this is a three column figure

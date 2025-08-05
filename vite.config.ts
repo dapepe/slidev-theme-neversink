@@ -6,6 +6,8 @@ import { version } from './package.json'
 
 console.log(`Loading Neversink ${version} theme vite.config.ts...`)
 export default defineConfig({
+  // publicDir: 'public',
+  // base: '/',
   slidev: {
     markdown: {
       markdownItSetup(md) {

@@ -1,18 +1,40 @@
 #!/bin/bash
 
-# Shell script to run a Slidev presentation from the presentations directory
-# Usage: ./run <filename> (with or without .md extension)
+# Shell script to run, export, build, or create a new Slidev presentation from the presentations directory
+# Usage: ./run <filename> [--export | --build] (with or without .md extension)
+# Or: ./run --new <new_filename> to create a new presentation from template
 
 # Check if an argument is provided
 if [ $# -eq 0 ]; then
-    echo "Usage: ./run <filename>"
+    echo "Usage: ./run <filename> [--export | --build | --watch]"
+    echo "Or: ./run --new <new_filename> to create a new presentation from template"
     echo "Available presentations:"
     ls presentations/*.md | sed 's/presentations\///' | sed 's/\.md$//'
     exit 1
 fi
 
+# Check for --new flag first
+if [ "$1" = "--new" ]; then
+    if [ $# -ne 2 ]; then
+        echo "Usage: ./run --new <new_filename>"
+        exit 1
+    fi
+    NEW_FILENAME="$2"
+    if [[ ! "$NEW_FILENAME" =~ \.md$ ]]; then
+        NEW_FILENAME="$NEW_FILENAME.md"
+    fi
+    NEW_PATH="presentations/$NEW_FILENAME"
+    if [ -f "$NEW_PATH" ]; then
+        echo "Error: Presentation '$NEW_FILENAME' already exists."
+        exit 1
+    fi
+    cp "presentations/example.md" "$NEW_PATH"
+    echo "Created new presentation: $NEW_PATH"
+    exit 0
+fi
+
 # Construct the full path
-FILENAME="$1"
+FILENAME=$(basename "$1")
 if [[ ! "$FILENAME" =~ \.md$ ]]; then
     FILENAME="$FILENAME.md"
 fi
@@ -26,6 +48,19 @@ if [ ! -f "$PRESENTATION_PATH" ]; then
     exit 1
 fi
 
-# Run the presentation using slidev
-echo "Starting presentation: $PRESENTATION_PATH"
-slidev "$PRESENTATION_PATH"
+# Check for flags
+if [ "$2" = "--export" ]; then
+    echo "Exporting presentation to PDF: $PRESENTATION_PATH"
+    cd "$(dirname "$0")" && pnpm slidev export "$PRESENTATION_PATH"
+elif [ "$2" = "--build" ]; then
+    echo "Building static site for: $PRESENTATION_PATH"
+    OUTPUT_DIR="dist/$(basename "${PRESENTATION_PATH%.*}")"
+    cd "$(dirname "$0")" && pnpm slidev build "$PRESENTATION_PATH" --out "$OUTPUT_DIR"
+elif [ "$2" = "--watch" ]; then
+    echo "Starting presentation in watch mode: $PRESENTATION_PATH"
+    cd "$(dirname "$0")" && pnpm slidev "$PRESENTATION_PATH" --watch
+else
+    # Run the presentation using slidev (dev mode)
+    echo "Starting presentation: $PRESENTATION_PATH"
+    cd "$(dirname "$0")" && pnpm slidev "$PRESENTATION_PATH"
+fi
