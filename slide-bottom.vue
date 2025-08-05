@@ -96,11 +96,11 @@ function checkvars() {
 function getlabel() {
   if ($frontmatter.slug) {
     label.value = $frontmatter.slug
-  } else if ($slidev.configs.slug) {
+  } else if ($slidev?.configs?.slug) {
     label.value = $slidev.configs.slug
   } else if ($frontmatter.neversink_slug) {
     label.value = $frontmatter.neversink_slug
-  } else if ($slidev.configs.neversink_slug) {
+  } else if ($slidev?.configs?.neversink_slug) {
     label.value = $slidev.configs.neversink_slug
   } else {
     label.value = ''
@@ -119,7 +119,7 @@ onMounted(() => {
   <footer v-if="isCMSITTheme && $frontmatter.slide_info !== false" class="absolute bottom-0 right-0 left-0 p-2 pr-3 full-width z-10">
     <div class="absolute bottom-2 right-2 p-1">
       <span class="pl-3 pr-3 p-2 font-mono font-size-2 rounded" :class="fg + ' ' + bg">
-        <img :src="logoPath" class="inline h-4 mr-2" /> {{ $slidev.nav.currentPage }} / {{ $slidev.nav.total }}
+        <img :src="logoPath" class="inline h-4 mr-2" /> {{ $slidev.nav?.currentPage || '1' }} / {{ $slidev.nav?.total || '1' }}
       </span>
     </div>
     <div v-if="label" class="absolute bottom-2 left-2 p-1">
@@ -131,8 +131,8 @@ onMounted(() => {
   <footer v-else-if="$frontmatter.slide_info !== false" class="absolute bottom-1 right-1 left-0 p-2 pr-3 full-width z-10">
     <div class="absolute bottom-0 right-0 p-2 pr-2">
       <span class="pl-3 pr-3 p-2 font-mono font-size-2" :class="fg + ' ' + bg">
-        <mdi-orbit />&nbsp;<span class="fw-bold">{{ label }}</span> | {{ $slidev.nav.currentPage }} of
-        {{ $slidev.nav.total }}
+        <mdi-orbit />&nbsp;<span class="fw-bold">{{ label }}</span> | {{ $slidev.nav?.currentPage || '1' }} of
+        {{ $slidev.nav?.total || '1' }}
       </span>
     </div>
   </footer>

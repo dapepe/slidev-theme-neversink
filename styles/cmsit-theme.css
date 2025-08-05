@@ -22,6 +22,9 @@
   --neversink-border-color: var(--cmsit-highlight-color);
   --neversink-bg-code-color: rgba(255, 255, 255, 0.1);
   --neversink-fg-code-color: var(--cmsit-light-color);
+  --neversink-title-font: var(--cmsit-title-font);
+  --neversink-main-font: var(--cmsit-main-font);
+  font-family: var(--cmsit-main-font);
 }
 
 .cmsit-light-scheme {
@@ -31,6 +34,9 @@
   --neversink-border-color: var(--cmsit-highlight-color);
   --neversink-bg-code-color: rgba(0, 0, 0, 0.05);
   --neversink-fg-code-color: var(--cmsit-dark-color);
+  --neversink-title-font: var(--cmsit-title-font);
+  --neversink-main-font: var(--cmsit-main-font);
+  font-family: var(--cmsit-main-font);
 }
 
 .cmsit-highlight-scheme {
@@ -40,12 +46,28 @@
   --neversink-border-color: var(--cmsit-dark-color);
   --neversink-bg-code-color: rgba(0, 0, 0, 0.1);
   --neversink-fg-code-color: var(--cmsit-light-color);
+  --neversink-title-font: var(--cmsit-title-font);
+  --neversink-main-font: var(--cmsit-main-font);
+  font-family: var(--cmsit-main-font);
 }
 
 /* Override the base font settings */
 #page-root {
   font-family: var(--cmsit-main-font);
   font-weight: 400;
+}
+
+/* Force Titillium Web for all CMSIT schemes */
+.cmsit-dark-scheme,
+.cmsit-light-scheme,
+.cmsit-highlight-scheme {
+  font-family: var(--cmsit-main-font) !important;
+}
+
+.cmsit-dark-scheme *,
+.cmsit-light-scheme *,
+.cmsit-highlight-scheme * {
+  font-family: inherit !important;
 }
 
 .slidev-layout h1, 
@@ -55,6 +77,29 @@
 .slidev-layout h5,
 .slidev-layout h6 {
   font-family: var(--cmsit-title-font);
+  font-weight: 600;
+}
+
+/* Ensure headings in CMSIT schemes use Titillium Web */
+.cmsit-dark-scheme h1,
+.cmsit-dark-scheme h2, 
+.cmsit-dark-scheme h3,
+.cmsit-dark-scheme h4,
+.cmsit-dark-scheme h5,
+.cmsit-dark-scheme h6,
+.cmsit-light-scheme h1,
+.cmsit-light-scheme h2,
+.cmsit-light-scheme h3,
+.cmsit-light-scheme h4,
+.cmsit-light-scheme h5,
+.cmsit-light-scheme h6,
+.cmsit-highlight-scheme h1,
+.cmsit-highlight-scheme h2,
+.cmsit-highlight-scheme h3,
+.cmsit-highlight-scheme h4,
+.cmsit-highlight-scheme h5,
+.cmsit-highlight-scheme h6 {
+  font-family: var(--cmsit-title-font) !important;
   font-weight: 600;
 }
 

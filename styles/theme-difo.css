@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;900&display=swap');
+
+:root {
+  --difo-title-font: 'Inter', sans-serif;
+  --difo-main-font: 'Inter', sans-serif;
+  --difo-mono-font: 'Fira Code', monospace;
+  --difo-quote-font: 'Inter', sans-serif;
+  
+  /* DIFO Brand Colors */
+  --difo-dark-color: #1e40af;
+  --difo-highlight-color: #3b82f6;
+  --difo-light-color: #f8fafc;
+  --difo-text-color: #1e293b;
+  --difo-text-light-color: #f8fafc;
+  --difo-accent-color: #0ea5e9;
+}
+
+/* Main color schemes */
+.difo-dark-scheme {
+  --neversink-bg-color: var(--difo-dark-color);
+  --neversink-text-color: var(--difo-light-color);
+  --neversink-highlight-color: var(--difo-accent-color);
+  --neversink-border-color: var(--difo-accent-color);
+  --neversink-bg-code-color: rgba(255, 255, 255, 0.1);
+  --neversink-fg-code-color: var(--difo-light-color);
+  --neversink-title-font: var(--difo-title-font);
+  --neversink-main-font: var(--difo-main-font);
+  font-family: var(--difo-main-font);
+}
+
+.difo-light-scheme {
+  --neversink-bg-color: var(--difo-light-color);
+  --neversink-text-color: var(--difo-text-color);
+  --neversink-highlight-color: var(--difo-highlight-color);
+  --neversink-border-color: var(--difo-highlight-color);
+  --neversink-bg-code-color: rgba(59, 130, 246, 0.05);
+  --neversink-fg-code-color: var(--difo-text-color);
+  --neversink-title-font: var(--difo-title-font);
+  --neversink-main-font: var(--difo-main-font);
+  font-family: var(--difo-main-font);
+}
+
+.difo-highlight-scheme {
+  --neversink-bg-color: var(--difo-highlight-color);
+  --neversink-text-color: var(--difo-light-color);
+  --neversink-highlight-color: var(--difo-dark-color);
+  --neversink-border-color: var(--difo-dark-color);
+  --neversink-bg-code-color: rgba(30, 64, 175, 0.2);
+  --neversink-fg-code-color: var(--difo-light-color);
+  --neversink-title-font: var(--difo-title-font);
+  --neversink-main-font: var(--difo-main-font);
+  font-family: var(--difo-main-font);
+}
+
+/* Override the base font settings */
+#page-root {
+  font-family: var(--difo-main-font);
+  font-weight: 400;
+}
+
+/* Force Inter for all DIFO schemes */
+.difo-dark-scheme,
+.difo-light-scheme,
+.difo-highlight-scheme {
+  font-family: var(--difo-main-font) !important;
+}
+
+.difo-dark-scheme *,
+.difo-light-scheme *,
+.difo-highlight-scheme * {
+  font-family: inherit !important;
+}
+
+/* Ensure headings in DIFO schemes use Inter */
+.difo-dark-scheme h1,
+.difo-dark-scheme h2, 
+.difo-dark-scheme h3,
+.difo-dark-scheme h4,
+.difo-dark-scheme h5,
+.difo-dark-scheme h6,
+.difo-light-scheme h1,
+.difo-light-scheme h2,
+.difo-light-scheme h3,
+.difo-light-scheme h4,
+.difo-light-scheme h5,
+.difo-light-scheme h6,
+.difo-highlight-scheme h1,
+.difo-highlight-scheme h2,
+.difo-highlight-scheme h3,
+.difo-highlight-scheme h4,
+.difo-highlight-scheme h5,
+.difo-highlight-scheme h6 {
+  font-family: var(--difo-title-font) !important;
+  font-weight: 600;
+}
+
+/* Highlighted text */
+.slidev-layout mark {
+  background-color: var(--difo-highlight-color);
+  color: var(--difo-light-color);
+  font-weight: 400;
+  padding-left: 0.4em;
+  padding-right: 0.4em;
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+  border-radius: 0.2em;
+}
+
+/* DIFO specific components */
+.difo-card {
+  background-color: var(--difo-light-color);
+  border-left: 4px solid var(--difo-highlight-color);
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.15);
+}
+
+.difo-dark-scheme .difo-card {
+  background-color: rgba(30, 64, 175, 0.1);
+  color: var(--difo-light-color);
+  border-left-color: var(--difo-accent-color);
+}
+
+.difo-highlight-scheme .difo-card {
+  background-color: var(--difo-dark-color);
+  color: var(--difo-light-color);
+  border-left-color: var(--difo-light-color);
+}
+
+/* Professional button styles */
+.difo-button {
+  background-color: var(--difo-highlight-color);
+  color: var(--difo-light-color);
+  border: 2px solid var(--difo-highlight-color);
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.difo-button:hover {
+  background-color: var(--difo-dark-color);
+  border-color: var(--difo-dark-color);
+} 

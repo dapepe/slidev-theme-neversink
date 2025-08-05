@@ -45,6 +45,79 @@ export function resolveAssetUrl(url: string) {
   return url
 }
 
+/**
+ * Check if a dynamic theme is being used via the styles property
+ */
+export function isDynamicTheme(frontmatter: any): boolean {
+  return !!(frontmatter?.styles)
+}
+
+/**
+ * Get the theme name from frontmatter styles property
+ */
+export function getThemeName(frontmatter: any): string | null {
+  return frontmatter?.styles || null
+}
+
+/**
+ * Check if a specific theme type is active
+ */
+export function isThemeType(frontmatter: any, themeName: string): boolean {
+  return getThemeName(frontmatter) === themeName
+}
+
+/**
+ * Get color scheme class name for dynamic themes
+ * Handles both the new styles system and legacy color system
+ */
+export function getColorScheme(frontmatter: any, color?: string): string {
+  const themeName = getThemeName(frontmatter)
+  const colorName = color || frontmatter?.color || 'light'
+
+  if (themeName) {
+    // New dynamic theme system
+    if (colorName.startsWith(`${themeName}-`)) {
+      return `${colorName}-scheme`
+    }
+    return `${themeName}-${colorName}-scheme`
+  } 
+  
+  // Legacy system - check for cmsit themes
+  if (colorName.startsWith('cmsit-')) {
+    return `${colorName}-scheme`
+  }
+  
+  // Default neversink system
+  return `neversink-${colorName}-scheme`
+}
+
+/**
+ * Check if current theme supports specific features
+ */
+export function themeSupports(frontmatter: any, feature: string): boolean {
+  const themeName = getThemeName(frontmatter)
+  
+  const themeFeatures: Record<string, string[]> = {
+    'cmsit': ['cards', 'professional-layout', 'brand-colors'],
+    'difo': ['cards', 'buttons', 'professional-layout', 'blue-theme'],
+    'stronger': ['cards', 'cta', 'emphasis', 'bold-layout', 'uppercase-headings']
+  }
+  
+  if (themeName && themeFeatures[themeName]) {
+    return themeFeatures[themeName].includes(feature)
+  }
+  
+  return false
+}
+
+/**
+ * Get theme-specific CSS class prefix
+ */
+export function getThemePrefix(frontmatter: any): string {
+  const themeName = getThemeName(frontmatter)
+  return themeName || 'neversink'
+}
+
 export function handleBackground(background?: string, dim = false): CSSProperties {
   const isColor = background && ['#', 'rgb', 'hsl'].some((v) => background.indexOf(v) === 0)
 

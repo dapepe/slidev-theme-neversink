@@ -18,10 +18,23 @@ const isCmsitTheme = computed(() => {
 })
 
 const colorscheme = computed(() => {
+  // Check for dynamic theme first
+  if ($frontmatter.styles) {
+    const themeName = $frontmatter.styles
+    const colorName = props.color || 'light'
+    if (colorName.startsWith(`${themeName}-`)) {
+      return `${colorName}-scheme`
+    }
+    return `${themeName}-${colorName}-scheme`
+  }
+  
+  // Legacy CMSIT theme detection
   if (isCmsitTheme.value) {
     const color = props.color?.startsWith('cmsit-') ? props.color : `cmsit-${props.color}`
     return `${color}-scheme`
   }
+  
+  // Default neversink scheme
   return `neversink-${props.color}-scheme`
 })
 
