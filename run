@@ -1,0 +1,31 @@
+#!/bin/bash
+
+# Shell script to run a Slidev presentation from the presentations directory
+# Usage: ./run <filename> (with or without .md extension)
+
+# Check if an argument is provided
+if [ $# -eq 0 ]; then
+    echo "Usage: ./run <filename>"
+    echo "Available presentations:"
+    ls presentations/*.md | sed 's/presentations\///' | sed 's/\.md$//'
+    exit 1
+fi
+
+# Construct the full path
+FILENAME="$1"
+if [[ ! "$FILENAME" =~ \.md$ ]]; then
+    FILENAME="$FILENAME.md"
+fi
+PRESENTATION_PATH="presentations/$FILENAME"
+
+# Check if the file exists
+if [ ! -f "$PRESENTATION_PATH" ]; then
+    echo "Error: Presentation '$FILENAME' not found in presentations directory."
+    echo "Available presentations:"
+    ls presentations/*.md | sed 's/presentations\///' | sed 's/\.md$//'
+    exit 1
+fi
+
+# Run the presentation using slidev
+echo "Starting presentation: $PRESENTATION_PATH"
+slidev "$PRESENTATION_PATH"
