@@ -929,13 +929,10 @@ In addition to these custom layouts, the **Neversink** theme includes a few cust
 layout: two-cols-title
 columns: is-6
 title: Admonitions
-dragPos:
-  admon: Left,Top,Width,Height,Rotate
-  "'admon'": 55,300,287,106
 ---
 
-<Admonition title="V-draggable" color='teal-light' width="300px" v-drag="[93,303,300,145,-14]">
-If you want to `v-drag` an admonition, you should set the width to a fixed value.
+<Admonition title="Draggable Note" color="teal-light" width="300px" v-drag="[93,303,300,145,-14]">
+If you want to v-drag an admonition, you should set the width to a fixed value.
 </Admonition>
 
 :: title ::

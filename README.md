@@ -19,7 +19,7 @@ This theme combines professional academic styling with playful kawaii-style comp
 - **📱 Responsive Design**: Works perfectly on all screen sizes
 - **⚡ Fast Performance**: Optimized for smooth presentations
 
-## 📦 Installation
+## 📦 Installation & Usage
 
 ### Prerequisites
 
@@ -27,7 +27,7 @@ Make sure you have the following installed:
 - [Node.js](https://nodejs.org/) (version 16 or higher)
 - [npm](https://www.npmjs.com/) or [pnpm](https://pnpm.io/) or [yarn](https://yarnpkg.com/)
 
-### Install the Theme
+### Option 1: Install as Theme Package
 
 ```bash
 # Using npm
@@ -40,24 +40,37 @@ pnpm add slidev-theme-neversink
 yarn add slidev-theme-neversink
 ```
 
-### Quick Start
+Then use in your presentation:
+```md
+---
+theme: neversink
+title: 'My Amazing Presentation'
+---
 
-1. **Create a new Slidev project** (if you don't have one):
+# Welcome to My Presentation
+
+This is the first slide!
+```
+
+### Option 2: Local Development (Fork/Clone)
+
+If you want to customize the theme or develop locally:
+
+1. **Clone or fork this repository**:
    ```bash
-   npm init slidev@latest my-presentation
-   cd my-presentation
+   git clone https://github.com/gureckis/slidev-theme-neversink.git
+   cd slidev-theme-neversink
    ```
 
-2. **Install the theme**:
+2. **Install dependencies**:
    ```bash
-   npm install slidev-theme-neversink
+   pnpm install
    ```
 
-3. **Configure your slides** by adding the theme to your `slides.md` frontmatter:
+3. **Create presentations in the `presentations/` folder** using `theme: ../`:
    ```md
    ---
-   theme: neversink
-   background: https://source.unsplash.com/1920x1080/?nature,water
+   theme: ../
    title: 'My Amazing Presentation'
    ---
    
@@ -68,15 +81,16 @@ yarn add slidev-theme-neversink
 
 4. **Start the development server**:
    ```bash
-   npm run dev
+   ./run presentations/your-presentation.md
+   # or
+   pnpm dev  # for the example presentation
    ```
 
 ## 🚀 Usage
 
 ### Basic Configuration
 
-Add the theme to the frontmatter of your first slide in `slides.md`:
-
+For **installed theme** (Option 1), add the theme to your `slides.md`:
 ```md
 ---
 theme: neversink
@@ -87,11 +101,55 @@ colorSchema: 'auto'  # or 'light', 'dark'
 ---
 ```
 
+For **local development** (Option 2), use the relative path:
+```md
+---
+theme: ../
+title: 'Your Presentation Title'
+author: 'Your Name'
+institution: 'Your Institution'
+colorSchema: 'auto'  # or 'light', 'dark'
+---
+```
+
+## 🛠️ Local Development
+
+If you've cloned or forked this repository for local theme development:
+
+### Running Presentations
+
+Use the included `run` script to start presentations:
+
+```bash
+# Run a specific presentation
+./run presentations/example.md
+
+# Create a new presentation
+./run --new my-presentation
+
+# Export to PDF
+./run presentations/example.md --export
+
+# Build static site
+./run presentations/example.md --build
+```
+
+### Theme Structure
+
+```
+├── components/          # Vue components  
+├── layouts/            # Slide layouts
+├── styles/             # CSS and theme files
+├── setup/              # Slidev setup files
+├── presentations/      # Your presentation files
+└── public/             # Static assets
+```
+
 ### Advanced Configuration
 
 ```md
 ---
-theme: neversink
+theme: neversink  # or ../ for local development
 title: 'Advanced Academic Presentation'
 author: 'Dr. Jane Smith'
 institution: 'University of Excellence'
