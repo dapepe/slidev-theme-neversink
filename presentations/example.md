@@ -403,79 +403,6 @@ This is an example of using unocss atomic classes to put three figures side by s
 
 </div>
 
-
----
-layout: credits
-color: light
----
-
-<div class="grid text-size-4 grid-cols-3 w-3/4 gap-y-10 auto-rows-min ml-auto mr-auto">
-<div class="grid-item text-center mr-0- col-span-3">
-  
-  This is the `layout: credits` slide.  It's a movie-like scrolling credits!
-</div>
-<div class="grid-item text-center mr-0- col-span-3">
-  <strong>Cast</strong><br> 
-  <span class="font-size-3 mt-0">(In order of appearance)</span>
-</div>
-<div class="grid-item text-right mr-4 col-span-1"><strong>Study 1</strong></div>
-<div class="grid-item col-span-2">Person 1 <i>as PhD student</i>&nbsp;<mdi-open-in-new class="font-size-3 mb-0.5" /><br/>Person 2 <i>as Co-PI</i>&nbsp;<mdi-open-in-new class="font-size-3 mb-0.5" /></div>
-<div class="grid-item text-right mr-4 col-span-1"><strong>Study 2</strong></div>
-<div class="grid-item col-span-2">Person 3 <i>as Postdoc</i>&nbsp;<mdi-open-in-new class="font-size-3 mb-0.5" /><br/>Person 4 <i>as Co-PI</i>&nbsp;<mdi-open-in-new class="font-size-3 mb-0.5" /></div>
-<div class="grid-item text-right mr-4 col-span-1"><strong>Experiments</strong></div>
-<div class="grid-item col-span-2">Smile 🫠</div>
-<div class="grid-item text-right mr-4 col-span-1"><strong>Funding</strong></div>
-<div class="grid-item col-span-2">National Science Foundation<br/>
-National Institute of Health</div>
-<div class="grid-item text-right mr-4 col-span-1"><strong>Slides</strong></div>
-<div class="grid-item col-span-2">
-Slidev<br/>
-Unocss<br/>
-Figma<br/>
-Vuejs<br/>
-Vite<br/>
-</div>
-<div class="grid-item col-span-3 text-center mt-180px mb-auto font-size-1.5rem"><strong>Questions?</strong></div>
-</div>
-
-
----
-layout: credits
-color: navy
-speed: 4.0
-loop: true
----
-
-<div class="grid text-size-4 grid-cols-3 w-3/4 gap-y-10 auto-rows-min ml-auto mr-auto">
-<div class="grid-item text-center mr-0- col-span-3">
-  
-  This one has `speed: 4.0` and `loop: true` in the front matter
-</div>
-<div class="grid-item text-center mr-0- col-span-3">
-  <strong>Cast</strong><br> 
-  <span class="font-size-3 mt-0">(In order of appearance)</span>
-</div>
-<div class="grid-item text-right mr-4 col-span-1"><strong>Study 1</strong></div>
-<div class="grid-item col-span-2">Person 1 <i>as PhD student</i>&nbsp;<mdi-open-in-new class="font-size-3 mb-0.5" /><br/>Person 2 <i>as Co-PI</i>&nbsp;<mdi-open-in-new class="font-size-3 mb-0.5" /></div>
-<div class="grid-item text-right mr-4 col-span-1"><strong>Study 2</strong></div>
-<div class="grid-item col-span-2">Person 3 <i>as Postdoc</i>&nbsp;<mdi-open-in-new class="font-size-3 mb-0.5" /><br/>Person 4 <i>as Co-PI</i>&nbsp;<mdi-open-in-new class="font-size-3 mb-0.5" /></div>
-<div class="grid-item text-right mr-4 col-span-1"><strong>Experiments</strong></div>
-<div class="grid-item col-span-2">Smile 🫠</div>
-<div class="grid-item text-right mr-4 col-span-1"><strong>Funding</strong></div>
-<div class="grid-item col-span-2">National Science Foundation<br/>
-National Institute of Health</div>
-<div class="grid-item text-right mr-4 col-span-1"><strong>Slides</strong></div>
-<div class="grid-item col-span-2">
-Slidev<br/>
-Unocss<br/>
-Figma<br/>
-Vuejs<br/>
-Vite<br/>
-</div>
-<div class="grid-item col-span-3 text-center mt-180px mb-auto font-size-1.5rem"><strong>Questions?</strong></div>
-</div>
-
-
 ---
 layout: image-left
 image: /images/photo.png
@@ -574,9 +501,6 @@ This is `layout: two-cols-title`.
 - The <code>align</code> parameter determines how the columns look. The notation is for example
   <code>align: l-cm-cm</code>. The first part is for the header, the second for the left column, the third part is for the right column. The first letter is (<code>c</code> for center, <code>l</code> for left, <code>r</code> for right), the second letter
   is vertical alignment (<code>t</code> for top, <code>m</code> for middle, <code>b</code> for bottom). Only c/l/r works for the header.
-
-
-
 
 
 ---
