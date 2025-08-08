@@ -1,0 +1,104 @@
+/*
+ * CMS-IT presentation-specific stylesheet (consolidated)
+ * Move any CMS-IT custom styles here instead of components/layout files.
+ */
+
+/* Brand accent overrides */
+:root {
+  --global-accent-color: #22c55e; /* Tailwind green-500 */
+  --neversink-highlight-color: #22c55e;
+  --neversink-title-font: 'Titillium Web', sans-serif;
+}
+
+/* Section styling tweaks for this deck */
+.slidev-layout.section {
+  background: linear-gradient(135deg, #1e293b, #334155);
+}
+
+.slidev-layout.section h1 {
+  color: #22c55e;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* CMS-IT card component */
+.cmsit-card,
+.presentation-specific-card {
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  color: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  margin: 1rem 0;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.cmsit-card h3,
+.presentation-specific-card h3 {
+  color: #fff;
+  margin-top: 0;
+}
+
+/* Button style (optional helper) */
+.presentation-btn,
+.cmsit-button {
+  background: #22c55e;
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.presentation-btn:hover,
+.cmsit-button:hover {
+  background: #16a34a;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(34, 197, 94, 0.3);
+}
+
+/* Logo utility classes used by this deck */
+.slide-logo {
+  position: fixed;
+  z-index: 1000;
+  width: 80px;
+  height: auto;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.slide-logo:hover { opacity: 1; }
+
+.slide-logo.top-left { top: 20px; left: 20px; }
+.slide-logo.top-right { top: 20px; right: 20px; }
+.slide-logo.bottom-left { bottom: 20px; left: 20px; }
+.slide-logo.bottom-right { bottom: 20px; right: 20px; }
+
+.slide-logo.small { width: 60px; }
+.slide-logo.medium { width: 80px; }
+.slide-logo.large { width: 120px; }
+
+.slide-logo.hidden,
+.no-logo .slide-logo { display: none !important; }
+
+/* Theme-specific logo visibility */
+@media (prefers-color-scheme: dark) {
+  .slide-logo.light-only { display: none !important; }
+}
+
+@media (prefers-color-scheme: light) {
+  .slide-logo.dark-only { display: none !important; }
+}
+
+/* Manual dark theme override helpers */
+.dark-theme .slide-logo.light-only,
+.color-dark .slide-logo.light-only { display: none !important; }
+.dark-theme .slide-logo.dark-only,
+.color-dark .slide-logo.dark-only { display: block !important; }
+
+.slidev-layout.cover h1,
+.slidev-layout.cover h2,
+.slidev-layout.cover h3 {
+  border-bottom: 0;
+  margin: 0
+}

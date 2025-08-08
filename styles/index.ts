@@ -7,6 +7,9 @@ import './base.css'
 import './colors.css'
 import './neversink-c.css'
 
+// Global styles - this will be automatically included in all slides
+import './global-styles.css'
+
 // import './code.css'
 // import './layout.css'
 // import './custom.css'

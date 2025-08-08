@@ -95,29 +95,4 @@ const colorscheme = computed(() => {
   margin: 0;
   opacity: 1;
 }
-
-/* CMSIT theme overrides */
-.slidev-layout.section.cmsit-section {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.slidev-layout.section.cmsit-section h1 {
-  font-size: 3rem;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-}
-
-.slidev-layout.section.cmsit-section h1 + p {
-  margin-top: 1.5rem;
-  opacity: 0.8;
-}
-
-.slidev-layout.section.cmsit-section hr {
-  width: 100%;
-  border-width: 2px;
-}
 </style>

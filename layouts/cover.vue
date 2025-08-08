@@ -52,8 +52,8 @@ const logoClass = computed(() => {
 </script>
 
 <template>
-  <div class="slidev-layout cover h-full slidecolor" :class="[colorscheme, { 'cmsit-cover': isCmsitTheme }]">
-    <div v-if="$frontmatter.logo" class="logo-container mb-8">
+  <div class="slidev-layout cover h-full slidecolor" :class="[colorscheme]">
+    <div v-if="$frontmatter.logo" class="logo-container">
       <img :src="$frontmatter.logo" :class="logoClass" />
     </div>
     <div class="content w-full" :class="{ 'myauto': !isCmsitTheme }">
@@ -146,37 +146,4 @@ const logoClass = computed(() => {
   border-bottom: 1px solid var(--neversink-highlight-color);
 }
 
-/* CMSIT theme overrides */
-.slidev-layout.cover.cmsit-cover {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-
-.slidev-layout.cover.cmsit-cover .logo-container {
-  margin-bottom: 2rem;
-}
-
-.slidev-layout.cover.cmsit-cover h1 {
-  font-size: 3em;
-  font-weight: 600;
-  border-bottom: 3px solid var(--neversink-highlight-color);
-  display: inline-block;
-}
-
-.slidev-layout.cover.cmsit-cover h2 {
-  font-size: 2.5em;
-  font-weight: 500;
-  border-bottom: 3px solid var(--neversink-highlight-color);
-  display: inline-block;
-}
-
-.slidev-layout.cover.cmsit-cover h3 {
-  font-size: 1.8em;
-  font-weight: 400;
-  border-bottom: 3px solid var(--neversink-highlight-color);
-  display: inline-block;
-}
 </style>

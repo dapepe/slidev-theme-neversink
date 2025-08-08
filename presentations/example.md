@@ -2,7 +2,6 @@
 theme: ../
 colorSchema: light
 layout: cover
-styles: cmsit
 color: dark
 routerMode: hash
 title: Dynamic CSS Theme Demo
@@ -10,9 +9,13 @@ slug: "Subtitle Slug"
 logo: "cms-it/difo-logo_cms-it-bright.svg"
 ---
 
+<link rel="stylesheet" href="cms-it/styles.css">
+
 # Dynamic CSS Theme System
 
-### Demonstrating `styles` property for dynamic theme loading
+### Using `Markdown` for beautiful presentations
+
+*Peter Haider*
 
 ---
 layout: section
@@ -20,10 +23,14 @@ styles: cmsit
 color: highlight
 ---
 
-# CMSIT Theme Demo
-<hr>
+# This is a new section
 
 This slide uses `styles: cmsit` and `color: highlight` in the frontmatter.
+
+The **highlight color** is now set to our brand green (#22c55e).
+
+<!-- Logo for dark theme slide -->
+<img src="/cms-it/logo-white.svg" class="slide-logo top-right medium" alt="Company Logo" />
 
 ---
 layout: default
@@ -34,13 +41,16 @@ color: light
 # CMSIT Light Theme
 
 - Clean and professional presentation style
-- Uses **Titillium Web** font family
+- Uses **Inter** font family for modern readability
 - Perfect for corporate presentations
-- Brand colors: green highlights
+- Brand colors: green highlights (#22c55e)
 
 <div class="cmsit-card">
   This is a CMSIT-specific card component that adapts to the theme colors automatically.
 </div>
+
+<!-- Logo positioned in bottom-left for this slide -->
+<img src="/cms-it/logo-green.svg" class="slide-logo bottom-left small" alt="Company Logo" />
 
 ---
 layout: section
@@ -101,6 +111,69 @@ color: light
 </div>
 
 <button class="stronger-cta">CALL TO ACTION</button>
+
+---
+layout: section
+color: light
+---
+
+# Logo System
+<hr>
+
+Enhanced logo functionality with automatic theme switching and positioning options.
+
+---
+layout: default
+color: light
+---
+
+# Company Logo Features
+
+## Automatic Theme Switching
+```html
+<!-- Light theme logo -->
+<img src="/cms-it/logo-green.svg" class="slide-logo top-right medium light-only" />
+
+<!-- Dark theme logo -->
+<img src="/cms-it/logo-white.svg" class="slide-logo top-right medium dark-only" />
+```
+
+## Positioning Options
+- `top-left`, `top-right`, `bottom-left`, `bottom-right`
+- `small` (60px), `medium` (80px), `large` (120px)
+- `hidden` class to hide logos when needed
+
+<div class="global-card">
+  <strong>Default behavior:</strong> Logos are visible by default and automatically switch based on theme preference.
+</div>
+
+<!-- Demonstrate different logo positions -->
+<img src="/cms-it/logo-green.svg" class="slide-logo top-left small light-only" alt="Top Left" />
+<img src="/cms-it/logo-white.svg" class="slide-logo top-left small dark-only" alt="Top Left" />
+
+---
+layout: default
+color: light
+---
+
+# Hide Logo Option
+
+To hide the logo on specific slides, add the `no-logo` class to the slide or use `hidden` class on the logo:
+
+```md
+---
+layout: default
+class: no-logo
+---
+
+# Slide without logo
+```
+
+Or hide specific logos:
+
+```html
+<img src="/logo.svg" class="slide-logo top-right hidden" />
+```
 
 ---
 layout: section
