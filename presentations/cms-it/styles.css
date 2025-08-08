@@ -4,15 +4,30 @@
  */
 
 /* Brand accent overrides */
-:root {
-  --global-accent-color: #22c55e; /* Tailwind green-500 */
-  --neversink-highlight-color: #22c55e !important;
+:root,
+.slidev-layout.neversink-light-scheme,
+.slidev-layout.neversink-dark-scheme,
+.slidev-layout.cmsit-light-scheme,
+.slidev-layout.cmsit-dark-scheme {
+  --neversink-highlight-color: #22c55e;
+  --global-accent-color: #22c55e;
+  --global-main-font: 'Titillium Web', sans-serif;
   --neversink-title-font: 'Titillium Web', sans-serif;
+  --neversink-main-font: 'Titillium Web', sans-serif;
+  --neversink-mono-font: 'Fira Code', monospace;
+  --neversink-quote-font: 'Fira Code', monospace;
+  --font-mono: 'Courier New', Courier, monospace;
 }
 
 /* Section styling tweaks for this deck */
-.slidev-layout.section {
+.slidev-layout.section.cmsit-dark-scheme,
+.slidev-layout.section.neversink-dark-scheme {
   background: linear-gradient(135deg, #1e293b, #334155);
+}
+.slidev-layout.section.cmsit-light-scheme,
+.slidev-layout.section.neversink-light-scheme {
+  background: linear-gradient(135deg, #FFF, #f8f8f8);
+  color: #1e293b;
 }
 
 .slidev-layout:not(.cover)::before {
@@ -40,6 +55,7 @@
   /* Color (dark) logo on light slides */
   background-image: url('./difo-logo_cms-it-color.svg');
 }
+
 
 /* Bright slides: headings use highlight color */
 .slidev-layout.neversink-light-scheme h1,

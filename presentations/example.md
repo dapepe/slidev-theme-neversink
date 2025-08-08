@@ -5,7 +5,7 @@ layout: cover
 color: dark
 routerMode: hash
 title: Dynamic CSS Theme Demo
-slug: "Subtitle Slug"
+slug: "CMS IT-Consulting GmbH"
 logo: "cms-it/difo-logo_cms-it-bright.svg"
 ---
 
@@ -15,160 +15,73 @@ logo: "cms-it/difo-logo_cms-it-bright.svg"
 
 ### Using `Markdown` for beautiful presentations
 
-**Peter-Christoph Haider**   
+**Peter-Christoph Haider**
 
 :: note ::
 
-\* Optional `:: note ::` slot for mentioning ==notes== at the bottom.
+01.01.2025
 
 ---
 layout: section
 color: dark
 ---
 
-# This is a new section
+# This is a dark section
 
-This slide uses `styles: cmsit` and `color: highlight` in the frontmatter.
+This slide uses `layout: section` and `color: dark` in the frontmatter.
 
-The **highlight color** is now set to our brand green (#22c55e).
+The **highlight color** is now set to `--global-accent-color`
+
+---
+layout: section
+color: light
+---
+
+# This is a light section
+
+This slide uses `layout: section` and `color: light` in the frontmatter.
+
+The **highlight color** is now set to `--global-accent-color`
 
 ---
 layout: default
 color: light
 ---
 
-# CMSIT Light Theme
+# This is a default slide
 
+- Activate with `layout: default`
+- Uses `color: light`
 - Clean and professional presentation style
-- Uses **Inter** font family for modern readability
-- Perfect for corporate presentations
-- Brand colors: green highlights (#22c55e)
+- Uses the default color
 
-<div class="cmsit-card">
-  This is a CMSIT-specific card component that adapts to the theme colors automatically.
-</div>
+> Can includ quotes
 
----
-layout: section
-styles: difo
-color: dark
----
+- You can also include code
 
-# DIFO Theme Demo
-<hr>
-
-This slide uses `styles: difo` with blue professional colors.
+```javascript
+console.log("Hello world")
+```
 
 ---
 layout: default
-styles: difo
-color: light
----
-
-# DIFO Professional Theme
-
-- Modern blue color scheme
-- Uses **Inter** font family for clean readability
-- Professional button styles
-- Perfect for business presentations
-
-<div class="difo-card">
-  This is a DIFO-specific card with blue accents and professional styling.lmölm,äöäö
-</div>
-
-<button class="difo-button">Professional Button</button>
-
----
-layout: section
-styles: stronger
 color: dark
 ---
 
-# STRONGER THEME DEMO
-<hr>
+# This is a default slide
 
-This slide uses `styles: stronger` with bold, powerful styling.
-
----
-layout: default
-styles: stronger
-color: light
----
-
-# Stronger Bold Theme
-
-- **BOLD AND POWERFUL** design language
-- Uses **Oswald** for headings and **Source Sans Pro** for body
+- Activate with `layout: default`
+- Uses `color: light`
+- Clean and professional presentation style
+- Uses the default color
 - ==UPPERCASE EMPHASIS== styling
-- Perfect for impactful presentations
 
-<div class="stronger-card">
-  This is a Stronger theme card with bold borders and powerful styling.
-</div>
+> Can includ quotes
 
-<button class="stronger-cta">CALL TO ACTION</button>
+- You can also include code
 
----
-layout: section
-color: light
----
-
-# Logo System
-<hr>
-
-Enhanced logo functionality with automatic theme switching and positioning options.
-
----
-layout: default
-color: light
----
-
-# Company Logo Features
-
-## Automatic Theme Switching
-```html
-<!-- Light theme logo -->
-<img src="/cms-it/logo-green.svg" class="slide-logo top-right medium light-only" />
-
-<!-- Dark theme logo -->
-<img src="/cms-it/logo-white.svg" class="slide-logo top-right medium dark-only" />
-```
-
-## Positioning Options
-- `top-left`, `top-right`, `bottom-left`, `bottom-right`
-- `small` (60px), `medium` (80px), `large` (120px)
-- `hidden` class to hide logos when needed
-
-<div class="global-card">
-  <strong>Default behavior:</strong> Logos are visible by default and automatically switch based on theme preference.
-</div>
-
-<!-- Demonstrate different logo positions -->
-<img src="/cms-it/logo-green.svg" class="slide-logo top-left small light-only" alt="Top Left" />
-<img src="/cms-it/logo-white.svg" class="slide-logo top-left small dark-only" alt="Top Left" />
-
----
-layout: default
-color: light
----
-
-# Hide Logo Option
-
-To hide the logo on specific slides, add the `no-logo` class to the slide or use `hidden` class on the logo:
-
-```md
----
-layout: default
-class: no-logo
----
-
-# Slide without logo
-```
-
-Or hide specific logos:
-
-```html
-<img src="/logo.svg" class="slide-logo top-right hidden" />
+```javascript
+console.log("Hello world")
 ```
 
 ---
@@ -334,33 +247,7 @@ This is like the cover slide but with a little less decoration.
 It also has a frontmatter option of `color: emerald-light`.
 
 ---
-layout: default
----
-
-# This is the `default` layout
-
-This is kind of the basic slide.  The main content is interpreted as markdown and rendered in the center of the slide.  
-
-Speaking of markdown, you can use markdown to make things **bold** or *italic* or even `code` like `this`.  In **Neversink** you can also ==highlight things using the double equals signs like this==
-thanks to the `markdown-it-mark` plugin.
-
-Of course you can make bullet lists:
-
-- Hi
-- There
-
-Also there's a little helper class `ns-c-tight` you can add to make the bullet spacing a bit tighter:
-
-<div class="ns-c-tight">
-
-- Hi
-- There
-- I need space
-</div>
-
-
----
-layout: default
+layout: section
 color: sky
 ---
 
@@ -375,45 +262,6 @@ layout: default
 color: sky
 ---
 ```
-
-
----
-layout: default
-color: light
----
-
-# The `default` layout 
-
-Things don't have to be so dramatic.  For more conservative presentations you can use color schemes like `light`:
-
-```md
----
-layout: default
-color: light
----
-```
-
-And of course you don't have to change the color scheme every slide! 
-
-
----
-layout: section
----
-
-# The `section` layout
-
-This is a section slide.  It can be use to make a noticable point or break between sections.
-
-
----
-layout: section
-color: navy
----
-
-# The `section` layout
-<hr>
-It has a `hr` which is color matched to the color scheme.  For example, this slide is using the `navy` color scheme and the line is white.
-
 
 ---
 layout: section
@@ -444,7 +292,7 @@ You can use HTML and inline CSS to modify the look and feel.
 
 ---
 layout: quote
-color: sky-light
+color: dark
 quotesize: text-sm
 authorsize: text-sm
 author: "Todd Gureckis"
@@ -453,9 +301,9 @@ author: "Todd Gureckis"
 "This is a quote slide.  It has a frontmatter option of `quote` which is the text that appears in the quote box and `author` and options for the size of the text(`quotesize: text-2xl` and `authorsize: text-l`).  I feel it is a little uninspired but might save you some time."
 
 
-
 ---
 layout: full
+color: dark
 title: Full Layout
 ---
 
@@ -470,50 +318,51 @@ the `v-drag` directive to position elements.
 
 ---
 layout: full
+color: dark
 title: Full with Arbitrary Layout
 ---
 
 <div class='v-full h-full'>
 
-<SpeechBubble position="l" shape="round"  color='pink-light' v-drag="[555,342,274,58]">
+  <SpeechBubble position="l" shape="round"  color='pink-light' v-drag="[555,342,274,58]">
 
-Hello, I'm an **ice cream**!
-</SpeechBubble>
+  Hello, I'm an **ice cream**!
+  </SpeechBubble>
 
-<SpeechBubble position="bl" shape="round"  color='emerald-light' v-drag="[445,258,274,57]">
+  <SpeechBubble position="bl" shape="round"  color='emerald-light' v-drag="[445,258,274,57]">
 
-Hello, I'm **kawaii**.
-</SpeechBubble>
+  Hello, I'm **kawaii**.
+  </SpeechBubble>
 
-<SpeechBubble position="r" shape="round" animation="float"  color='sky' v-drag="[143,391,274,84]">
+  <SpeechBubble position="r" shape="round" animation="float"  color='sky' v-drag="[143,391,274,84]">
 
-I'm v-dragged out and ==floating==.
-</SpeechBubble>
+  I'm v-dragged out and ==floating==.
+  </SpeechBubble>
 
-<IceCream :size="150" mood="lovestruck" color="#FDA7DC" v-drag="[439,341,85,150]" />
+  <IceCream :size="150" mood="lovestruck" color="#FDA7DC" v-drag="[439,341,85,150]" />
 
-<div class="ns-c-tight" v-drag="[143,33,277,214]">
+  <div class="ns-c-tight" v-drag="[143,33,277,214]">
 
-<span class="bg-red-100 text-red-600 p-2 border-l-6 border-2 border-red-200 rounded-lg pl-4 pr-4">Here's a list of somethings</span>
+  <span class="bg-red-100 text-red-600 p-2 border-l-6 border-2 border-red-200 rounded-lg pl-4 pr-4">Here's a list of somethings</span>
 
-- Novelty bonuses
-- Cumulative prediction error
-- Learning progress
-- Surprise
-- Suspense
-- Information gain
+  - Novelty bonuses
+  - Cumulative prediction error
+  - Learning progress
+  - Surprise
+  - Suspense
+  - Information gain
 
-</div>
+  </div>
 
-<div class="ns-c-tight" v-drag="[461,63,293,148,17]">
+  <div class="ns-c-tight" v-drag="[461,63,293,148,17]">
 
-<span class="bg-emerald-100 text-emerald-500 p-2 border-l-6 border-2 border-emerald-200 rounded-lg pl-4 pr-4">Here's another list of things</span>
+  <span class="bg-emerald-100 text-emerald-500 p-2 border-l-6 border-2 border-emerald-200 rounded-lg pl-4 pr-4">Here's another list of things</span>
 
-- Structured behaviors
-- Compositional
-- Communicable
+  - Structured behaviors
+  - Compositional
+  - Communicable
 
-</div>
+  </div>
 
 </div>
 

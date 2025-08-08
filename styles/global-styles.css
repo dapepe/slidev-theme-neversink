@@ -235,9 +235,11 @@
 }
 
 /* Layout-specific overrides */
+/*
 .slidev-layout.cover {
   background: linear-gradient(135deg, var(--global-bg-color), var(--global-code-bg));
 }
+*/ 
 
 .slidev-layout.section {
   background-color: var(--global-accent-color);
