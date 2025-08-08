@@ -6,7 +6,7 @@
 /* Brand accent overrides */
 :root {
   --global-accent-color: #22c55e; /* Tailwind green-500 */
-  --neversink-highlight-color: #22c55e;
+  --neversink-highlight-color: #22c55e !important;
   --neversink-title-font: 'Titillium Web', sans-serif;
 }
 
@@ -15,9 +15,37 @@
   background: linear-gradient(135deg, #1e293b, #334155);
 }
 
-.slidev-layout.section h1 {
-  color: #22c55e;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+.slidev-layout:not(.cover)::before {
+  content: '';
+  position: fixed;
+  top: 18px;
+  right: 18px;
+  width: 110px;
+  height: 80px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: top left;
+  z-index: 1000;
+  pointer-events: none;
+}
+
+/* Logo variant per scheme */
+.slidev-layout:not(.cover).neversink-highlight-scheme::before,
+.slidev-layout:not(.cover).neversink-dark-scheme::before {
+  /* Bright logo on dark slides */
+  background-image: url('./difo-logo_cms-it-bright.svg');
+}
+
+.slidev-layout:not(.cover).neversink-light-scheme::before {
+  /* Color (dark) logo on light slides */
+  background-image: url('./difo-logo_cms-it-color.svg');
+}
+
+/* Bright slides: headings use highlight color */
+.slidev-layout.neversink-light-scheme h1,
+.slidev-layout.neversink-light-scheme h2,
+.slidev-layout.neversink-light-scheme h3 {
+  color: var(--neversink-highlight-color);
 }
 
 /* CMS-IT card component */

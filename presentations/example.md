@@ -15,12 +15,15 @@ logo: "cms-it/difo-logo_cms-it-bright.svg"
 
 ### Using `Markdown` for beautiful presentations
 
-*Peter Haider*
+**Peter-Christoph Haider**   
+
+:: note ::
+
+\* Optional `:: note ::` slot for mentioning ==notes== at the bottom.
 
 ---
 layout: section
-styles: cmsit
-color: highlight
+color: dark
 ---
 
 # This is a new section
@@ -29,12 +32,8 @@ This slide uses `styles: cmsit` and `color: highlight` in the frontmatter.
 
 The **highlight color** is now set to our brand green (#22c55e).
 
-<!-- Logo for dark theme slide -->
-<img src="/cms-it/logo-white.svg" class="slide-logo top-right medium" alt="Company Logo" />
-
 ---
 layout: default
-styles: cmsit
 color: light
 ---
 
@@ -48,9 +47,6 @@ color: light
 <div class="cmsit-card">
   This is a CMSIT-specific card component that adapts to the theme colors automatically.
 </div>
-
-<!-- Logo positioned in bottom-left for this slide -->
-<img src="/cms-it/logo-green.svg" class="slide-logo bottom-left small" alt="Company Logo" />
 
 ---
 layout: section

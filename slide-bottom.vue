@@ -14,23 +14,10 @@ const bg_default = 'bg-neutral-100'
 const label = ref('')
 const fg = ref(fg_default)
 const bg = ref(bg_default)
-const logoPath = ref('/cms-it/logo-green.svg')
 
 function process_colors() {
   if ($frontmatter.color) {
-    if ($frontmatter.color == 'cmsit-dark') {
-      fg.value = `text-gray-100`
-      bg.value = `bg-gray-800`
-      logoPath.value = '/cms-it/logo-white.svg'
-    } else if ($frontmatter.color == 'cmsit-light') {
-      fg.value = fg_default
-      bg.value = bg_default
-      logoPath.value = '/cms-it/logo-green.svg'
-    } else if ($frontmatter.color == 'cmsit-highlight') {
-      fg.value = `text-gray-100`
-      bg.value = `bg-green-500`
-      logoPath.value = '/cms-it/logo-white.svg'
-    } else if ($frontmatter.color == 'black') {
+    if ($frontmatter.color == 'black') {
       fg.value = `text-gray-600`
       bg.value = `bg-gray-100`
     } else if ($frontmatter.color == 'white') {
@@ -116,19 +103,7 @@ onMounted(() => {
 
 <!-- an example footer for pages -->
 <template>
-  <footer v-if="isCMSITTheme && $frontmatter.slide_info !== false" class="absolute bottom-0 right-0 left-0 p-2 pr-3 full-width z-10">
-    <div class="absolute bottom-2 right-2 p-1">
-      <span class="pl-3 pr-3 p-2 font-mono font-size-2 rounded" :class="fg + ' ' + bg">
-        <img :src="logoPath" class="inline h-4 mr-2" /> {{ $slidev.nav?.currentPage || '1' }} / {{ $slidev.nav?.total || '1' }}
-      </span>
-    </div>
-    <div v-if="label" class="absolute bottom-2 left-2 p-1">
-      <span class="pl-3 pr-3 p-2 font-mono font-size-2 rounded" :class="fg + ' ' + bg">
-        {{ label }}
-      </span>
-    </div>
-  </footer>
-  <footer v-else-if="$frontmatter.slide_info !== false" class="absolute bottom-1 right-1 left-0 p-2 pr-3 full-width z-10">
+  <footer v-if="$frontmatter.slide_info !== false" class="absolute bottom-1 right-1 left-0 p-2 pr-3 full-width z-10">
     <div class="absolute bottom-0 right-0 p-2 pr-2">
       <span class="pl-3 pr-3 p-2 font-mono font-size-2" :class="fg + ' ' + bg">
         <mdi-orbit />&nbsp;<span class="fw-bold">{{ label }}</span> | {{ $slidev.nav?.currentPage || '1' }} of
