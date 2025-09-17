@@ -2,7 +2,7 @@
 theme: ../
 colorSchema: light
 layout: cover
-color: dark
+color: bright
 routerMode: hash
 title: ZeyOS
 slug: "ZeyOS"
