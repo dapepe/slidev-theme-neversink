@@ -1,0 +1,64 @@
+#!/bin/bash
+
+# Simple helper to export a Slidev presentation to PDF
+# Usage: ./export <filepath-or-name>
+# - If a bare name is provided (with or without .md), it will look in presentations/<name>.md
+# - If a path is provided, it will use it directly (adding .md if missing)
+# - Output PDF will be written to the same directory as the source .md
+
+set -euo pipefail
+
+if [ $# -lt 1 ]; then
+    echo "Usage: ./export <filepath-or-name>"
+    echo "Examples:"
+    echo "  ./export example            # uses presentations/example.md"
+    echo "  ./export example.md         # uses presentations/example.md"
+    echo "  ./export presentations/example.md"
+    exit 1
+fi
+
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+ARG_INPUT="$1"
+
+# Normalize input to include .md if missing
+if [[ ! "$ARG_INPUT" =~ \.md$ ]]; then
+    ARG_INPUT="$ARG_INPUT.md"
+fi
+
+# Resolve presentation path
+if [ -f "$ARG_INPUT" ]; then
+    PRESENTATION_PATH="$ARG_INPUT"
+elif [ -f "$SCRIPT_DIR/$ARG_INPUT" ]; then
+    PRESENTATION_PATH="$SCRIPT_DIR/$ARG_INPUT"
+elif [ -f "$SCRIPT_DIR/presentations/$ARG_INPUT" ]; then
+    PRESENTATION_PATH="$SCRIPT_DIR/presentations/$ARG_INPUT"
+else
+    echo "Error: Could not find '$ARG_INPUT'."
+    echo "Looked in:"
+    echo "  $ARG_INPUT"
+    echo "  $SCRIPT_DIR/$ARG_INPUT"
+    echo "  $SCRIPT_DIR/presentations/$ARG_INPUT"
+    echo "Available presentations:"
+    ls "$SCRIPT_DIR"/presentations/*.md 2>/dev/null | sed 's#^.*/##' | sed 's/\.md$//'
+    exit 1
+fi
+
+# Compute absolute path for the presentation and output in same directory
+PRESENTATION_ABS_PATH="$(cd "$(dirname "$PRESENTATION_PATH")" && pwd)/$(basename "$PRESENTATION_PATH")"
+BASENAME="$(basename "${PRESENTATION_ABS_PATH%.*}")"
+OUTPUT_DIR="$(dirname "$PRESENTATION_ABS_PATH")"
+OUTPUT_PATH="$OUTPUT_DIR/$BASENAME.pdf"
+
+mkdir -p "$OUTPUT_DIR" >/dev/null 2>&1 || true
+
+echo "Exporting presentation to PDF: $PRESENTATION_PATH"
+echo "Output: $OUTPUT_PATH"
+
+# Allow override via EXPORT_TIMEOUT_MS, default to 120s which is often needed for first-time builds
+TIMEOUT_MS="${EXPORT_TIMEOUT_MS:-120000}"
+
+cd "$SCRIPT_DIR" && pnpm slidev export "$PRESENTATION_PATH" --format pdf --output "$OUTPUT_PATH" --timeout "$TIMEOUT_MS"
+
+echo "Done."
+
+
