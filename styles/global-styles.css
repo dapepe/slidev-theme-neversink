@@ -1,76 +1,53 @@
 /*
  * Global styles for all slides
  * This file contains universal styling that applies to every slide in the presentation
+ * Now uses the new theming system with CSS variables
  */
 
 /* Import fonts */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap');
 
-/* Global CSS Variables */
+/* Import base theme variables */
+@import './theme-variables.css';
+
+/* Legacy variable mappings for backward compatibility */
 :root {
-  /* Typography */
-  --global-title-font: 'Inter', sans-serif;
-  --global-main-font: 'Inter', sans-serif;
-  --global-mono-font: 'Fira Code', monospace;
+  /* Map old global variables to new theme variables */
+  --global-title-font: var(--theme-font-heading);
+  --global-main-font: var(--theme-font-primary);
+  --global-mono-font: var(--theme-font-mono);
   
-  /* Color Schemes - Light (default) */
-  --global-bg-color: #ffffff;
-  --global-text-color: #1a202c;
-  --global-accent-color: #22c55e;
-  --global-secondary-color: #6b7280;
-  --global-border-color: #e5e7eb;
-  --global-code-bg: #f8fafc;
-  --global-code-text: #374151;
+  --global-bg-color: var(--theme-bg-primary);
+  --global-text-color: var(--theme-text-primary);
+  --global-accent-color: var(--theme-primary-color);
+  --global-secondary-color: var(--theme-secondary-color);
+  --global-border-color: var(--theme-border-primary);
+  --global-code-bg: var(--theme-code-bg);
+  --global-code-text: var(--theme-code-text);
   
-  /* Spacing */
-  --global-spacing-xs: 0.25rem;
-  --global-spacing-sm: 0.5rem;
-  --global-spacing-md: 1rem;
-  --global-spacing-lg: 1.5rem;
-  --global-spacing-xl: 2rem;
+  --global-spacing-xs: var(--theme-space-1);
+  --global-spacing-sm: var(--theme-space-2);
+  --global-spacing-md: var(--theme-space-4);
+  --global-spacing-lg: var(--theme-space-6);
+  --global-spacing-xl: var(--theme-space-8);
   
-  /* Border radius */
-  --global-radius-sm: 0.375rem;
-  --global-radius-md: 0.5rem;
-  --global-radius-lg: 0.75rem;
+  --global-radius-sm: var(--theme-radius-base);
+  --global-radius-md: var(--theme-radius-md);
+  --global-radius-lg: var(--theme-radius-lg);
   
-  /* Shadows */
-  --global-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --global-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  --global-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-}
-
-/* Dark color scheme */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --global-bg-color: #1a202c;
-    --global-text-color: #f7fafc;
-    --global-accent-color: #60a5fa;
-    --global-secondary-color: #9ca3af;
-    --global-border-color: #374151;
-    --global-code-bg: #2d3748;
-    --global-code-text: #e2e8f0;
-  }
-}
-
-/* Manual dark theme class */
-.dark-theme {
-  --global-bg-color: #1a202c;
-  --global-text-color: #232526;
-  --global-accent-color: #60a5fa;
-  --global-secondary-color: #9ca3af;
-  --global-border-color: #374151;
-  --global-code-bg: #2d3748;
-  --global-code-text: #e2e8f0;
+  --global-shadow-sm: var(--theme-shadow-sm);
+  --global-shadow-md: var(--theme-shadow-md);
+  --global-shadow-lg: var(--theme-shadow-lg);
 }
 
 /* Global base styles */
 #page-root {
-  font-family: var(--global-main-font);
-  font-weight: 400;
-  background-color: var(--global-bg-color);
-  color: var(--global-text-color);
+  font-family: var(--theme-font-primary);
+  font-weight: var(--theme-font-weight-normal);
+  background-color: var(--theme-bg-primary);
+  color: var(--theme-text-primary);
+  transition: var(--theme-transition-all);
 }
 
 /* Typography */
@@ -80,95 +57,98 @@
 .slidev-layout h4,
 .slidev-layout h5,
 .slidev-layout h6 {
-  font-family: var(--global-title-font);
-  font-weight: 600;
-  color: var(--global-text-color);
+  font-family: var(--theme-font-heading);
+  font-weight: var(--theme-font-weight-semibold);
+  /* color: var(--theme-text-primary); */
 }
 
 .slidev-layout h1 {
-  font-size: 2.5rem;
-  line-height: 1.2;
-  margin-bottom: var(--global-spacing-lg);
+  font-size: var(--theme-font-size-5xl);
+  line-height: var(--theme-line-height-tight);
+  margin-bottom: var(--theme-space-6);
 }
 
 .slidev-layout h2 {
-  font-size: 2rem;
-  line-height: 1.3;
-  margin-bottom: var(--global-spacing-md);
+  font-size: var(--theme-font-size-4xl);
+  line-height: var(--theme-line-height-tight);
+  margin-bottom: var(--theme-space-4);
 }
 
 .slidev-layout h3 {
-  font-size: 1.5rem;
-  line-height: 1.4;
-  margin-bottom: var(--global-spacing-md);
+  font-size: var(--theme-font-size-2xl);
+  line-height: var(--theme-line-height-normal);
+  margin-bottom: var(--theme-space-4);
 }
 
 .slidev-layout p {
-  line-height: 1.6;
-  margin-bottom: var(--global-spacing-md);
+  line-height: var(--theme-line-height-relaxed);
+  margin-bottom: var(--theme-space-4);
 }
 
 .slidev-layout strong,
 .slidev-layout b {
-  font-family: var(--global-main-font);
-  font-weight: 700;
-  color: var(--global-accent-color);
+  font-family: var(--theme-font-primary);
+  font-weight: var(--theme-font-weight-bold);
+  color: var(--theme-accent-color);
 }
 
 /* Lists */
 .slidev-layout ul,
 .slidev-layout ol {
-  margin-top: var(--global-spacing-sm);
-  margin-bottom: var(--global-spacing-md);
+  margin-top: var(--theme-space-2);
+  margin-bottom: var(--theme-space-4);
 }
 
 .slidev-layout li {
-  margin-bottom: var(--global-spacing-sm);
-  line-height: 1.6;
+  margin-bottom: var(--theme-space-2);
+  line-height: var(--theme-line-height-relaxed);
 }
 
 /* Code blocks */
 .slidev-layout pre {
-  background-color: var(--global-code-bg);
-  color: var(--global-code-text);
-  border-radius: var(--global-radius-md);
-  padding: var(--global-spacing-md);
-  margin: var(--global-spacing-md) 0;
+  background-color: var(--theme-code-bg);
+  color: var(--theme-code-text);
+  border-radius: var(--theme-radius-md);
+  padding: var(--theme-space-4);
+  margin: var(--theme-space-4) 0;
   overflow-x: auto;
+  border: 1px solid var(--theme-border-primary);
 }
 
 .slidev-layout code {
-  font-family: var(--global-mono-font);
-  background-color: var(--global-code-bg);
-  color: var(--global-code-text);
-  padding: 0.2em 0.4em;
-  border-radius: var(--global-radius-sm);
-  font-size: 0.9em;
+  font-family: var(--theme-font-mono);
+  background-color: var(--theme-inline-code-bg);
+  color: var(--theme-inline-code-text);
+  padding: var(--theme-space-1) var(--theme-space-2);
+  border-radius: var(--theme-radius-sm);
+  font-size: var(--theme-font-size-sm);
 }
 
 .slidev-layout pre code {
   background: none;
   padding: 0;
+  color: var(--theme-code-text);
 }
 
 /* Links */
 .slidev-layout a {
-  color: var(--global-accent-color);
+  color: var(--theme-link-color);
   text-decoration: underline;
-  transition: color 0.2s ease;
+  transition: var(--theme-transition-fast);
 }
 
 .slidev-layout a:hover {
-  color: var(--global-text-color);
+  color: var(--theme-link-hover);
 }
 
 /* Blockquotes */
 .slidev-layout blockquote {
-  border-left: 4px solid var(--global-accent-color);
-  background-color: var(--global-code-bg);
-  padding: var(--global-spacing-md);
-  margin: var(--global-spacing-lg) 0;
-  border-radius: var(--global-radius-md);
+  border-left: 4px solid var(--theme-quote-border);
+  background-color: var(--theme-quote-bg);
+  color: var(--theme-quote-text);
+  padding: var(--theme-space-4);
+  margin: var(--theme-space-6) 0;
+  border-radius: var(--theme-radius-md);
   font-style: italic;
 }
 
@@ -176,62 +156,63 @@
 .slidev-layout table {
   width: 100%;
   border-collapse: collapse;
-  margin: var(--global-spacing-lg) 0;
+  margin: var(--theme-space-6) 0;
 }
 
 .slidev-layout th,
 .slidev-layout td {
-  padding: var(--global-spacing-sm) var(--global-spacing-md);
-  border: 1px solid var(--global-border-color);
+  padding: var(--theme-space-2) var(--theme-space-4);
+  border: 1px solid var(--theme-border-primary);
   text-align: left;
 }
 
 .slidev-layout th {
-  background-color: var(--global-code-bg);
-  font-weight: 600;
+  background-color: var(--theme-bg-secondary);
+  font-weight: var(--theme-font-weight-semibold);
 }
 
 /* Global utility classes */
 .global-card {
-  background-color: var(--global-code-bg);
-  border: 1px solid var(--global-border-color);
-  border-radius: var(--global-radius-lg);
-  padding: var(--global-spacing-lg);
-  margin: var(--global-spacing-md) 0;
-  box-shadow: var(--global-shadow-sm);
+  background-color: var(--theme-card-bg);
+  border: 1px solid var(--theme-card-border);
+  border-radius: var(--theme-radius-lg);
+  padding: var(--theme-space-6);
+  margin: var(--theme-space-4) 0;
+  box-shadow: var(--theme-card-shadow);
+  transition: var(--theme-transition-all);
 }
 
 .global-button {
-  background-color: var(--global-accent-color);
-  color: white;
-  padding: var(--global-spacing-sm) var(--global-spacing-lg);
+  background-color: var(--theme-button-primary-bg);
+  color: var(--theme-button-primary-text);
+  padding: var(--theme-space-2) var(--theme-space-6);
   border: none;
-  border-radius: var(--global-radius-md);
-  font-family: var(--global-main-font);
-  font-weight: 500;
+  border-radius: var(--theme-radius-md);
+  font-family: var(--theme-font-primary);
+  font-weight: var(--theme-font-weight-medium);
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: var(--theme-transition-all);
   text-decoration: none;
   display: inline-block;
 }
 
 .global-button:hover {
-  background-color: var(--global-text-color);
+  background-color: var(--theme-button-primary-hover);
   transform: translateY(-1px);
-  box-shadow: var(--global-shadow-md);
+  box-shadow: var(--theme-shadow-md);
 }
 
 .global-highlight {
-  background-color: var(--global-accent-color);
-  color: white;
-  padding: 0.2em 0.5em;
-  border-radius: var(--global-radius-sm);
-  font-weight: 500;
+  background-color: var(--theme-highlight-bg);
+  color: var(--theme-highlight-text);
+  padding: var(--theme-space-1) var(--theme-space-2);
+  border-radius: var(--theme-radius-sm);
+  font-weight: var(--theme-font-weight-medium);
 }
 
 .global-accent-text {
-  color: var(--global-accent-color);
-  font-weight: 600;
+  color: var(--theme-primary-color);
+  font-weight: var(--theme-font-weight-semibold);
 }
 
 /* Layout-specific overrides */
@@ -242,28 +223,28 @@
 */ 
 
 .slidev-layout.section {
-  background-color: var(--global-accent-color);
-  color: white;
+  background: var(--theme-section-bg);
+  color: var(--theme-section-text);
 }
 
 .slidev-layout.section h1,
 .slidev-layout.section h2,
 .slidev-layout.section h3 {
-  color: white;
+  color: var(--theme-section-text);
 }
 
 /* Responsive design */
 @media (max-width: 768px) {
   .slidev-layout h1 {
-    font-size: 2rem;
+    font-size: var(--theme-font-size-4xl);
   }
   
   .slidev-layout h2 {
-    font-size: 1.75rem;
+    font-size: var(--theme-font-size-3xl);
   }
   
   .global-card {
-    padding: var(--global-spacing-md);
+    padding: var(--theme-space-4);
   }
 }
 

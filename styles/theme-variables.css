@@ -1,0 +1,207 @@
+/*
+ * Base Theme Variables System
+ * This file defines CSS variables that can be overridden in presentations/company-name/styles.css
+ * Import this file in your company styles to access and override these variables
+ */
+
+:root {
+  /* ===== BRAND IDENTITY ===== */
+  /* Primary brand colors */
+  --theme-primary-color: #22c55e;
+  --theme-primary-light: #4ade80;
+  --theme-primary-dark: #16a34a;
+  --theme-primary-rgb: 34, 197, 94;
+  
+  /* Secondary brand colors */
+  --theme-secondary-color: #6b7280;
+  --theme-secondary-light: #9ca3af;
+  --theme-secondary-dark: #374151;
+  --theme-secondary-rgb: 107, 114, 128;
+  
+  /* Accent colors */
+  --theme-accent-color: #3b82f6;
+  --theme-accent-light: #60a5fa;
+  --theme-accent-dark: #1d4ed8;
+  --theme-accent-rgb: 59, 130, 246;
+  
+  /* ===== BACKGROUND COLORS ===== */
+  --theme-bg-primary: #ffffff;
+  --theme-bg-secondary: #f8fafc;
+  --theme-bg-tertiary: #f1f5f9;
+  --theme-bg-overlay: rgba(0, 0, 0, 0.5);
+  
+  /* ===== TEXT COLORS ===== */
+  --theme-text-primary: #1a202c;
+  --theme-text-secondary: #4a5568;
+  --theme-text-tertiary: #718096;
+  --theme-text-inverse: #ffffff;
+  --theme-text-muted: #a0aec0;
+  
+  /* ===== BORDER & DIVIDER COLORS ===== */
+  --theme-border-primary: #e2e8f0;
+  --theme-border-secondary: #cbd5e0;
+  --theme-border-focus: var(--theme-primary-color);
+  --theme-divider: var(--theme-border-primary);
+  
+  /* ===== CODE & SYNTAX COLORS ===== */
+  --theme-code-bg: #f7fafc;
+  --theme-code-text: #2d3748;
+  --theme-code-border: var(--theme-border-primary);
+  --theme-inline-code-bg: #edf2f7;
+  --theme-inline-code-text: #d53f8c;
+  
+  /* ===== TYPOGRAPHY ===== */
+  /* Font families */
+  --theme-font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --theme-font-heading: var(--theme-font-primary);
+  --theme-font-mono: 'Fira Code', 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+  
+  /* Font weights */
+  --theme-font-weight-light: 300;
+  --theme-font-weight-normal: 400;
+  --theme-font-weight-medium: 500;
+  --theme-font-weight-semibold: 600;
+  --theme-font-weight-bold: 700;
+  
+  /* Font sizes */
+  --theme-font-size-xs: 0.75rem;
+  --theme-font-size-sm: 0.875rem;
+  --theme-font-size-base: 1rem;
+  --theme-font-size-lg: 1.125rem;
+  --theme-font-size-xl: 1.25rem;
+  --theme-font-size-2xl: 1.5rem;
+  --theme-font-size-3xl: 1.875rem;
+  --theme-font-size-4xl: 2.25rem;
+  --theme-font-size-5xl: 3rem;
+  
+  /* Line heights */
+  --theme-line-height-tight: 1.25;
+  --theme-line-height-normal: 1.5;
+  --theme-line-height-relaxed: 1.625;
+  --theme-line-height-loose: 2;
+  
+  /* ===== SPACING SYSTEM ===== */
+  --theme-space-0: 0;
+  --theme-space-px: 1px;
+  --theme-space-0-5: 0.125rem;
+  --theme-space-1: 0.25rem;
+  --theme-space-1-5: 0.375rem;
+  --theme-space-2: 0.5rem;
+  --theme-space-2-5: 0.625rem;
+  --theme-space-3: 0.75rem;
+  --theme-space-4: 1rem;
+  --theme-space-5: 1.25rem;
+  --theme-space-6: 1.5rem;
+  --theme-space-8: 2rem;
+  --theme-space-10: 2.5rem;
+  --theme-space-12: 3rem;
+  --theme-space-16: 4rem;
+  --theme-space-20: 5rem;
+  --theme-space-24: 6rem;
+  --theme-space-32: 8rem;
+  
+  /* ===== BORDER RADIUS ===== */
+  --theme-radius-none: 0;
+  --theme-radius-sm: 0.25rem;
+  --theme-radius-base: 0.375rem;
+  --theme-radius-md: 0.5rem;
+  --theme-radius-lg: 0.75rem;
+  --theme-radius-xl: 1rem;
+  --theme-radius-2xl: 1.5rem;
+  --theme-radius-full: 9999px;
+  
+  /* ===== SHADOWS ===== */
+  --theme-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --theme-shadow-base: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --theme-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --theme-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --theme-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --theme-shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+  
+  /* ===== GRADIENTS ===== */
+  --theme-gradient-primary: linear-gradient(135deg, var(--theme-primary-color), var(--theme-primary-light));
+  --theme-gradient-secondary: linear-gradient(135deg, var(--theme-secondary-color), var(--theme-secondary-light));
+  --theme-gradient-accent: linear-gradient(135deg, var(--theme-accent-color), var(--theme-accent-light));
+  --theme-gradient-bg: linear-gradient(135deg, var(--theme-bg-primary), var(--theme-bg-secondary));
+  
+  /* ===== TRANSITIONS ===== */
+  --theme-transition-fast: 150ms ease;
+  --theme-transition-base: 200ms ease;
+  --theme-transition-slow: 300ms ease;
+  --theme-transition-all: all var(--theme-transition-base);
+  
+  /* ===== LAYOUT SPECIFIC ===== */
+  /* Cover slide */
+  --theme-cover-bg: var(--theme-gradient-primary);
+  --theme-cover-text: var(--theme-text-inverse);
+  --theme-cover-overlay: rgba(var(--theme-primary-rgb), 0.9);
+  
+  /* Section slide */
+  --theme-section-bg: var(--theme-primary-color);
+  --theme-section-text: var(--theme-text-inverse);
+  
+  /* Quote slide */
+  --theme-quote-border: var(--theme-accent-color);
+  --theme-quote-bg: var(--theme-bg-secondary);
+  --theme-quote-text: var(--theme-text-primary);
+  
+  /* ===== COMPONENT SPECIFIC ===== */
+  /* Buttons */
+  --theme-button-primary-bg: var(--theme-primary-color);
+  --theme-button-primary-text: var(--theme-text-inverse);
+  --theme-button-primary-hover: var(--theme-primary-dark);
+  
+  --theme-button-secondary-bg: var(--theme-secondary-color);
+  --theme-button-secondary-text: var(--theme-text-inverse);
+  --theme-button-secondary-hover: var(--theme-secondary-dark);
+  
+  /* Cards */
+  --theme-card-bg: var(--theme-bg-primary);
+  --theme-card-border: var(--theme-border-primary);
+  --theme-card-shadow: var(--theme-shadow-sm);
+  
+  /* Links */
+  --theme-link-color: var(--theme-primary-color);
+  --theme-link-hover: var(--theme-primary-dark);
+  
+  /* Highlights */
+  --theme-highlight-bg: var(--theme-primary-color);
+  --theme-highlight-text: var(--theme-text-inverse);
+  
+  /* ===== DARK MODE OVERRIDES ===== */
+  /* These will be overridden in dark mode */
+  --theme-dark-bg-primary: #1a202c;
+  --theme-dark-bg-secondary: #2d3748;
+  --theme-dark-bg-tertiary: #4a5568;
+  --theme-dark-text-primary: #f7fafc;
+  --theme-dark-text-secondary: #e2e8f0;
+  --theme-dark-border-primary: #4a5568;
+  --theme-dark-code-bg: #2d3748;
+  --theme-dark-code-text: #e2e8f0;
+}
+
+/* ===== DARK MODE VARIABLES ===== */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --theme-bg-primary: var(--theme-dark-bg-primary);
+    --theme-bg-secondary: var(--theme-dark-bg-secondary);
+    --theme-bg-tertiary: var(--theme-dark-bg-tertiary);
+    --theme-text-primary: var(--theme-dark-text-primary);
+    --theme-text-secondary: var(--theme-dark-text-secondary);
+    --theme-border-primary: var(--theme-dark-border-primary);
+    --theme-code-bg: var(--theme-dark-code-bg);
+    --theme-code-text: var(--theme-dark-code-text);
+  }
+}
+
+/* Manual dark theme class */
+.theme-dark {
+  --theme-bg-primary: var(--theme-dark-bg-primary);
+  --theme-bg-secondary: var(--theme-dark-bg-secondary);
+  --theme-bg-tertiary: var(--theme-dark-bg-tertiary);
+  --theme-text-primary: var(--theme-dark-text-primary);
+  --theme-text-secondary: var(--theme-dark-text-secondary);
+  --theme-border-primary: var(--theme-dark-border-primary);
+  --theme-code-bg: var(--theme-dark-code-bg);
+  --theme-code-text: var(--theme-dark-code-text);
+}

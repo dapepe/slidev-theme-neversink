@@ -1,33 +1,96 @@
 /*
- * CMS-IT presentation-specific stylesheet (consolidated)
- * Move any CMS-IT custom styles here instead of components/layout files.
+ * ZeyOS presentation-specific stylesheet
+ * This file overrides theme variables for ZeyOS company branding
+ * Note: Base theme variables are already loaded via global-styles.css
  */
 
-/* Brand accent overrides */
+/* ZeyOS Brand Variables Override - Higher specificity to ensure override */
 :root,
+.slidev-layout,
 .slidev-layout.neversink-light-scheme,
-.slidev-layout.neversink-dark-scheme,
-.slidev-layout.cmsit-light-scheme,
-.slidev-layout.cmsit-dark-scheme {
-  --neversink-highlight-color: #22c55e;
-  --global-accent-color: #22c55e;
-  --global-main-font: 'Titillium Web', sans-serif;
-  --neversink-title-font: 'Titillium Web', sans-serif;
-  --neversink-main-font: 'Titillium Web', sans-serif;
-  --neversink-mono-font: 'Fira Code', monospace;
-  --neversink-quote-font: 'Fira Code', monospace;
-  --font-mono: 'Courier New', Courier, monospace;
+.slidev-layout.neversink-dark-scheme {
+  --theme-primary-color: #16a34a;
+  --theme-primary-light: #22c55e;
+  --theme-primary-dark: #15803d;
+  --theme-secondary-color: #0891b2;
+  --theme-secondary-light: #06b6d4;
+  --theme-secondary-dark: #0e7490;
+  --theme-accent-color: #f59e0b;
+  
+  /* Legacy variable mappings for backward compatibility */
+  --neversink-highlight-color: var(--theme-primary-color);
+  --global-accent-color: var(--theme-primary-color);
+  
+  /* ZeyOS Typography */
+  --theme-font-primary: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  --theme-font-heading: var(--theme-font-primary);
+  --theme-font-mono: 'Fira Code', monospace;
+  
+  /* Legacy font mappings */
+  --global-main-font: var(--theme-font-primary);
+  --neversink-title-font: var(--theme-font-heading);
+  --neversink-main-font: var(--theme-font-primary);
+  --neversink-mono-font: var(--theme-font-mono);
+  --neversink-quote-font: var(--theme-font-mono);
+  --font-mono: var(--theme-font-mono);
+  
+  --theme-cover-bg: linear-gradient(135deg, var(--theme-primary-color), var(--theme-primary-light));
+  --theme-cover-bg-alt: linear-gradient(135deg, var(--theme-primary-dark), var(--theme-primary-color));
+  --theme-section-bg: var(--theme-primary-color);
+  --theme-section-bg-light: linear-gradient(135deg, #f0fdf4, #dcfce7);
+  --theme-section-bg-dark: var(--theme-primary-color);
+  --theme-cover-text: #ffffff;
+  --theme-section-text: #ffffff;
+  --theme-section-text-light: var(--theme-primary-dark);
+  
+  --theme-code-bg-light: #f8fafc;
+  --theme-code-text-light: #1e293b;
+  --theme-code-border-light: #e2e8f0;
+  --theme-inline-code-bg-light: #f1f5f9;
+  --theme-inline-code-text-light: var(--theme-primary-color);
+  --theme-code-bg-dark: #1e293b;
+  --theme-code-text-dark: #f1f5f9;
+  --theme-code-border-dark: #475569;
+  --theme-inline-code-bg-dark: #334155;
+  --theme-inline-code-text-dark: var(--theme-accent-color);
 }
 
-/* Section styling tweaks for this deck */
-.slidev-layout.section.cmsit-dark-scheme,
-.slidev-layout.section.neversink-dark-scheme {
-  background: linear-gradient(135deg, #1e293b, #334155);
+.slidev-layout.cover {
+  background: var(--theme-cover-bg);
+  color: var(--theme-cover-text);
 }
-.slidev-layout.section.cmsit-light-scheme,
+
+.slidev-layout.cover h1,
+.slidev-layout.cover h2,
+.slidev-layout.cover h3,
+.slidev-layout.cover p {
+  color: var(--theme-cover-text);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+.slidev-layout.section.neversink-dark-scheme {
+  background: var(--theme-section-bg-dark);
+  color: var(--theme-section-text);
+}
+
 .slidev-layout.section.neversink-light-scheme {
-  background: linear-gradient(135deg, #FFF, #f8f8f8);
-  color: #1e293b;
+  background: var(--theme-section-bg-light);
+  color: var(--theme-section-text-light);
+}
+
+.slidev-layout.section.neversink-dark-scheme h1,
+.slidev-layout.section.neversink-dark-scheme h2,
+.slidev-layout.section.neversink-dark-scheme h3 {
+  color: var(--theme-section-text);
+}
+
+.slidev-layout.section.neversink-light-scheme h1,
+.slidev-layout.section.neversink-light-scheme h2,
+.slidev-layout.section.neversink-light-scheme h3 {
+  color: var(--theme-section-text-light);
+}
+
+.slidev-layout.cover.high-contrast {
+  background: var(--theme-cover-bg-alt);
 }
 
 .slidev-layout:not(.cover)::before {
@@ -44,16 +107,14 @@
   pointer-events: none;
 }
 
-/* Logo variant per scheme */
 .slidev-layout:not(.cover).neversink-highlight-scheme::before,
 .slidev-layout:not(.cover).neversink-dark-scheme::before {
-  /* Bright logo on dark slides */
-  background-image: url('./difo-logo_cms-it-bright.svg');
+  background-image: url('./logo-black.svg');
+  filter: brightness(0) invert(1);
 }
 
 .slidev-layout:not(.cover).neversink-light-scheme::before {
-  /* Color (dark) logo on light slides */
-  background-image: url('./difo-logo_cms-it-color.svg');
+  background-image: url('./logo-black.svg');
 }
 
 
@@ -64,42 +125,141 @@
   color: var(--neversink-highlight-color);
 }
 
-/* CMS-IT card component */
-.cmsit-card,
+/* ZeyOS card component */
+.zeyos-card,
 .presentation-specific-card {
-  background: linear-gradient(135deg, #22c55e, #16a34a);
-  color: #fff;
-  padding: 2rem;
-  border-radius: 12px;
-  margin: 1rem 0;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  background: var(--theme-gradient-primary);
+  color: var(--theme-text-inverse);
+  padding: var(--theme-space-8);
+  border-radius: var(--theme-radius-xl);
+  margin: var(--theme-space-4) 0;
+  box-shadow: var(--theme-shadow-lg);
+  position: relative;
 }
 
-.cmsit-card h3,
+.zeyos-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent 30%, rgba(245, 158, 11, 0.1) 70%);
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.zeyos-card h3,
 .presentation-specific-card h3 {
-  color: #fff;
+  color: var(--theme-text-inverse);
   margin-top: 0;
 }
 
-/* Button style (optional helper) */
 .presentation-btn,
-.cmsit-button {
-  background: #22c55e;
-  color: #fff;
-  padding: 0.75rem 1.5rem;
+.zeyos-button {
+  background: var(--theme-secondary-color);
+  color: var(--theme-text-inverse);
+  padding: var(--theme-space-3) var(--theme-space-6);
   border: none;
-  border-radius: 8px;
-  font-weight: 600;
+  border-radius: var(--theme-radius-md);
+  font-weight: var(--theme-font-weight-semibold);
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: var(--theme-transition-all);
 }
 
 .presentation-btn:hover,
-.cmsit-button:hover {
-  background: #16a34a;
+.zeyos-button:hover {
+  background: var(--theme-secondary-dark);
   transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(34, 197, 94, 0.3);
+  box-shadow: 0 4px 8px rgba(8, 145, 178, 0.3);
 }
+
+.slidev-layout.neversink-light-scheme pre {
+  background-color: var(--theme-code-bg-light);
+  color: var(--theme-code-text-light);
+  border: 1px solid var(--theme-code-border-light);
+}
+
+.slidev-layout.neversink-light-scheme code {
+  background-color: var(--theme-inline-code-bg-light);
+  color: var(--theme-inline-code-text-light);
+}
+
+.slidev-layout.neversink-light-scheme pre code {
+  background: none;
+  color: var(--theme-code-text-light);
+}
+
+.slidev-layout.neversink-dark-scheme pre {
+  background-color: var(--theme-code-bg-dark);
+  color: var(--theme-code-text-dark);
+  border: 1px solid var(--theme-code-border-dark);
+}
+
+.slidev-layout.neversink-dark-scheme code {
+  background-color: var(--theme-inline-code-bg-dark);
+  color: var(--theme-inline-code-text-dark);
+}
+
+.slidev-layout.neversink-dark-scheme pre code {
+  background: none;
+  color: var(--theme-code-text-dark);
+}
+
+.slidev-layout.zeyos-light-scheme pre {
+  background-color: var(--theme-code-bg-light);
+  color: var(--theme-code-text-light);
+  border: 1px solid var(--theme-code-border-light);
+}
+
+.slidev-layout.zeyos-light-scheme code {
+  background-color: var(--theme-inline-code-bg-light);
+  color: var(--theme-inline-code-text-light);
+}
+
+.slidev-layout.zeyos-light-scheme pre code {
+  background: none;
+  color: var(--theme-code-text-light);
+}
+
+.slidev-layout.zeyos-dark-scheme pre {
+  background-color: var(--theme-code-bg-dark);
+  color: var(--theme-code-text-dark);
+  border: 1px solid var(--theme-code-border-dark);
+}
+
+.slidev-layout.zeyos-dark-scheme code {
+  background-color: var(--theme-inline-code-bg-dark);
+  color: var(--theme-inline-code-text-dark);
+}
+
+.slidev-layout.zeyos-dark-scheme pre code {
+  background: none;
+  color: var(--theme-code-text-dark);
+}
+
+.slidev-layout.section.zeyos-dark-scheme {
+  background: var(--theme-section-bg-dark);
+  color: var(--theme-section-text);
+}
+
+.slidev-layout.section.zeyos-light-scheme {
+  background: var(--theme-section-bg-light);
+  color: var(--theme-section-text-light);
+}
+
+.slidev-layout.section.zeyos-dark-scheme h1,
+.slidev-layout.section.zeyos-dark-scheme h2,
+.slidev-layout.section.zeyos-dark-scheme h3 {
+  color: var(--theme-section-text);
+}
+
+.slidev-layout.section.zeyos-light-scheme h1,
+.slidev-layout.section.zeyos-light-scheme h2,
+.slidev-layout.section.zeyos-light-scheme h3 {
+  color: var(--theme-section-text-light);
+}
+
 
 /* Logo utility classes used by this deck */
 .slide-logo {
