@@ -28,8 +28,7 @@
   --font-mono: var(--theme-font-mono);
   
   /* Bell Layout Colors - Dual theme support */
-  --theme-cover-bg: linear-gradient(135deg, #1e2555, #2b3681, #4a5bb8);
-  --theme-cover-bg-alt: linear-gradient(135deg, #1a2d5a, #23438c);
+  --theme-cover-bg: #2b3681; /* Default: solid Bell blue */
   
   /* Dark scheme colors */
   --theme-section-bg-dark: #1a1a1a; /* Dark background */
@@ -63,8 +62,13 @@
 }
 
 /* Bell Cover and Section styling */
+/* Cover slide with custom background support */
 .slidev-layout.cover {
-  background: var(--theme-cover-bg);
+  /* Use custom background if defined, otherwise use theme default */
+  background: var(--slide-bg-image, var(--theme-cover-bg)) center/cover no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   color: var(--theme-cover-text);
 }
 
@@ -314,56 +318,31 @@
   font-weight: 500;
 }
 
-/* Bell Logo in top right corner - Dark scheme (bright logo) */
-.slidev-layout.neversink-dark-scheme::after {
+/* Bell Logo positioning */
+.slidev-layout:not(.cover)::before {
   content: '';
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  width: 60px;
+  position: fixed;
+  top: 12px;
+  right: 6px;
+  width: 80px;
   height: 60px;
-  background: url('/bell/difo-logo_bell-bright.svg') center/contain no-repeat;
-  z-index: 100;
-  opacity: 0.8;
-  pointer-events: none;
-  filter: brightness(1.1) contrast(1.1);
-}
-
-/* Bell Logo in top right corner - Light scheme (dark logo) */
-.slidev-layout.neversink-light-scheme::after {
-  content: '';
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  width: 60px;
-  height: 60px;
-  background: url('/bell/difo-logo_bell-color.svg') center/contain no-repeat;
-  z-index: 100;
-  opacity: 0.8;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: top left;
+  z-index: 1000;
   pointer-events: none;
 }
 
-/* Hide logo on cover slide since it has its own logo placement */
-.slidev-layout.cover::after {
-  display: none;
+/* Logo variant per scheme */
+.slidev-layout:not(.cover).neversink-highlight-scheme::before,
+.slidev-layout:not(.cover).neversink-dark-scheme::before {
+  /* Bright logo on dark slides */
+  background-image: url('./difo-logo_bell-bright.svg');
 }
 
-/* Adjust logo opacity for different slide types - Dark scheme */
-.slidev-layout.neversink-dark-scheme.section::after {
-  opacity: 0.6;
-}
-
-.slidev-layout.neversink-dark-scheme.credits::after {
-  opacity: 0.7;
-}
-
-/* Adjust logo opacity for different slide types - Light scheme */
-.slidev-layout.neversink-light-scheme.section::after {
-  opacity: 0.6;
-}
-
-.slidev-layout.neversink-light-scheme.credits::after {
-  opacity: 0.7;
+.slidev-layout:not(.cover).neversink-light-scheme::before {
+  /* Dark logo on light slides */
+  background-image: url('./difo-logo_bell-color.svg');
 }
 
 /* Bell cover slide specific styling */

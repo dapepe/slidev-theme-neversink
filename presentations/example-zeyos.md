@@ -10,287 +10,393 @@ logo: "zeyos/logo-black.svg"
 ---
 
 <link rel="stylesheet" href="zeyos/styles.css">
+# Dynamic CSS Theme System
 
-# ZEYOS BUSINESS SOLUTIONS
+### Using `Markdown` for beautiful presentations
 
-Complete ERP & CRM Platform
+**Peter-Christoph Haider**
 
----
-layout: default
-color: light
----
+:: note ::
 
-# ZEYOS BUSINESS SOLUTIONS
-
-Complete ERP & CRM Platform
+01.01.2025
 
 ---
-layout: cover
+layout: section
 color: dark
 ---
 
-# BUSINESS EXCELLENCE
-<hr>
+# This is a dark section
 
-Integrated solutions for modern enterprises
+This slide uses `layout: section` and `color: dark` in the frontmatter.
+
+The **highlight color** is now set to `--global-accent-color`
 
 ---
 layout: section
 color: light
 ---
 
-# BUSINESS EXCELLENCE
+# This is a light section
+
+This slide uses `layout: section` and `color: light` in the frontmatter.
+
+The **highlight color** is now set to `--global-accent-color`
+
+---
+layout: default
+color: light
+---
+
+# This is a default slide
+
+- Activate with `layout: default`
+- Uses `color: light`
+- Clean and professional presentation style
+- Uses the default color
+
+> Can includ quotes
+
+- You can also include code
+
+```javascript
+console.log("Hello world")
+```
+
+---
+layout: default
+color: dark
+---
+
+# This is a default slide
+
+- Activate with `layout: default`
+- Uses `color: light`
+- Clean and professional presentation style
+- Uses the default color
+- ==UPPERCASE EMPHASIS== styling
+
+> Can includ quotes
+
+- You can also include code
+
+```javascript
+console.log("Hello world")
+```
+
+---
+layout: section
+color: light
+---
+
+# Backward Compatibility
 <hr>
 
-Integrated solutions for modern enterprises
+The system maintains full backward compatibility with existing color schemes.
+
+---
+theme: ../
+colorSchema: light
+layout: cover
+color: cmsit-dark
+routerMode: hash
+title: CMS-IT Presentation
+slug: "CMS IT-Consulting GmbH"
+logo: "cms-it/logo-green.svg"
+---
+
+# Welcome to CMS IT-Consulting GmbH
+
+### Professional IT Services & Solutions
+
+---
+layout: section
+color: cmsit-highlight
+---
+
+# About Our Company
 
 ---
 layout: default
+color: cmsit-light
+---
+
+# Who We Are
+
+- A leading provider of **IT services** and **solutions**
+- Focused on ==innovation== and ==customer satisfaction==
+- Over 10 years of industry experience
+- Team of certified professionals
+
+<div class="cmsit-card">
+  Our mission is to deliver cutting-edge technology solutions that empower businesses to achieve their goals efficiently and effectively.
+</div>
+
+
+---
+layout: cover
+---
+
+# This is the `cover` layout
+
+**Todd Gureckis**   
+_New York University_ <a href="https://todd.gureckislab.org" class="ns-c-iconlink"><mdi-open-in-new /></a>  
+
+:: note ::
+
+<div class="fw-200" >
+
+\* Optional `:: note ::` slot for mentioning ==notes== at the bottom.
+
+</div>
+
+
+---
+layout: cover
 color: dark
 ---
 
-# ABOUT ZEYOS
+# This is the `cover` layout
 
-- **ERP System** - Complete business management
-- **CRM Platform** - Customer relationship excellence
-- **Cloud-Based** - Modern SaaS architecture
-- **German Engineering** - GDPR compliant & secure
+**Todd Gureckis**   
+_New York University_ <a href="https://todd.gureckislab.org" class="ns-c-iconlink"><mdi-open-in-new /></a>  
 
-<div class="zeyos-card">
-<h3>All-in-One Solution</h3>
-<p>ERP, CRM, and project management in one platform</p>
+:: note ::
+
+<div class="fw-200" >
+
+\* Here we set `color: dark` in the frontmatter.
+
 </div>
 
+
+---
+layout: cover
+color: amber
+---
+
+# This is the `cover` layout
+
+**Todd Gureckis**   
+_New York University_ <a href="https://todd.gureckislab.org" class="ns-c-iconlink"><mdi-open-in-new /></a>  
+
+
+:: note ::
+
+<div class="fw-200">
+
+\* Here we set `color: amber` in the frontmatter.
+
+</div>
+
+
+---
+layout: cover
+color: amber-light
+---
+
+# This is the `cover` layout
+
+**Todd Gureckis**   
+_New York University_ <a href="https://todd.gureckislab.org" class="ns-c-iconlink"><mdi-open-in-new /></a>  
+
+
+:: note ::
+
+<div class="fw-200" >
+
+\* Here we set `color: amber-light` in the frontmatter.  Notice how the color scheme brings along many of the elements on the page.
+
+</div>
+
+
+---
+layout: cover
+color: pink
+---
+
+### This is the `cover` layout with a longer title for your talk you just use more `#`s
+
+**Todd Gureckis**   
+_New York University_ <a href="https://todd.gureckislab.org" class="ns-c-iconlink"><mdi-open-in-new /></a>  
+
+
+:: note ::
+
+<div class="fw-200" >
+
+\* Here we set `color: pink` in the frontmatter.  Different choices convey a different vibe for the intro of your talk.  There's lots of choices available.
+
+</div>
+
+
+---
+layout: intro
+color: emerald-light
+---
+
+# This is the `intro` layout
+
+**Todd Gureckis**   
+_New York University_ <a href="https://todd.gureckislab.org" class="ns-c-iconlink"><mdi-open-in-new /></a>  
+
+
+<br />
+
+This is like the cover slide but with a little less decoration.
+It also has a frontmatter option of `color: emerald-light`.
+
+---
+layout: section
+color: sky
+---
+
+# The `default` layout 
+
+The default layout also has an optional `color` option in the frontmatter.
+For example this is
+
+```md
 ---
 layout: default
-color: light
+color: sky
+---
+```
+
+---
+layout: section
+color: indigo
 ---
 
-# ABOUT ZEYOS
+# The `section` layout
+<hr>
 
-- **ERP System** - Complete business management
-- **CRM Platform** - Customer relationship excellence
-- **Cloud-Based** - Modern SaaS architecture
-- **German Engineering** - GDPR compliant & secure
+This is `color: indigo` and the line and font is a light indigo shade.
 
-<div class="zeyos-card">
-<h3>All-in-One Solution</h3>
-<p>ERP, CRM, and project management in one platform</p>
+
+---
+layout: section
+color: navy
+---
+
+<div class="w-2/3 ml-30">
+
+# The `section` layout
+<hr>
+
+<span class='text-amber-300'>
+You can use HTML and inline CSS to modify the look and feel.
+</span>
+
 </div>
 
 ---
-layout: two-cols-title
-title: 'ZeyOS Modules'
-columns: is-one-half
-align: c-lt-lt
-color: dark
-titlepos: t
----
-
-::title::
-
-# ZEYOS MODULES
-
-::left::
-
-## Core Business
-- **Customer Management** - Complete CRM
-- **Sales Pipeline** - Opportunity tracking
-- **Project Management** - Resource planning
-- **Financial Management** - Accounting integration
-
-::right::
-
-## Advanced Features
-- **Inventory Management** - Stock control
-- **Document Management** - File organization
-- **Reporting & Analytics** - Business insights
-- **Mobile Access** - iOS & Android apps
-
----
-layout: two-cols-title
-title: 'ZeyOS Modules'
-columns: is-one-half
-align: c-lt-lt
-color: light
-titlepos: t
----
-
-::title::
-
-# ZEYOS MODULES
-
-::left::
-
-## Core Business
-- **Customer Management** - Complete CRM
-- **Sales Pipeline** - Opportunity tracking
-- **Project Management** - Resource planning
-- **Financial Management** - Accounting integration
-
-::right::
-
-## Advanced Features
-- **Inventory Management** - Stock control
-- **Document Management** - File organization
-- **Reporting & Analytics** - Business insights
-- **Mobile Access** - iOS & Android apps
-
----
-layout: side-title
-side: l
-titlewidth: is-4
-align: rm-lm
-title: ZeyOS API
-color: dark
----
-
-::title::
-
-# <mdi-code-braces /> ZEYOS API
-
-**RESTful Integration**
-
-::content::
-
-ZeyOS API Integration:
-
-```javascript
-const zeyos = new ZeyOSClient({
-  endpoint: 'https://api.zeyos.com',
-  apiKey: process.env.ZEYOS_API_KEY
-});
-
-// Customer sync
-const customers = await zeyos.customers.list({
-  limit: 50,
-  fields: ['name', 'email', 'status']
-});
-
-console.log(`Found ${customers.length} customers`);
-```
-
-**API Features:**
-- RESTful endpoints
-- Real-time webhooks
-- Comprehensive documentation
-
----
-layout: side-title
-side: l
-titlewidth: is-4
-align: rm-lm
-title: ZeyOS API
-color: light
----
-
-::title::
-
-# <mdi-code-braces /> ZEYOS API
-
-**RESTful Integration**
-
-::content::
-
-ZeyOS API Integration:
-
-```javascript
-const zeyos = new ZeyOSClient({
-  endpoint: 'https://api.zeyos.com',
-  apiKey: process.env.ZEYOS_API_KEY
-});
-
-// Customer sync
-const customers = await zeyos.customers.list({
-  limit: 50,
-  fields: ['name', 'email', 'status']
-});
-
-console.log(`Found ${customers.length} customers`);
-```
-
-**API Features:**
-- RESTful endpoints
-- Real-time webhooks
-- Comprehensive documentation
-
----
 layout: quote
-author: 'ZeyOS Development Team'
-quotesize: text-xl
-authorsize: text-lg
 color: dark
+quotesize: text-sm
+authorsize: text-sm
+author: "Todd Gureckis"
 ---
 
-"ZeyOS combines the power of ERP and CRM in one intuitive platform, designed for the modern digital workplace."
+"This is a quote slide.  It has a frontmatter option of `quote` which is the text that appears in the quote box and `author` and options for the size of the text(`quotesize: text-2xl` and `authorsize: text-l`).  I feel it is a little uninspired but might save you some time."
 
----
-layout: quote
-author: 'ZeyOS Development Team'
-quotesize: text-xl
-authorsize: text-lg
-color: light
----
-
-"ZeyOS combines the power of ERP and CRM in one intuitive platform, designed for the modern digital workplace."
 
 ---
 layout: full
-title: ZeyOS Success Stories
 color: dark
+title: Full Layout
 ---
 
-<div class="v-full h-full p-8">
+<div class='border-1px v-full h-full p-5'>
 
-# ZEYOS SUCCESS STORIES
-
-<div class="grid grid-cols-3 gap-6 mt-8">
-
-<div class="zeyos-card">
-<h3>Manufacturing</h3>
-<p>• 500+ Employees<br/>• Inventory Optimization<br/>• 40% Efficiency Gain</p>
-</div>
-
-<div class="zeyos-card">
-<h3>Service Company</h3>
-<p>• Project Management<br/>• Resource Planning<br/>• 60% Time Savings</p>
-</div>
-
-<div class="zeyos-card">
-<h3>Retail Chain</h3>
-<p>• Multi-location CRM<br/>• Sales Analytics<br/>• 200% Growth Support</p>
-  </div>
-
-  </div>
+This is `layout: full` which fills the whole screen for the most part.
+The grey box is just showing you the full addressable space.
+Full can be useful for arbitrary layouts such as on the next slide which uses
+the `v-drag` directive to position elements.
 
 </div>
 
 ---
 layout: full
-title: ZeyOS Success Stories
-color: light
+color: dark
+title: Full with Arbitrary Layout
 ---
 
-<div class="v-full h-full p-8">
+<div class='v-full h-full'>
 
-# ZEYOS SUCCESS STORIES
+  <SpeechBubble position="l" shape="round"  color='pink-light' v-drag="[555,342,274,58]">
 
-<div class="grid grid-cols-3 gap-6 mt-8">
+  Hello, I'm an **ice cream**!
+  </SpeechBubble>
 
-<div class="zeyos-card">
-<h3>Manufacturing</h3>
-<p>• 500+ Employees<br/>• Inventory Optimization<br/>• 40% Efficiency Gain</p>
+  <SpeechBubble position="bl" shape="round"  color='emerald-light' v-drag="[445,258,274,57]">
+
+  Hello, I'm **kawaii**.
+  </SpeechBubble>
+
+  <SpeechBubble position="r" shape="round" animation="float"  color='sky' v-drag="[143,391,274,84]">
+
+  I'm v-dragged out and ==floating==.
+  </SpeechBubble>
+
+  <IceCream :size="150" mood="lovestruck" color="#FDA7DC" v-drag="[439,341,85,150]" />
+
+  <div class="ns-c-tight" v-drag="[143,33,277,214]">
+
+  <span class="bg-red-100 text-red-600 p-2 border-l-6 border-2 border-red-200 rounded-lg pl-4 pr-4">Here's a list of somethings</span>
+
+  - Novelty bonuses
+  - Cumulative prediction error
+  - Learning progress
+  - Surprise
+  - Suspense
+  - Information gain
+
+  </div>
+
+  <div class="ns-c-tight" v-drag="[461,63,293,148,17]">
+
+  <span class="bg-emerald-100 text-emerald-500 p-2 border-l-6 border-2 border-emerald-200 rounded-lg pl-4 pr-4">Here's another list of things</span>
+
+  - Structured behaviors
+  - Compositional
+  - Communicable
+
+  </div>
+
 </div>
 
-<div class="zeyos-card">
-<h3>Service Company</h3>
-<p>• Project Management<br/>• Resource Planning<br/>• 60% Time Savings</p>
+
+---
+layout: full
+title: Full Layout - 2 Col Fig
+---
+
+This is an example of using unocss atomic classes to put two figures side by side.
+
+<div class="grid w-full h-fit grid-cols-2 grid-rows-2 mt-10 mb-auto">
+<div class="grid-item grid-col-span-1"><!-- Image placeholder --></div>
+<div class="grid-item grid-col-span-1"><!-- Image placeholder --></div>
+<div class="grid-item grid-col-span-2 text-center h-fit">
+
+**Figure show this**: this is a two column figure
+
+</div>
 </div>
 
-<div class="zeyos-card">
-<h3>Retail Chain</h3>
-<p>• Multi-location CRM<br/>• Sales Analytics<br/>• 200% Growth Support</p>
-</div>
+---
+layout: full
+title: Full Layout - 3 Col Fig
+---
+
+This is an example of using unocss atomic classes to put three figures side by side.
+
+<div class="grid w-full h-fit grid-cols-3 grid-rows-2 mt-20 mb-auto">
+<div class="grid-item grid-col-span-1"><!-- Image placeholder --></div>
+<div class="grid-item grid-col-span-1"><!-- Image placeholder --></div>
+<div class="grid-item grid-col-span-1"><!-- Image placeholder --></div>
+<div class="grid-item grid-col-span-3 text-center h-fit">
+
+**Figure show this**: this is a three column figure
 
 </div>
 
@@ -298,484 +404,747 @@ color: light
 
 ---
 layout: image-left
-image: /zeyos/logo-black.svg
-color: dark
+image: /images/photo.png
+class: mycoolclass
 ---
 
-# ZEYOS CLOUD PLATFORM
+<br />
 
-## Scalable & Secure
+# Image left
 
-ZeyOS runs entirely in the cloud with enterprise-grade security and reliability.
-
-**Cloud Benefits:**
-- **No Installation** - Ready to use immediately
-- **Automatic Updates** - Always latest version
-- **Scalable** - Grows with your business
-- **Secure** - Enterprise encryption
-
-**Performance:**
-- 99.9% uptime guarantee
-- Global CDN delivery
-- Real-time synchronization
+This is the `layout: image-left` layout.
 
 ---
-layout: image-left
-image: /zeyos/logo-black.svg
-color: light
+layout: image-right
+image: /images/photo2.png
+slide_info: false
+class: mycoolclass
 ---
 
-# ZEYOS CLOUD PLATFORM
+# Image right
 
-## Scalable & Secure
-
-ZeyOS runs entirely in the cloud with enterprise-grade security and reliability.
-
-**Cloud Benefits:**
-- **No Installation** - Ready to use immediately
-- **Automatic Updates** - Always latest version
-- **Scalable** - Grows with your business
-- **Secure** - Enterprise encryption
-
-**Performance:**
-- 99.9% uptime guarantee
-- Global CDN delivery
-- Real-time synchronization
+This is the `layout: image-right` layout.
 
 ---
-layout: two-cols-title
-title: 'Implementation Process'
-columns: is-one-half
-align: c-lt-lt
-color: dark
-titlepos: t
+layout: image
+image: /images/photo.png
+title: Image Layout
 ---
 
-::title::
+---
+layout: iframe-left
+title: iframe Left Layout
+# the web page source
+url: https://gureckislab.org
 
-# IMPLEMENTATION PROCESS
+# a custom class name to the content
+class: my-cool-content-on-the-right
+---
 
-::left::
+<br />
 
-## Setup Phase
-1. **Configuration** - System setup
-2. **Data Import** - Existing data migration
-3. **User Setup** - Account creation
-4. **Training** - Team onboarding
+# This is a website on the left
 
-::right::
+This is useful for showing a website but loads live on the web so requires and internet connection.
 
-## Go-Live Support
-- **Testing Period** - Pilot user group
-- **Feedback Integration** - System refinement
-- **Full Rollout** - Company-wide deployment
-- **Ongoing Support** - Continuous assistance
+---
+layout: iframe-right
+title: iframe Right Layout
+# the web page source
+url: https://gureckislab.org
+
+# a custom class name to the content
+class: my-cool-content-on-the-right
+slide_info: false
+---
+
+# This is a website on the right
+
+This is useful for showing a website but loads live on the web so requires and internet connection.
+
+---
+layout: iframe
+title: iframe Layout
+# the web page source
+url: https://gureckislab.org
+slide_info: false
+---
+
 
 ---
 layout: two-cols-title
-title: 'Implementation Process'
-columns: is-one-half
-align: c-lt-lt
-color: light
-titlepos: t
----
-
-::title::
-
-# IMPLEMENTATION PROCESS
-
-::left::
-
-## Setup Phase
-1. **Configuration** - System setup
-2. **Data Import** - Existing data migration
-3. **User Setup** - Account creation
-4. **Training** - Team onboarding
-
-::right::
-
-## Go-Live Support
-- **Testing Period** - Pilot user group
-- **Feedback Integration** - System refinement
-- **Full Rollout** - Company-wide deployment
-- **Ongoing Support** - Continuous assistance
-
----
-layout: top-title-two-cols
-columns: is-one-half
+columns: is-6
 align: l-lt-lt
-title: ZeyOS Pricing
-color: dark
+title: Two Cols Title - Header (Info)
 ---
 
-::title::
+:: title ::
 
-# ZEYOS PRICING
+# `two-cols-title`
 
-::left::
+:: left ::
 
-## Starter Plan
-<div class="zeyos-card">
-<h3>€29/month per user</h3>
-<p>• Basic CRM features<br/>• 5GB storage<br/>• Email support</p>
-</div>
+This is `layout: two-cols-title`. 
 
-::right::
+- There are three slots: `:: title ::`, `:: left ::`, and `:: right ::` along with the default which is implicit before any named slots.
 
-## Professional Plan
-<div class="zeyos-card">
-<h3>€49/month per user</h3>
-<p>• Full ERP & CRM<br/>• 50GB storage<br/>• Phone support</p>
-</div>
+- It additionally provides three configuration options in the slide YAML front matter:
+  `color`, `columns` and `align`.
 
----
-layout: top-title-two-cols
-columns: is-one-half
-align: l-lt-lt
-title: ZeyOS Pricing
-color: light
----
+:: right ::
 
-::title::
+- `color` is the color scheme.
 
-# ZEYOS PRICING
+- `columns` is the relative spacing given to the left versus right column. The overall space is divided into 12 columns. Instructions like `is-5` will give 5 units to the left and 7 to the right.
 
-::left::
+- The <code>align</code> parameter determines how the columns look. The notation is for example
+  <code>align: l-cm-cm</code>. The first part is for the header, the second for the left column, the third part is for the right column. The first letter is (<code>c</code> for center, <code>l</code> for left, <code>r</code> for right), the second letter
+  is vertical alignment (<code>t</code> for top, <code>m</code> for middle, <code>b</code> for bottom). Only c/l/r works for the header.
 
-## Starter Plan
-<div class="zeyos-card">
-<h3>€29/month per user</h3>
-<p>• Basic CRM features<br/>• 5GB storage<br/>• Email support</p>
-</div>
-
-::right::
-
-## Professional Plan
-<div class="zeyos-card">
-<h3>€49/month per user</h3>
-<p>• Full ERP & CRM<br/>• 50GB storage<br/>• Phone support</p>
-</div>
-
----
-layout: default
-title: ZeyOS Resources
-color: dark
----
-
-# ZEYOS RESOURCES
-
-## Documentation & Training
-
-<div class="grid grid-cols-2 gap-8">
-
-<div>
-### ZeyOS Help Center
-<QRCode value="https://help.zeyos.com" :size="120" render-as="svg" />
-</div>
-
-<div>
-### ZeyOS Academy  
-<QRCode value="https://academy.zeyos.com" :size="120" render-as="svg" />
-</div>
-
-</div>
-
-**Support:** support@zeyos.com • +49 (0) 89 123-456
-
----
-layout: default
-title: ZeyOS Resources
-color: light
----
-
-# ZEYOS RESOURCES
-
-## Documentation & Training
-
-<div class="grid grid-cols-2 gap-8">
-
-<div>
-### ZeyOS Help Center
-<QRCode value="https://help.zeyos.com" :size="120" render-as="svg" />
-</div>
-
-<div>
-### ZeyOS Academy  
-<QRCode value="https://academy.zeyos.com" :size="120" render-as="svg" />
-</div>
-
-</div>
-
-**Support:** support@zeyos.com • +49 (0) 89 123-456
-
----
-layout: default
-title: ZeyOS Team
-color: dark
----
-
-# ZEYOS PROJECT TEAM
-
-<div class="text-center">
-
-## Your Implementation Team
-
-<IceCream :size="80" mood="happy" color="#0066cc" />
-<BackPack :size="80" mood="excited" color="#004499" />
-<Cat :size="80" mood="blissful" color="#0088ff" />
-
-**Implementation Manager:** Lisa Weber  
-**Technical Consultant:** Marcus Schmidt  
-**Training Specialist:** Sarah Klein
-
-</div>
-
----
-layout: default
-title: ZeyOS Team
-color: light
----
-
-# ZEYOS PROJECT TEAM
-
-<div class="text-center">
-
-## Your Implementation Team
-
-<IceCream :size="80" mood="happy" color="#0066cc" />
-<BackPack :size="80" mood="excited" color="#004499" />
-<Cat :size="80" mood="blissful" color="#0088ff" />
-
-**Implementation Manager:** Lisa Weber  
-**Technical Consultant:** Marcus Schmidt  
-**Training Specialist:** Sarah Klein
-
-</div>
 
 ---
 layout: two-cols-title
-title: 'System Architecture'
-columns: is-one-half
-align: c-lt-lt
-color: dark
-titlepos: t
+columns: is-2
+align: l-lt-lt
+title: Two Cols Title - Header (is-2)
 ---
 
-::title::
+:: title ::
 
-# ZEYOS ARCHITECTURE
+<div class='w-full h-20 bg-indigo-100'>
+</div>
 
-::left::
 
-```mermaid {theme: 'dark', scale: 0.6}
-graph TD
-    A[ZeyOS Frontend] --> B[API Gateway]
-    B --> C[Business Logic]
-    C --> D[Database]
-    
-    E[Mobile Apps] --> B
-    F[Integrations] --> B
+:: left ::
+<div class='w-full h-100 bg-gray-300'></div>
+
+:: right ::
+<div class='w-full h-100 bg-pink-300'></div>
+
+
+---
+layout: two-cols-title
+columns: is-4
+align: l-lt-lt
+title: Two Cols Title - Header (is-4)
+---
+
+:: title ::
+
+<div class='w-full h-20 bg-indigo-100'>
+</div>
+
+
+:: left ::
+<div class='w-full h-100 bg-gray-300'></div>
+
+:: right ::
+<div class='w-full h-100 bg-pink-300'></div>
+
+---
+layout: two-cols-title
+columns: is-6
+align: l-lt-lt
+title: Two Cols Title - Header (is-6)
+---
+
+:: title ::
+
+<div class='w-full h-20 bg-indigo-100'>
+</div>
+
+
+:: left ::
+<div class='w-full h-100 bg-gray-300'></div>
+
+:: right ::
+<div class='w-full h-100 bg-pink-300'></div>
+
+
+---
+layout: two-cols-title
+columns: is-8
+align: l-lt-lt
+title: Two Cols Title - Header (is-8)
+---
+
+:: title ::
+
+<div class='w-full h-20 bg-indigo-100'>
+</div>
+
+
+:: left ::
+<div class='w-full h-100 bg-gray-300'></div>
+
+:: right ::
+<div class='w-full h-100 bg-pink-300'></div>
+
+
+---
+layout: two-cols-title
+columns: is-10
+align: l-lt-lt
+title: Two Cols Title - Header (is-10)
+---
+
+:: title ::
+
+<div class='w-full h-20 bg-indigo-100'>
+</div>
+
+
+:: left ::
+<div class='w-full h-100 bg-gray-300'></div>
+
+:: right ::
+<div class='w-full h-100 bg-pink-300'></div>
+
+
+---
+layout: two-cols-title
+columns: is-10
+align: l-lt-lt
+titlepos: b
+title: Two Cols Title - Footer (is-10)
+---
+
+:: title ::
+
+<div class='w-full h-20 bg-indigo-100'>
+</div>
+
+
+:: left ::
+<div class='w-full h-100 bg-gray-300'></div>
+
+:: right ::
+<div class='w-full h-100 bg-pink-300'></div>
+
+
+---
+layout: two-cols-title
+columns: is-4
+align: l-lt-lt
+titlepos: b
+title: Two Cols Title - no title (is-4)
+---
+
+
+
+:: left ::
+<div class='w-full h-120 bg-gray-300'></div>
+
+:: right ::
+<div class='w-full h-120 bg-pink-300'></div>
+
+
+
+
+
+
+---
+layout: side-title
+side: l
+color: violet
+titlewidth: is-4
+align: rm-lm
+title: Side Title Layout (Another)
+---
+
+:: title ::
+
+# `side-title`
+
+# <mdi-arrow-right />
+
+:: content ::
+
+This is `layout: side-title` with `side: left` in the front matter.
+
+```yaml
+side: left
+color: violet
+titlewidth: is-4
+align: rm-lm
 ```
 
-::right::
 
-## Technical Stack
-
-- **Frontend** - Modern web application
-- **Backend** - Scalable microservices
-- **Database** - High-performance storage
-- **Security** - End-to-end encryption
-- **APIs** - RESTful integration
-- **Mobile** - Native iOS/Android apps
-
----
-layout: two-cols-title
-title: 'System Architecture'
-columns: is-one-half
-align: c-lt-lt
-color: light
-titlepos: t
----
-
-::title::
-
-# ZEYOS ARCHITECTURE
-
-::left::
-
-```mermaid {theme: 'neutral', scale: 0.6}
-graph TD
-    A[ZeyOS Frontend] --> B[API Gateway]
-    B --> C[Business Logic]
-    C --> D[Database]
-    
-    E[Mobile Apps] --> B
-    F[Integrations] --> B
-```
-
-::right::
-
-## Technical Stack
-
-- **Frontend** - Modern web application
-- **Backend** - Scalable microservices
-- **Database** - High-performance storage
-- **Security** - End-to-end encryption
-- **APIs** - RESTful integration
-- **Mobile** - Native iOS/Android apps
 
 ---
 layout: side-title
 side: r
-color: dark
+color: pink-light
 titlewidth: is-6
 align: lm-lb
-title: Data Flow
+title: Side Title Layout (Another)
 ---
 
-::title::
+:: title ::
+ 
+# `side-title`
 
-# DATA FLOW
+# <mdi-arrow-right />
 
-::content::
+:: content ::
 
-```mermaid {theme: 'dark', scale: 0.6}
-sequenceDiagram
-    participant U as User
-    participant Z as ZeyOS
-    participant D as Database
-    participant I as Integration
-    
-    U->>Z: Action
-    Z->>D: Store Data
-    Z->>I: Sync External
-    I->>Z: Confirmation
-    Z->>U: Response
+This is `layout: side-title` with `side: right` in the front matter.
+
+```yaml
+side: right
+color: pink-light
+titlewidth: is-6
+align: lm-lb
+```
+
+
+---
+layout: top-title
+color: violet
+align: l
+title: Top Title (Another)
+---
+
+:: title ::
+
+# `top-title`: A variation with different parameters
+
+
+:: content ::
+
+Todd has used this navy color on many projects in the past. This is a top title layout.
+
+I sort of like the `###` font style the best.
+
+```yaml
+layout: top-title
+color: violet
+titlewidth: is-2
+align: lm
+```
+
+---
+layout: top-title-two-cols
+color: navy
+columns: is-6
+align: l-lt-lt
+title: Top Title (Another)
+---
+
+
+:: title ::
+
+### `top-title-two-cols`: A variation with two columns
+
+:: left ::
+
+- This is the left column
+- This is a nice way to add color and distinction to a slide
+- Options are `columns` which is the size of the left column, `color` (default `light`), and `align` which is the alignment of the title and columns (e.g., `l-lt-lt`)
+
+:: right ::
+
+- This is the right column
+- This is a nice way to add color and distinction to a slide
+
+
+---
+layout: default
+---
+
+# Extras
+
+In addition to these custom layouts, the **Neversink** theme includes a few custom components that can be used in your slides. These include sticky notes, speech bubbles, cute icons, QR codes, and more.  The next few slides walks through them:
+
+<div class="ns-c-tight">
+
+- admonitions
+- sticky notes
+- speech bubbles
+- cute icons
+- QR codes
+</div>
+
+
+---
+layout: two-cols-title
+columns: is-6
+title: Admonitions
+---
+
+<Admonition title="Draggable Note" color="teal-light" width="300px" v-drag="[93,303,300,145,-14]">
+If you want to v-drag an admonition, you should set the width to a fixed value.
+</Admonition>
+
+:: title ::
+
+# Admonitions
+
+:: left ::
+
+- Admonitions are boxes that you can use to call out things.
+
+<Admonition title="Custom title" color='amber-light'>
+This is my admon message
+</Admonition>
+
+:: right ::
+
+<AdmonitionType type='note' >
+This is note text
+</AdmonitionType>
+
+<!--
+> [!note]
+> This is note text
+-->
+
+<AdmonitionType type='important' >
+This is important text
+</AdmonitionType>
+
+<AdmonitionType type='tip' >
+This is a tip
+</AdmonitionType>
+
+<AdmonitionType type='warning' >
+This is a tip
+</AdmonitionType>
+
+<AdmonitionType type='caution' >
+This is warning text
+</AdmonitionType>
+
+---
+layout: two-cols-title
+columns: is-6
+title: Bubbles
+---
+
+<SpeechBubble position="l" color='sky' shape="round"  v-drag="[83,364,274,109]">
+
+Hello, I'm a **speech bubble**! I'm a longer speech bubble. I'm still going.
+</SpeechBubble>
+
+:: title ::
+
+# Bubbles
+
+:: left ::
+
+- Bubbles are moveable elements that act as speech bubbles
+- They can be configured for where you want the arrow to point
+- The can be move around if you enable `v-drag` on the element
+
+:: right ::
+
+<SpeechBubble position="bl" color='amber-light' shape="round">
+
+Hello, I'm a **speech bubble**! I'm a longer speech bubble. I'm still going.
+Hello, I'm a **speech bubble**! I'm a longer speech bubble. I'm still going.
+Hello, I'm a **speech bubble**! I'm a longer speech bubble. I'm still going.
+</SpeechBubble>
+
+---
+layout: default
+title: Sticky Notes
+---
+
+<StickyNote color="amber-light" textAlign="left" width="180px" title="Title" v-drag="[66,318,185,171]">
+
+Hello, I'm a **sticky note**.
+</StickyNote>
+
+<StickyNote color="sky-light" textAlign="left" width="180px" title="This is my title" v-drag="[375,306,180,180,-15]">
+
+Hello, I'm also a **sticky note** but am blue sky title.
+</StickyNote>
+
+<StickyNote color="pink-light" textAlign="left" width="180px"  v-drag="[667,299,185,171,8]">
+
+Hello, I'm also a **sticky note** but I lack a title.
+</StickyNote>
+
+# Sticky Notes
+
+- Sticky notes are moveable elements you can use for notes.
+- Syntax is
+
+```js
+<StickyNote color="amber-light" textAlign="left" width="180px" title="Title" v-drag>
+  Hello, I'm a **sticky note**.
+</StickyNote>
+```
+
+---
+layout: default
+title: Kawaii 1
+---
+
+# Kawaii
+
+- Kawaii is a Japanese term that means cute
+
+<IceCream :size="80" mood="sad" color="#FDA7DC" />
+<IceCream :size="80" mood="shocked" color="#FDA7DC" />
+<IceCream :size="80" mood="happy" color="#FDA7DC" />
+<IceCream :size="80" mood="blissful" color="#FDA7DC" />
+<IceCream :size="80" mood="lovestruck" color="#FDA7DC" />
+<IceCream :size="80" mood="excited" color="#FDA7DC" />
+<IceCream :size="80" mood="ko" color="#FDA7DC" /><br/>
+
+<BackPack :size="80" mood="sad" color="#FFD882" />
+<BackPack :size="80" mood="shocked" color="#FFD882" />
+<BackPack :size="80" mood="happy" color="#FFD882"/>
+<BackPack :size="80" mood="blissful" color="#FFD882" />
+<BackPack :size="80" mood="lovestruck" color="#FFD882" />
+<BackPack :size="80" mood="excited" color="#FFD882" />
+<BackPack :size="80" mood="ko" color="#FFD882" /><br/>
+
+<Cat :size="80" mood="sad" color="#FFD882" />
+<Cat :size="80" mood="shocked" color="#FFD882" />
+<Cat :size="80" mood="happy" color="#FFD882"/>
+<Cat :size="80" mood="blissful" color="#FFD882" />
+<Cat :size="80" mood="lovestruck" color="#FFD882" />
+<Cat :size="80" mood="excited" color="#FFD882" />
+<Cat :size="80" mood="ko" color="#FFD882" /><br/>
+
+<Browser :size="50" mood="lovestruck" color="#61DDBC" />
+<Mug :size="50" mood="lovestruck" color="#61DDBC" />
+<Planet :size="50" mood="lovestruck" color="#61DDBC" />
+<SpeechBubbleGuy :size="50" mood="lovestruck" color="#d3d3d3" />
+<Ghost :size="50" mood="blissful" color="#E0E4E8" />
+<CreditCard :size="50" mood="blissful" color="#E0E4E8" />
+
+---
+layout: default
+title: QR Codes
+---
+
+# In-line QR Codes
+
+- Send people to a url with a easy to configure QR code
+
+```vue
+<QRCode value="https://gureckislab.org" :size="200" render-as="svg" />
+```
+
+<br />
+Result:
+
+<QRCode value="https://gureckislab.org" :size="200" render-as='svg'/>
+
+
+
+---
+layout: default
+title: Lines
+---
+
+# Lines
+
+<Line :x1=0 :y1=0 :x2=200 :y2=200 :width=2 color='red' v-drag="[326,136,250,250]" />
+
+---
+layout: side-title
+side: left
+color: violet
+titlewidth: is-4
+align: rm-lt
+title: Code Example
+---
+
+<SpeechBubble position="br" shape="round" borderWidth="0" animation="float" v-drag="[19,335,261,83]">
+
+Slidev is great at code formatting!
+</SpeechBubble>
+
+:: title ::
+
+# <mdi-code-braces /> Code
+
+<IceCream :size="80" mood="excited" color="#FDA7DC" v-drag="[232,444,50,80]" />
+
+:: content ::
+
+Plain javascript:
+
+```js
+console.log('Hello, World!')
+```
+
+Highlight lines 2 and 3:
+
+```ts {2,3}
+function helloworld() {
+  console.log('Hello, World!')
+  console.log('Hello, World!')
+  console.log('Hello, World!')
+}
+```
+
+Crazy clicking through
+
+```ts {2,3|5|all}
+function helloworld() {
+  console.log('Hello, World!')
+  console.log('Hello, World!')
+  console.log('Hello, World!')
+  console.log('Hello, World!')
+  console.log('Hello, World!')
+  console.log('Hello, World!')
+}
 ```
 
 ---
 layout: side-title
-side: r
-color: light
-titlewidth: is-6
-align: lm-lb
-title: Data Flow
+side: left
+color: violet
+titlewidth: is-4
+align: rm-lt
+title: Code Example
 ---
 
-::title::
 
-# DATA FLOW
+:: title ::
 
-::content::
+# <mdi-code-braces /> Code
 
-```mermaid {theme: 'neutral', scale: 0.6}
-sequenceDiagram
-    participant U as User
-    participant Z as ZeyOS
-    participant D as Database
-    participant I as Integration
-    
-    U->>Z: Action
-    Z->>D: Store Data
-    Z->>I: Sync External
-    I->>Z: Confirmation
-    Z->>U: Response
+More cool code stuff
+
+:: content ::
+
+Scrollable with clicks 🤯
+
+```ts {2|3|7|12}{maxHeight:'100px'}
+function helloworld() {
+  console.log('Hello, World 1!')
+  console.log('Hello, World 2!')
+  console.log('Hello, World 3!')
+  console.log('Hello, World 4!')
+  console.log('Hello, World 5!')
+  console.log('Hello, World 6!')
+  console.log('Hello, World 7!')
+  console.log('Hello, World 8!')
+  console.log('Hello, World 9!')
+  console.log('Hello, World 10!')
+  console.log('Hello, World 11!')
+}
+```
+
+You can even edit the code in the browser
+
+```ts {monaco}
+console.log('HelloWorld')
+```
+
+You can even run the code in the browser
+
+```ts {monaco-run} {showOutputAt:'+1'}
+function distance(x: number, y: number) {
+  return Math.sqrt(x ** 2 + y ** 2)
+}
+console.log(distance(3, 4))
 ```
 
 ---
-layout: intro
-color: dark
+layout: side-title
+side: left
+color: lime
+titlewidth: is-4
+align: rm-lt
+title: LaTeX Example
 ---
 
-# ZeyOS Enterprise Solutions
+:: title ::
 
-**ERP • CRM • Project Management**   
-_Munich • Berlin • Hamburg_
+# <mdi-math-integral-box /> LaTeX Equations
 
-<br />
+Yeah it does this fine
 
-Your complete business management solution in the cloud.
+<Mug :size="80" mood="excited" color="#FDA7DC" v-drag="[342,288,77,80]" />
 
----
-layout: intro
-color: light
----
+:: content ::
 
-# ZeyOS Enterprise Solutions
+Inline equations: $\sqrt{3x-1}+(1+x)^2$
 
-**ERP • CRM • Project Management**   
-_Munich • Berlin • Hamburg_
+Block rendering:
 
-<br />
+$$
+\begin{array}{c}
 
-Your complete business management solution in the cloud.
+\nabla \times \vec{\mathbf{B}} -\, \frac1c\, \frac{\partial\vec{\mathbf{E}}}{\partial t} &
+= \frac{4\pi}{c}\vec{\mathbf{j}}    \nabla \cdot \vec{\mathbf{E}} & = 4 \pi \rho \\
 
----
-layout: default
-title: ZeyOS Contact
-color: dark
----
+\nabla \times \vec{\mathbf{E}}\, +\, \frac1c\, \frac{\partial\vec{\mathbf{B}}}{\partial t} & = \vec{\mathbf{0}} \\
 
-# CONTACT ZEYOS
+\nabla \cdot \vec{\mathbf{B}} & = 0
 
-## Get Started Today
+\end{array}
+$$
 
-**ZeyOS GmbH**  
-Maximilianstraße 35, 80539 München
+Line highlighting with clicks!
 
-**Contact:**
-- **Phone:** +49 (0) 89 123 456-789
-- **Email:** info@zeyos.com
-- **Web:** zeyos.com
-
-**Social:**
-- LinkedIn: /company/zeyos
-- Twitter: @zeyos_official
+$$
+{1|3|all}
+\begin{array}{c}
+\nabla \times \vec{\mathbf{B}} -\, \frac1c\, \frac{\partial\vec{\mathbf{E}}}{\partial t} &
+= \frac{4\pi}{c}\vec{\mathbf{j}}    \nabla \cdot \vec{\mathbf{E}} & = 4 \pi \rho \\
+\nabla \times \vec{\mathbf{E}}\, +\, \frac1c\, \frac{\partial\vec{\mathbf{B}}}{\partial t} & = \vec{\mathbf{0}} \\
+\nabla \cdot \vec{\mathbf{B}} & = 0
+\end{array}
+$$
 
 ---
-layout: default
-title: ZeyOS Contact
-color: light
+layout: side-title
+side: left
+color: sky
+titlewidth: is-4
+align: rm-cm
+title: Mermaid Example
 ---
 
-# CONTACT ZEYOS
+:: title ::
 
-## Get Started Today
+# Mermaid Diagrams
 
-**ZeyOS GmbH**  
-Maximilianstraße 35, 80539 München
+Everyone is talking about this
 
-**Contact:**
-- **Phone:** +49 (0) 89 123 456-789
-- **Email:** info@zeyos.com
-- **Web:** zeyos.com
+:: content ::
 
-**Social:**
-- LinkedIn: /company/zeyos
-- Twitter: @zeyos_official
+```mermaid
+sequenceDiagram
+  Alice->John: Hello John, how are you?
+  Note over Alice,John: A typical interaction
+```
 
 ---
-layout: credits
+layout: side-title
+side: left
+color: sky
+titlewidth: is-4
+align: rm-cm
+title: Mermaid Example
 ---
 
-# ZEYOS BUSINESS SOLUTIONS
+:: title ::
 
-**Complete ERP & CRM Platform**  
-Made in Germany for global businesses
+# Mermaid Diagrams
 
-## Contact Information
+Everyone is talking about this
 
-- **Website:** [zeyos.com](https://zeyos.com)
-- **Email:** info@zeyos.com  
-- **Phone:** +49 (0) 89 123 456-789
+:: content ::
 
-## Office Locations
+```mermaid {theme: 'neutral', scale: 0.8}
+graph TD
+B[Text] --> C{Decision}
+C -->|One| D[Result 1]
+C -->|Two| E[Result 2]
+```
 
-- **Munich:** Maximilianstraße 35 (Headquarters)
-- **Berlin:** Unter den Linden 42
-- **Hamburg:** Speicherstadt 15
-- **Frankfurt:** Taunusanlage 21
+A mermaid diagram with two circles side by side horizontally with an arrow pointing from the left circle to the right circle
 
-<div class="absolute bottom-10 right-10">
-  <img src="/zeyos/logo-black.svg" class="w-24 opacity-60" />
-</div>
+```mermaid {theme: 'neutral', scale: 0.8}
+graph LR
+A([Circle 1]) --> B((Circle 2))
+```

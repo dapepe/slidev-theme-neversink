@@ -37,9 +37,8 @@
   --neversink-quote-font: var(--theme-font-mono);
   --font-mono: var(--theme-font-mono);
   
-  /* DIFO Layout Colors - Dual theme support */
-  --theme-cover-bg: url('/difo/space.png') center/cover no-repeat, linear-gradient(135deg, #2a3570, #3b4b8c, #5a6bb8);
-  --theme-cover-bg-alt: linear-gradient(135deg, #1e2555, #2a3570); /* Darker gradient */
+  /* DIFO Layout Colors */
+  --theme-cover-bg: #3b4b8c; /* Default: solid color */
   
   /* Dark scheme colors */
   --theme-section-bg-dark: #1a1a1a; /* Dark background */
@@ -73,10 +72,16 @@
 }
 
 /* DIFO Cover and Section styling with proper contrast */
+/* Cover slide background options */
 .slidev-layout.cover {
-  background: var(--theme-cover-bg);
+  /* Use custom background if defined, otherwise use theme default */
+  background: var(--slide-bg-image, var(--theme-cover-bg)) center/cover no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   color: var(--theme-cover-text);
 }
+
 
 .slidev-layout.cover h1,
 .slidev-layout.cover h2,
@@ -180,10 +185,10 @@
 .slidev-layout:not(.cover)::before {
   content: '';
   position: fixed;
-  top: 18px;
-  right: 18px;
-  width: 110px;
-  height: 80px;
+  top: 12px;
+  right: 6px;
+  width: 80px;
+  height: 60px;
   background-repeat: no-repeat;
   background-size: contain;
   background-position: top left;
@@ -195,12 +200,12 @@
 .slidev-layout:not(.cover).neversink-highlight-scheme::before,
 .slidev-layout:not(.cover).neversink-dark-scheme::before {
   /* Bright logo on dark slides */
-  background-image: url('./difo-logo_bright-solid.svg');
+  background-image: url('./difo-logo_icon-bright-solid.svg');
 }
 
 .slidev-layout:not(.cover).neversink-light-scheme::before {
   /* Dark logo on light slides */
-  background-image: url('./difo-logo_dark-solid.svg');
+  background-image: url('./difo-logo_icon-dark-solid.svg');
 }
 
 /* Bright slides: headings use highlight color */
@@ -306,10 +311,8 @@
   margin: 0
 }
 
-/* DIFO Cover slide specific styling with space background */
+/* DIFO Cover slide positioning (removed duplicate background rule) */
 .slidev-layout.cover {
-  background: url('/difo/space.png') center/cover no-repeat, 
-              linear-gradient(135deg, #2a3570 0%, #3b4b8c 50%, #5a6bb8 100%);
   position: relative;
   overflow: hidden;
 }
@@ -559,55 +562,4 @@
   font-weight: 500;
 }
 
-/* DIFO Logo in top right corner - Dark scheme (bright logo) */
-.slidev-layout.neversink-dark-scheme::after {
-  content: '';
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  width: 60px;
-  height: 60px;
-  background: url('/difo/difo-logo_bright-solid.svg') center/contain no-repeat;
-  z-index: 100;
-  opacity: 0.8;
-  pointer-events: none;
-  filter: brightness(1.1) contrast(1.1);
-}
-
-/* DIFO Logo in top right corner - Light scheme (dark logo) */
-.slidev-layout.neversink-light-scheme::after {
-  content: '';
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  width: 60px;
-  height: 60px;
-  background: url('/difo/difo-logo_dark-solid.svg') center/contain no-repeat;
-  z-index: 100;
-  opacity: 0.8;
-  pointer-events: none;
-}
-
-/* Hide logo on cover slide since it has its own logo placement */
-.slidev-layout.cover::after {
-  display: none;
-}
-
-/* Adjust logo opacity for different slide types - Dark scheme */
-.slidev-layout.neversink-dark-scheme.section::after {
-  opacity: 0.6;
-}
-
-.slidev-layout.neversink-dark-scheme.credits::after {
-  opacity: 0.7;
-}
-
-/* Adjust logo opacity for different slide types - Light scheme */
-.slidev-layout.neversink-light-scheme.section::after {
-  opacity: 0.6;
-}
-
-.slidev-layout.neversink-light-scheme.credits::after {
-  opacity: 0.7;
-}
 

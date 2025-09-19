@@ -7,6 +7,7 @@ routerMode: hash
 title: Digital Foundations
 slug: "difo"
 logo: "difo/difo-logo_bright-solid.svg"
+style: "--slide-bg-image: url('/difo/space.png')"
 ---
 
 <link rel="stylesheet" href="difo/styles.css">
@@ -22,6 +23,41 @@ logo: "difo/difo-logo_bright-solid.svg"
 <!-- <div class="absolute bottom-10 left-10">
   <img src="/difo/difo-logo_bright-solid.svg" class="w-32 opacity-80" />
 </div> -->
+
+---
+layout: cover
+color: bright
+---
+
+# DEFAULT BACKGROUND
+
+## Solid & Clean
+
+This cover uses **default solid** background (no style needed)
+
+---
+layout: cover
+color: bright
+style: "--slide-bg-image: url('/difo/space.png')"
+---
+
+# CUSTOM IMAGE
+
+## Direct URL
+
+This cover uses **custom background** (`style: "--slide-bg-image: url('/path/image.png')"`)
+
+---
+layout: cover
+color: bright
+style: "--slide-bg-image: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920')"
+---
+
+# EXTERNAL IMAGE
+
+## From URL
+
+This cover uses **external image** from Unsplash
 
 ---
 layout: section

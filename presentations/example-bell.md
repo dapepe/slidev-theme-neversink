@@ -16,6 +16,18 @@ logo: "bell/difo-logo_bell-bright.svg"
 Professional IT Consulting & Services
 
 ---
+layout: cover
+color: dark
+style: "--slide-bg-image: linear-gradient(135deg, #1e2555, #2b3681, #4a5bb8)"
+---
+
+# CUSTOM BACKGROUND EXAMPLE
+
+## Bell Gradient Background
+
+This cover uses **custom gradient** (`style: "--slide-bg-image: linear-gradient(...)"`)
+
+---
 layout: section
 color: dark
 ---

@@ -35,7 +35,7 @@
   --neversink-quote-font: var(--theme-font-mono);
   --font-mono: var(--theme-font-mono);
   
-  /* Cover Backgrounds */
+  /* Cover Background Defaults */
   --theme-cover-bg-light: var(--theme-primary-color);
   --theme-cover-bg-dark: #000000;
   
@@ -72,22 +72,26 @@
   --code-bg-for-dark-scheme: #0d0d0d;
 }
 
-/* Cover slide styling */
+/* Cover slide styling with custom background support */
+.slidev-layout.cover {
+  /* Use custom background if defined, otherwise use theme default */
+  background: var(--slide-bg-image, var(--theme-cover-bg-light)) center/cover no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: var(--theme-cover-text);
+}
+
 .slidev-layout.cover.neversink-light-scheme {
-  background: var(--theme-cover-bg-light) !important;
+  background: var(--slide-bg-image, var(--theme-cover-bg-light)) center/cover no-repeat !important;
   color: #ffffff !important;
 }
 
 .slidev-layout.cover.neversink-dark-scheme {
-  background: var(--theme-cover-bg-dark) !important;
+  background: var(--slide-bg-image, var(--theme-cover-bg-dark)) center/cover no-repeat !important;
   color: #ffffff !important;
 }
 
-/* Fallback for cover slides without specific scheme */
-.slidev-layout.cover {
-  background: var(--theme-cover-bg-light);
-  color: var(--theme-cover-text);
-}
 
 /* Cover slide text styling */
 .slidev-layout.cover.neversink-light-scheme h1,
@@ -143,10 +147,10 @@
 .slidev-layout:not(.cover)::before {
   content: '';
   position: fixed;
-  top: 18px;
-  right: 18px;
-  width: 110px;
-  height: 80px;
+  top: 12px;
+  right: 6px;
+  width: 80px;
+  height: 60px;
   background-repeat: no-repeat;
   background-size: contain;
   background-position: top left;
