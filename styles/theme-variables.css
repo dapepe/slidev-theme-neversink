@@ -181,19 +181,6 @@
 }
 
 /* ===== DARK MODE VARIABLES ===== */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --theme-bg-primary: var(--theme-dark-bg-primary);
-    --theme-bg-secondary: var(--theme-dark-bg-secondary);
-    --theme-bg-tertiary: var(--theme-dark-bg-tertiary);
-    --theme-text-primary: var(--theme-dark-text-primary);
-    --theme-text-secondary: var(--theme-dark-text-secondary);
-    --theme-border-primary: var(--theme-dark-border-primary);
-    --theme-code-bg: var(--theme-dark-code-bg);
-    --theme-code-text: var(--theme-dark-code-text);
-  }
-}
-
 /* Manual dark theme class */
 .theme-dark {
   --theme-bg-primary: var(--theme-dark-bg-primary);
