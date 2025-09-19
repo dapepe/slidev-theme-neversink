@@ -9,13 +9,14 @@
 .slidev-layout,
 .slidev-layout.neversink-light-scheme,
 .slidev-layout.neversink-dark-scheme {
-  --theme-primary-color: #16a34a;
-  --theme-primary-light: #22c55e;
-  --theme-primary-dark: #15803d;
-  --theme-secondary-color: #0891b2;
-  --theme-secondary-light: #06b6d4;
-  --theme-secondary-dark: #0e7490;
-  --theme-accent-color: #f59e0b;
+  /* ZeyOS Brand Colors - Green theme */
+  --theme-primary-color: #16a34a;        /* ZeyOS Green */
+  --theme-primary-light: #22c55e;        /* Light Green */
+  --theme-primary-dark: #15803d;         /* Dark Green */
+  --theme-secondary-color: #059669;      /* Emerald */
+  --theme-secondary-light: #10b981;      /* Light Emerald */
+  --theme-secondary-dark: #047857;       /* Dark Emerald */
+  --theme-accent-color: #0891b2;         /* Cyan accent */
   
   /* Legacy variable mappings for backward compatibility */
   --neversink-highlight-color: var(--theme-primary-color);
@@ -34,37 +35,83 @@
   --neversink-quote-font: var(--theme-font-mono);
   --font-mono: var(--theme-font-mono);
   
-  --theme-cover-bg: linear-gradient(135deg, var(--theme-primary-color), var(--theme-primary-light));
-  --theme-cover-bg-alt: linear-gradient(135deg, var(--theme-primary-dark), var(--theme-primary-color));
-  --theme-section-bg: var(--theme-primary-color);
-  --theme-section-bg-light: linear-gradient(135deg, #f0fdf4, #dcfce7);
-  --theme-section-bg-dark: var(--theme-primary-color);
-  --theme-cover-text: #ffffff;
-  --theme-section-text: #ffffff;
-  --theme-section-text-light: var(--theme-primary-dark);
+  /* Cover Backgrounds */
+  --theme-cover-bg-light: var(--theme-primary-color);
+  --theme-cover-bg-dark: #000000;
   
-  --theme-code-bg-light: #f8fafc;
-  --theme-code-text-light: #1e293b;
-  --theme-code-border-light: #e2e8f0;
-  --theme-inline-code-bg-light: #f1f5f9;
-  --theme-inline-code-text-light: var(--theme-primary-color);
-  --theme-code-bg-dark: #1e293b;
-  --theme-code-text-dark: #f1f5f9;
-  --theme-code-border-dark: #475569;
-  --theme-inline-code-bg-dark: #334155;
-  --theme-inline-code-text-dark: var(--theme-accent-color);
+  /* Light scheme colors - Green style */
+  --theme-section-bg-light: #f0fdf4;
+  --theme-section-text-light: #14532d;
+  --theme-card-bg-light: #dcfce7;
+  --theme-card-border-light: #bbf7d0;
+  --theme-card-shadow-light: none;
+  
+  /* Dark scheme colors - Black style */
+  --theme-section-bg-dark: #000000;
+  --theme-section-text-dark: #ffffff;
+  --theme-card-bg-dark: #1a1a1a;
+  --theme-card-border-dark: #333333;
+  --theme-card-shadow-dark: none;
+  
+  /* Common */
+  --theme-cover-text: #ffffff;
+  
+  --theme-code-bg-light: #e6fffa;
+  --theme-code-text-light: #14532d;
+  --theme-code-border-light: #bbf7d0;
+  --theme-inline-code-bg-light: #d1fae5;
+  --theme-inline-code-text-light: var(--theme-primary-dark);
+  --theme-code-bg-dark: #0d0d0d;
+  --theme-code-text-dark: #ffffff;
+  --theme-code-border-dark: #333333;
+  --theme-inline-code-bg-dark: #1a1a1a;
+  --theme-inline-code-text-dark: #ffffff;
+  
+  /* Semantic code background variables */
+  --code-bg-for-light-scheme: #e6fffa;
+  --code-bg-for-dark-scheme: #0d0d0d;
 }
 
+/* Cover slide styling */
+.slidev-layout.cover.neversink-light-scheme {
+  background: var(--theme-cover-bg-light) !important;
+  color: #ffffff !important;
+}
+
+.slidev-layout.cover.neversink-dark-scheme {
+  background: var(--theme-cover-bg-dark) !important;
+  color: #ffffff !important;
+}
+
+/* Fallback for cover slides without specific scheme */
 .slidev-layout.cover {
-  background: var(--theme-cover-bg);
+  background: var(--theme-cover-bg-light);
   color: var(--theme-cover-text);
 }
 
+/* Cover slide text styling */
+.slidev-layout.cover.neversink-light-scheme h1,
+.slidev-layout.cover.neversink-light-scheme h2,
+.slidev-layout.cover.neversink-light-scheme h3,
+.slidev-layout.cover.neversink-light-scheme p {
+  color: #ffffff !important;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.slidev-layout.cover.neversink-dark-scheme h1,
+.slidev-layout.cover.neversink-dark-scheme h2,
+.slidev-layout.cover.neversink-dark-scheme h3,
+.slidev-layout.cover.neversink-dark-scheme p {
+  color: #ffffff !important;
+  text-shadow: none;
+}
+
+/* Fallback cover text styling */
 .slidev-layout.cover h1,
 .slidev-layout.cover h2,
 .slidev-layout.cover h3,
 .slidev-layout.cover p {
-  color: var(--theme-cover-text);
+  color: #ffffff !important;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 .slidev-layout.section.neversink-dark-scheme {
@@ -117,11 +164,16 @@
   background-image: url('./logo-black.svg');
 }
 
+/* Cover slides should not have top-right logo */
+.slidev-layout.cover::before {
+  display: none !important;
+}
 
-/* Bright slides: headings use highlight color */
-.slidev-layout.neversink-light-scheme h1,
-.slidev-layout.neversink-light-scheme h2,
-.slidev-layout.neversink-light-scheme h3 {
+
+/* Bright slides: headings use highlight color (exclude cover) */
+.slidev-layout.neversink-light-scheme:not(.cover) h1,
+.slidev-layout.neversink-light-scheme:not(.cover) h2,
+.slidev-layout.neversink-light-scheme:not(.cover) h3 {
   color: var(--neversink-highlight-color);
 }
 
@@ -204,6 +256,26 @@
 .slidev-layout.neversink-dark-scheme pre code {
   background: none;
   color: var(--theme-code-text-dark);
+}
+
+/* Enhanced Neversink scheme code styling - semantic backgrounds */
+.slidev-layout.neversink-light-scheme pre {
+  background-color: var(--code-bg-for-light-scheme) !important;
+}
+
+.slidev-layout.neversink-dark-scheme pre {
+  background-color: var(--code-bg-for-dark-scheme) !important;
+}
+
+/* Force proper color switching between light and dark themes */
+.slidev-layout.neversink-light-scheme .shiki .line span {
+  /* Use light theme colors for light scheme */
+  color: var(--shiki-light) !important;
+}
+
+.slidev-layout.neversink-dark-scheme .shiki .line span {
+  /* Use dark theme colors for dark scheme */
+  color: var(--shiki-dark) !important;
 }
 
 .slidev-layout.zeyos-light-scheme pre {
@@ -299,6 +371,110 @@
 .color-dark .slide-logo.light-only { display: none !important; }
 .dark-theme .slide-logo.dark-only,
 .color-dark .slide-logo.dark-only { display: block !important; }
+
+/* SIMPLE LIGHT SCHEME - Clean and minimal */
+.slidev-layout.neversink-light-scheme:not(.cover) {
+  background: var(--theme-section-bg-light) !important;
+  color: var(--theme-section-text-light) !important;
+}
+
+.slidev-layout.neversink-light-scheme:not(.cover) .zeyos-card {
+  background: var(--theme-card-bg-light) !important;
+  border: 1px solid var(--theme-card-border-light) !important;
+  color: var(--theme-section-text-light) !important;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.slidev-layout.neversink-light-scheme:not(.cover) .zeyos-card h3 {
+  color: var(--theme-primary-color) !important;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.slidev-layout.neversink-light-scheme:not(.cover) .zeyos-card p {
+  color: var(--theme-section-text-light) !important;
+}
+
+.slidev-layout.neversink-light-scheme:not(.cover) h1,
+.slidev-layout.neversink-light-scheme:not(.cover) h2,
+.slidev-layout.neversink-light-scheme:not(.cover) h3 {
+  color: var(--theme-text-primary) !important;
+}
+
+.slidev-layout.neversink-light-scheme:not(.cover) h1 {
+  border-bottom: 2px solid var(--theme-primary-color);
+  padding-bottom: 0.5rem;
+}
+
+/* SIMPLE DARK SCHEME - Clean and minimal */
+.slidev-layout.neversink-dark-scheme:not(.cover) {
+  background: var(--theme-section-bg-dark) !important;
+  color: var(--theme-section-text-dark) !important;
+}
+
+.slidev-layout.neversink-dark-scheme:not(.cover) .zeyos-card {
+  background: var(--theme-card-bg-dark) !important;
+  border: 1px solid var(--theme-card-border-dark) !important;
+  color: var(--theme-section-text-dark) !important;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.slidev-layout.neversink-dark-scheme:not(.cover) .zeyos-card h3 {
+  color: #ffffff !important;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.slidev-layout.neversink-dark-scheme:not(.cover) .zeyos-card p {
+  color: var(--theme-section-text-dark) !important;
+}
+
+.slidev-layout.neversink-dark-scheme:not(.cover) h1,
+.slidev-layout.neversink-dark-scheme:not(.cover) h2,
+.slidev-layout.neversink-dark-scheme:not(.cover) h3 {
+  color: #ffffff !important;
+}
+
+.slidev-layout.neversink-dark-scheme:not(.cover) h1 {
+  border-bottom: 2px solid #ffffff;
+  padding-bottom: 0.5rem;
+}
+
+/* Section slides styling */
+.slidev-layout.neversink-light-scheme.section {
+  background: var(--theme-primary-color) !important;
+  color: var(--theme-text-primary) !important;
+}
+
+.slidev-layout.neversink-dark-scheme.section {
+  background: #000000 !important;
+  color: #ffffff !important;
+}
+
+/* Simple button styling */
+.slidev-layout.neversink-light-scheme:not(.cover) button,
+.slidev-layout.neversink-light-scheme:not(.cover) .zeyos-button {
+  background: var(--theme-primary-color) !important;
+  color: #ffffff !important;
+  border: none;
+  border-radius: 6px;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+}
+
+.slidev-layout.neversink-dark-scheme:not(.cover) button,
+.slidev-layout.neversink-dark-scheme:not(.cover) .zeyos-button {
+  background: #ffffff !important;
+  color: #000000 !important;
+  border: none;
+  border-radius: 6px;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+}
 
 .slidev-layout.cover h1,
 .slidev-layout.cover h2,

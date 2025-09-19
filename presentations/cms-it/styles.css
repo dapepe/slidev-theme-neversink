@@ -61,6 +61,10 @@
   --theme-code-border-dark: #475569;
   --theme-inline-code-bg-dark: #334155;
   --theme-inline-code-text-dark: var(--theme-primary-light);
+  
+  /* Semantic code background variables */
+  --code-bg-for-light-scheme: #dfdfdf;
+  --code-bg-for-dark-scheme: #ffffff;
 }
 
 /* CMS-IT Cover and Section styling with proper contrast */
@@ -148,8 +152,25 @@
   color: var(--theme-code-text-dark);
 }
 
-/* Neversink schemes will use their own generated colors automatically */
-/* No overrides needed - they have their own --neversink-bg-code-color, etc. */
+/* Neversink schemes - semantic code backgrounds */
+.slidev-layout.neversink-light-scheme pre {
+  background-color: var(--code-bg-for-light-scheme) !important;
+}
+
+.slidev-layout.neversink-dark-scheme pre {
+  background-color: var(--code-bg-for-dark-scheme) !important;
+}
+
+/* Force proper color switching between light and dark themes */
+.slidev-layout.neversink-light-scheme .shiki .line span {
+  /* Use light theme colors for light scheme */
+  color: var(--shiki-light) !important;
+}
+
+.slidev-layout.neversink-dark-scheme .shiki .line span {
+  /* Use dark theme colors for dark scheme */
+  color: var(--shiki-dark) !important;
+}
 
 .slidev-layout:not(.cover)::before {
   content: '';

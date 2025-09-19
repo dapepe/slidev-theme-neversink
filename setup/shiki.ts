@@ -4,8 +4,8 @@ import { defineShikiSetup } from '@slidev/types'
 export default defineShikiSetup(() => {
   return {
     themes: {
-      dark: 'slack-dark',
-      light: 'snazzy-light',
+      dark: 'github-dark',
+      light: 'everforest-light',
     },
     transformers: [
       // ...

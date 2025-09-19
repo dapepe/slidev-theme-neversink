@@ -1,0 +1,428 @@
+
+
+/* Bell Brand Variables */
+.slidev-layout,
+.slidev-layout.neversink-light-scheme,
+.slidev-layout.neversink-dark-scheme,
+.slidev-layout.bell-light-scheme,
+.slidev-layout.bell-dark-scheme {
+  /* Bell Brand Colors */
+  --theme-primary-color: #2b3681;         /* Bell primary blue */
+  --theme-primary-light: #4a5bb8;         /* Lighter blue */
+  --theme-primary-dark: #1e2555;          /* Darker blue */
+  --theme-secondary-color: #23438c;       /* Bell secondary blue */
+  --theme-secondary-light: #5a6bb8;       /* Light secondary */
+  --theme-secondary-dark: #1a2d5a;        /* Dark secondary */
+  --theme-accent-color: #797d82;          /* Bell gray accent */
+
+  /* Legacy variable mappings for backward compatibility */
+  --neversink-highlight-color: var(--theme-primary-color);
+  --global-accent-color: var(--theme-primary-color);
+
+  /* Bell Typography */
+  --theme-font-primary: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --theme-font-mono: 'Fira Code', 'Monaco', 'Cascadia Code', monospace;
+  --neversink-main-font: var(--theme-font-primary);
+  --neversink-mono-font: var(--theme-font-mono);
+  --neversink-quote-font: var(--theme-font-mono);
+  --font-mono: var(--theme-font-mono);
+  
+  /* Bell Layout Colors - Dual theme support */
+  --theme-cover-bg: linear-gradient(135deg, #1e2555, #2b3681, #4a5bb8);
+  --theme-cover-bg-alt: linear-gradient(135deg, #1a2d5a, #23438c);
+  
+  /* Dark scheme colors */
+  --theme-section-bg-dark: #1a1a1a; /* Dark background */
+  --theme-section-text-dark: #ffffff; /* White text on dark background */
+  
+  /* Light scheme colors */
+  --theme-section-bg-light: #ffffff; /* Light background */
+  --theme-section-text-light: #2b3681; /* Bell blue text on light background */
+  
+  /* Cover slide uses Bell gradient */
+  --theme-cover-text: #ffffff;
+  
+  /* Bell Code Theme Variables */
+  /* Light scheme code colors */
+  --theme-code-bg-light: #f8fafc;
+  --theme-code-text-light: #1e293b;
+  --theme-code-border-light: #e2e8f0;
+  --theme-inline-code-bg-light: #edf2f7;
+  --theme-inline-code-text-light: var(--theme-primary-color);
+  
+  /* Dark scheme code colors */
+  --theme-code-bg-dark: #1e293b;
+  --theme-code-text-dark: #f1f5f9;
+  --theme-code-border-dark: #475569;
+  --theme-inline-code-bg-dark: #334155;
+  --theme-inline-code-text-dark: var(--theme-accent-color);
+  
+  /* Semantic code background variables for Bell theme */
+  --code-bg-for-light-scheme: #f1f5f9; /* Light code background */
+  --code-bg-for-dark-scheme: #2d3748; /* Dark code background */
+}
+
+/* Bell Cover and Section styling */
+.slidev-layout.cover {
+  background: var(--theme-cover-bg);
+  color: var(--theme-cover-text);
+}
+
+.slidev-layout.cover h1,
+.slidev-layout.cover h2,
+.slidev-layout.cover h3,
+.slidev-layout.cover p {
+  color: var(--theme-cover-text);
+}
+
+.slidev-layout.section {
+  background: var(--theme-primary-color);
+  color: #ffffff;
+}
+
+.slidev-layout.section h1,
+.slidev-layout.section h2,
+.slidev-layout.section h3,
+.slidev-layout.section p {
+  color: #ffffff;
+}
+
+
+
+/* Bell Enhanced Neversink scheme code styling - semantic backgrounds */
+.slidev-layout.neversink-light-scheme pre {
+  background-color: var(--code-bg-for-light-scheme) !important;
+}
+
+.slidev-layout.neversink-dark-scheme pre {
+  background-color: var(--code-bg-for-dark-scheme) !important;
+}
+
+/* Bell Dark scheme styling */
+.slidev-layout.neversink-dark-scheme:not(.cover),
+.slidev-layout[data-color-scheme="dark"]:not(.cover) {
+  background: var(--theme-section-bg-dark) !important;
+  color: var(--theme-section-text-dark) !important;
+}
+
+/* Bell Light scheme styling */
+.slidev-layout.neversink-light-scheme:not(.cover),
+.slidev-layout[data-color-scheme="light"]:not(.cover) {
+  background: var(--theme-section-bg-light) !important;
+  color: var(--theme-section-text-light) !important;
+}
+
+/* Dark scheme text elements */
+.slidev-layout.neversink-dark-scheme:not(.cover) h1,
+.slidev-layout.neversink-dark-scheme:not(.cover) h2,
+.slidev-layout.neversink-dark-scheme:not(.cover) h3,
+.slidev-layout.neversink-dark-scheme:not(.cover) h4,
+.slidev-layout.neversink-dark-scheme:not(.cover) h5,
+.slidev-layout.neversink-dark-scheme:not(.cover) h6,
+.slidev-layout.neversink-dark-scheme:not(.cover) p,
+.slidev-layout.neversink-dark-scheme:not(.cover) li,
+.slidev-layout.neversink-dark-scheme:not(.cover) span {
+  color: var(--theme-section-text-dark) !important;
+}
+
+/* Light scheme text elements */
+.slidev-layout.neversink-light-scheme:not(.cover) h1,
+.slidev-layout.neversink-light-scheme:not(.cover) h2,
+.slidev-layout.neversink-light-scheme:not(.cover) h3,
+.slidev-layout.neversink-light-scheme:not(.cover) h4,
+.slidev-layout.neversink-light-scheme:not(.cover) h5,
+.slidev-layout.neversink-light-scheme:not(.cover) h6,
+.slidev-layout.neversink-light-scheme:not(.cover) p,
+.slidev-layout.neversink-light-scheme:not(.cover) li,
+.slidev-layout.neversink-light-scheme:not(.cover) span {
+  color: var(--theme-section-text-light) !important;
+}
+
+/* Headings styling for both schemes */
+.slidev-layout:not(.cover) h1 {
+  font-size: 3rem;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+}
+
+/* Dark scheme headings */
+.slidev-layout.neversink-dark-scheme:not(.cover) h1 {
+  border-bottom: 2px solid rgba(255,255,255,0.2);
+}
+
+/* Light scheme headings */
+.slidev-layout.neversink-light-scheme:not(.cover) h1 {
+  border-bottom: 2px solid rgba(43,54,129,0.2);
+}
+
+.slidev-layout:not(.cover) h2 {
+  font-size: 2rem;
+  font-weight: 300;
+  margin-bottom: 1.5rem;
+}
+
+.slidev-layout:not(.cover) h3 {
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin-bottom: 1rem;
+}
+
+/* Lists styling */
+.slidev-layout:not(.cover) li {
+  margin-bottom: 0.5rem;
+}
+
+/* Buttons and interactive elements */
+.slidev-layout:not(.cover) .bell-button,
+.slidev-layout:not(.cover) button {
+  background: var(--theme-primary-color) !important;
+  color: #ffffff !important;
+  border: none;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.slidev-layout:not(.cover) .bell-button:hover,
+.slidev-layout:not(.cover) button:hover {
+  background: var(--theme-primary-light) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(43, 54, 129, 0.3);
+}
+
+/* Cards and content blocks - Base styling */
+.slidev-layout:not(.cover) .bell-card {
+  border-radius: 12px;
+  padding: 1.2rem;
+  margin-bottom: 1rem;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+}
+
+.slidev-layout:not(.cover) .bell-card h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.slidev-layout:not(.cover) .bell-card h4 {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.slidev-layout:not(.cover) .bell-card p {
+  margin: 0;
+  line-height: 1.4;
+  font-size: 0.95rem;
+}
+
+/* Cards and content blocks - Dark scheme */
+.slidev-layout.neversink-dark-scheme:not(.cover) .bell-card {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+}
+
+.slidev-layout.neversink-dark-scheme:not(.cover) .bell-card h3 {
+  color: var(--theme-accent-color) !important;
+}
+
+.slidev-layout.neversink-dark-scheme:not(.cover) .bell-card h4 {
+  color: var(--theme-primary-light) !important;
+}
+
+.slidev-layout.neversink-dark-scheme:not(.cover) .bell-card p {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Cards and content blocks - Light scheme */
+.slidev-layout.neversink-light-scheme:not(.cover) .bell-card {
+  background: rgba(43, 54, 129, 0.08) !important;
+  border: 1px solid rgba(43, 54, 129, 0.15);
+  backdrop-filter: blur(5px);
+}
+
+.slidev-layout.neversink-light-scheme:not(.cover) .bell-card h3 {
+  color: var(--theme-primary-color) !important;
+}
+
+.slidev-layout.neversink-light-scheme:not(.cover) .bell-card h4 {
+  color: var(--theme-secondary-color) !important;
+}
+
+.slidev-layout.neversink-light-scheme:not(.cover) .bell-card p {
+  color: rgba(43, 54, 129, 0.85) !important;
+}
+
+/* Grid layout fixes for cards */
+.slidev-layout .grid {
+  display: grid;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.slidev-layout .grid-cols-2 {
+  grid-template-columns: 1fr 1fr;
+}
+
+.slidev-layout .grid-cols-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.slidev-layout .grid-cols-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/* Ensure grid items don't overflow */
+.slidev-layout .grid > div {
+  min-width: 0;
+  overflow: hidden;
+}
+
+/* Two-column layout specific fixes */
+.slidev-layout.two-cols-title .bell-card {
+  max-width: calc(100% - 2rem);
+  margin-left: 0;
+  margin-right: 0;
+}
+
+/* Full layout specific fixes */
+.slidev-layout.full .grid {
+  padding: 0 2rem;
+  max-width: calc(100vw - 4rem);
+}
+
+.slidev-layout.full .bell-card {
+  font-size: 0.9rem;
+}
+
+.slidev-layout.full .bell-card h3 {
+  font-size: 1.1rem;
+}
+
+.slidev-layout.full .bell-card h4 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+/* Bell Logo in top right corner - Dark scheme (bright logo) */
+.slidev-layout.neversink-dark-scheme::after {
+  content: '';
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  background: url('/bell/difo-logo_bell-bright.svg') center/contain no-repeat;
+  z-index: 100;
+  opacity: 0.8;
+  pointer-events: none;
+  filter: brightness(1.1) contrast(1.1);
+}
+
+/* Bell Logo in top right corner - Light scheme (dark logo) */
+.slidev-layout.neversink-light-scheme::after {
+  content: '';
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  background: url('/bell/difo-logo_bell-color.svg') center/contain no-repeat;
+  z-index: 100;
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+/* Hide logo on cover slide since it has its own logo placement */
+.slidev-layout.cover::after {
+  display: none;
+}
+
+/* Adjust logo opacity for different slide types - Dark scheme */
+.slidev-layout.neversink-dark-scheme.section::after {
+  opacity: 0.6;
+}
+
+.slidev-layout.neversink-dark-scheme.credits::after {
+  opacity: 0.7;
+}
+
+/* Adjust logo opacity for different slide types - Light scheme */
+.slidev-layout.neversink-light-scheme.section::after {
+  opacity: 0.6;
+}
+
+.slidev-layout.neversink-light-scheme.credits::after {
+  opacity: 0.7;
+}
+
+/* Bell cover slide specific styling */
+.slidev-layout.cover {
+  background: linear-gradient(135deg, #1e2555 0%, #2b3681 50%, #4a5bb8 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Add subtle texture/pattern overlay for Bell */
+.slidev-layout.cover::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, 
+    rgba(30, 37, 85, 0.7) 0%, 
+    rgba(43, 54, 129, 0.6) 50%, 
+    rgba(74, 91, 184, 0.5) 100%);
+  pointer-events: none;
+}
+
+/* Main title styling for cover */
+.slidev-layout.cover h1 {
+  font-size: 4rem;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+  color: #ffffff;
+  text-shadow: 0 4px 8px rgba(0,0,0,0.8), 0 2px 4px rgba(30,37,85,0.5);
+  position: relative;
+  z-index: 1;
+}
+
+/* Subtitle/version text */
+.slidev-layout.cover h2,
+.slidev-layout.cover p {
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: rgba(255,255,255,0.95);
+  margin-bottom: 1rem;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+  position: relative;
+  z-index: 1;
+}
+
+/* Ensure logo and other elements are above the overlay */
+.slidev-layout.cover img,
+.slidev-layout.cover div {
+  position: relative;
+  z-index: 2;
+}
+
+.slidev-layout.cover h1,
+.slidev-layout.cover h2,
+.slidev-layout.cover h3 {
+  border-bottom: 0;
+  margin: 0
+}
