@@ -1,13 +1,10 @@
 <script setup lang="js">
-import { computed, ref, onMounted } from 'vue'
+import { computed } from 'vue'
 
 const props = defineProps({
   color: {
-    default: 'white',
-  },
-  showTimeAllocation: {
-    type: Boolean,
-    default: false
+    default: 'dark',
+    validator: (value) => ['light', 'dark'].includes(value)
   },
   currentItem: {
     type: Number,
@@ -16,87 +13,44 @@ const props = defineProps({
   highlightCurrent: {
     type: Boolean,
     default: true
+  },
+  // Agenda items as props
+  agenda: {
+    type: Array,
+    default: () => []
+  },
+  title: {
+    type: String,
+    default: 'AGENDA'
   }
 })
-
-// Removed useSlideContext - props will be used instead
 
 const colorscheme = computed(() => {
   return `company-${props.color}-scheme`
 })
 
 const agendaItems = computed(() => {
-  return $frontmatter.agenda || []
-})
-
-const totalTime = computed(() => {
-  if (!props.showTimeAllocation) return 0
-  return agendaItems.value.reduce((total, item) => total + (item.time || 0), 0)
+  return props.agenda || []
 })
 
 const getItemClass = (index) => {
-  const baseClass = 'agenda-item p-4 mb-3 rounded-lg transition-all duration-300'
   const isCurrent = props.highlightCurrent && index === props.currentItem
-  const isPast = props.highlightCurrent && index < props.currentItem
-  
-  if (isCurrent) {
-    return `${baseClass} bg-blue-100 border-l-4 border-blue-500 shadow-md`
-  } else if (isPast) {
-    return `${baseClass} bg-gray-100 opacity-75`
-  } else {
-    return `${baseClass} bg-white border border-gray-200 hover:shadow-sm`
-  }
-}
-
-const getTimePercentage = (item) => {
-  if (!props.showTimeAllocation || totalTime.value === 0) return 0
-  return ((item.time || 0) / totalTime.value) * 100
+  return isCurrent ? 'agenda-item-current' : 'agenda-item'
 }
 </script>
 
 <template>
   <div class="slidev-layout agenda h-full slidecolor" :class="[colorscheme]">
-    <div class="h-full flex flex-col">
+    <div class="h-full flex flex-col justify-start">
       <!-- Header -->
-      <div class="agenda-header mb-8">
-        <h1 class="text-4xl font-bold mb-2">Agenda</h1>
-        <div v-if="showTimeAllocation && totalTime > 0" class="text-lg text-gray-600">
-          Total Duration: {{ totalTime }} minutes
-        </div>
+      <div class="agenda-header">
+        <h1 class="agenda-title">{{ props.title }}</h1>
       </div>
       
       <!-- Agenda Items -->
-      <div class="agenda-content flex-1">
+      <div class="agenda-content">
         <div v-for="(item, index) in agendaItems" :key="index" :class="getItemClass(index)">
-          <div class="flex items-center justify-between">
-            <div class="flex-1">
-              <h3 class="text-xl font-semibold mb-2">{{ item.title }}</h3>
-              <p v-if="item.description" class="text-gray-600">{{ item.description }}</p>
-            </div>
-            <div v-if="showTimeAllocation && item.time" class="text-right ml-4">
-              <div class="text-lg font-medium">{{ item.time }} min</div>
-              <div class="w-20 bg-gray-200 rounded-full h-2 mt-1">
-                <div 
-                  class="bg-blue-500 h-2 rounded-full transition-all duration-500"
-                  :style="{ width: `${getTimePercentage(item)}%` }"
-                ></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Progress indicator -->
-      <div v-if="agendaItems.length > 0" class="agenda-progress mt-6">
-        <div class="flex items-center justify-between text-sm text-gray-500 mb-2">
-          <span>Progress</span>
-          <span>{{ Math.min(currentItem + 1, agendaItems.length) }} / {{ agendaItems.length }}</span>
-        </div>
-        <div class="w-full bg-gray-200 rounded-full h-2">
-          <div 
-            class="bg-blue-500 h-2 rounded-full transition-all duration-500"
-            :style="{ width: `${(Math.min(currentItem + 1, agendaItems.length) / agendaItems.length) * 100}%` }"
-          ></div>
+          <span class="agenda-item-text">{{ item.title || item }}</span>
         </div>
       </div>
     </div>
@@ -104,25 +58,133 @@ const getTimePercentage = (item) => {
 </template>
 
 <style scoped>
+/* ===== AGENDA LAYOUT STYLING ===== */
+.slidev-layout.agenda {
+  font-family: var(--company-font-primary);
+  padding: var(--company-space-8);
+  margin: 0;
+}
+
+/* Header styling */
+.agenda-header {
+  margin-bottom: 5rem;
+}
+
+.agenda-title {
+  font-family: var(--company-font-heading);
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  margin: 0;
+  padding: 0;
+  line-height: 1.1;
+}
+
+/* Content area */
+.agenda-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* Agenda items */
 .agenda-item {
+  width:60%;
+  padding:0.75rem 0rem 0.75rem 6rem;
   transition: all 0.3s ease;
 }
 
-.agenda-item:hover {
-  transform: translateX(4px);
-}
-
-.slidev-layout.agenda {
-  font-family: var(--company-font-primary);
-}
-
-.slidev-layout.agenda h1 {
+.agenda-item-text {
   font-family: var(--company-font-heading);
-  color: var(--company-text-heading);
+  font-size: 1.5rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  line-height: 1.3;
 }
 
-.slidev-layout.agenda h3 {
-  font-family: var(--company-font-heading);
-  color: var(--company-text-heading);
+/* Current/highlighted item */
+.agenda-item-current {
+  margin: 0;
+  border-radius: 0;
+  position: relative;
+  padding:0.75rem 0rem 0.75rem 6rem;
+  max-width: 80%;
+}
+
+.agenda-item-current .agenda-item-text {
+  font-weight: 700;
+  text-align: left;
+  display: block;
+  width: 100%;
+}
+
+/* ===== LIGHT SCHEME ===== */
+.company-light-scheme.slidev-layout.agenda {
+  background-color: var(--company-agenda-bg);
+  color: var(--company-agenda-item-color);
+}
+
+.company-light-scheme.slidev-layout .agenda-title {
+  color: var(--company-agenda-title-color);
+}
+
+.company-light-scheme.slidev-layout .agenda-item-text {
+  color: var(--company-agenda-item-color);
+}
+
+.company-light-scheme.slidev-layout .agenda-item-current {
+  background-color: var(--company-agenda-current-bg);
+}
+
+.company-light-scheme.slidev-layout .agenda-item-current .agenda-item-text {
+  color: var(--company-agenda-current-text);
+}
+
+/* ===== DARK SCHEME ===== */
+.company-dark-scheme.slidev-layout.agenda {
+  background-color: var(--company-agenda-bg-dark);
+  color: var(--company-agenda-item-color-dark);
+}
+
+.company-dark-scheme.slidev-layout .agenda-title {
+  color: var(--company-agenda-title-color-dark);
+}
+
+.company-dark-scheme.slidev-layout .agenda-item-text {
+  color: var(--company-agenda-item-color-dark);
+}
+
+.company-dark-scheme.slidev-layout .agenda-item-current {
+  background-color: var(--company-agenda-current-bg-dark);
+}
+
+.company-dark-scheme.slidev-layout .agenda-item-current .agenda-item-text {
+  color: var(--company-agenda-current-text-dark);
+}
+
+/* ===== RESPONSIVE ADJUSTMENTS ===== */
+@media (max-width: 768px) {
+  .agenda-title {
+    font-size: 2.5rem;
+  }
+  
+  .agenda-item-text {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .agenda-title {
+    font-size: 2rem;
+  }
+  
+  .agenda-item-text {
+    font-size: 1.125rem;
+  }
+  
+  .agenda-item-current {
+    padding: 0.5rem 1rem;
+    margin: 0 -1rem;
+  }
 }
 </style>

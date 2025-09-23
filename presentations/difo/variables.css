@@ -26,6 +26,18 @@
   --company-slide-logo-size: small; /* small, medium, large */
   --company-slide-logo-opacity: 1;
   --company-slide-logo-show: true;
+
+  /* ===== AGENDA LAYOUT COLORS ===== */
+  --company-agenda-bg: var(--company-bg-primary);
+  --company-agenda-bg-dark: var(--company-bg-primary-dark);
+  --company-agenda-title-color: var(--company-text-heading);
+  --company-agenda-title-color-dark: var(--company-text-heading-dark);
+  --company-agenda-item-color: var(--company-text-primary);
+  --company-agenda-item-color-dark: var(--company-text-primary-dark);
+  --company-agenda-current-bg: var(--company-text-heading);
+  --company-agenda-current-text: var(--company-bg-primary);
+  --company-agenda-current-bg-dark: var(--company-text-inverse);
+  --company-agenda-current-text-dark: var(--company-text-heading);
   
   /* ===== BACKGROUND COLORS ===== */
   --company-bg-primary: #ffffff;

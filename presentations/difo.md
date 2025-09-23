@@ -25,6 +25,15 @@ presenters:
 
 ---
 layout: agenda
+color: dark
+currentItem: 0
+highlightCurrent: true
+title: AGENDA
+agenda:
+  - "GRUNDLAGEN"
+  - "RISIKOMANAGEMENT"
+  - "EINSATZSZENARIEN & WERKZEUGE"
+  - "AUSBLICK"
 ---
 
 # Complete Reference Guide
@@ -478,21 +487,34 @@ color: dark
 
 ---
 layout: agenda
+color: light
+title: AGENDA
+agenda:
+  - "INTRODUCTION"
+  - "FEATURES OVERVIEW"
+  - "TECHNICAL DETAILS"
+  - "CONCLUSION"
+currentItem: 1
+highlightCurrent: true
 ---
 
-# Layout: agenda
+# Layout: agenda (Light)
 
-**Agenda/outline layout**
+**Light theme agenda presentation**
 
 ```yaml
 ---
 layout: agenda
+color: light
+title: AGENDA
+agenda:
+  - "INTRODUCTION"
+  - "FEATURES OVERVIEW"
+  - "TECHNICAL DETAILS"
+  - "CONCLUSION"
+currentItem: 1
+highlightCurrent: true
 ---
-
-# Agenda
-1. First item
-2. Second item
-3. Third item
 ```
 
 **Perfect for presentation outlines**
@@ -500,16 +522,32 @@ layout: agenda
 ---
 layout: agenda
 color: dark
+title: AGENDA
+agenda:
+  - "GRUNDLAGEN"
+  - "RISIKOMANAGEMENT"
+  - "EINSATZSZENARIEN & WERKZEUGE"
+  - "AUSBLICK"
+currentItem: 0
+highlightCurrent: true
 ---
 
 # Layout: agenda (Dark)
 
-**Agenda layout - Dark version**
+**Dark theme agenda presentation**
 
 ```yaml
 ---
 layout: agenda
 color: dark
+title: AGENDA
+agenda:
+  - "GRUNDLAGEN"
+  - "RISIKOMANAGEMENT"
+  - "EINSATZSZENARIEN & WERKZEUGE"
+  - "AUSBLICK"
+currentItem: 0
+highlightCurrent: true
 ---
 ```
 
