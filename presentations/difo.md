@@ -16,7 +16,11 @@ presenters:
   - name: Peter-Christoph Haider
     title: Managing Director, Munich
     email: phaider@difo.de
-    photo: /people/phaider-512.png
+    photo: /photo.png
+  - name: Peter-Christoph Haider
+    title: Managing Director, Munich
+    email: phaider@difo.de
+    photo: /photo.png
 ---
 
 ---
