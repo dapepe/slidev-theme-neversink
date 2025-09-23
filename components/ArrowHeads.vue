@@ -67,7 +67,7 @@ const colorscheme = computed(() => {
 
 <style scoped>
 .cls-1 {
-  fill: var(--neversink-bg-color);
+  fill: var(--company-bg-primary);
   stroke-width: 0px;
 }
 </style>

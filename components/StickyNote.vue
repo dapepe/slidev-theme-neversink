@@ -29,9 +29,9 @@ const stickyClasses = computed(() => {
 })
 
 const stickyStyles = computed(() => ({
-  '--sticky-color': 'var(--neversink-bg-color)',
-  '--border-color': 'var(--neversink-fg-color)',
-  '--text-color': 'var(--neversink-text-color)',
+  '--sticky-color': 'var(--company-sticky-bg)',
+  '--border-color': 'var(--company-sticky-border)',
+  '--text-color': 'var(--company-sticky-text)',
   '--text-align': props.textAlign,
   '--width': props.width,
 }))

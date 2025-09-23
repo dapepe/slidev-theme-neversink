@@ -49,12 +49,12 @@ const thumbRotation = computed(() => {
 
 <style scoped>
 .cls-1 {
-  fill: var(--neversink-bg-color);
+  fill: var(--company-bg-primary);
   stroke-miterlimit: 10;
 }
 
 .cls-2 {
-  fill: var(--neversink-border-color);
+  fill: var(--company-border-primary);
   stroke-width: 0px;
 }
 </style>

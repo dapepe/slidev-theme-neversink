@@ -40,7 +40,7 @@
     "@iconify/json": "^2.2.221",
     "@iconify/vue": "^4.1.2",
     "@mdit/plugin-sub": "^0.12.0",
-    "@slidev/types": "^0.49.21",
+    "@slidev/types": "0.49.29",
     "@vueuse/motion": "^3.0.3",
     "defu": "^6.1.4",
     "markdown-it-mark": "^4.0.0",
@@ -60,7 +60,7 @@
     "highlighter": "all"
   },
   "devDependencies": {
-    "@slidev/cli": "^0.49.21",
+    "@slidev/cli": "0.49.29",
     "bumpp": "^9.4.1",
     "playwright-chromium": "^1.45.0",
     "pnpm": "^9.6.0",

@@ -23,7 +23,7 @@ const alignment = computed(() => {
 const colwidth = computed(() => compute_column_size(props.columns))
 
 const colorscheme = computed(() => {
-  return `neversink-${props.color}-scheme`
+  return `company-${props.color}-scheme`
 })
 </script>
 

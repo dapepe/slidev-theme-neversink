@@ -14,7 +14,7 @@ const props = defineProps({
 
 <style>
 .ns-c-email {
-  font-family: var(--neversink-font-mono);
+  font-family: var(--company-font-mono);
   font-weight: 300;
   letter-spacing: 0.09em;
 }

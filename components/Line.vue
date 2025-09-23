@@ -66,6 +66,6 @@ onClickOutside(clickArea, () => emit('clickOutside'))
 </template>
 <style scoped>
 .cls-1 {
-  stroke: var(--neversink-bg-color);
+  stroke: var(--company-bg-primary);
 }
 </style>

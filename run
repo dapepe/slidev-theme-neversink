@@ -1,4 +1,4 @@
-#!/bin/bash
+run#!/bin/bash
 
 # Shell script to run, export, build, or create a new Slidev presentation from the presentations directory
 # Usage: ./run <filename> [--export | --build] (with or without .md extension)

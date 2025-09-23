@@ -122,15 +122,15 @@
 }
 
 .ns-c-quote {
-  font-family: var(--neversink-quote-font);
+  font-family: var(--company-font-quote);
   font-weight: 300;
   @apply leading-relaxed;
 }
 
 .ns-c-border {
-  border-left: 0.25em solid var(--neversink-text-color);
-  background-color: var(--neversink-bg-color);
-  color: var(--neversink-text-color);
+  border-left: 0.25em solid var(--company-text-primary);
+  background-color: var(--company-bg-primary);
+  color: var(--company-text-primary);
   margin-top: 0.5em;
   margin-bottom: 0.5em;
   padding-left: 1em;
@@ -162,7 +162,7 @@
 
 .ns-c-bind-scheme,
 .ns-c-mixin {
-  background-color: var(--neversink-bg-color);
-  color: var(--neversink-text-color);
-  border-color: var(--neversink-border-color);
+  background-color: var(--company-bg-primary);
+  color: var(--company-text-primary);
+  border-color: var(--company-border-primary);
 }

@@ -88,10 +88,10 @@ const trans = computed(() => {
 </template>
 <style scoped>
 .binder {
-  --new-color: color-mix(in srgb, var(--neversink-bg-color), v-bind(trans) transparent);
-  border-color: var(--neversink-border-color);
+  --new-color: color-mix(in srgb, var(--company-bg-primary), v-bind(trans) transparent);
+  border-color: var(--company-border-primary);
   background-color: var(--new-color);
-  color: var(--neversink-text-color);
+  color: var(--company-text-primary);
   width: v-bind(size);
   height: v-bind(size);
   border-width: v-bind(borderwidth);

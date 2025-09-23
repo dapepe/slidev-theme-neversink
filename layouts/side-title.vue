@@ -43,7 +43,7 @@ const alignment = computed(() => {
 })
 
 const colorscheme = computed(() => {
-  return `neversink-${props.color}-scheme`
+  return `company-${props.color}-scheme`
 })
 </script>
 <template>
@@ -114,7 +114,7 @@ const colorscheme = computed(() => {
 
 .slidev-layout.sidetitle hr {
   border: 0;
-  border-top: 1px solid var(--neversink-border-color);
+  border-top: 1px solid var(--company-border-primary);
   margin: 0;
   margin-bottom: 0.5rem;
   margin-top: 0.5rem;

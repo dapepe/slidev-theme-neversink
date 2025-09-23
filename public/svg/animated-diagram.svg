@@ -1,0 +1,45 @@
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="400" height="300" fill="#f8fafc" class="fadein-1"/>
+  
+  <!-- Title -->
+  <text x="200" y="40" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#1f2937" class="fadein-2">
+    Animated Diagram
+  </text>
+  
+  <!-- Circle 1 -->
+  <circle cx="100" cy="150" r="40" fill="#3b82f6" class="fadein-3"/>
+  <text x="100" y="155" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="white" class="fadein-3">
+    Start
+  </text>
+  
+  <!-- Arrow 1 -->
+  <path d="M 150 150 L 190 150" stroke="#6b7280" stroke-width="3" marker-end="url(#arrowhead)" class="fadein-4"/>
+  
+  <!-- Circle 2 -->
+  <circle cx="240" cy="150" r="40" fill="#10b981" class="fadein-5"/>
+  <text x="240" y="155" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="white" class="fadein-5">
+    Process
+  </text>
+  
+  <!-- Arrow 2 -->
+  <path d="M 280 150 L 320 150" stroke="#6b7280" stroke-width="3" marker-end="url(#arrowhead)" class="fadein-6"/>
+  
+  <!-- Circle 3 -->
+  <circle cx="370" cy="150" r="40" fill="#ef4444" class="fadein-7"/>
+  <text x="370" y="155" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="white" class="fadein-7">
+    End
+  </text>
+  
+  <!-- Arrow marker definition -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#6b7280" class="fadein-8"/>
+    </marker>
+  </defs>
+  
+  <!-- Description -->
+  <text x="200" y="250" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#6b7280" class="fadein-9">
+    Sequential fade-in animation demo
+  </text>
+</svg>

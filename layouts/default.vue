@@ -8,7 +8,7 @@ const props = defineProps({
 })
 
 const colorscheme = computed(() => {
-  return `neversink-${props.color}-scheme`
+  return `company-${props.color}-scheme`
 })
 </script>
 <template>

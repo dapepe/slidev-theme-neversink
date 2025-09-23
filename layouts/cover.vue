@@ -8,6 +8,23 @@ const props = defineProps({
   },
   logoSize: {
     default: 'large', // 'large', 'medium', 'small'
+  },
+  backgroundImage: {
+    type: String,
+    default: null
+  },
+  backgroundOverlay: {
+    type: String,
+    default: 'rgba(0, 0, 0, 0.4)'
+  },
+  showPresenter: {
+    type: Boolean,
+    default: true
+  },
+  presenterPosition: {
+    type: String,
+    default: 'bottom-right', // 'bottom-left', 'bottom-right', 'top-left', 'top-right'
+    validator: (value) => ['bottom-left', 'bottom-right', 'top-left', 'top-right'].includes(value)
   }
 })
 
@@ -35,7 +52,7 @@ const colorscheme = computed(() => {
   }
   
   // Default neversink scheme
-  return `neversink-${props.color}-scheme`
+  return `company-${props.color}-scheme`
 })
 
 const logoClass = computed(() => {
@@ -49,17 +66,134 @@ const logoClass = computed(() => {
       return 'w-80';
   }
 })
+
+const backgroundStyle = computed(() => {
+  if (props.backgroundImage) {
+    return {
+      backgroundImage: `url(${props.backgroundImage})`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      backgroundRepeat: 'no-repeat'
+    }
+  }
+  return {}
+})
+
+const presenterClass = computed(() => {
+  const baseClass = 'presenter-info absolute text-sm font-light'
+  switch(props.presenterPosition) {
+    case 'bottom-left':
+      return `${baseClass} bottom-4 left-4`
+    case 'top-left':
+      return `${baseClass} top-4 left-4`
+    case 'top-right':
+      return `${baseClass} top-4 right-4`
+    case 'bottom-right':
+    default:
+      return `${baseClass} bottom-4 right-4`
+  }
+})
 </script>
 
 <template>
-  <div class="slidev-layout cover h-full slidecolor" :class="[colorscheme]">
-    <div v-if="$frontmatter.logo" class="logo-container">
-      <img :src="$frontmatter.logo" :class="logoClass" />
+  <div 
+    class="slidev-layout cover h-full slidecolor relative" 
+    :class="[colorscheme]"
+    :style="backgroundStyle"
+  >
+    <!-- Background overlay -->
+    <div 
+      v-if="backgroundImage" 
+      class="absolute inset-0 z-0"
+      :style="{ backgroundColor: backgroundOverlay }"
+    ></div>
+    
+    <!-- Logo Header Section -->
+    <div class="logo-header absolute top-6 left-6 right-6 z-10 flex justify-between items-start">
+      <!-- Left logos -->
+      <div class="flex items-center gap-6">
+        <div v-if="$frontmatter.logo" class="logo-container">
+          <img :src="$frontmatter.logo" :class="logoClass" />
+        </div>
+        <div v-if="$frontmatter.logo2" class="logo-container">
+          <img :src="$frontmatter.logo2" :class="logoClass" />
+        </div>
+      </div>
+      
+      <!-- Right logos -->
+      <div class="flex items-center gap-6">
+        <div v-if="$frontmatter.clientLogo" class="client-logo-container">
+          <img :src="$frontmatter.clientLogo" :class="logoClass" />
+        </div>
+        <div v-if="$frontmatter.clientLogo2" class="client-logo-container">
+          <img :src="$frontmatter.clientLogo2" :class="logoClass" />
+        </div>
+      </div>
     </div>
-    <div class="content w-full" :class="{ 'myauto': !isCmsitTheme }">
-      <slot />
+    
+    <!-- Main content -->
+    <div class="content w-full relative z-10 flex flex-col justify-center items-start px-6" :class="{ 'myauto': !isCmsitTheme }">
+      <div class="main-content-area max-w-4xl">
+        <slot />
+        
+        <!-- Version/Date information -->
+        <div v-if="$frontmatter.version || $frontmatter.date" class="version-info mt-6 text-white text-lg opacity-90">
+          <span v-if="$frontmatter.date">{{ $frontmatter.date }}</span>
+          <span v-if="$frontmatter.version && $frontmatter.date">, </span>
+          <span v-if="$frontmatter.version">Version {{ $frontmatter.version }}</span>
+        </div>
+      </div>
     </div>
-    <div class="note absolute bottom-3">
+    
+    <!-- Presenter information -->
+    <div v-if="showPresenter && ($frontmatter.presenters || $frontmatter.presenter || $frontmatter.author)" class="presenter-section absolute bottom-8 left-6 right-6 z-10">
+      <!-- Multiple presenters -->
+      <div v-if="$frontmatter.presenters" class="flex justify-start gap-12">
+        <div
+          v-for="(presenter, index) in $frontmatter.presenters"
+          :key="index"
+          class="presenter-card flex items-center gap-4"
+        >
+          <!-- Presenter photo -->
+          <div v-if="presenter.photo" class="presenter-photo">
+            <img 
+              :src="presenter.photo" 
+              :alt="presenter.name"
+              class="w-16 h-16 rounded-full object-cover border-4 border-green-400"
+            />
+          </div>
+          
+          <!-- Presenter info -->
+          <div class="presenter-info">
+            <div class="presenter-name text-white font-semibold text-lg">
+              {{ presenter.name }}
+            </div>
+            <div v-if="presenter.title" class="presenter-title text-white text-sm opacity-90">
+              {{ presenter.title }}
+            </div>
+            <div v-if="presenter.email" class="presenter-email text-white text-sm opacity-80">
+              {{ presenter.email }}
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Single presenter (legacy support) -->
+      <div v-else-if="$frontmatter.presenter || $frontmatter.author" :class="presenterClass">
+        <div v-if="$frontmatter.presenter" class="presenter-name font-medium">
+          {{ $frontmatter.presenter }}
+        </div>
+        <div v-if="$frontmatter.author && $frontmatter.author !== $frontmatter.presenter" class="author-name text-sm opacity-80">
+          {{ $frontmatter.author }}
+        </div>
+        <div v-if="$frontmatter.presenterTitle" class="presenter-title text-xs opacity-70 mt-1">
+          {{ $frontmatter.presenterTitle }}
+        </div>
+      </div>
+    </div>
+    
+    <!-- Note slot -->
+    <div class="note absolute bottom-3 left-6 z-10">
       <slot name="note" />
     </div>
   </div>
@@ -69,8 +203,8 @@ const logoClass = computed(() => {
 /* cover slide type */
 
 .slidev-layout.cover {
-  font-family: var(--neversink-main-font);
-  font-weight: 300;
+  font-family: var(--company-font-primary);
+  font-weight: var(--company-font-weight-light);
 }
 
 .slidev-layout.cover {
@@ -94,28 +228,28 @@ const logoClass = computed(() => {
 }
 
 .slidev-layout.cover h1 {
-  font-family: var(--neversink-title-font);
-  font-weight: 500;
-  font-size: 3em;
-  line-height: normal;
+  font-family: var(--company-font-heading);
+  font-weight: var(--company-cover-title-weight);
+  font-size: var(--company-cover-title-size);
+  line-height: var(--company-line-height-tight);
   margin-bottom: 0.9rem;
   margin-top: 40px;
 }
 
 .slidev-layout.cover h2 {
-  font-family: var(--neversink-title-font);
-  font-weight: 500;
-  font-size: 2.5em;
-  line-height: normal;
+  font-family: var(--company-font-heading);
+  font-weight: var(--company-cover-subtitle-weight);
+  font-size: var(--company-cover-subtitle-size);
+  line-height: var(--company-line-height-tight);
   margin-bottom: 0.9rem;
   margin-top: 40px;
 }
 
 .slidev-layout.cover h3 {
-  font-family: var(--neversink-title-font);
-  font-weight: 500;
-  font-size: 1.9em;
-  line-height: normal;
+  font-family: var(--company-font-heading);
+  font-weight: var(--company-font-weight-medium);
+  font-size: var(--company-font-size-xl);
+  line-height: var(--company-line-height-tight);
   margin-bottom: 0.9rem;
   margin-top: 40px;
 }
@@ -143,7 +277,7 @@ const logoClass = computed(() => {
 .slidev-layout.cover h2,
 .slidev-layout.cover h3 {
   padding-bottom: 0.3em;
-  border-bottom: 1px solid var(--neversink-highlight-color);
+  border-bottom: 1px solid var(--company-primary);
 }
 
 </style>

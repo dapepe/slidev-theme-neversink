@@ -22,7 +22,7 @@ const alignment = computed(() => {
 })
 
 const colorscheme = computed(() => {
-  return `neversink-${props.color}-scheme`
+  return `company-${props.color}-scheme`
 })
 </script>
 <template>
@@ -103,21 +103,21 @@ li li {
 
 .slidev-layout.toptitlecontent h1 {
   font-size: 1.4em;
-  font-family: var(--neversink-title-font);
+  font-family: var(--company-font-heading);
   font-weight: 500;
   margin-bottom: 0rem;
 }
 
 .slidev-layout.toptitle .content h2 {
   font-size: 1.4em;
-  font-family: var(--neversink-title-font);
+  font-family: var(--company-font-heading);
   font-weight: 500;
   margin-bottom: 0rem;
 }
 
 .slidev-layout.toptitle .content h3 {
   font-size: 1.1em;
-  font-family: var(--neversink-title-font);
+  font-family: var(--company-font-heading);
   font-weight: 500;
   margin-bottom: 0rem;
 }
@@ -131,21 +131,21 @@ li li {
 
 .slidev-layout.toptitle.title h1 {
   font-size: 1.8em;
-  font-family: var(--neversink-title-font);
+  font-family: var(--company-font-heading);
   font-weight: 500;
   letter-spacing: 0.07em;
 }
 
 .slidev-layout.toptitle.title h2 {
   font-size: 1.5em;
-  font-family: var(--neversink-title-font);
+  font-family: var(--company-font-heading);
   font-weight: 300;
   letter-spacing: 0.07em;
 }
 
 .slidev-layout.toptitle.title h3 {
   font-size: 1.1em;
-  font-family: var(--neversink-title-font);
+  font-family: var(--company-font-heading);
   font-weight: 300;
   letter-spacing: 0.07em;
 }

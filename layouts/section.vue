@@ -19,7 +19,7 @@ const colorscheme = computed(() => {
     const color = props.color?.startsWith('cmsit-') ? props.color : `cmsit-${props.color}`
     return `${color}-scheme`
   }
-  return `neversink-${props.color}-scheme`
+  return `company-${props.color}-scheme`
 })
 </script>
 
@@ -27,7 +27,7 @@ const colorscheme = computed(() => {
   <div class="slidev-layout section slidecolor" :class="[colorscheme, { 'cmsit-section': isCmsitTheme }]">
     <div :class="{ 'my-auto': !isCmsitTheme }">
       <slot />
-      <hr v-if="isCmsitTheme" class="mt-2 border-2" :style="{ borderColor: 'var(--neversink-highlight-color)' }" />
+      <hr v-if="isCmsitTheme" class="mt-2 border-2" :style="{ borderColor: 'var(--company-primary)' }" />
     </div>
   </div>
 </template>
@@ -40,7 +40,7 @@ const colorscheme = computed(() => {
 
 .slidev-layout.section hr {
   border: 0;
-  border-top: 1px solid var(--neversink-border-color);
+  border-top: 1px solid var(--company-border-primary);
   margin: 0;
   margin-bottom: 0.5rem;
   margin-top: 0.5rem;
@@ -48,34 +48,34 @@ const colorscheme = computed(() => {
 
 /* cover slide type */
 .slidev-layout.section h1 {
-  font-family: var(--neversink-title-font);
-  font-weight: 500;
-  font-size: 2.8em;
+  font-family: var(--company-font-heading);
+  font-weight: var(--company-section-title-weight);
+  font-size: var(--company-section-title-size);
   padding-bottom: 0.3rem;
-  line-height: normal;
+  line-height: var(--company-line-height-tight);
 }
 
 .slidev-layout.section h2 {
-  font-family: var(--neversink-title-font);
-  font-weight: 500;
-  font-size: 2.5em;
-  line-height: normal;
+  font-family: var(--company-font-heading);
+  font-weight: var(--company-font-weight-medium);
+  font-size: var(--company-font-size-3xl);
+  line-height: var(--company-line-height-tight);
 }
 
 .slidev-layout.section h3 {
-  font-family: var(--neversink-title-font);
-  font-weight: 500;
-  font-size: 1.9em;
-  line-height: normal;
+  font-family: var(--company-font-heading);
+  font-weight: var(--company-font-weight-medium);
+  font-size: var(--company-font-size-2xl);
+  line-height: var(--company-line-height-tight);
 }
 
 .slidev-layout.section {
-  font-family: var(--neversink-main-font);
-  font-weight: 300;
+  font-family: var(--company-font-primary);
+  font-weight: var(--company-font-weight-light);
 }
 
 .slidev-layout.section strong {
-  font-weight: 500;
+  font-weight: var(--company-font-weight-medium);
 }
 
 .slidev-layout.section h1 + p {
