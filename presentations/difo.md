@@ -26,10 +26,9 @@ presenters:
 ---
 layout: agenda
 color: dark
-currentItem: 0
+currentItem: 1
 highlightCurrent: true
 title: AGENDA
-enableAgendaNavigation: true
 agenda:
   - "GRUNDLAGEN"
   - "RISIKOMANAGEMENT"

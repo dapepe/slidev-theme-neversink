@@ -1,6 +1,5 @@
 <script setup lang="js">
-import { computed, onMounted, onUnmounted, ref } from 'vue'
-import { useSlideNavigation } from '../composables/useSlideNavigation.js'
+import { computed, ref } from 'vue'
 
 const props = defineProps({
   color: {
@@ -15,7 +14,11 @@ const props = defineProps({
     type: String,
     default: 'AGENDA'
   },
-  enableAgendaNavigation: {
+  currentItem: {
+    type: Number,
+    default: 0
+  },
+  highlightCurrent: {
     type: Boolean,
     default: true
   }
@@ -29,92 +32,12 @@ const agendaItems = computed(() => {
   return props.agenda || []
 })
 
-// Use the slide navigation composable
-const {
-  currentStep,
-  totalSteps,
-  isNavigationBlocked,
-  startBlocking,
-  stopBlocking,
-  setTotalSteps,
-  reset,
-  goToStep
-} = useSlideNavigation({
-  enableNavigation: props.enableAgendaNavigation,
-  navInstance: $slidev?.nav, // Pass navigation instance
-  currentLayout: 'agenda', // Pass current layout
-  onNext: (step) => {
-    console.log(`Agenda: Advanced to step ${step + 1}`)
-  },
-  onPrev: (step) => {
-    console.log(`Agenda: Went back to step ${step + 1}`)
-  },
-  canGoNext: () => currentStep.value < totalSteps.value - 1,
-  canGoPrev: () => currentStep.value > 0,
-  onComplete: () => {
-    console.log('Agenda: All items completed, allowing slide navigation')
-  }
-})
-
 const getItemClass = (index) => {
-  const isCurrent = index === currentStep.value
+  const isCurrent = props.highlightCurrent && index === props.currentItem
   return isCurrent ? 'agenda-item-current' : 'agenda-item'
 }
 
-const canGoNext = computed(() => {
-  if (!props.enableAgendaNavigation) return true
-  return currentStep.value >= agendaItems.value.length - 1
-})
-
-// Intersection Observer for visibility detection
-let observer = null
-const isDestroyed = ref(false)
-
-// Initialize navigation with intersection observer
-onMounted(() => {
-  if (!props.enableAgendaNavigation) return
-  
-  // Create intersection observer to detect when component is visible
-  observer = new IntersectionObserver((entries) => {
-    // Check if component is still alive
-    if (isDestroyed.value) return
-    
-    entries.forEach(entry => {
-      if (isDestroyed.value) return // Double check during forEach
-      
-      if (entry.isIntersecting) {
-        // Component is visible - start navigation override
-        setTotalSteps(agendaItems.value.length)
-        startBlocking()
-      } else {
-        // Component is not visible - stop navigation override
-        stopBlocking()
-      }
-    })
-  }, {
-    threshold: 0.1 // Trigger when 10% of component is visible
-  })
-  
-  // Start observing the agenda container
-  const agendaContainer = document.querySelector('.slidev-layout.agenda')
-  if (agendaContainer) {
-    observer.observe(agendaContainer)
-  }
-})
-
-// Cleanup navigation when component unmounts
-onUnmounted(() => {
-  isDestroyed.value = true
-  
-  if (observer) {
-    observer.disconnect()
-    observer = null
-  }
-  
-  if (props.enableAgendaNavigation) {
-    stopBlocking()
-  }
-})
+// Simple agenda layout - highlights item based on currentItem prop
 </script>
 
 <template>
@@ -131,8 +54,7 @@ onUnmounted(() => {
           v-for="(item, index) in agendaItems" 
           :key="index" 
           :class="getItemClass(index)"
-          @click="enableAgendaNavigation && goToStep(index)"
-          :style="{ cursor: enableAgendaNavigation ? 'pointer' : 'default' }"
+          :style="{ cursor: 'default' }"
         >
           <span class="agenda-item-text">{{ item.title || item }}</span>
         </div>
