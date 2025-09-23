@@ -41,7 +41,7 @@ const props = defineProps({
 
 const emit = defineEmits(['dblclick', 'clickOutside'])
 const colorscheme = computed(() => {
-  return `neversink-${props.color}-scheme`
+  return `company-${props.color}-scheme`
 })
 
 const clickArea = ref()

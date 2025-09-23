@@ -161,6 +161,11 @@ const alignment = computed(() => {
 })
 
 function color(code) {
+  // Handle undefined or null values
+  if (!code || typeof code !== 'string') {
+    return 'text-gray-800 bg-gray-100' // Default fallback
+  }
+  
   if (code === 'black') {
     return 'text-white bg-black'
   }
@@ -184,11 +189,19 @@ function color(code) {
 
 const cellcolor = computed(() => {
   const parts = props.color.split(',')
+  // Pad array with default values if not enough parts provided
+  const paddedParts = [
+    parts[0] || 'light',
+    parts[1] || 'light', 
+    parts[2] || 'light',
+    parts[3] || 'light'
+  ]
+  
   return {
-    tl: color(parts[0]),
-    tr: color(parts[1]),
-    bl: color(parts[2]),
-    br: color(parts[3]),
+    tl: color(paddedParts[0]),
+    tr: color(paddedParts[1]),
+    bl: color(paddedParts[2]),
+    br: color(paddedParts[3]),
   }
 })
 </script>

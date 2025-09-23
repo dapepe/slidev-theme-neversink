@@ -1350,21 +1350,23 @@ layout: default
 
 <div class="my-8">
   <VDragLine 
-    :start-y="100"
-    :end-y="300"
+    :startX="50"
+    :startY="100"
+    :endX="250"
+    :endY="300"
     color="blue"
     thickness="2"
-    interactive="true"
   />
 </div>
 
 ```vue
 <VDragLine 
-  :start-y="100"
-  :end-y="300"
+  :startX="50"
+  :startY="100"
+  :endX="250"
+  :endY="300"
   color="blue"
   thickness="2"
-  interactive="true"
 />
 ```
 
@@ -1379,11 +1381,12 @@ color: dark
 
 <div class="my-8">
   <VDragLine 
-    :start-y="100"
-    :end-y="300"
+    :startX="50"
+    :startY="100"
+    :endX="250"
+    :endY="300"
     color="cyan"
     thickness="2"
-    interactive="true"
   />
 </div>
 
@@ -1406,21 +1409,21 @@ layout: default
 
 <div class="flex justify-center space-x-8 my-8">
   <div class="text-center">
-    <Cat size="120" mood="happy" color="#1e3a8a" />
+    <Cat :size=120 mood="happy" color="#1e3a8a" />
     <p class="mt-2">Happy Cat</p>
   </div>
   <div class="text-center">
-    <Cat size="120" mood="excited" color="#059669" />
+    <Cat :size=120 mood="excited" color="#059669" />
     <p class="mt-2">Excited Cat</p>
   </div>
   <div class="text-center">
-    <Cat size="120" mood="sad" color="#ef4444" />
+    <Cat :size=120 mood="sad" color="#ef4444" />
     <p class="mt-2">Sad Cat</p>
   </div>
 </div>
 
 ```vue
-<Cat size="120" mood="happy" color="#1e3a8a" />
+<Cat :size=120 mood="happy" color="#1e3a8a" />
 ```
 
 **Moods:** happy, excited, sad, shocked, blissful
@@ -1434,11 +1437,11 @@ color: dark
 
 <div class="flex justify-center space-x-8 my-8">
   <div class="text-center">
-    <Cat size="120" mood="blissful" color="#6366f1" />
+    <Cat :size=120 mood="blissful" color="#6366f1" />
     <p class="mt-2">Blissful Cat</p>
   </div>
   <div class="text-center">
-    <Cat size="120" mood="shocked" color="#ec4899" />
+    <Cat :size=120 mood="shocked" color="#ec4899" />
     <p class="mt-2">Shocked Cat</p>
   </div>
 </div>
@@ -1453,21 +1456,21 @@ layout: default
 
 <div class="flex justify-center space-x-8 my-8">
   <div class="text-center">
-    <Ghost size="120" mood="happy" color="#1e3a8a" />
+    <Ghost :size=120 mood="happy" color="#1e3a8a" />
     <p class="mt-2">Happy Ghost</p>
   </div>
   <div class="text-center">
-    <Ghost size="120" mood="excited" color="#059669" />
+    <Ghost :size=120 mood="excited" color="#059669" />
     <p class="mt-2">Excited Ghost</p>
   </div>
   <div class="text-center">
-    <Ghost size="120" mood="shocked" color="#f59e0b" />
+    <Ghost :size=120 mood="shocked" color="#f59e0b" />
     <p class="mt-2">Shocked Ghost</p>
   </div>
 </div>
 
 ```vue
-<Ghost size="120" mood="happy" color="#1e3a8a" />
+<Ghost :size=120 mood="happy" color="#1e3a8a" />
 ```
 
 **Perfect for adding personality to presentations**
@@ -1481,11 +1484,11 @@ color: dark
 
 <div class="flex justify-center space-x-8 my-8">
   <div class="text-center">
-    <Ghost size="120" mood="blissful" color="#6366f1" />
+    <Ghost :size=120 mood="blissful" color="#6366f1" />
     <p class="mt-2">Blissful Ghost</p>
   </div>
   <div class="text-center">
-    <Ghost size="120" mood="sad" color="#ec4899" />
+    <Ghost :size=120 mood="sad" color="#ec4899" />
     <p class="mt-2">Sad Ghost</p>
   </div>
 </div>
@@ -1500,21 +1503,21 @@ layout: default
 
 <div class="flex justify-center space-x-8 my-8">
   <div class="text-center">
-    <Planet size="120" mood="happy" color="#1e3a8a" />
+    <Planet :size=120 mood="happy" color="#1e3a8a" />
     <p class="mt-2">Happy Planet</p>
   </div>
   <div class="text-center">
-    <Planet size="120" mood="excited" color="#059669" />
+    <Planet :size=120 mood="excited" color="#059669" />
     <p class="mt-2">Excited Planet</p>
   </div>
   <div class="text-center">
-    <Planet size="120" mood="blissful" color="#f59e0b" />
+    <Planet :size=120 mood="blissful" color="#f59e0b" />
     <p class="mt-2">Blissful Planet</p>
   </div>
 </div>
 
 ```vue
-<Planet size="120" mood="happy" color="#1e3a8a" />
+<Planet :size=120 mood="happy" color="#1e3a8a" />
 ```
 
 **Great for space themes and global concepts**
@@ -1528,11 +1531,11 @@ color: dark
 
 <div class="flex justify-center space-x-8 my-8">
   <div class="text-center">
-    <Planet size="120" mood="shocked" color="#6366f1" />
+    <Planet :size=120 mood="shocked" color="#6366f1" />
     <p class="mt-2">Shocked Planet</p>
   </div>
   <div class="text-center">
-    <Planet size="120" mood="sad" color="#ec4899" />
+    <Planet :size=120 mood="sad" color="#ec4899" />
     <p class="mt-2">Sad Planet</p>
   </div>
 </div>
@@ -1547,21 +1550,21 @@ layout: default
 
 <div class="flex justify-center space-x-8 my-8">
   <div class="text-center">
-    <IceCream size="120" mood="happy" color="#1e3a8a" />
+    <IceCream :size=120 mood="happy" color="#1e3a8a" />
     <p class="mt-2">Happy Ice Cream</p>
   </div>
   <div class="text-center">
-    <IceCream size="120" mood="excited" color="#059669" />
+    <IceCream :size=120 mood="excited" color="#059669" />
     <p class="mt-2">Excited Ice Cream</p>
   </div>
   <div class="text-center">
-    <IceCream size="120" mood="blissful" color="#ef4444" />
+    <IceCream :size=120 mood="blissful" color="#ef4444" />
     <p class="mt-2">Blissful Ice Cream</p>
   </div>
 </div>
 
 ```vue
-<IceCream size="120" mood="happy" color="#1e3a8a" />
+<IceCream :size=120 mood="happy" color="#1e3a8a" />
 ```
 
 **Sweet characters for fun presentations**
@@ -1575,11 +1578,11 @@ color: dark
 
 <div class="flex justify-center space-x-8 my-8">
   <div class="text-center">
-    <IceCream size="120" mood="shocked" color="#6366f1" />
+    <IceCream :size=120 mood="shocked" color="#6366f1" />
     <p class="mt-2">Shocked Ice Cream</p>
   </div>
   <div class="text-center">
-    <IceCream size="120" mood="sad" color="#ec4899" />
+    <IceCream :size=120 mood="sad" color="#ec4899" />
     <p class="mt-2">Sad Ice Cream</p>
   </div>
 </div>
@@ -1594,21 +1597,21 @@ layout: default
 
 <div class="flex justify-center space-x-8 my-8">
   <div class="text-center">
-    <Mug size="120" mood="happy" color="#1e3a8a" />
+    <Mug :size=120 mood="happy" color="#1e3a8a" />
     <p class="mt-2">Happy Mug</p>
   </div>
   <div class="text-center">
-    <Mug size="120" mood="excited" color="#059669" />
+    <Mug :size=120 mood="excited" color="#059669" />
     <p class="mt-2">Excited Mug</p>
   </div>
   <div class="text-center">
-    <Mug size="120" mood="blissful" color="#f59e0b" />
+    <Mug :size=120 mood="blissful" color="#f59e0b" />
     <p class="mt-2">Coffee Bliss</p>
   </div>
 </div>
 
 ```vue
-<Mug size="120" mood="happy" color="#1e3a8a" />
+<Mug :size=120 mood="happy" color="#1e3a8a" />
 ```
 
 **Perfect for coffee-themed or morning presentations**
@@ -1622,11 +1625,11 @@ color: dark
 
 <div class="flex justify-center space-x-8 my-8">
   <div class="text-center">
-    <Mug size="120" mood="shocked" color="#6366f1" />
+    <Mug :size=120 mood="shocked" color="#6366f1" />
     <p class="mt-2">Shocked Mug</p>
   </div>
   <div class="text-center">
-    <Mug size="120" mood="sad" color="#ec4899" />
+    <Mug :size=120 mood="sad" color="#ec4899" />
     <p class="mt-2">Empty Mug</p>
   </div>
 </div>
@@ -1641,21 +1644,21 @@ layout: default
 
 <div class="flex justify-center space-x-8 my-8">
   <div class="text-center">
-    <BackPack size="120" mood="happy" color="#1e3a8a" />
+    <BackPack :size=120 mood="happy" color="#1e3a8a" />
     <p class="mt-2">Happy BackPack</p>
   </div>
   <div class="text-center">
-    <BackPack size="120" mood="excited" color="#059669" />
+    <BackPack :size=120 mood="excited" color="#059669" />
     <p class="mt-2">Adventure Pack</p>
   </div>
   <div class="text-center">
-    <BackPack size="120" mood="blissful" color="#ef4444" />
+    <BackPack :size=120 mood="blissful" color="#ef4444" />
     <p class="mt-2">Ready to Go</p>
   </div>
 </div>
 
 ```vue
-<BackPack size="120" mood="happy" color="#1e3a8a" />
+<BackPack :size=120 mood="happy" color="#1e3a8a" />
 ```
 
 **Great for travel, education, or adventure themes**
@@ -1669,11 +1672,11 @@ color: dark
 
 <div class="flex justify-center space-x-8 my-8">
   <div class="text-center">
-    <BackPack size="120" mood="shocked" color="#6366f1" />
+    <BackPack :size=120 mood="shocked" color="#6366f1" />
     <p class="mt-2">Surprised Pack</p>
   </div>
   <div class="text-center">
-    <BackPack size="120" mood="sad" color="#ec4899" />
+    <BackPack :size=120 mood="sad" color="#ec4899" />
     <p class="mt-2">Heavy Load</p>
   </div>
 </div>
@@ -1688,21 +1691,21 @@ layout: default
 
 <div class="flex justify-center space-x-8 my-8">
   <div class="text-center">
-    <Browser size="120" mood="happy" color="#1e3a8a" />
+    <Browser :size=120 mood="happy" color="#1e3a8a" />
     <p class="mt-2">Happy Browser</p>
   </div>
   <div class="text-center">
-    <Browser size="120" mood="excited" color="#059669" />
+    <Browser :size=120 mood="excited" color="#059669" />
     <p class="mt-2">Fast Loading</p>
   </div>
   <div class="text-center">
-    <Browser size="120" mood="blissful" color="#f59e0b" />
+    <Browser :size=120 mood="blissful" color="#f59e0b" />
     <p class="mt-2">Perfect Code</p>
   </div>
 </div>
 
 ```vue
-<Browser size="120" mood="happy" color="#1e3a8a" />
+<Browser :size=120 mood="happy" color="#1e3a8a" />
 ```
 
 **Perfect for web development and tech presentations**
@@ -1716,11 +1719,11 @@ color: dark
 
 <div class="flex justify-center space-x-8 my-8">
   <div class="text-center">
-    <Browser size="120" mood="shocked" color="#6366f1" />
+    <Browser :size=120 mood="shocked" color="#6366f1" />
     <p class="mt-2">Bug Found!</p>
   </div>
   <div class="text-center">
-    <Browser size="120" mood="sad" color="#ec4899" />
+    <Browser :size=120 mood="sad" color="#ec4899" />
     <p class="mt-2">404 Error</p>
   </div>
 </div>
@@ -1735,21 +1738,21 @@ layout: default
 
 <div class="flex justify-center space-x-8 my-8">
   <div class="text-center">
-    <CreditCard size="120" mood="happy" color="#1e3a8a" />
+    <CreditCard :size=120 mood="happy" color="#1e3a8a" />
     <p class="mt-2">Happy Payment</p>
   </div>
   <div class="text-center">
-    <CreditCard size="120" mood="excited" color="#059669" />
+    <CreditCard :size=120 mood="excited" color="#059669" />
     <p class="mt-2">Approved!</p>
   </div>
   <div class="text-center">
-    <CreditCard size="120" mood="blissful" color="#f59e0b" />
+    <CreditCard :size=120 mood="blissful" color="#f59e0b" />
     <p class="mt-2">Cashback</p>
   </div>
 </div>
 
 ```vue
-<CreditCard size="120" mood="happy" color="#1e3a8a" />
+<CreditCard :size=120 mood="happy" color="#1e3a8a" />
 ```
 
 **Perfect for payment, finance, and e-commerce themes**
@@ -1763,11 +1766,11 @@ color: dark
 
 <div class="flex justify-center space-x-8 my-8">
   <div class="text-center">
-    <CreditCard size="120" mood="shocked" color="#6366f1" />
+    <CreditCard :size=120 mood="shocked" color="#6366f1" />
     <p class="mt-2">High Bill!</p>
   </div>
   <div class="text-center">
-    <CreditCard size="120" mood="sad" color="#ec4899" />
+    <CreditCard :size=120 mood="sad" color="#ec4899" />
     <p class="mt-2">Declined</p>
   </div>
 </div>
@@ -1782,7 +1785,7 @@ layout: default
 
 <div class="flex justify-center my-8">
   <SpeechBubbleGuy 
-    size="120" 
+    :size=120 
     mood="happy" 
     color="#1e3a8a"
     message="Hello from DIFO!"
@@ -1791,7 +1794,7 @@ layout: default
 
 ```vue
 <SpeechBubbleGuy 
-  size="120" 
+  :size=120 
   mood="happy" 
   color="#1e3a8a"
   message="Your message here"
@@ -1809,7 +1812,7 @@ color: dark
 
 <div class="flex justify-center my-8">
   <SpeechBubbleGuy 
-    size="120" 
+    :size=120 
     mood="excited" 
     color="#6366f1"
     message="Dark theme rocks!"

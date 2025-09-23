@@ -14,16 +14,33 @@ import CardGrid from '../components/CardGrid.vue'
 import TaskOverview from '../components/TaskOverview.vue'
 import SvgAnimation from '../components/SvgAnimation.vue'
 
-// Auto company theming - import configurations
-import difoConfig from '../presentations/difo/config.js'
-import bellConfig from '../presentations/bell/config.js'
-import zeyosConfig from '../presentations/zeyos/config.js'
+// Auto-inject company CSS based on frontmatter (only when company changes)
+let currentCompany: string | null = null
 
-// Company configurations map
-const companyConfigs = {
-  difo: difoConfig,
-  bell: bellConfig,
-  zeyos: zeyosConfig
+const injectCompanyCSS = (company: string | null | undefined) => {
+  const companyKey = company?.toLowerCase() || 'difo'
+  
+  // Only inject if company has changed
+  if (currentCompany === companyKey) {
+    return companyKey
+  }
+  
+  // Remove any existing company CSS
+  const existingLink = document.querySelector('link[data-company-css]')
+  if (existingLink) {
+    existingLink.remove()
+  }
+  
+  // Inject the company-specific CSS file
+  const link = document.createElement('link')
+  link.rel = 'stylesheet'
+  link.href = `${companyKey}/variables.css`
+  link.setAttribute('data-company-css', companyKey)
+  document.head.appendChild(link)
+  
+  currentCompany = companyKey
+  console.log(`📄 Auto-injected ${companyKey}/variables.css (company changed)`)
+  return companyKey
 }
 
 // Vue3 Kawaii
@@ -67,25 +84,32 @@ export default defineAppSetup(({ app, router }) => {
   app.component('TaskOverview', TaskOverview)
   app.component('SvgAnimation', SvgAnimation)
   
-  // Auto-apply company theming
+  // Auto-apply company theming and color schemes
+  let currentColorScheme: string | null = null
+  
   const applyCompanyTheme = (company: string | null | undefined, colorScheme: string | null | undefined = 'light') => {
-    const companyKey = (company?.toLowerCase() || 'difo') as keyof typeof companyConfigs
-    const config = companyConfigs[companyKey] || companyConfigs.difo
-    const root = document.documentElement
+    // Inject company CSS (only if company changed)
+    injectCompanyCSS(company)
     
-    // Apply all configuration variables (both base and -dark variants)
-    Object.entries(config).forEach(([key, value]) => {
-      // Skip non-style properties
-      if (key === 'name') return
-      
-      const cssVar = `--company-${key.replace(/([A-Z])/g, '-$1').toLowerCase()}`
-      root.style.setProperty(cssVar, value as string)
-    })
-    
-    // CSS classes handle switching between light and dark variants
+    // Apply color scheme class (only if scheme changed)
     const scheme = colorScheme?.toLowerCase() || 'light'
-    console.log(`🎨 Applied ${companyKey} company theme (${Object.keys(config).length - 1} variables, ${scheme} mode handled by CSS)`)
-    return config
+    
+    if (currentColorScheme !== scheme) {
+      const root = document.documentElement
+      
+      // Remove any existing company scheme classes
+      root.classList.remove('company-light-scheme', 'company-white-scheme', 'company-dark-scheme')
+      
+      // Add the appropriate scheme class
+      if (scheme === 'dark') {
+        root.classList.add('company-dark-scheme')
+      } else {
+        root.classList.add('company-light-scheme')
+      }
+      
+      currentColorScheme = scheme
+      console.log(`🎨 Applied ${scheme} color scheme`)
+    }
   }
   
   // Apply company theme on route change
@@ -96,7 +120,7 @@ export default defineAppSetup(({ app, router }) => {
     applyCompanyTheme(company, colorScheme)
   })
   
-  // Apply initial theme
+  // Apply initial company theme
   if (typeof window !== 'undefined') {
     setTimeout(() => {
       const currentRoute = router.currentRoute.value
@@ -106,9 +130,6 @@ export default defineAppSetup(({ app, router }) => {
       applyCompanyTheme(company, colorScheme)
     }, 100)
   }
-  
-  // Make helper available globally
-  app.config.globalProperties.$applyCompanyTheme = applyCompanyTheme
 
   // Global styles are applied automatically
   // Components are registered and ready to use

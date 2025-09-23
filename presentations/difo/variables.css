@@ -1,0 +1,312 @@
+/* DIFO Digital Solutions - CSS Variables */
+/* Complete control over every visual aspect of DIFO presentations */
+
+:root {
+  /* ===== BRAND COLORS ===== */
+  --company-primary: #1e3a8a;
+  --company-primary-light: #3b82f6;
+  --company-primary-dark: #1e40af;
+  --company-primary-rgb: 30, 58, 138;
+  
+  --company-secondary: #059669;
+  --company-secondary-light: #10b981;
+  --company-secondary-dark: #047857;
+  --company-secondary-rgb: 5, 150, 105;
+  
+  --company-accent: #f59e0b;
+  --company-accent-light: #fbbf24;
+  --company-accent-dark: #d97706;
+  --company-accent-rgb: 245, 158, 11;
+  
+  /* ===== BACKGROUND COLORS ===== */
+  --company-bg-primary: #ffffff;
+  --company-bg-primary-dark: #1a202c;
+  --company-bg-secondary: #f8fafc;
+  --company-bg-secondary-dark: #2d3748;
+  --company-bg-tertiary: #f1f5f9;
+  --company-bg-tertiary-dark: #4a5568;
+  --company-bg-overlay: rgba(30, 58, 138, 0.9);
+  --company-bg-card: #ffffff;
+  --company-bg-section: linear-gradient(135deg, #1e3a8a, #3b82f6);
+  --company-bg-cover: linear-gradient(135deg, #1e3a8a, #1e40af);
+  --company-bg-quote: #f8fafc;
+  --company-bg-code: #f7fafc;
+  
+  /* ===== TEXT COLORS ===== */
+  --company-text-primary: #1a202c;
+  --company-text-primary-dark: #ffffff;
+  --company-text-secondary: #4a5568;
+  --company-text-secondary-dark: #e2e8f0;
+  --company-text-tertiary: #718096;
+  --company-text-tertiary-dark: #cbd5e0;
+  --company-text-inverse: #ffffff;
+  --company-text-inverse-dark: #1a202c;
+  --company-text-muted: #a0aec0;
+  --company-text-muted-dark: #718096;
+  --company-text-heading: #1a202c;
+  --company-text-heading-dark: #ffffff;
+  --company-text-quote: #4a5568;
+  --company-text-quote-dark: #e2e8f0;
+  --company-text-code: #2d3748;
+  --company-text-code-dark: #e2e8f0;
+  
+  /* ===== BORDER & DIVIDER COLORS ===== */
+  --company-border-primary: #e2e8f0;
+  --company-border-primary-dark: #4a5568;
+  --company-border-secondary: #cbd5e0;
+  --company-border-secondary-dark: #718096;
+  --company-divider: #e2e8f0;
+  --company-divider-dark: #4a5568;
+  
+  /* ===== STATUS COLORS ===== */
+  --company-success: #10b981;
+  --company-warning: #f59e0b;
+  --company-error: #ef4444;
+  --company-info: #3b82f6;
+  
+  /* ===== TYPOGRAPHY ===== */
+  --company-font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --company-font-heading: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --company-font-mono: 'Fira Code', 'Monaco', 'Consolas', monospace;
+  --company-font-quote: 'Inter', serif;
+  
+  /* Font weights */
+  --company-font-weight-thin: 100;
+  --company-font-weight-light: 300;
+  --company-font-weight-normal: 400;
+  --company-font-weight-medium: 500;
+  --company-font-weight-semibold: 600;
+  --company-font-weight-bold: 700;
+  --company-font-weight-black: 900;
+  
+  /* Font sizes */
+  --company-font-size-xs: 0.75rem;
+  --company-font-size-sm: 0.875rem;
+  --company-font-size-base: 1rem;
+  --company-font-size-lg: 1.125rem;
+  --company-font-size-xl: 1.25rem;
+  --company-font-size-2xl: 1.5rem;
+  --company-font-size-3xl: 1.875rem;
+  --company-font-size-4xl: 2.25rem;
+  --company-font-size-5xl: 3rem;
+  --company-font-size-6xl: 3.75rem;
+  
+  /* Line heights */
+  --company-line-height-tight: 1.25;
+  --company-line-height-normal: 1.5;
+  --company-line-height-relaxed: 1.625;
+  
+  /* ===== SPACING ===== */
+  --company-space-px: 1px;
+  --company-space-0: 0;
+  --company-space-1: 0.25rem;
+  --company-space-2: 0.5rem;
+  --company-space-3: 0.75rem;
+  --company-space-4: 1rem;
+  --company-space-5: 1.25rem;
+  --company-space-6: 1.5rem;
+  --company-space-8: 2rem;
+  --company-space-10: 2.5rem;
+  --company-space-12: 3rem;
+  --company-space-16: 4rem;
+  --company-space-20: 5rem;
+  --company-space-24: 6rem;
+  
+  /* Semantic spacing */
+  --company-space-xs: var(--company-space-1);
+  --company-space-sm: var(--company-space-2);
+  --company-space-md: var(--company-space-4);
+  --company-space-lg: var(--company-space-6);
+  --company-space-xl: var(--company-space-8);
+  --company-space-2xl: var(--company-space-12);
+  
+  /* ===== BORDERS & RADIUS ===== */
+  --company-border-width: 1px;
+  --company-border-width-2: 2px;
+  --company-border-width-4: 4px;
+  --company-border-width-8: 8px;
+  
+  --company-radius-none: 0;
+  --company-radius-sm: 0.125rem;
+  --company-radius-base: 0.25rem;
+  --company-radius-md: 0.375rem;
+  --company-radius-lg: 0.5rem;
+  --company-radius-xl: 0.75rem;
+  --company-radius-2xl: 1rem;
+  --company-radius-3xl: 1.5rem;
+  --company-radius-full: 9999px;
+  
+  /* ===== SHADOWS ===== */
+  --company-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --company-shadow-base: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+  --company-shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.06);
+  --company-shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05);
+  --company-shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1), 0 10px 10px rgba(0, 0, 0, 0.04);
+  --company-shadow-2xl: 0 25px 50px rgba(0, 0, 0, 0.25);
+  --company-shadow-inner: inset 0 2px 4px rgba(0, 0, 0, 0.06);
+  
+  /* ===== TRANSITIONS ===== */
+  --company-transition-none: none;
+  --company-transition-all: all 150ms ease-in-out;
+  --company-transition-colors: color 150ms ease-in-out, background-color 150ms ease-in-out, border-color 150ms ease-in-out;
+  --company-transition-opacity: opacity 150ms ease-in-out;
+  --company-transition-shadow: box-shadow 150ms ease-in-out;
+  --company-transition-transform: transform 150ms ease-in-out;
+  --company-transition-fast: all 100ms ease-in-out;
+  --company-transition-slow: all 300ms ease-in-out;
+  
+  /* ===== COMPONENT-SPECIFIC ===== */
+  /* Button styling */
+  --company-button-primary: var(--company-primary);
+  --company-button-primary-hover: var(--company-primary-dark);
+  --company-button-secondary: var(--company-secondary);
+  --company-button-secondary-hover: var(--company-secondary-dark);
+  --company-button-radius: var(--company-radius-md);
+  --company-button-padding: var(--company-space-2) var(--company-space-6);
+  
+  /* Card styling */
+  --company-card-bg: var(--company-bg-primary);
+  --company-card-border: var(--company-border-primary);
+  --company-card-radius: var(--company-radius-lg);
+  --company-card-shadow: var(--company-shadow-base);
+  --company-card-padding: var(--company-space-6);
+  --company-card-title-size: var(--company-font-size-lg);
+  --company-card-content-size: var(--company-font-size-base);
+  
+  /* Speech bubble styling */
+  --company-bubble-bg: var(--company-bg-secondary);
+  --company-bubble-border: var(--company-border-primary);
+  --company-bubble-radius: var(--company-radius-lg);
+  --company-bubble-shadow: var(--company-shadow-md);
+  --company-bubble-padding: var(--company-space-4);
+  --company-bubble-arrow-size: 8px;
+  
+  /* Sticky note styling */
+  --company-sticky-bg: #fef3c7;
+  --company-sticky-border: #92400e;
+  --company-sticky-text: #92400e;
+  --company-sticky-shadow: 5px 4px 6px rgba(0, 0, 0, 0.1);
+  --company-sticky-size: 180px;
+  --company-sticky-radius: 0.25rem;
+  
+  /* Box components */
+  --company-box-bg: #ffffff;
+  --company-box-bg-dark: #2d3748;
+  --company-box-border: #e2e8f0;
+  --company-box-border-dark: #4a5568;
+  --company-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --company-box-shadow-dark: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --company-box-radius: 0.5rem;
+  --company-box-padding: 1rem;
+  
+  /* Code block styling */
+  --company-code-bg: #f7fafc;
+  --company-code-bg-dark: #2d3748;
+  --company-code-text: #2d3748;
+  --company-code-text-dark: #e2e8f0;
+  --company-code-border: #e2e8f0;
+  --company-code-border-dark: #4a5568;
+  --company-code-radius: 0.375rem;
+  --company-code-padding: 1rem;
+  --company-code-font: 'Fira Code', monospace;
+  
+  /* Highlight styling */
+  --company-highlight-bg: #fef3c7;
+  --company-highlight-bg-dark: #374151;
+  --company-highlight-text: #92400e;
+  --company-highlight-text-dark: #fbbf24;
+  --company-highlight-radius: 0.25rem;
+  --company-highlight-padding: 0.25rem 0.5rem;
+  
+  /* ===== LAYOUT-SPECIFIC ===== */
+  /* Cover layout */
+  --company-cover-title-size: 8rem;
+  --company-cover-title-weight: 700;
+  --company-cover-subtitle-size: 1.5rem;
+  --company-cover-subtitle-weight: 400;
+  --company-cover-logo-size: 5rem;
+  --company-cover-presenter-size: 1rem;
+  --company-cover-date-size: 0.875rem;
+  --company-cover-padding: 2rem;
+  
+  /* Section layout */
+  --company-section-title-size: 2.25rem;
+  --company-section-title-weight: 600;
+  --company-section-border-width: 2px;
+  --company-section-padding: 2rem;
+  
+  /* Quote layout */
+  --company-quote-font-size: 1.5rem;
+  --company-quote-weight: 400;
+  --company-quote-icon-size: 3rem;
+  --company-quote-icon-opacity: 0.3;
+  --company-quote-author-size: 1.125rem;
+  --company-quote-title-size: 1rem;
+  --company-quote-padding: 2rem;
+  
+  /* Thank you layout */
+  --company-thank-you-title-size: 2.5rem;
+  --company-thank-you-title-weight: 700;
+  --company-thank-you-subtitle-size: 1.25rem;
+  --company-thank-you-padding: 2rem;
+  
+  /* Default layout */
+  --company-default-title-size: 2rem;
+  --company-default-content-size: 1rem;
+  --company-default-padding: 2rem;
+  
+  /* ===== ANIMATION ===== */
+  --company-animation-duration: 0.6s;
+  --company-animation-delay: 0.1s;
+  --company-animation-stagger: 0.1s;
+  --company-animation-easing: ease-out;
+  
+  /* ===== LIST STYLING ===== */
+  --company-list-item-spacing: 1rem;
+  --company-list-indent: 1.5rem;
+  --company-bullet-color: #4a5568;
+  --company-bullet-color-dark: #cbd5e0;
+  --company-bullet-size: 0.375rem;
+  
+  /* ===== TABLE STYLING ===== */
+  --company-table-border: #e2e8f0;
+  --company-table-border-dark: #4a5568;
+  --company-table-header-bg: #f8fafc;
+  --company-table-header-bg-dark: #2d3748;
+  --company-table-stripe: #f8fafc;
+  --company-table-stripe-dark: #374151;
+  --company-table-padding: 0.75rem;
+  
+  /* ===== FORM STYLING ===== */
+  --company-input-bg: #ffffff;
+  --company-input-bg-dark: #374151;
+  --company-input-border: #e2e8f0;
+  --company-input-border-dark: #4a5568;
+  --company-input-focus: #1e3a8a;
+  --company-input-focus-dark: #3b82f6;
+  --company-input-radius: 0.375rem;
+  --company-input-padding: 0.75rem;
+  
+  /* ===== ALERT/ADMONITION COLORS ===== */
+  --company-info-bg: #eff6ff;
+  --company-info-bg-dark: #1e3a8a;
+  --company-warning-bg: #fffbeb;
+  --company-warning-bg-dark: #92400e;
+  --company-success-bg: #f0fdf4;
+  --company-success-bg-dark: #166534;
+  --company-error-bg: #fef2f2;
+  --company-error-bg-dark: #991b1b;
+  --company-accent-bg: #f8fafc;
+  --company-accent-bg-dark: #374151;
+
+  /* ===== UTILITY COLORS ===== */
+  --company-overlay: rgba(0, 0, 0, 0.5);
+  --company-overlay-light: rgba(0, 0, 0, 0.25);
+  --company-overlay-dark: rgba(0, 0, 0, 0.75);
+  
+  /* ===== RESPONSIVE BREAKPOINTS ===== */
+  --company-breakpoint-sm: 640px;
+  --company-breakpoint-md: 768px;
+  --company-breakpoint-lg: 1024px;
+  --company-breakpoint-xl: 1280px;
+}

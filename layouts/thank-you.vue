@@ -1,6 +1,5 @@
 <script setup lang="js">
 import { computed, ref, onMounted } from 'vue'
-import { useSlideContext } from '@slidev/client'
 
 const props = defineProps({
   color: {
@@ -8,8 +7,8 @@ const props = defineProps({
   },
   style: {
     type: String,
-    default: 'classic', // 'classic', 'modern', 'minimal', 'celebration'
-    validator: (value) => ['classic', 'modern', 'minimal', 'celebration'].includes(value)
+    default: 'classic', // 'classic', 'modern', 'minimal', 'celebration', 'corporate'
+    validator: (value) => ['classic', 'modern', 'minimal', 'celebration', 'corporate'].includes(value)
   },
   showContact: {
     type: Boolean,
@@ -25,7 +24,7 @@ const props = defineProps({
   }
 })
 
-const { $frontmatter, $slidev } = useSlideContext()
+// Removed useSlideContext - props will be used instead
 
 const colorscheme = computed(() => {
   return `company-${props.color}-scheme`

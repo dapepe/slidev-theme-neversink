@@ -1,8 +1,8 @@
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
-import { onSlideEnter, useSlideContext } from '@slidev/client'
+import { ref, onMounted, onBeforeUnmount, nextTick } from 'vue'
+// Removed useSlideContext imports - using alternative approach
 
-const { $renderContext } = useSlideContext()
+// const { $renderContext } = useSlideContext() // Not available in this version
 const props = defineProps({
   speed: {
     default: 0.5,
@@ -22,7 +22,6 @@ const scroll = () => {
   scrollPosition.value -= props.speed
   if (Math.abs(scrollPosition.value) >= 550) {
     if (props.loop.value) {
-      console.log('resetting loop', props.loop.value)
       resetScroll()
     } else {
       stopScrolling()
@@ -50,23 +49,58 @@ const resetScroll = () => {
   }
 }
 
+// Intersection Observer to detect when component becomes visible
+let observer = null
+let isDestroyed = false
+
 onMounted(() => {
-  console.log('mounted')
-  // Reset scrolling when entering the slide
-  onSlideEnter(() => {
-    console.log('context ', $renderContext.value)
-    if (['slide', 'presenter'].includes($renderContext.value)) {
-      console.log('onSlideEnter')
-      resetScroll()
-      console.log('starting scrolling')
-      startScrolling()
+  
+  // Create intersection observer to detect when component is visible
+  observer = new IntersectionObserver((entries) => {
+    // Check if component is still alive
+    if (isDestroyed) return
+    
+    entries.forEach(entry => {
+      if (isDestroyed) return // Double check during forEach
+      
+      if (entry.isIntersecting) {
+        // Component is visible - start scrolling
+        resetScroll()
+        startScrolling()
+      } else {
+        // Component is not visible - stop scrolling
+        if (animationFrameId) {
+          cancelAnimationFrame(animationFrameId)
+          animationFrameId = null
+        }
+      }
+    })
+  }, {
+    threshold: 0.1 // Trigger when 10% of component is visible
+  })
+  
+  // Start observing the container with a small delay to ensure DOM is ready
+  nextTick(() => {
+    if (containerRef.value && observer && !isDestroyed) {
+      observer.observe(containerRef.value)
     }
   })
 })
 
-onUnmounted(() => {
+onBeforeUnmount(() => {
+  // Mark as destroyed to prevent any async operations
+  isDestroyed = true
+  
+  // Clean up animation frame
   if (animationFrameId) {
     cancelAnimationFrame(animationFrameId)
+    animationFrameId = null
+  }
+  
+  // Clean up intersection observer
+  if (observer) {
+    observer.disconnect()
+    observer = null
   }
 })
 </script>

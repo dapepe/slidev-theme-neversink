@@ -1,6 +1,5 @@
 <script setup lang="js">
 import { computed } from 'vue'
-import { useSlideContext } from '@slidev/client'
 
 const props = defineProps({
   color: {
@@ -8,7 +7,7 @@ const props = defineProps({
   },
 })
 
-const { $slidev } = useSlideContext()
+// Removed useSlideContext - not needed for this layout
 
 const isCmsitTheme = computed(() => {
   return props.color?.startsWith('cmsit-')

@@ -25,17 +25,24 @@ const props = defineProps({
   height: {
     type: String,
     default: '400px'
+  },
+  title: {
+    type: String,
+    default: '📊 Chart Layout'
+  },
+  subtitle: {
+    type: String,
+    default: ''
   }
 })
-
-const { $frontmatter, $slidev } = useSlideContext()
 
 const colorscheme = computed(() => {
   return `company-${props.color}-scheme`
 })
 
 const chartData = computed(() => {
-  return $frontmatter.chartData || {
+  // Default chart data - this would normally come from frontmatter
+  return {
     labels: ['Q1', 'Q2', 'Q3', 'Q4'],
     datasets: [{
       label: 'Sales',
@@ -99,9 +106,10 @@ onMounted(async () => {
   <div class="slidev-layout chart h-full slidecolor" :class="[colorscheme]">
     <div class="h-full flex flex-col">
       <!-- Chart Title -->
-      <div v-if="$frontmatter.title" class="chart-header mb-6">
-        <h1 class="text-3xl font-bold mb-2">{{ $frontmatter.title }}</h1>
-        <p v-if="$frontmatter.subtitle" class="text-gray-600 text-lg">{{ $frontmatter.subtitle }}</p>
+      <div class="chart-header mb-6">
+        <h1 class="text-3xl font-bold mb-2">{{ title }}</h1>
+        <p v-if="subtitle" class="text-gray-600 text-lg">{{ subtitle }}</p>
+        <p v-else class="text-gray-600 text-lg">{{ chartType.charAt(0).toUpperCase() + chartType.slice(1) }} Chart Example</p>
       </div>
       
       <!-- Chart Container -->
@@ -130,10 +138,10 @@ onMounted(async () => {
       </div>
       
       <!-- Chart Notes -->
-      <div v-if="$frontmatter.notes" class="chart-notes mt-6">
+      <div class="chart-notes mt-6">
         <div class="bg-gray-50 rounded-lg p-4">
           <h4 class="font-semibold mb-2">Notes:</h4>
-          <p class="text-sm text-gray-600">{{ $frontmatter.notes }}</p>
+          <p class="text-sm text-gray-600">This is a placeholder chart layout. In a real implementation, you would integrate Chart.js or another charting library.</p>
         </div>
       </div>
     </div>

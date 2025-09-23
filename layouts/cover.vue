@@ -1,6 +1,5 @@
 <script setup lang="js">
 import { computed } from 'vue'
-import { useSlideContext } from '@slidev/client'
 
 const props = defineProps({
   color: {
@@ -25,10 +24,61 @@ const props = defineProps({
     type: String,
     default: 'bottom-right', // 'bottom-left', 'bottom-right', 'top-left', 'top-right'
     validator: (value) => ['bottom-left', 'bottom-right', 'top-left', 'top-right'].includes(value)
+  },
+  // Frontmatter props - these would normally come from $frontmatter
+  title: {
+    type: String,
+    default: 'Presentation Title'
+  },
+  subtitle: {
+    type: String,
+    default: ''
+  },
+  logo: {
+    type: String,
+    default: ''
+  },
+  logo2: {
+    type: String,
+    default: ''
+  },
+  clientLogo: {
+    type: String,
+    default: ''
+  },
+  clientLogo2: {
+    type: String,
+    default: ''
+  },
+  presenter: {
+    type: String,
+    default: ''
+  },
+  presenterTitle: {
+    type: String,
+    default: ''
+  },
+  author: {
+    type: String,
+    default: ''
+  },
+  presenters: {
+    type: Array,
+    default: () => []
+  },
+  version: {
+    type: [String, Number],
+    default: ''
+  },
+  date: {
+    type: String,
+    default: ''
+  },
+  styles: {
+    type: String,
+    default: ''
   }
 })
-
-const { $frontmatter, $slidev } = useSlideContext()
 
 const isCmsitTheme = computed(() => {
   return props.color?.startsWith('cmsit-')
@@ -36,8 +86,8 @@ const isCmsitTheme = computed(() => {
 
 const colorscheme = computed(() => {
   // Check for dynamic theme first
-  if ($frontmatter.styles) {
-    const themeName = $frontmatter.styles
+  if (props.styles) {
+    const themeName = props.styles
     const colorName = props.color || 'light'
     if (colorName.startsWith(`${themeName}-`)) {
       return `${colorName}-scheme`
@@ -51,7 +101,7 @@ const colorscheme = computed(() => {
     return `${color}-scheme`
   }
   
-  // Default neversink scheme
+  // Default company scheme
   return `company-${props.color}-scheme`
 })
 
@@ -112,21 +162,21 @@ const presenterClass = computed(() => {
     <div class="logo-header absolute top-6 left-6 right-6 z-10 flex justify-between items-start">
       <!-- Left logos -->
       <div class="flex items-center gap-6">
-        <div v-if="$frontmatter.logo" class="logo-container">
-          <img :src="$frontmatter.logo" :class="logoClass" />
+        <div v-if="logo" class="logo-container">
+          <img :src="logo" :class="logoClass" />
         </div>
-        <div v-if="$frontmatter.logo2" class="logo-container">
-          <img :src="$frontmatter.logo2" :class="logoClass" />
+        <div v-if="logo2" class="logo-container">
+          <img :src="logo2" :class="logoClass" />
         </div>
       </div>
       
       <!-- Right logos -->
       <div class="flex items-center gap-6">
-        <div v-if="$frontmatter.clientLogo" class="client-logo-container">
-          <img :src="$frontmatter.clientLogo" :class="logoClass" />
+        <div v-if="clientLogo" class="client-logo-container">
+          <img :src="clientLogo" :class="logoClass" />
         </div>
-        <div v-if="$frontmatter.clientLogo2" class="client-logo-container">
-          <img :src="$frontmatter.clientLogo2" :class="logoClass" />
+        <div v-if="clientLogo2" class="client-logo-container">
+          <img :src="clientLogo2" :class="logoClass" />
         </div>
       </div>
     </div>
@@ -137,28 +187,28 @@ const presenterClass = computed(() => {
         <slot />
         
         <!-- Version/Date information -->
-        <div v-if="$frontmatter.version || $frontmatter.date" class="version-info mt-6 text-white text-lg opacity-90">
-          <span v-if="$frontmatter.date">{{ $frontmatter.date }}</span>
-          <span v-if="$frontmatter.version && $frontmatter.date">, </span>
-          <span v-if="$frontmatter.version">Version {{ $frontmatter.version }}</span>
+        <div v-if="version || date" class="version-info mt-6 text-white text-lg opacity-90">
+          <span v-if="date">{{ date }}</span>
+          <span v-if="version && date">, </span>
+          <span v-if="version">Version {{ version }}</span>
         </div>
       </div>
     </div>
     
     <!-- Presenter information -->
-    <div v-if="showPresenter && ($frontmatter.presenters || $frontmatter.presenter || $frontmatter.author)" class="presenter-section absolute bottom-8 left-6 right-6 z-10">
+    <div v-if="showPresenter && (presenters.length > 0 || presenter || author)" class="presenter-section absolute bottom-8 left-6 right-6 z-10">
       <!-- Multiple presenters -->
-      <div v-if="$frontmatter.presenters" class="flex justify-start gap-12">
+      <div v-if="presenters.length > 0" class="flex justify-start gap-12">
         <div
-          v-for="(presenter, index) in $frontmatter.presenters"
+          v-for="(presenterItem, index) in presenters"
           :key="index"
           class="presenter-card flex items-center gap-4"
         >
           <!-- Presenter photo -->
-          <div v-if="presenter.photo" class="presenter-photo">
+          <div v-if="presenterItem.photo" class="presenter-photo">
             <img 
-              :src="presenter.photo" 
-              :alt="presenter.name"
+              :src="presenterItem.photo" 
+              :alt="presenterItem.name"
               class="w-16 h-16 rounded-full object-cover border-4 border-green-400"
             />
           </div>
@@ -166,28 +216,28 @@ const presenterClass = computed(() => {
           <!-- Presenter info -->
           <div class="presenter-info">
             <div class="presenter-name text-white font-semibold text-lg">
-              {{ presenter.name }}
+              {{ presenterItem.name }}
             </div>
-            <div v-if="presenter.title" class="presenter-title text-white text-sm opacity-90">
-              {{ presenter.title }}
+            <div v-if="presenterItem.title" class="presenter-title text-white text-sm opacity-90">
+              {{ presenterItem.title }}
             </div>
-            <div v-if="presenter.email" class="presenter-email text-white text-sm opacity-80">
-              {{ presenter.email }}
+            <div v-if="presenterItem.email" class="presenter-email text-white text-sm opacity-80">
+              {{ presenterItem.email }}
             </div>
           </div>
         </div>
       </div>
       
       <!-- Single presenter (legacy support) -->
-      <div v-else-if="$frontmatter.presenter || $frontmatter.author" :class="presenterClass">
-        <div v-if="$frontmatter.presenter" class="presenter-name font-medium">
-          {{ $frontmatter.presenter }}
+      <div v-else-if="presenter || author" :class="presenterClass">
+        <div v-if="presenter" class="presenter-name font-medium">
+          {{ presenter }}
         </div>
-        <div v-if="$frontmatter.author && $frontmatter.author !== $frontmatter.presenter" class="author-name text-sm opacity-80">
-          {{ $frontmatter.author }}
+        <div v-if="author && author !== presenter" class="author-name text-sm opacity-80">
+          {{ author }}
         </div>
-        <div v-if="$frontmatter.presenterTitle" class="presenter-title text-xs opacity-70 mt-1">
-          {{ $frontmatter.presenterTitle }}
+        <div v-if="presenterTitle" class="presenter-title text-xs opacity-70 mt-1">
+          {{ presenterTitle }}
         </div>
       </div>
     </div>

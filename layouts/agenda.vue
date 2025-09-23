@@ -1,6 +1,5 @@
 <script setup lang="js">
 import { computed, ref, onMounted } from 'vue'
-import { useSlideContext } from '@slidev/client'
 
 const props = defineProps({
   color: {
@@ -20,7 +19,7 @@ const props = defineProps({
   }
 })
 
-const { $frontmatter, $slidev } = useSlideContext()
+// Removed useSlideContext - props will be used instead
 
 const colorscheme = computed(() => {
   return `company-${props.color}-scheme`

@@ -1,8 +1,7 @@
 <script setup>
 import { onMounted, ref, computed } from 'vue'
-import { useSlideContext } from '@slidev/client'
 
-const { $slidev, $frontmatter } = useSlideContext()
+// Removed useSlideContext - not needed for slide bottom
 
 // Check if using CMSIT theme
 const isCMSITTheme = computed(() => {
