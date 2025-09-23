@@ -29,11 +29,26 @@ color: dark
 currentItem: 0
 highlightCurrent: true
 title: AGENDA
+enableAgendaNavigation: true
 agenda:
   - "GRUNDLAGEN"
   - "RISIKOMANAGEMENT"
   - "EINSATZSZENARIEN & WERKZEUGE"
   - "AUSBLICK"
+---
+
+---
+layout: global-example
+color: light
+title: "Global Navigation Example"
+enableOverride: true
+steps:
+  - title: "Step 1"
+    content: "This demonstrates the global navigation system working across all layouts."
+  - title: "Step 2"
+    content: "The navigation is controlled by the global system and can be used anywhere."
+  - title: "Step 3"
+    content: "Clean, reusable, and works with any layout that needs navigation control."
 ---
 
 # Complete Reference Guide
