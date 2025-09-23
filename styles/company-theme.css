@@ -778,7 +778,7 @@
   pointer-events: none;
   transition: all 0.3s ease;
   opacity: var(--company-slide-logo-opacity, 0.8);
-  background-image: var(--company-slide-logo);
+  background-image: var(--company-slide-logo-light);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -821,21 +821,21 @@
 }
 
 /* Logo switching based on color schemes */
-.company-light-scheme .slidev-layout::after {
-  background-image: var(--company-slide-logo-light);
+.company-white-scheme.slidev-layout::after {
+  background-image: var(--company-slide-logo-dark);
 }
 
-.company-dark-scheme .slidev-layout::after {
-  background-image: var(--company-slide-logo-dark);
+.company-dark-scheme.slidev-layout::after {
+  background-image: var(--company-slide-logo-light);
 }
 
 /* Handle other color schemes (cmsit, etc.) */
-[class*="-light-scheme"] .slidev-layout::after {
-  background-image: var(--company-slide-logo-light);
+[class*="-white-scheme"].slidev-layout::after {
+  background-image: var(--company-slide-logo-dark);
 }
 
-[class*="-dark-scheme"] .slidev-layout::after {
-  background-image: var(--company-slide-logo-dark);
+[class*="-dark-scheme"].slidev-layout::after {
+  background-image: var(--company-slide-logo-light);
 }
 
 /* Hide logo if show is false */

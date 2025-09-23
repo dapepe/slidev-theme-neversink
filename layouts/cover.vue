@@ -78,27 +78,6 @@ const props = defineProps({
   styles: {
     type: String,
     default: ''
-  },
-  // Slide logo props
-  slideLogo: {
-    type: String,
-    default: ''
-  },
-  slideLogoPosition: {
-    type: String,
-    default: 'top-right'
-  },
-  slideLogoSize: {
-    type: String,
-    default: 'medium'
-  },
-  slideLogoOpacity: {
-    type: Number,
-    default: 0.8
-  },
-  showSlideLogo: {
-    type: Boolean,
-    default: true
   }
 })
 
@@ -135,12 +114,12 @@ const textColorScheme = computed(() => {
 const logoClass = computed(() => {
   switch(props.logoSize) {
     case 'small':
-      return 'w-40';
+      return 'w-40 h-40 object-contain';
     case 'medium':
-      return 'w-60';
+      return 'w-60 h-60 object-contain';
     case 'large':
     default:
-      return 'w-80';
+      return 'w-80 h-80 object-contain';
   }
 })
 
@@ -187,7 +166,7 @@ const presenterClass = computed(() => {
     ></div>
     
     <!-- Logo Header Section -->
-    <div class="logo-header absolute top-6 left-6 right-6 z-10 flex justify-between items-start">
+    <div class="logo-header absolute top-6 left-6 right-6 z-10 flex gap-6 items-center">
       <!-- Left logos -->
       <div class="flex items-center gap-6">
         <div v-if="props.logo" class="logo-container">
@@ -210,7 +189,7 @@ const presenterClass = computed(() => {
     </div>
     
     <!-- Main content -->
-    <div class="content w-full relative z-10 flex flex-col justify-center items-start px-6" :class="{ 'myauto': !isCmsitTheme }">
+    <div class="content w-full relative z-10 flex flex-col justify-center items-start pr-6" :class="{ 'myauto': !isCmsitTheme }">
       <div class="main-content-area max-w-4xl">
         <!-- Title and Subtitle -->
         <h1 v-if="props.title" class="cover-title">{{ props.title }}</h1>
@@ -374,6 +353,24 @@ const presenterClass = computed(() => {
   margin-bottom: 0.9rem;
   margin-top: 0;
   color: var(--company-text-secondary);
+}
+
+/* Logo container styling for consistent sizing */
+.slidev-layout.cover .logo-container,
+.slidev-layout.cover .client-logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: fit-content;
+  min-height: fit-content;
+}
+
+.slidev-layout.cover .logo-container img,
+.slidev-layout.cover .client-logo-container img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  object-position: center;
 }
 
 </style>

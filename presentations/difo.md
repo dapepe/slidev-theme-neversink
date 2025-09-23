@@ -9,6 +9,7 @@ date: 23.09.2025
 version: 1.0
 logo: /difo/difo-logo_bright-solid.svg
 clientLogo: /bell/difo-logo_bell-bright.svg
+logoSize: medium
 backgroundImage: /difo/space.png
 # Global slide logo settings are now defined in CSS variables
 presenters:
