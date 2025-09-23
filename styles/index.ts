@@ -10,6 +10,9 @@ import './neversink-c.css'
 // Company theme styling - comprehensive theming system
 import './company-theme.css'
 
+// FontAwesome CSS
+import '@fortawesome/fontawesome-free/css/all.min.css'
+
 // import './code.css'
 // import './layout.css'
 // import './custom.css'

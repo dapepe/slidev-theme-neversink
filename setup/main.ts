@@ -43,6 +43,28 @@ const injectCompanyCSS = (company: string | null | undefined) => {
   return companyKey
 }
 
+// Setup slide logo data attributes based on CSS variables
+const setupSlideLogo = () => {
+  const root = document.documentElement
+  
+  // Get values from CSS variables
+  const position = getComputedStyle(root).getPropertyValue('--company-slide-logo-position').trim() || 'top-right'
+  const size = getComputedStyle(root).getPropertyValue('--company-slide-logo-size').trim() || 'medium'
+  const show = getComputedStyle(root).getPropertyValue('--company-slide-logo-show').trim() || 'true'
+  
+  // Set data attributes on root element
+  root.setAttribute('data-logo-position', position)
+  root.setAttribute('data-logo-size', size)
+  root.setAttribute('data-logo-show', show)
+  
+  console.log(`🎨 Applied slide logo settings: position=${position}, size=${size}, show=${show}`)
+  console.log(`🎨 Root element data attributes:`, {
+    'data-logo-position': root.getAttribute('data-logo-position'),
+    'data-logo-size': root.getAttribute('data-logo-size'),
+    'data-logo-show': root.getAttribute('data-logo-show')
+  })
+}
+
 // Vue3 Kawaii
 import BackPack from '../components/vue3-kawaii/components/backpack/BackPack.vue'
 import Browser from '../components/vue3-kawaii/components/browser/Browser.vue'
@@ -110,6 +132,9 @@ export default defineAppSetup(({ app, router }) => {
       currentColorScheme = scheme
       console.log(`🎨 Applied ${scheme} color scheme`)
     }
+    
+    // Setup slide logo data attributes
+    setupSlideLogo()
   }
   
   // Apply company theme on route change

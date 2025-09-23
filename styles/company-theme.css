@@ -768,3 +768,85 @@
   box-shadow: var(--company-shadow-md);
   transform: translateY(-1px);
 }
+
+/* ===== GLOBAL SLIDE LOGO ===== */
+/* Add slide logo to all slide layouts using ::after pseudo-element */
+.slidev-layout::after {
+  content: '';
+  position: fixed;
+  z-index: 9999;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  opacity: var(--company-slide-logo-opacity, 0.8);
+  background-image: var(--company-slide-logo);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 6rem;
+  height: 6rem;
+  top: 1rem;
+  right: 1rem;
+}
+
+/* Position variations based on CSS variable */
+:root[data-logo-position="top-left"] .slidev-layout::after {
+  top: 1rem;
+  left: 1rem;
+  right: auto;
+}
+
+:root[data-logo-position="bottom-left"] .slidev-layout::after {
+  bottom: 1rem;
+  left: 1rem;
+  top: auto;
+  right: auto;
+}
+
+:root[data-logo-position="bottom-right"] .slidev-layout::after {
+  bottom: 1rem;
+  right: 1rem;
+  top: auto;
+  left: auto;
+}
+
+/* Size variations based on CSS variable */
+:root[data-logo-size="small"] .slidev-layout::after {
+  width: 4rem;
+  height: 4rem;
+}
+
+:root[data-logo-size="large"] .slidev-layout::after {
+  width: 8rem;
+  height: 8rem;
+}
+
+/* Logo switching based on color schemes */
+.company-light-scheme .slidev-layout::after {
+  background-image: var(--company-slide-logo-light);
+}
+
+.company-dark-scheme .slidev-layout::after {
+  background-image: var(--company-slide-logo-dark);
+}
+
+/* Handle other color schemes (cmsit, etc.) */
+[class*="-light-scheme"] .slidev-layout::after {
+  background-image: var(--company-slide-logo-light);
+}
+
+[class*="-dark-scheme"] .slidev-layout::after {
+  background-image: var(--company-slide-logo-dark);
+}
+
+/* Hide logo if show is false */
+:root[data-logo-show="false"] .slidev-layout::after {
+  display: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .slidev-layout::after {
+    width: 3rem !important;
+    height: 3rem !important;
+  }
+}

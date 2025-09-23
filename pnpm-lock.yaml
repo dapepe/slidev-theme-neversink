@@ -11,6 +11,9 @@ importers:
       '@babel/core':
         specifier: ^7.27.1
         version: 7.28.0
+      '@fortawesome/fontawesome-free':
+        specifier: ^6.7.2
+        version: 6.7.2
       '@iconify-json/logos':
         specifier: ^1.1.42
         version: 1.2.5
@@ -815,6 +818,10 @@ packages:
 
   '@floating-ui/utils@0.2.10':
     resolution: {integrity: sha512-aGTxbpbg8/b5JfU1HXSrbH3wXZuLPJcNEcZQFMxLs3oSzgtVu6nFPkbbGGUvBcUjKV2YyB9Wxxabo+HEH9tcRQ==}
+
+  '@fortawesome/fontawesome-free@6.7.2':
+    resolution: {integrity: sha512-JUOtgFW6k9u4Y+xeIaEiLr3+cjoUPiAuLXoyKOJSia6Duzb7pq+A76P9ZdPDoAoxHdHzq6gE9/jKBGXlZT8FbA==}
+    engines: {node: '>=6'}
 
   '@iconify-json/carbon@1.2.11':
     resolution: {integrity: sha512-fWcoR0V4dLGLsgUvgjioBcTmj+l8NlMMEP/aMMUwR9PWAr5mCBg52rsTe/bvOnL1zj9PUCNxaj2M4H27GrnO3g==}
@@ -4565,6 +4572,8 @@ snapshots:
       '@floating-ui/core': 1.7.3
 
   '@floating-ui/utils@0.2.10': {}
+
+  '@fortawesome/fontawesome-free@6.7.2': {}
 
   '@iconify-json/carbon@1.2.11':
     dependencies:

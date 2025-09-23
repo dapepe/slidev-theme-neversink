@@ -1,6 +1,7 @@
 ---
 theme: ../
 company: difo
+color: dark
 layout: cover
 title: DIFO Digital Solutions
 subtitle: Complete Component & Layout Reference
@@ -8,18 +9,14 @@ date: 23.09.2025
 version: 1.0
 logo: /difo/difo-logo_bright-solid.svg
 clientLogo: /bell/difo-logo_bell-bright.svg
+backgroundImage: /difo/space.png
+# Global slide logo settings are now defined in CSS variables
 presenters:
   - name: Peter-Christoph Haider
     title: Managing Director, Munich
     email: phaider@difo.de
     photo: /people/phaider-512.png
 ---
-
-# DIFO Digital Solutions
-
-## Complete Component & Layout Reference
-
-**Every single component and layout available**
 
 ---
 layout: agenda

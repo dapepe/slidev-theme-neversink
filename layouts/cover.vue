@@ -3,7 +3,8 @@ import { computed } from 'vue'
 
 const props = defineProps({
   color: {
-    default: 'white',
+    default: 'light',
+    validator: (value) => ['light', 'dark'].includes(value)
   },
   logoSize: {
     default: 'large', // 'large', 'medium', 'small'
@@ -25,7 +26,7 @@ const props = defineProps({
     default: 'bottom-right', // 'bottom-left', 'bottom-right', 'top-left', 'top-right'
     validator: (value) => ['bottom-left', 'bottom-right', 'top-left', 'top-right'].includes(value)
   },
-  // Frontmatter props - these would normally come from $frontmatter
+  // Frontmatter props
   title: {
     type: String,
     default: 'Presentation Title'
@@ -77,6 +78,27 @@ const props = defineProps({
   styles: {
     type: String,
     default: ''
+  },
+  // Slide logo props
+  slideLogo: {
+    type: String,
+    default: ''
+  },
+  slideLogoPosition: {
+    type: String,
+    default: 'top-right'
+  },
+  slideLogoSize: {
+    type: String,
+    default: 'medium'
+  },
+  slideLogoOpacity: {
+    type: Number,
+    default: 0.8
+  },
+  showSlideLogo: {
+    type: Boolean,
+    default: true
   }
 })
 
@@ -105,6 +127,11 @@ const colorscheme = computed(() => {
   return `company-${props.color}-scheme`
 })
 
+const textColorScheme = computed(() => {
+  // Use the color prop directly (already validated to be 'light' or 'dark')
+  return props.color
+})
+
 const logoClass = computed(() => {
   switch(props.logoSize) {
     case 'small':
@@ -116,6 +143,7 @@ const logoClass = computed(() => {
       return 'w-80';
   }
 })
+
 
 const backgroundStyle = computed(() => {
   if (props.backgroundImage) {
@@ -148,35 +176,35 @@ const presenterClass = computed(() => {
 <template>
   <div 
     class="slidev-layout cover h-full slidecolor relative" 
-    :class="[colorscheme]"
+    :class="[colorscheme, `company-${textColorScheme}-scheme`]"
     :style="backgroundStyle"
   >
     <!-- Background overlay -->
     <div 
-      v-if="backgroundImage" 
+      v-if="props.backgroundImage" 
       class="absolute inset-0 z-0"
-      :style="{ backgroundColor: backgroundOverlay }"
+      :style="{ backgroundColor: props.backgroundOverlay }"
     ></div>
     
     <!-- Logo Header Section -->
     <div class="logo-header absolute top-6 left-6 right-6 z-10 flex justify-between items-start">
       <!-- Left logos -->
       <div class="flex items-center gap-6">
-        <div v-if="logo" class="logo-container">
-          <img :src="logo" :class="logoClass" />
+        <div v-if="props.logo" class="logo-container">
+          <img :src="props.logo" :class="logoClass" />
         </div>
-        <div v-if="logo2" class="logo-container">
-          <img :src="logo2" :class="logoClass" />
+        <div v-if="props.logo2" class="logo-container">
+          <img :src="props.logo2" :class="logoClass" />
         </div>
       </div>
       
       <!-- Right logos -->
       <div class="flex items-center gap-6">
-        <div v-if="clientLogo" class="client-logo-container">
-          <img :src="clientLogo" :class="logoClass" />
+        <div v-if="props.clientLogo" class="client-logo-container">
+          <img :src="props.clientLogo" :class="logoClass" />
         </div>
-        <div v-if="clientLogo2" class="client-logo-container">
-          <img :src="clientLogo2" :class="logoClass" />
+        <div v-if="props.clientLogo2" class="client-logo-container">
+          <img :src="props.clientLogo2" :class="logoClass" />
         </div>
       </div>
     </div>
@@ -184,23 +212,28 @@ const presenterClass = computed(() => {
     <!-- Main content -->
     <div class="content w-full relative z-10 flex flex-col justify-center items-start px-6" :class="{ 'myauto': !isCmsitTheme }">
       <div class="main-content-area max-w-4xl">
+        <!-- Title and Subtitle -->
+        <h1 v-if="props.title" class="cover-title">{{ props.title }}</h1>
+        <h2 v-if="props.subtitle" class="cover-subtitle">{{ props.subtitle }}</h2>
+        
+        <!-- Slot content (for additional content) -->
         <slot />
         
         <!-- Version/Date information -->
-        <div v-if="version || date" class="version-info mt-6 text-white text-lg opacity-90">
-          <span v-if="date">{{ date }}</span>
-          <span v-if="version && date">, </span>
-          <span v-if="version">Version {{ version }}</span>
+        <div v-if="props.version || props.date" class="version-info mt-6 text-white text-lg opacity-90">
+          <span v-if="props.date">{{ props.date }}</span>
+          <span v-if="props.version && props.date">, </span>
+          <span v-if="props.version">Version {{ props.version }}</span>
         </div>
       </div>
     </div>
     
     <!-- Presenter information -->
-    <div v-if="showPresenter && (presenters.length > 0 || presenter || author)" class="presenter-section absolute bottom-8 left-6 right-6 z-10">
+    <div v-if="props.showPresenter && (props.presenters.length > 0 || props.presenter || props.author)" class="presenter-section absolute bottom-8 left-6 right-6 z-10">
       <!-- Multiple presenters -->
-      <div v-if="presenters.length > 0" class="flex justify-start gap-12">
+      <div v-if="props.presenters.length > 0" class="flex justify-start gap-12">
         <div
-          v-for="(presenterItem, index) in presenters"
+          v-for="(presenterItem, index) in props.presenters"
           :key="index"
           class="presenter-card flex items-center gap-4"
         >
@@ -229,15 +262,15 @@ const presenterClass = computed(() => {
       </div>
       
       <!-- Single presenter (legacy support) -->
-      <div v-else-if="presenter || author" :class="presenterClass">
-        <div v-if="presenter" class="presenter-name font-medium">
-          {{ presenter }}
+      <div v-else-if="props.presenter || props.author" :class="presenterClass">
+        <div v-if="props.presenter" class="presenter-name font-medium">
+          {{ props.presenter }}
         </div>
-        <div v-if="author && author !== presenter" class="author-name text-sm opacity-80">
-          {{ author }}
+        <div v-if="props.author && props.author !== props.presenter" class="author-name text-sm opacity-80">
+          {{ props.author }}
         </div>
-        <div v-if="presenterTitle" class="presenter-title text-xs opacity-70 mt-1">
-          {{ presenterTitle }}
+        <div v-if="props.presenterTitle" class="presenter-title text-xs opacity-70 mt-1">
+          {{ props.presenterTitle }}
         </div>
       </div>
     </div>
@@ -322,12 +355,25 @@ const presenterClass = computed(() => {
   opacity: 1;
 }
 
-/* this is specific to this instance */
-.slidev-layout.cover h1,
-.slidev-layout.cover h2,
-.slidev-layout.cover h3 {
-  padding-bottom: 0.3em;
-  border-bottom: 1px solid var(--company-primary);
+/* Cover title and subtitle specific styling */
+.slidev-layout.cover .cover-title {
+  font-family: var(--company-font-heading);
+  font-weight: var(--company-cover-title-weight);
+  font-size: var(--company-cover-title-size);
+  line-height: var(--company-line-height-tight);
+  margin-bottom: 0.9rem;
+  margin-top: 40px;
+  color: var(--company-text-heading);
+}
+
+.slidev-layout.cover .cover-subtitle {
+  font-family: var(--company-font-heading);
+  font-weight: var(--company-cover-subtitle-weight);
+  font-size: var(--company-cover-subtitle-size);
+  line-height: var(--company-line-height-tight);
+  margin-bottom: 0.9rem;
+  margin-top: 0;
+  color: var(--company-text-secondary);
 }
 
 </style>
