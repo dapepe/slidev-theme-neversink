@@ -36,27 +36,32 @@ agenda:
   - "AUSBLICK"
 ---
 
+
+
+
 ---
-layout: global-example
+layout: side-title
 color: light
-title: "Global Navigation Example"
-enableOverride: true
-steps:
-  - title: "Step 1"
-    content: "This demonstrates the global navigation system working across all layouts."
-  - title: "Step 2"
-    content: "The navigation is controlled by the global system and can be used anywhere."
-  - title: "Step 3"
-    content: "Clean, reusable, and works with any layout that needs navigation control."
+side: left
+titlewidth: is-one-third
+align: auto
 ---
 
-# Complete Reference Guide
+:: title ::
 
-1. **Layouts (17 total)** - Every available layout
-2. **Components (15 total)** - All interactive components  
-3. **Kawaii Components (8 total)** - Animated elements
-4. **Light & Dark Versions** - Both color schemes
-5. **Usage Examples** - How to implement each
+# AGENDA
+
+:: content ::
+
+<AgendaTimed 
+  :agenda="[
+    `That's what we heard from you`,
+    `Demonstration of Digital Foundations' capabilities matching your needs`,
+    `Q&A, Summary & Next Steps`
+  ]"
+  :timing="['15 MIN', '60 MIN', '15 MIN']"
+  :highlightCurrent="false"
+/>
 
 ---
 layout: section
@@ -1425,6 +1430,7 @@ layout: default
 ```
 
 **Interactive vertical drag line for dynamic presentations**
+
 
 ---
 layout: default
