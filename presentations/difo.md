@@ -362,3 +362,107 @@ You can also use the Chart component directly in any slide:
 />
 
 </div>
+
+## Available Chart Types
+
+- **Bar Charts** - Perfect for comparing categories
+- **Line Charts** - Great for showing trends over time
+- **Pie Charts** - Ideal for showing proportions
+- **Doughnut Charts** - Modern alternative to pie charts
+- **Area Charts** - Excellent for cumulative data
+
+---
+layout: thank-you
+style: "classic"
+color: light
+thankYou: "Thank You!"
+subtitle: "Questions & Discussion"
+presenter: "DIFO Team"
+presenterTitle: "Digital Innovation Experts"
+email: "contact@difo.com"
+website: "https://difo.com"
+social:
+  - name: "LinkedIn"
+    icon: "fa-linkedin"
+    url: "https://linkedin.com/company/difo"
+  - name: "Twitter"
+    icon: "fa-twitter"
+    url: "https://twitter.com/difo"
+---
+
+---
+layout: thank-you
+style: "modern"
+color: dark
+thankYou: "Thank You for Your Attention"
+subtitle: "Let's innovate together!"
+presenter: "Digital Solutions Team"
+email: "hello@difo.com"
+phone: "+1 (555) 123-4567"
+showContact: true
+showSocial: false
+---
+
+---
+layout: thank-you
+style: "celebration"
+color: light
+thankYou: "Mission Accomplished!"
+subtitle: "Ready for the next challenge"
+presenter: "Project Team"
+animated: true
+showContact: false
+---
+
+---
+layout: thank-you
+style: "gradient"
+color: dark
+thankYou: "Thank You"
+subtitle: "Building the future, one solution at a time"
+presenter: "DIFO Innovation Lab"
+presenterTitle: "Technology Partners"
+email: "innovation@difo.com"
+website: "https://innovation.difo.com"
+---
+
+---
+layout: thank-you
+style: "elegant"
+color: light
+thankYou: "Merci Beaucoup"
+subtitle: "Your trust drives our excellence"
+presenter: "DIFO Leadership"
+email: "leadership@difo.com"
+showSocial: false
+---
+
+---
+layout: thank-you
+style: "minimal"
+color: dark
+thankYou: "Thanks"
+subtitle: "Simple. Effective. Done."
+showContact: false
+showSocial: false
+---
+
+---
+layout: thank-you
+style: "corporate"
+color: light
+thankYou: "Thank You for Your Partnership"
+subtitle: "Driving digital transformation together"
+presenter: "DIFO Executive Team"
+presenterTitle: "Strategic Partners"
+email: "partnerships@difo.com"
+phone: "+1 (555) 987-6543"
+website: "https://partners.difo.com"
+social:
+  - name: "LinkedIn"
+    icon: "fa-linkedin"
+    url: "https://linkedin.com/company/difo"
+  - name: "GitHub"
+    icon: "fa-github"
+    url: "https://github.com/difo"
+---

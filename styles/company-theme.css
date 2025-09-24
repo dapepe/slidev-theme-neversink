@@ -821,7 +821,8 @@
 }
 
 /* Logo switching based on color schemes */
-.company-white-scheme.slidev-layout::after {
+.company-white-scheme.slidev-layout::after,
+.company-light-scheme.slidev-layout::after {
   background-image: var(--company-slide-logo-dark);
 }
 
@@ -830,7 +831,8 @@
 }
 
 /* Handle other color schemes (cmsit, etc.) */
-[class*="-white-scheme"].slidev-layout::after {
+[class*="-white-scheme"].slidev-layout::after,
+[class*="-light-scheme"].slidev-layout::after {
   background-image: var(--company-slide-logo-dark);
 }
 

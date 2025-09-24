@@ -1,5 +1,6 @@
 <script setup lang="js">
 import { computed, ref, onMounted } from 'vue'
+import { useSlideContext } from '@slidev/client'
 
 const props = defineProps({
   color: {
@@ -7,8 +8,8 @@ const props = defineProps({
   },
   style: {
     type: String,
-    default: 'classic', // 'classic', 'modern', 'minimal', 'celebration', 'corporate'
-    validator: (value) => ['classic', 'modern', 'minimal', 'celebration', 'corporate'].includes(value)
+    default: 'classic', // 'classic', 'modern', 'minimal', 'celebration', 'corporate', 'gradient', 'elegant'
+    validator: (value) => ['classic', 'modern', 'minimal', 'celebration', 'corporate', 'gradient', 'elegant'].includes(value)
   },
   showContact: {
     type: Boolean,
@@ -24,32 +25,36 @@ const props = defineProps({
   }
 })
 
-// Removed useSlideContext - props will be used instead
+const { $slidev } = useSlideContext()
 
 const colorscheme = computed(() => {
   return `company-${props.color}-scheme`
 })
 
+const frontmatter = computed(() => {
+  return $slidev.nav.currentRoute.meta?.slide?.frontmatter || {}
+})
+
 const thankYouText = computed(() => {
-  return $frontmatter.thankYou || $frontmatter.title || 'Thank You!'
+  return frontmatter.value.thankYou || frontmatter.value.title || 'Thank You!'
 })
 
 const subtitle = computed(() => {
-  return $frontmatter.subtitle || $frontmatter.message || 'Questions & Discussion'
+  return frontmatter.value.subtitle || frontmatter.value.message || 'Questions & Discussion'
 })
 
 const contactInfo = computed(() => {
   return {
-    name: $frontmatter.presenter || $frontmatter.author || 'Presenter',
-    title: $frontmatter.presenterTitle || $frontmatter.position || '',
-    email: $frontmatter.email || '',
-    phone: $frontmatter.phone || '',
-    website: $frontmatter.website || ''
+    name: frontmatter.value.presenter || frontmatter.value.author || 'Presenter',
+    title: frontmatter.value.presenterTitle || frontmatter.value.position || '',
+    email: frontmatter.value.email || '',
+    phone: frontmatter.value.phone || '',
+    website: frontmatter.value.website || ''
   }
 })
 
 const socialLinks = computed(() => {
-  return $frontmatter.social || []
+  return frontmatter.value.social || []
 })
 
 const isVisible = ref(false)
@@ -74,6 +79,12 @@ const containerClass = computed(() => {
       return `${baseClass} minimal-style`
     case 'celebration':
       return `${baseClass} celebration-style`
+    case 'corporate':
+      return `${baseClass} corporate-style`
+    case 'gradient':
+      return `${baseClass} gradient-style`
+    case 'elegant':
+      return `${baseClass} elegant-style`
     case 'classic':
     default:
       return `${baseClass} classic-style`
@@ -186,7 +197,16 @@ const containerClass = computed(() => {
 <style scoped>
 .slidev-layout.thank-you {
   font-family: var(--company-font-primary);
-  background: linear-gradient(135deg, var(--theme-bg-primary), var(--theme-bg-secondary));
+}
+
+/* Light theme background */
+.company-light-scheme.slidev-layout.thank-you {
+  background: linear-gradient(135deg, var(--company-bg-primary), var(--company-bg-secondary));
+}
+
+/* Dark theme background */
+.company-dark-scheme.slidev-layout.thank-you {
+  background: linear-gradient(135deg, var(--company-bg-primary-dark), var(--company-bg-secondary-dark));
 }
 
 .thank-you-container {
@@ -205,9 +225,36 @@ const containerClass = computed(() => {
   font-family: var(--company-font-heading);
 }
 
+/* Classic style theming */
+.classic-style .thank-you-subtitle {
+  color: var(--company-text-secondary);
+}
+
+.classic-style .contact-info {
+  background: var(--theme-bg-secondary);
+  border: 1px solid var(--theme-border-primary);
+  color: var(--company-text-primary);
+}
+
+.classic-style .contact-item a {
+  color: var(--theme-primary-color);
+}
+
+.classic-style .contact-item a:hover {
+  color: var(--theme-primary-hover);
+}
+
+.classic-style .social-link {
+  background: var(--theme-bg-tertiary);
+  color: var(--company-text-primary);
+}
+
+.classic-style .social-link:hover {
+  background: var(--theme-bg-hover);
+}
+
 /* Modern Style */
 .modern-style {
-  background: white;
   border-radius: 1rem;
   box-shadow: var(--theme-shadow-xl);
   padding: 3rem;
@@ -220,6 +267,40 @@ const containerClass = computed(() => {
   background-clip: text;
 }
 
+/* Modern style theming */
+.modern-style {
+  background: var(--theme-bg-primary);
+  border: 1px solid var(--theme-border-primary);
+}
+
+.modern-style .thank-you-subtitle {
+  color: var(--company-text-secondary);
+}
+
+.modern-style .contact-info {
+  background: var(--theme-bg-secondary);
+  border: 1px solid var(--theme-border-secondary);
+  color: var(--company-text-primary);
+}
+
+.modern-style .contact-item a {
+  color: var(--theme-primary-color);
+}
+
+.modern-style .contact-item a:hover {
+  color: var(--theme-primary-hover);
+}
+
+.modern-style .social-link {
+  background: var(--theme-bg-tertiary);
+  color: var(--company-text-primary);
+}
+
+.modern-style .social-link:hover {
+  background: var(--theme-bg-hover);
+  transform: translateY(-2px);
+}
+
 /* Minimal Style */
 .minimal-style {
   padding: 1rem;
@@ -230,6 +311,33 @@ const containerClass = computed(() => {
   font-weight: 300;
 }
 
+.minimal-style .thank-you-subtitle {
+  color: var(--company-text-secondary);
+}
+
+.minimal-style .contact-info {
+  background: var(--theme-bg-secondary);
+  border: 1px solid var(--theme-border-primary);
+  color: var(--company-text-primary);
+}
+
+.minimal-style .contact-item a {
+  color: var(--theme-primary-color);
+}
+
+.minimal-style .contact-item a:hover {
+  color: var(--theme-primary-hover);
+}
+
+.minimal-style .social-link {
+  background: var(--theme-bg-tertiary);
+  color: var(--company-text-primary);
+}
+
+.minimal-style .social-link:hover {
+  background: var(--theme-bg-hover);
+}
+
 /* Celebration Style */
 .celebration-style {
   text-align: center;
@@ -237,10 +345,231 @@ const containerClass = computed(() => {
   overflow: hidden;
 }
 
-.celebration-style .thank-you-title {
+/* Light theme celebration */
+.company-light-scheme .celebration-style .thank-you-title {
   color: var(--theme-primary-color);
   font-family: var(--company-font-heading);
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Dark theme celebration */
+.company-dark-scheme .celebration-style .thank-you-title {
+  color: var(--theme-primary-color);
+  font-family: var(--company-font-heading);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.celebration-style .thank-you-subtitle {
+  color: var(--company-text-secondary);
+}
+
+.celebration-style .contact-info {
+  background: var(--theme-bg-secondary);
+  border: 1px solid var(--theme-border-primary);
+  color: var(--company-text-primary);
+}
+
+.celebration-style .contact-item a {
+  color: var(--theme-primary-color);
+}
+
+.celebration-style .contact-item a:hover {
+  color: var(--theme-primary-hover);
+}
+
+.celebration-style .social-link {
+  background: var(--theme-bg-tertiary);
+  color: var(--company-text-primary);
+}
+
+.celebration-style .social-link:hover {
+  background: var(--theme-bg-hover);
+}
+
+/* Corporate Style */
+.corporate-style {
+  background: var(--theme-bg-primary);
+  border: 2px solid var(--theme-border-primary);
+  border-radius: 0.5rem;
+  padding: 2.5rem;
+  text-align: center;
+}
+
+.corporate-style .thank-you-title {
+  color: var(--company-text-primary);
+  font-family: var(--company-font-heading);
+  font-weight: 600;
+}
+
+.corporate-style .thank-you-subtitle {
+  color: var(--company-text-secondary);
+}
+
+.corporate-style .contact-info {
+  background: var(--theme-bg-secondary);
+  border: 1px solid var(--theme-border-secondary);
+  color: var(--company-text-primary);
+}
+
+.corporate-style .contact-item a {
+  color: var(--theme-primary-color);
+}
+
+.corporate-style .contact-item a:hover {
+  color: var(--theme-primary-hover);
+}
+
+.corporate-style .social-link {
+  background: var(--theme-bg-tertiary);
+  color: var(--company-text-primary);
+}
+
+.corporate-style .social-link:hover {
+  background: var(--theme-bg-hover);
+}
+
+/* Gradient Style */
+.gradient-style {
+  border-radius: 1.5rem;
+  padding: 3rem;
+  text-align: center;
+  box-shadow: var(--theme-shadow-2xl);
+}
+
+/* Light theme gradient */
+.company-light-scheme .gradient-style {
+  background: linear-gradient(135deg, var(--theme-primary-color), var(--theme-secondary-color));
+  color: white;
+}
+
+.company-light-scheme .gradient-style .thank-you-title {
+  color: white;
+  font-family: var(--company-font-heading);
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.company-light-scheme .gradient-style .thank-you-subtitle {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.company-light-scheme .gradient-style .contact-info {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  color: white;
+}
+
+.company-light-scheme .gradient-style .contact-item a {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.company-light-scheme .gradient-style .contact-item a:hover {
+  color: white;
+}
+
+.company-light-scheme .gradient-style .social-link {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.company-light-scheme .gradient-style .social-link:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Dark theme gradient */
+.company-dark-scheme .gradient-style {
+  background: linear-gradient(135deg, var(--theme-primary-color), var(--theme-accent-color));
+  color: var(--company-text-primary);
+}
+
+.company-dark-scheme .gradient-style .thank-you-title {
+  color: var(--company-text-primary);
+  font-family: var(--company-font-heading);
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.company-dark-scheme .gradient-style .thank-you-subtitle {
+  color: var(--company-text-secondary) !important;
+}
+
+.company-dark-scheme .gradient-style .contact-info {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  color: var(--company-text-primary);
+}
+
+.company-dark-scheme .gradient-style .contact-item a {
+  color: var(--company-text-primary);
+}
+
+.company-dark-scheme .gradient-style .contact-item a:hover {
+  color: white;
+}
+
+.company-dark-scheme .gradient-style .social-link {
+  background: rgba(0, 0, 0, 0.3);
+  color: var(--company-text-primary);
+}
+
+.company-dark-scheme .gradient-style .social-link:hover {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+/* Elegant Style */
+.elegant-style {
+  background: var(--theme-bg-primary);
+  border-radius: 2rem;
+  padding: 3rem;
+  text-align: center;
+  position: relative;
+  box-shadow: var(--theme-shadow-xl);
+  border: 1px solid var(--theme-border-primary);
+}
+
+.elegant-style::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--theme-primary-color), var(--theme-secondary-color));
+  border-radius: 2rem 2rem 0 0;
+}
+
+.elegant-style .thank-you-title {
+  color: var(--company-text-primary);
+  font-family: var(--company-font-heading);
+  font-weight: 400;
+  letter-spacing: 0.05em;
+}
+
+.elegant-style .thank-you-subtitle {
+  color: var(--company-text-secondary);
+}
+
+.elegant-style .contact-info {
+  background: var(--theme-bg-secondary);
+  border: 1px solid var(--theme-border-secondary);
+  color: var(--company-text-primary);
+}
+
+.elegant-style .contact-item a {
+  color: var(--theme-primary-color);
+}
+
+.elegant-style .contact-item a:hover {
+  color: var(--theme-primary-hover);
+}
+
+.elegant-style .social-link {
+  background: var(--theme-bg-tertiary);
+  color: var(--company-text-primary);
+}
+
+.elegant-style .social-link:hover {
+  background: var(--theme-bg-hover);
 }
 
 .celebration-bg {
@@ -261,11 +590,11 @@ const containerClass = computed(() => {
   animation: confetti-fall 3s linear infinite;
 }
 
-.confetti-1 { left: 10%; animation-delay: 0s; background: #ff6b6b; }
-.confetti-2 { left: 20%; animation-delay: 0.5s; background: #4ecdc4; }
-.confetti-3 { left: 30%; animation-delay: 1s; background: #45b7d1; }
-.confetti-4 { left: 40%; animation-delay: 1.5s; background: #f9ca24; }
-.confetti-5 { left: 50%; animation-delay: 2s; background: #f0932b; }
+.confetti-1 { left: 10%; animation-delay: 0s; background: var(--theme-primary-color); }
+.confetti-2 { left: 20%; animation-delay: 0.5s; background: var(--theme-secondary-color); }
+.confetti-3 { left: 30%; animation-delay: 1s; background: var(--theme-accent-color); }
+.confetti-4 { left: 40%; animation-delay: 1.5s; background: var(--theme-primary-color); }
+.confetti-5 { left: 50%; animation-delay: 2s; background: var(--theme-secondary-color); }
 
 @keyframes confetti-fall {
   0% {
@@ -334,10 +663,8 @@ const containerClass = computed(() => {
 
 /* Contact info styles */
 .contact-info {
-  background: var(--theme-bg-secondary);
   border-radius: 0.5rem;
   padding: 1.5rem;
-  border: 1px solid var(--theme-border-primary);
 }
 
 .contact-item {
