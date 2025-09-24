@@ -11,7 +11,6 @@ logo: /difo/difo-logo_bright-solid.svg
 clientLogo: /bell/difo-logo_bell-bright.svg
 logoSize: medium
 backgroundImage: /difo/space.png
-# Global slide logo settings are now defined in CSS variables
 presenters:
   - name: Peter-Christoph Haider
     title: Managing Director, Munich
@@ -245,3 +244,121 @@ quoteStyle: "minimal"
 fontSize: "xlarge"
 color: dark
 ---
+
+---
+layout: chart
+chartType: "bar"
+color: light
+title: "Quarterly Sales Performance"
+subtitle: "Revenue growth across quarters"
+chartData:
+  labels: ["Q1 2024", "Q2 2024", "Q3 2024", "Q4 2024"]
+  datasets:
+    - label: "Revenue (€M)"
+      data: [2.5, 3.2, 4.1, 3.8]
+    - label: "Profit (€M)"
+      data: [0.8, 1.2, 1.8, 1.5]
+---
+
+**Key insights:** Q3 showed the highest revenue growth with strong profit margins.
+
+---
+layout: chart
+chartType: "line"
+color: dark
+title: "User Growth Trend"
+subtitle: "Monthly active users over time"
+chartData:
+  labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"]
+  datasets:
+    - label: "Active Users"
+      data: [1200, 1350, 1500, 1800, 2100, 2400]
+      tension: 0.4
+---
+
+**Growth rate:** 100% increase in user base over 6 months.
+
+---
+layout: chart
+chartType: "pie"
+color: light
+title: "Market Share Distribution"
+subtitle: "Current market position"
+chartData:
+  labels: ["DIFO", "Competitor A", "Competitor B", "Others"]
+  datasets:
+    - label: "Market Share (%)"
+      data: [35, 25, 20, 20]
+---
+
+**Market position:** DIFO leads with 35% market share in the digital solutions sector.
+
+---
+layout: chart
+chartType: "doughnut"
+color: dark
+title: "Technology Stack"
+subtitle: "Distribution of technologies used"
+chartData:
+  labels: ["Frontend", "Backend", "Database", "DevOps", "AI/ML"]
+  datasets:
+    - label: "Usage (%)"
+      data: [30, 25, 20, 15, 10]
+---
+
+**Technology focus:** Frontend and backend development represent 55% of our technical expertise.
+
+---
+layout: chart
+chartType: "area"
+color: light
+title: "Performance Metrics"
+subtitle: "System performance over time"
+chartData:
+  labels: ["Week 1", "Week 2", "Week 3", "Week 4", "Week 5"]
+  datasets:
+    - label: "Response Time (ms)"
+      data: [120, 110, 95, 85, 75]
+    - label: "Throughput (req/s)"
+      data: [800, 950, 1100, 1250, 1400]
+---
+
+**Performance improvement:** 37% reduction in response time with 75% increase in throughput.
+
+---
+layout: default
+---
+
+# Chart Component Examples
+
+You can also use the Chart component directly in any slide:
+
+<div class="grid grid-cols-2 gap-8">
+
+<Chart
+  type="bar"
+  :data="{
+    labels: ['Product A', 'Product B', 'Product C'],
+    datasets: [{
+      label: 'Sales',
+      data: [120, 190, 300]
+    }]
+  }"
+  height="300px"
+  theme="light"
+/>
+
+<Chart
+  type="line"
+  :data="{
+    labels: ['Jan', 'Feb', 'Mar', 'Apr'],
+    datasets: [{
+      label: 'Growth',
+      data: [10, 25, 40, 60]
+    }]
+  }"
+  height="300px"
+  theme="light"
+/>
+
+</div>

@@ -1,5 +1,7 @@
 <script setup lang="js">
 import { computed, ref, onMounted, nextTick } from 'vue'
+import { useSlideContext } from '@slidev/client'
+import Chart from '../components/Chart.vue'
 
 const props = defineProps({
   color: {
@@ -40,31 +42,23 @@ const colorscheme = computed(() => {
   return `company-${props.color}-scheme`
 })
 
+const { $slidev } = useSlideContext()
+
 const chartData = computed(() => {
-  // Default chart data - this would normally come from frontmatter
-  return {
+  // Use frontmatter data if available, otherwise use default
+  return $slidev.nav.currentRoute.meta?.slide?.frontmatter?.chartData || {
     labels: ['Q1', 'Q2', 'Q3', 'Q4'],
     datasets: [{
       label: 'Sales',
-      data: [65, 59, 80, 81],
-      backgroundColor: [
-        'rgba(34, 197, 94, 0.8)',
-        'rgba(59, 130, 246, 0.8)',
-        'rgba(245, 158, 11, 0.8)',
-        'rgba(239, 68, 68, 0.8)'
-      ],
-      borderColor: [
-        'rgb(34, 197, 94)',
-        'rgb(59, 130, 246)',
-        'rgb(245, 158, 11)',
-        'rgb(239, 68, 68)'
-      ],
-      borderWidth: 2
+      data: [65, 59, 80, 81]
     }]
   }
 })
 
 const chartOptions = computed(() => {
+  // Use frontmatter options if available, otherwise use default
+  const frontmatterOptions = $slidev.nav.currentRoute.meta?.slide?.frontmatter?.chartOptions || {}
+  
   const baseOptions = {
     responsive: true,
     maintainAspectRatio: false,
@@ -73,8 +67,9 @@ const chartOptions = computed(() => {
         display: props.showLegend,
         position: 'top'
       },
-      datalabels: {
-        display: props.showDataLabels
+      title: {
+        display: !!props.title,
+        text: props.title
       }
     },
     animation: {
@@ -90,7 +85,8 @@ const chartOptions = computed(() => {
     }
   }
 
-  return baseOptions
+  // Merge with frontmatter options
+  return { ...baseOptions, ...frontmatterOptions }
 })
 
 const chartRef = ref(null)
@@ -118,30 +114,28 @@ onMounted(async () => {
           class="chart-wrapper bg-white rounded-lg shadow-lg p-6"
           :style="{ height: height, width: '100%' }"
         >
-          <!-- Placeholder for Chart.js or other charting library -->
+          <!-- Chart Component -->
           <div 
             ref="chartRef"
-            class="chart-canvas w-full h-full flex items-center justify-center"
+            class="chart-canvas w-full h-full"
             :class="{ 'animate-fade-in': animated && isVisible }"
           >
-            <!-- This would be replaced with actual chart implementation -->
-            <div class="text-center">
-              <div class="text-6xl mb-4">📊</div>
-              <h3 class="text-xl font-semibold mb-2">{{ chartType.toUpperCase() }} Chart</h3>
-              <p class="text-gray-600">Chart implementation would go here</p>
-              <div class="mt-4 text-sm text-gray-500">
-                <p>Data: {{ JSON.stringify(chartData, null, 2) }}</p>
-              </div>
-            </div>
+            <Chart
+              :type="chartType"
+              :data="chartData"
+              :options="chartOptions"
+              :theme="color === 'dark' ? 'dark' : 'light'"
+              width="100%"
+              height="100%"
+            />
           </div>
         </div>
       </div>
       
       <!-- Chart Notes -->
-      <div class="chart-notes mt-6">
+      <div v-if="$slots.default" class="chart-notes mt-6">
         <div class="bg-gray-50 rounded-lg p-4">
-          <h4 class="font-semibold mb-2">Notes:</h4>
-          <p class="text-sm text-gray-600">This is a placeholder chart layout. In a real implementation, you would integrate Chart.js or another charting library.</p>
+          <slot />
         </div>
       </div>
     </div>

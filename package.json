@@ -44,6 +44,8 @@
     "@slidev/theme-default": "^0.25.0",
     "@slidev/types": "52.2.4",
     "@vueuse/motion": "^3.0.3",
+    "chart.js": "^4.5.0",
+    "chartjs-adapter-date-fns": "^3.0.0",
     "defu": "^6.1.4",
     "markdown-it-mark": "^4.0.0",
     "qrcode.vue": "^3.4.1",

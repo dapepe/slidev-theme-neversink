@@ -13,6 +13,7 @@ import StickyNote from '../components/StickyNote.vue'
 import TaskOverview from '../components/TaskOverview.vue'
 import SvgNative from '../components/SvgNative.vue'
 import TaskList from '../components/TaskList.vue'
+import Chart from '../components/Chart.vue'
 
 
 // Auto-inject company CSS based on frontmatter (only when company changes)
@@ -108,6 +109,7 @@ export default defineAppSetup(({ app, router }) => {
   app.component('TaskOverview', TaskOverview as any)
   app.component('SvgNative', SvgNative as any)
   app.component('TaskList', TaskList as any)
+  app.component('Chart', Chart as any)
   
   // Auto-apply company theming and color schemes
   let currentColorScheme: string | null = null
