@@ -64,6 +64,60 @@ align: auto
 />
 
 ---
+layout: cards-grid
+color: light
+cards:
+  - headline: "Strategy"
+    content: "Comprehensive planning and strategic guidance for digital transformation initiatives."
+    icon: "fas fa-chess"
+    color: "blue"
+  - headline: "Implementation"
+    content: "Expert execution of digital solutions with proven methodologies and best practices."
+    icon: "fas fa-cogs"
+    color: "green"
+  - headline: "Support"
+    content: "Ongoing maintenance and support to ensure optimal performance and continuous improvement."
+    icon: "fas fa-hands-helping"
+    color: "orange"
+theme: "light"
+sequential: false
+---
+
+**🎯 All cards visible:** Standard grid display with all cards shown
+
+---
+layout: cards-grid
+color: dark
+cards:
+  - headline: "Analytics"
+    content: "Data-driven insights and analytics solutions."
+    icon: "fas fa-chart-line"
+    color: "blue"
+  - headline: "Security"
+    content: "Enterprise-grade security and compliance."
+    icon: "fas fa-shield-alt"
+    color: "red"
+  - headline: "Cloud"
+    content: "Scalable cloud infrastructure and services."
+    icon: "fas fa-cloud"
+    color: "teal"
+  - headline: "AI/ML"
+    content: "Artificial intelligence and machine learning solutions."
+    icon: "fas fa-brain"
+    color: "purple"
+  - headline: "Integration"
+    content: "Seamless system integration and connectivity."
+    icon: "fas fa-plug"
+    color: "orange"
+  - headline: "Automation"
+    content: "Process automation and workflow optimization."
+    icon: "fas fa-robot"
+    color: "pink"
+theme: "dark"
+sequential: true
+---
+
+---
 layout: section
 ---
 

@@ -142,7 +142,7 @@ export function useSlideNavigation(options = {}) {
 
   // Start blocking navigation
   const startBlocking = () => {
-    if (!enableNavigation || !navInstance || currentLayout !== 'agenda') {
+    if (!enableNavigation || !navInstance) {
       return
     }
 

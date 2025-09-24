@@ -10,7 +10,6 @@ import SpeechBubble from '../components/SpeechBubble.vue'
 import StickyNote from '../components/StickyNote.vue'
 
 // New components
-import CardGrid from '../components/CardGrid.vue'
 import TaskOverview from '../components/TaskOverview.vue'
 import SvgAnimation from '../components/SvgAnimation.vue'
 
@@ -101,8 +100,6 @@ export default defineAppSetup(({ app, router }) => {
   app.component('Planet', Planet)
   app.component('SpeechBubbleGuy', SpeechBubbleGuy)
   
-  // Register new components
-  app.component('CardGrid', CardGrid)
   app.component('TaskOverview', TaskOverview)
   app.component('SvgAnimation', SvgAnimation)
   
