@@ -1,6 +1,6 @@
 <script setup lang="js">
 import { computed, onMounted, onUnmounted, ref } from 'vue'
-import { useSlideNavigation } from '../composables/useSlideNavigation.js'
+import { useStepNavigation } from '../composables/useNavigationOverride.js'
 import Card from '../components/Card.vue'
 
 const props = defineProps({
@@ -49,85 +49,32 @@ console.log('Cards Grid Layout - Props:', {
   gridId: computedGridId.value
 })
 
-// Use slide navigation composable for sequential reveal - only when navigation is enabled
-const {
-  currentStep,
-  totalSteps,
-  isNavigationBlocked,
-  startBlocking,
-  stopBlocking,
-  setTotalSteps,
-  goToStep
-} = useSlideNavigation({
-  enableNavigation: props.sequential,
-  navInstance: $slidev?.nav,
-  currentLayout: `cards-grid-${computedGridId.value}`,
-  onNext: (step) => {
-    console.log(`Card ${step + 1} revealed`)
-  },
-  onPrev: (step) => {
-    console.log(`Card ${step + 1} hidden`)
-  },
-  onComplete: () => {
-    console.log('All cards revealed, allowing slide navigation')
-  }
-})
-
-// Intersection Observer for visibility detection
-let observer = null
-const isDestroyed = ref(false)
+// Layout reference for visibility detection
 const layoutRef = ref(null)
 
-// Initialize navigation with intersection observer
-onMounted(() => {
-  if (!props.sequential) {
-    console.log('Sequential disabled - no observer setup')
-    return
-  }
-  
-  console.log('Sequential enabled - setting up observer')
-  
-  // Create intersection observer to detect when component is visible
-  observer = new IntersectionObserver((entries) => {
-    if (isDestroyed.value) return
-    
-    entries.forEach(entry => {
-      if (isDestroyed.value) return
-      
-      if (entry.isIntersecting) {
-        // Component is visible - start navigation override
-        console.log('Cards grid visible, starting navigation override')
-        setTotalSteps(props.cards.length)
-        startBlocking()
-      } else {
-        // Component is not visible - stop navigation override
-        console.log('Cards grid not visible, stopping navigation override')
-        stopBlocking()
-      }
-    })
-  }, {
-    threshold: 0.1 // Trigger when 10% of component is visible
-  })
-  
-  // Start observing the component
-  if (layoutRef.value) {
-    observer.observe(layoutRef.value)
-  }
+// Use new step navigation composable for sequential reveal
+const stepNavigation = useStepNavigation({
+  maxSteps: props.cards.length,
+  initialStep: props.sequential ? 1 : props.cards.length, // Start at 1 for sequential (first card), show all for non-sequential
+  onStepChange: (step, direction) => {
+    if (direction === 'next') {
+      console.log(`Card ${step} revealed (total visible: ${step})`)
+    } else if (direction === 'prev') {
+      console.log(`Card ${step + 1} hidden (total visible: ${step})`)
+    } else if (direction === 'reset') {
+      console.log(`Cards grid reset - showing ${props.sequential ? '1 card' : 'all cards'}`)
+    }
+  },
+  isActive: () => {
+    // Only active when sequential mode is enabled and we have cards
+    return props.sequential && props.cards.length > 0
+  },
+  slideElement: layoutRef, // Pass layout ref for visibility detection
+  debug: true
 })
 
-// Cleanup navigation when component unmounts
-onUnmounted(() => {
-  isDestroyed.value = true
-  
-  if (observer) {
-    observer.disconnect()
-    observer = null
-  }
-  
-  if (props.sequential) {
-    stopBlocking()
-  }
-})
+// Extract current step for template usage
+const currentStep = stepNavigation.currentStep
 
 // Check if card should be visible based on current step
 const isCardVisible = (index) => {
@@ -135,7 +82,8 @@ const isCardVisible = (index) => {
     console.log(`Card ${index}: Sequential disabled, visible=true`)
     return true
   }
-  const visible = index <= currentStep.value
+  // In step navigation, step 1 means first card visible, step 2 means first two cards visible, etc.
+  const visible = index < currentStep.value
   console.log(`Card ${index}: Sequential enabled, currentStep=${currentStep.value}, visible=${visible}`)
   return visible
 }

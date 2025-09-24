@@ -11,7 +11,8 @@ import StickyNote from '../components/StickyNote.vue'
 
 // New components
 import TaskOverview from '../components/TaskOverview.vue'
-import SvgAnimation from '../components/SvgAnimation.vue'
+import SvgNative from '../components/SvgNative.vue'
+
 
 // Auto-inject company CSS based on frontmatter (only when company changes)
 let currentCompany: string | null = null
@@ -85,23 +86,26 @@ import SpeechBubbleGuy from '../components/vue3-kawaii/components/speechBubble/S
 export default defineAppSetup(({ app, router }) => {
   // Register existing components
   // app.component('CreditScroll', CreditScroll)
-  app.component('Admonition', Admonition)
-  app.component('AdmonitionType', AdmonitionType)
-  app.component('QRCode', QrcodeVue)
-  app.component('SpeechBubble', SpeechBubble)
-  app.component('StickyNote', StickyNote)
-  app.component('BackPack', BackPack)
-  app.component('Browser', Browser)
-  app.component('Cat', Cat)
-  app.component('CreditCard', CreditCard)
-  app.component('Ghost', Ghost)
-  app.component('IceCream', IceCream)
-  app.component('Mug', Mug)
-  app.component('Planet', Planet)
-  app.component('SpeechBubbleGuy', SpeechBubbleGuy)
+  app.component('Admonition', Admonition as any)
+  app.component('AdmonitionType', AdmonitionType as any)
+  app.component('QRCode', QrcodeVue as any)
+  app.component('SpeechBubble', SpeechBubble as any)
+  app.component('StickyNote', StickyNote as any)
   
-  app.component('TaskOverview', TaskOverview)
-  app.component('SvgAnimation', SvgAnimation)
+  // Register Kawaii components
+  app.component('BackPack', BackPack as any)
+  app.component('Browser', Browser as any)
+  app.component('Cat', Cat as any)
+  app.component('CreditCard', CreditCard as any)
+  app.component('Ghost', Ghost as any)
+  app.component('IceCream', IceCream as any)
+  app.component('Mug', Mug as any)
+  app.component('Planet', Planet as any)
+  app.component('SpeechBubbleGuy', SpeechBubbleGuy as any)
+  
+  // Register new components
+  app.component('TaskOverview', TaskOverview as any)
+  app.component('SvgNative', SvgNative as any)
   
   // Auto-apply company theming and color schemes
   let currentColorScheme: string | null = null

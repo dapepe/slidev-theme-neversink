@@ -118,6 +118,57 @@ sequential: true
 ---
 
 ---
+layout: full
+color: light
+---
+
+# SVG Animation - Side by Side Test
+
+<div class="grid grid-cols-2 gap-8 h-full items-center">
+
+<div class="text-center">
+<h2 class="text-xl mb-4">🎯 Sequential Mode</h2>
+<p class="text-sm mb-4">Use <kbd>→</kbd> arrow key to reveal step-by-step</p>
+<SvgNative
+  src="/difo/testSvg.svg"
+  animation="fade-in"
+  :duration="600"
+  :stagger="100"
+  layerPrefix="fade-in"
+  :responsive="true"
+  :interactive="true"
+  :sequential="true"
+  :maxStep="4"
+/>
+</div>
+
+<div class="text-center">
+<h2 class="text-xl mb-4">🖼️ Non-Sequential Mode</h2>
+<p class="text-sm mb-4">All elements shown immediately</p>
+<SvgNative
+  src="/difo/testSvg.svg"
+  animation="fade-in"
+  :duration="600"
+  :stagger="100"
+  layerPrefix="fade-in"
+  :responsive="true"
+  :interactive="true"
+  :sequential="false"
+  :maxStep="4"
+/>
+</div>
+
+</div>
+
+
+
+
+
+
+
+
+
+---
 layout: section
 ---
 
@@ -877,31 +928,25 @@ layout: section
 layout: default
 ---
 
-# Component: CardGrid
+# Component: cards-grid (Layout)
 
-<CardGrid 
-  :cards="[
-    {
-      title: 'Card 1',
-      content: 'Example content for card demonstration',
-      icon: 'fa-star',
-      color: '#1e3a8a'
-    },
-    {
-      title: 'Card 2',
-      content: 'Another card example with different styling',
-      icon: 'fa-heart',
-      color: '#059669'
-    }
-  ]"
-  :columns="2"
-/>
+**This component has been replaced with the `cards-grid` layout.**
 
-```vue
-<CardGrid 
-  :cards="[{title: 'Card', content: 'Content', icon: 'fa-star', color: '#1e3a8a'}]"
-  :columns="2"
-/>
+Use it as a layout instead:
+```markdown
+---
+layout: cards-grid
+cards:
+  - title: "Card 1"
+    content: "Example content"
+    icon: "fa-star"
+    color: "#1e3a8a"
+  - title: "Card 2" 
+    content: "Another card"
+    icon: "fa-heart"
+    color: "#059669"
+sequential: true
+---
 ```
 
 ---
@@ -909,25 +954,23 @@ layout: default
 color: dark
 ---
 
-# Component: CardGrid (Dark)
+# Component: cards-grid (Dark Layout)
 
-<CardGrid 
-  :cards="[
-    {
-      title: 'Dark Card 1',
-      content: 'Card content in dark theme',
-      icon: 'fa-moon',
-      color: '#6366f1'
-    },
-    {
-      title: 'Dark Card 2',
-      content: 'Another dark theme card example',
-      icon: 'fa-star',
-      color: '#ec4899'
-    }
-  ]"
-  :columns="2"
-/>
+**This component has been replaced with the `cards-grid` layout.**
+
+Use it as a layout with dark theme:
+```markdown
+---
+layout: cards-grid
+color: dark
+cards:
+  - title: "Dark Card 1"
+    content: "Card content in dark theme"
+    icon: "fa-moon"
+    color: "#6366f1"
+sequential: true
+---
+```
 
 **Dark theme card grid styling**
 
@@ -1161,24 +1204,29 @@ color: dark
 layout: default
 ---
 
-# Component: SvgAnimation
+# Component: SvgNative
+
+**SvgAnimation has been replaced with `SvgNative`.**
 
 <div class="flex justify-center my-8">
-  <SvgAnimation 
-    src="/svg/animated-diagram.svg"
-    :auto-animate="true"
-    animation-type="fade-in"
-    :delay="500"
+  <SvgNative 
+    src="/difo/testSvg.svg"
+    animation="fade-in"
+    :duration="600"
     :stagger="200"
+    layerPrefix="fade-in"
+    :sequential="true"
+    :maxStep="4"
   />
 </div>
 
 ```vue
-<SvgAnimation 
+<SvgNative 
   src="/path/to/diagram.svg"
-  :auto-animate="true"
-  animation-type="fade-in"
-  :delay="500"
+  animation="fade-in"
+  :duration="600"
+  layerPrefix="fade-in"
+  :sequential="true"
 />
 ```
 
@@ -1189,15 +1237,17 @@ layout: default
 color: dark
 ---
 
-# Component: SvgAnimation (Dark)
+# Component: SvgNative (Dark)
 
 <div class="flex justify-center my-8">
-  <SvgAnimation 
-    src="/svg/animated-diagram.svg"
-    :auto-animate="true"
-    animation-type="slide-up"
-    :delay="300"
+  <SvgNative 
+    src="/difo/testSvg.svg"
+    animation="fade-in"
+    :duration="600"
     :stagger="150"
+    layerPrefix="fade-in"
+    :sequential="true"
+    :maxStep="4"
   />
 </div>
 
@@ -1959,10 +2009,10 @@ layout: two-cols
 - `two-cols-title`
 
 ## 🧩 **15 Components**
-- `CardGrid`, `TaskOverview`
+- `cards-grid` (layout), `TaskOverview`
 - `SpeechBubble`, `StickyNote`
 - `Admonition`, `QRCode`
-- `SvgAnimation`, `Box`, `Email`
+- `SvgNative`, `Box`, `Email`
 
 ::right::
 
@@ -1986,6 +2036,12 @@ style: corporate
 ---
 
 # Complete Reference
+
+
+---
+layout: default
+color: dark
+---
 
 ## Every Component & Layout Available
 
