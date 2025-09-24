@@ -137,4 +137,12 @@ const colorscheme = computed(() => {
   flex: v-bind(colwidth.r); /* although this is mapped to 'right' it is reversed when needed in the template*/
   display: flex;
 }
+
+.column-content .slidev-layout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
 </style>
