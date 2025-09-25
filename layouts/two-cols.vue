@@ -111,8 +111,9 @@ const colorscheme = computed(() => {
   display: flex;
   flex-direction: column;
   height: 100%;
-  margin-top: 2rem;
+  gap: 2rem;
 }
+
 
 .two-cols .right-col {
   display: flex;
