@@ -27,7 +27,7 @@ const colorscheme = computed(() => {
 })
 </script>
 
-<!-- default.vue -->
+<!-- two-cols-full.vue -->
 <template>
   <div
     v-if="colwidth == 'error' || alignment.l == 'error' || alignment.r == 'error'"
@@ -62,7 +62,7 @@ const colorscheme = computed(() => {
       is vertical alignment (<code>t</code> for top, <code>m</code> for middle, <code>b</code> for bottom).
     </p>
   </div>
-  <div v-else class="slidev-layout default two-cols slidecolor" :class="colorscheme">
+  <div v-else class="slidev-layout default two-cols-full slidecolor" :class="colorscheme">
     <div v-if="$slots.left" class="left-col" :class="alignment.l">
       <slot name="left" />
     </div>
@@ -78,11 +78,14 @@ const colorscheme = computed(() => {
 </template>
 
 <style scoped>
-.two-cols {
+.two-cols-full {
   display: grid;
   grid-template-columns: repeat(12, 1fr); /* 12 columns */
   grid-template-rows: 1fr; /* no footer and content */
-  height:100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  gap: 1rem;
 }
 
 .end-footer {
@@ -95,44 +98,28 @@ const colorscheme = computed(() => {
   margin-bottom: 1rem;
 }
 
-.two-cols-footer .left-col {
-  margin-right: 2rem;
-  display: flex;
-  flex-direction: column;
-}
-
-.two-cols-footer .right-col {
-  display: flex;
-  flex-direction: column;
-}
-
-.two-cols .left-col {
-  margin-right: 2rem;
+.two-cols-full .left-col {
+  margin: 0;
+  padding: 0;
   display: flex;
   flex-direction: column;
   height: 100%;
 }
 
-.two-cols .right-col {
+.two-cols-full .right-col {
+  margin: 0;
+  padding: 0;
   display: flex;
   flex-direction: column;
   height: 100%;
 }
 
 /* 1-11 */
-.two-cols-footer .left-col {
-  grid-area: 2 / 1 / 3 / span v-bind(colwidth.l);
-}
-
-.two-cols-footer .right-col {
-  grid-area: 2 / v-bind(colwidth.l + 1) / 3 / span v-bind(colwidth.r);
-}
-
-.two-cols .left-col {
+.two-cols-full .left-col {
   grid-area: 1 / 1 / 2 / span v-bind(colwidth.l);
 }
 
-.two-cols .right-col {
+.two-cols-full .right-col {
   grid-area: 1 / v-bind(colwidth.l + 1) / 2 / span v-bind(colwidth.r);
 }
 

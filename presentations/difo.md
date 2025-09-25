@@ -41,7 +41,7 @@ agenda:
 
 
 ---
-layout: two-cols
+layout: two-cols-full
 color: light
 columns: is-5-7
 ---
@@ -168,6 +168,26 @@ layout: default
   ]"
   :sequential="true"
 />
+
+---
+layout: two-cols-full
+color: light
+columns: is-5-7
+---
+
+:: left ::
+
+# Feature 1
+
+At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.
+
+**Caption:** Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus
+
+:: right ::
+
+<div class="h-full w-full flex items-center justify-center">
+  <img src="/difo/images/billing-screenshot.png" class="max-h-full max-w-full object-contain" alt="Billing Application Screenshot" />
+</div>
 
 ---
 layout: quote
