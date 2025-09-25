@@ -20,7 +20,7 @@ const colorscheme = computed(() => {
 })
 </script>
 <template>
-  <div class="slidev-layout quote">
+  <div class="slidev-layout quote slidecolor" :class="colorscheme">
     <div class="my-auto">
       <div class="p-5 w-95% ml-auto mr-auto rounded-lg border-1px quotecolor" :class="colorscheme">
         <div class="leading-normal" :class="quotesize">

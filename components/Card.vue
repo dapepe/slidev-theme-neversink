@@ -16,7 +16,7 @@ const props = defineProps({
   },
   color: {
     type: String,
-    default: 'blue'
+    default: '#3b82f6'
   },
   animated: {
     type: Boolean,
@@ -33,20 +33,6 @@ const props = defineProps({
   }
 })
 
-const colorClasses = computed(() => {
-  const colorMap = {
-    blue: 'card-blue',
-    green: 'card-green',
-    red: 'card-red',
-    orange: 'card-orange',
-    purple: 'card-purple',
-    teal: 'card-teal',
-    pink: 'card-pink',
-    indigo: 'card-indigo'
-  }
-  return colorMap[props.color] || 'card-blue'
-})
-
 const iconClasses = computed(() => {
   let classes = props.icon
   if (props.animated) {
@@ -54,20 +40,28 @@ const iconClasses = computed(() => {
   }
   return classes
 })
+
+
+const lineStyle = computed(() => {
+  return {
+    background: props.color
+  }
+})
+
 </script>
 
 <template>
   <div 
     class="card-component" 
-    :class="[colorClasses, `card-theme-${props.theme}`]"
+    :class="`card-theme-${props.theme}`"
     :style="{ animationDelay: `${props.delay}ms` }"
   >
     <div class="card-header">
       <div class="card-icon">
-        <i :class="iconClasses"></i>
+        <i :class="iconClasses" :style="{ color: props.color, fontSize: '3.5rem' }"></i>
       </div>
     </div>
-    <div class="card-line"></div>
+    <div class="card-line" :style="lineStyle"></div>
     
     <div class="card-content">
       <h3 class="card-headline">{{ headline }}</h3>
@@ -79,10 +73,10 @@ const iconClasses = computed(() => {
 <style scoped>
 /* ===== CARD COMPONENT STYLING ===== */
 .card-component {
-  background: white;
+  /* background: white; */
   border-radius: 6px;
   padding: 0.75rem;
-  box-shadow: 0 1px 3px -1px rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.06);
+  /* Removed all shadows */
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
@@ -92,8 +86,8 @@ const iconClasses = computed(() => {
 }
 
 .card-component:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  /* Removed hover shadow effects */
+  transform: translateY(-2px);
 }
 
 .card-header {
@@ -103,9 +97,8 @@ const iconClasses = computed(() => {
 }
 
 .card-icon {
-  width: 2rem;
-  height: 2rem;
-  border-radius: 50%;
+  width: fit-content;
+  height: fit-content;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -114,8 +107,8 @@ const iconClasses = computed(() => {
 }
 
 .card-icon i {
-  font-size: 0.875rem;
-  color: white;
+  font-style: normal !important;
+  /* Font size is set directly via inline style */
 }
 
 .card-line {
@@ -124,6 +117,8 @@ const iconClasses = computed(() => {
   border-radius: 1px;
   margin-bottom: 0.75rem;
   position: relative;
+  background: #3b82f6; /* Default blue color */
+  /* Background can be overridden dynamically via :style="lineStyle" */
 }
 
 .card-content {
@@ -133,85 +128,23 @@ const iconClasses = computed(() => {
 
 .card-headline {
   font-family: var(--company-font-heading, 'Inter', sans-serif);
-  font-size: 1rem;
+  font-size: 1.25rem;
   font-weight: 600;
-  margin: 0 0 0.375rem 0;
+  margin: 0 0 0.5rem 0;
   color: var(--company-text-primary, #1f2937);
   line-height: 1.3;
 }
 
 .card-text {
   font-family: var(--company-font-primary, 'Inter', sans-serif);
-  font-size: 0.75rem;
+  font-size: 1rem;
   color: var(--company-text-secondary, #6b7280);
-  line-height: 1.4;
+  line-height: 1.5;
   margin: 0;
 }
 
 /* ===== COLOR VARIANTS ===== */
-.card-blue .card-icon {
-  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
-}
-
-.card-blue .card-line {
-  background: linear-gradient(90deg, #3b82f6, #1d4ed8);
-}
-
-.card-green .card-icon {
-  background: linear-gradient(135deg, #10b981, #047857);
-}
-
-.card-green .card-line {
-  background: linear-gradient(90deg, #10b981, #047857);
-}
-
-.card-red .card-icon {
-  background: linear-gradient(135deg, #ef4444, #dc2626);
-}
-
-.card-red .card-line {
-  background: linear-gradient(90deg, #ef4444, #dc2626);
-}
-
-.card-orange .card-icon {
-  background: linear-gradient(135deg, #f97316, #ea580c);
-}
-
-.card-orange .card-line {
-  background: linear-gradient(90deg, #f97316, #ea580c);
-}
-
-.card-purple .card-icon {
-  background: linear-gradient(135deg, #8b5cf6, #7c3aed);
-}
-
-.card-purple .card-line {
-  background: linear-gradient(90deg, #8b5cf6, #7c3aed);
-}
-
-.card-teal .card-icon {
-  background: linear-gradient(135deg, #14b8a6, #0d9488);
-}
-
-.card-teal .card-line {
-  background: linear-gradient(90deg, #14b8a6, #0d9488);
-}
-
-.card-pink .card-icon {
-  background: linear-gradient(135deg, #ec4899, #db2777);
-}
-
-.card-pink .card-line {
-  background: linear-gradient(90deg, #ec4899, #db2777);
-}
-
-.card-indigo .card-icon {
-  background: linear-gradient(135deg, #6366f1, #4f46e5);
-}
-
-.card-indigo .card-line {
-  background: linear-gradient(90deg, #6366f1, #4f46e5);
-}
+/* Colors are now dynamically applied via props */
 
 /* ===== ANIMATIONS ===== */
 @keyframes cardReveal {
@@ -240,12 +173,12 @@ const iconClasses = computed(() => {
 
 /* ===== THEME SUPPORT ===== */
 .card-theme-light {
-  background: white;
-  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.06);
+  /* background: white; */
+  /* Removed all shadows */
 }
 
 .card-theme-light:hover {
-  box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  /* Removed hover shadow effects */
 }
 
 .card-theme-light .card-headline {
@@ -257,12 +190,12 @@ const iconClasses = computed(() => {
 }
 
 .card-theme-dark {
-  background: #1f2937;
-  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.3), 0 1px 2px -1px rgba(0, 0, 0, 0.2);
+  /* background: #1f2937; */
+  /* Removed all shadows */
 }
 
 .card-theme-dark:hover {
-  box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
+  /* Removed hover shadow effects */
 }
 
 .card-theme-dark .card-headline {
@@ -280,20 +213,16 @@ const iconClasses = computed(() => {
   }
   
   .card-headline {
-    font-size: 0.9rem;
+    font-size: 1.125rem;
   }
   
   .card-text {
-    font-size: 0.7rem;
+    font-size: 0.9rem;
   }
   
   .card-icon {
-    width: 1.75rem;
-    height: 1.75rem;
-  }
-  
-  .card-icon i {
-    font-size: 0.75rem;
+    width: fit-content;
+    height: fit-content;
   }
 }
 
@@ -303,20 +232,16 @@ const iconClasses = computed(() => {
   }
   
   .card-headline {
-    font-size: 0.875rem;
+    font-size: 1rem;
   }
   
   .card-text {
-    font-size: 0.65rem;
+    font-size: 0.875rem;
   }
   
   .card-icon {
-    width: 1.5rem;
-    height: 1.5rem;
-  }
-  
-  .card-icon i {
-    font-size: 0.7rem;
+    width: fit-content;
+    height: fit-content;
   }
 }
 </style>
