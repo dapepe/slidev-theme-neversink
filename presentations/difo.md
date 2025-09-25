@@ -8,20 +8,20 @@ subtitle: Complete Component & Layout Reference
 date: 23.09.2025
 version: 1.0
 logos:
-  - '/difo/difo-logo_bright-solid.svg'
+  - '/difo/images/difo-logo_bright-solid.svg'
   - '/bell/difo-logo_bell-bright.svg'
   - '/bell/difo-logo_bell-bright.svg'
 logoSize: medium
-backgroundImage: /difo/space.png
+backgroundImage: /difo/images/space.png
 presenters:
   - name: Peter-Christoph Haider
     title: Managing Director, Munich
     email: phaider@difo.de
-    photo: /difo/PETER.png
+    photo: /difo/images/PETER.png
   - name: Hery-Christian Henry
     title: Solution Specialist, London
     email: hhenry@difo.de
-    photo: /difo/HENRY.png
+    photo: /difo/images/HENRY.png
 ---
 
 ---
@@ -135,7 +135,7 @@ color: light
 <div class="h-3/4 w-full flex items-center justify-center mt-8">
 
 <SvgNative
-  src="/difo/testSvg.svg"
+  src="/difo/images/EPBO-Process-EN-V1.0-Dynamic.svg"
   animation="fade-in"
   :duration="600"
   :stagger="100"

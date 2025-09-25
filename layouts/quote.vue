@@ -48,7 +48,7 @@ const colorscheme = computed(() => {
 }
 
 .slidev-layout.quote {
-  margin-top: 2em;
+  /* margin-top: 2em; */
   padding-left: 1em;
 }
 

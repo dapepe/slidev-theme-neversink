@@ -212,13 +212,14 @@
 .slidev-layout h2 + p,
 .slidev-layout h3 + p {
   opacity: 0.9;
-  margin-top: 1.5em;
+  margin-top: .2em;
+  
 }
 
 .slidev-layout h1 + ul,
 .slidev-layout h2 + ul,
 .slidev-layout h3 + ul {
-  margin-top: 1.5em;
+  margin-top: .2em;
 }
 
 .bwimg {

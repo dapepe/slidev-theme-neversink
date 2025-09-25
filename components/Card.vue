@@ -61,10 +61,11 @@ const lineStyle = computed(() => {
         <i :class="iconClasses" :style="{ color: props.color, fontSize: '3.5rem' }"></i>
       </div>
     </div>
-    <div class="card-line" :style="lineStyle"></div>
     
     <div class="card-content">
       <h3 class="card-headline">{{ headline }}</h3>
+    <div class="card-line" :style="lineStyle"></div>
+
       <p class="card-text">{{ content }}</p>
     </div>
   </div>

@@ -30,7 +30,7 @@ const props = defineProps({
   },
   title: {
     type: String,
-    default: '📊 Chart Layout'
+    default: 'Title'
   },
   subtitle: {
     type: String,
