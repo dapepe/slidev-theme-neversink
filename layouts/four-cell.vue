@@ -207,16 +207,16 @@ const cellcolor = computed(() => {
 </script>
 <template>
   <div class="grid grid-cols-12 grid-rows-12 w-full h-full auto-rows-fr">
-    <div class="slidev-layout default w-full h-full" :class="colw.l + ' ' + rowh.t + ' ' + cellcolor.tl">
+    <div class="slidev-layout default slidecolor w-full h-full" :class="colw.l + ' ' + rowh.t + ' ' + cellcolor.tl + ' ' + colorscheme">
       <slot name="top-left"></slot>
     </div>
-    <div class="slidev-layout default w-full h-full" :class="colw.r + ' ' + rowh.t + ' ' + cellcolor.tr">
+    <div class="slidev-layout default slidecolor w-full h-full" :class="colw.r + ' ' + rowh.t + ' ' + cellcolor.tr + ' ' + colorscheme">
       <slot name="top-right"></slot>
     </div>
-    <div class="slidev-layout default w-full h-full" :class="colw.l + ' ' + rowh.b + ' ' + cellcolor.bl">
+    <div class="slidev-layout default slidecolor w-full h-full" :class="colw.l + ' ' + rowh.b + ' ' + cellcolor.bl + ' ' + colorscheme">
       <slot name="bottom-left"></slot>
     </div>
-    <div class="slidev-layout default w-full h-full" :class="colw.r + ' ' + rowh.b + ' ' + cellcolor.br">
+    <div class="slidev-layout default slidecolor w-full h-full" :class="colw.r + ' ' + rowh.b + ' ' + cellcolor.br + ' ' + colorscheme">
       <slot name="bottom-right"></slot>
     </div>
   </div>
