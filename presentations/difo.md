@@ -41,18 +41,17 @@ agenda:
 
 
 ---
-layout: side-title
+layout: two-cols
 color: light
-side: left
-titlewidth: is-one-third
-align: auto
+columns: is-5-7
 ---
 
-:: title ::
+:: left ::
 
-# AGENDA
+<img src="/difo/images/agendaLeft.jpg" class="h-full w-full object-cover" alt="Agenda Left" />
 
-:: content ::
+:: right ::
+
 
 <AgendaTimed 
   :agenda="[

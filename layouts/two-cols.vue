@@ -82,6 +82,7 @@ const colorscheme = computed(() => {
   display: grid;
   grid-template-columns: repeat(12, 1fr); /* 12 columns */
   grid-template-rows: 1fr; /* no footer and content */
+  height:100%;
 }
 
 .end-footer {
@@ -109,11 +110,15 @@ const colorscheme = computed(() => {
   margin-right: 2rem;
   display: flex;
   flex-direction: column;
+  height:100%;
+
 }
 
 .two-cols .right-col {
   display: flex;
   flex-direction: column;
+  height:100%;
+
 }
 
 /* 1-11 */
