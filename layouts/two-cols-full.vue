@@ -7,7 +7,7 @@ const props = defineProps({
     default: 'is-one-half',
   },
   align: {
-    default: 'lt-lt',
+    default: 'lm-lm',
   },
   color: {
     default: 'white',

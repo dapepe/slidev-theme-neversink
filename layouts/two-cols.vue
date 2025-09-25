@@ -7,7 +7,7 @@ const props = defineProps({
     default: 'is-one-half',
   },
   align: {
-    default: 'lt-lt',
+    default: 'lm-lm',
   },
   color: {
     default: 'white',
@@ -111,12 +111,14 @@ const colorscheme = computed(() => {
   display: flex;
   flex-direction: column;
   height: 100%;
+  margin-top: 2rem;
 }
 
 .two-cols .right-col {
   display: flex;
   flex-direction: column;
   height: 100%;
+  margin-top: 2rem;
 }
 
 /* 1-11 */
