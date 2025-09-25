@@ -171,24 +171,6 @@ layout: default
 />
 
 ---
-layout: default
----
-
-# Inspirational Quotes
-
-> "The people in the crazy ones, the misfits, the rebels, the troublemakers, the round pegs in the square holes... the ones who see things differently."
-> 
-> — **Steve Jobs**
-
----
-layout: quote
-author: "Steve Jobs"
-color: light
----
-
-The people in the crazy ones, the misfits, the rebels, the troublemakers, the round pegs in the square holes... the ones who see things differently -- they're not fond of rules...
-
----
 layout: quote
 author: "Albert Einstein"
 color: dark
@@ -197,14 +179,6 @@ quotesize: "text-xl"
 
 Imagination is more important than knowledge. For knowledge is limited, whereas imagination embraces the entire world, stimulating progress, giving birth to evolution.
 
----
-layout: quotation
-quote: "Innovation distinguishes between a leader and a follower."
-author: "Steve Jobs"
-quoteStyle: "modern"
-fontSize: "large"
-color: light
----
 
 ---
 layout: quotation
@@ -216,25 +190,7 @@ fontSize: "medium"
 color: dark
 ---
 
----
-layout: quotation
-quote: "Success is not final, failure is not fatal: it is the courage to continue that counts."
-author: "Winston Churchill"
-title: "British Prime Minister"
-source: "Speech, 1942"
-quoteStyle: "elegant"
-fontSize: "large"
-color: light
----
 
----
-layout: quotation
-quote: "The only way to do great work is to love what you do."
-author: "Steve Jobs"
-quoteStyle: "minimal"
-fontSize: "xlarge"
-color: dark
----
 
 ---
 layout: chart
