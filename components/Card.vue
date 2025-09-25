@@ -1,5 +1,6 @@
 <script setup lang="js">
 import { computed } from 'vue'
+import '@lottiefiles/lottie-player'
 
 const props = defineProps({
   headline: {
@@ -30,6 +31,20 @@ const props = defineProps({
     type: String,
     default: 'light',
     validator: (value) => ['light', 'dark'].includes(value)
+  },
+  // New props for animated icons support
+  lottieUrl: {
+    type: String,
+    default: ''
+  },
+  lottieData: {
+    type: Object,
+    default: null
+  },
+  iconType: {
+    type: String,
+    default: 'fontawesome', // 'fontawesome', 'animated', 'svg'
+    validator: (value) => ['fontawesome', 'animated', 'svg'].includes(value)
   }
 })
 
@@ -39,6 +54,15 @@ const iconClasses = computed(() => {
     classes += ' card-icon-animated'
   }
   return classes
+})
+
+// Auto-detect icon type
+const isAnimatedIcon = computed(() => {
+  return props.icon.endsWith('.json') || props.icon.startsWith('http') || props.lottieUrl || props.lottieData
+})
+
+const isSvgIcon = computed(() => {
+  return props.icon.includes('<svg') || props.icon.includes('</svg>')
 })
 
 
@@ -58,7 +82,50 @@ const lineStyle = computed(() => {
   >
     <div class="card-header">
       <div class="card-icon">
-        <i :class="iconClasses" :style="{ color: props.color, fontSize: '3.5rem' }"></i>
+        <!-- FontAwesome Icons -->
+        <i 
+          v-if="!isAnimatedIcon && !isSvgIcon" 
+          :class="iconClasses" 
+          :style="{ color: props.color, fontSize: '3.5rem' }"
+        ></i>
+        
+        <!-- Animated Icon (Auto-detected) -->
+        <div 
+          v-else-if="isAnimatedIcon" 
+          class="lottie-container"
+          :style="{ width: '3.5rem', height: '3.5rem' }"
+        >
+          <lottie-player
+            v-if="lottieUrl"
+            :src="lottieUrl"
+            background="transparent"
+            speed="1"
+            loop
+            autoplay
+            direction="1"
+            mode="normal"
+            :style="{ width: '100%', height: '100%' }"
+          ></lottie-player>
+          <lottie-player
+            v-else
+            :src="icon"
+            background="transparent"
+            speed="1"
+            loop
+            autoplay
+            direction="1"
+            mode="normal"
+            :style="{ width: '100%', height: '100%' }"
+          ></lottie-player>
+        </div>
+        
+        <!-- SVG Icons (Auto-detected) -->
+        <div 
+          v-else-if="isSvgIcon" 
+          class="svg-container"
+          :style="{ width: '3.5rem', height: '3.5rem', color: props.color }"
+          v-html="icon"
+        ></div>
       </div>
     </div>
     
@@ -161,6 +228,32 @@ const lineStyle = computed(() => {
 
 .card-icon-animated {
   animation: iconPulse 2s ease-in-out infinite;
+}
+
+/* Lottie Animation Styles */
+.lottie-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lottie-data-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* SVG Icon Styles */
+.svg-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.svg-container svg {
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
 }
 
 @keyframes iconPulse {
