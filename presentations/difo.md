@@ -202,6 +202,23 @@ color: light
   <img src="/difo/images/billing-screenshot.png" class="max-h-100 object-contain" alt="Billing Application Screenshot" />
 </div>
 
+
+
+
+---
+layout: two-cols-full
+color: light
+columns: is-6-6
+---
+
+:: left ::
+
+# Slide with image
+
+:: right ::
+
+<img src="/difo/images/agendaLeft.jpg" class="h-full w-full object-cover" alt="Agenda Left" />
+
 ---
 layout: quote
 author: "Albert Einstein"

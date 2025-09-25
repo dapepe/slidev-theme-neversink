@@ -106,12 +106,20 @@ const colorscheme = computed(() => {
   height: 100%;
 }
 
+.two-cols-full .left-col:not(:has(img)) {
+  padding: 2rem;
+}
+
 .two-cols-full .right-col {
   margin: 0;
   padding: 0;
   display: flex;
   flex-direction: column;
   height: 100%;
+}
+
+.two-cols-full .right-col:not(:has(img)) {
+  padding: 2rem;
 }
 
 /* 1-11 */
