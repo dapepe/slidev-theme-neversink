@@ -64,12 +64,12 @@ const colorscheme = computed(() => {
           <slot name="title" />
         </div>
       </div>
-      <div class="slidev-layout toptitle content w-full">
+      <div class="slidev-layout toptitle content slidecolor w-full" :class="colorscheme">
         <div class="flex flex-row h-full w-full">
-          <div class="col-left" :class="alignment.l">
+          <div class="slidecolor col-left" :class="alignment.l + ' ' + colorscheme">
             <slot name="left" />
           </div>
-          <div class="col-right" :class="alignment.r">
+          <div class="slidecolor col-right" :class="alignment.r + ' ' + colorscheme">
             <slot name="right" />
           </div>
         </div>

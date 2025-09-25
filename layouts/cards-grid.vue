@@ -130,7 +130,12 @@ const gridLayout = computed(() => {
 
 <template>
   <div class="slidev-layout cards-grid h-full slidecolor" :class="[colorscheme]" ref="layoutRef">
-    <div class="h-full flex flex-col justify-center items-center">
+    <div class="h-full flex flex-col justify-center">
+      <!-- Title Slot -->
+      <div v-if="$slots.default" class="cards-title mb-8">
+        <slot />
+      </div>
+      
       <!-- Cards Grid -->
       <div class="cards-container" :style="gridLayout">
         <div 
@@ -201,7 +206,7 @@ const gridLayout = computed(() => {
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  /* justify-content: space-between; */
 }
 
 
@@ -248,6 +253,25 @@ const gridLayout = computed(() => {
 .navigation-hint p:first-child {
   margin-bottom: 0.25rem;
   opacity: 0.9;
+}
+
+/* ===== TITLE SLOT STYLING ===== */
+.cards-title {
+  color: var(--company-text-heading);
+}
+
+.cards-title h1 {
+  font-family: var(--company-font-heading);
+  font-size: var(--company-font-size-4xl);
+  font-weight: var(--company-font-weight-bold);
+  margin-bottom: 0.5rem;
+}
+
+.cards-title h2 {
+  font-family: var(--company-font-heading);
+  font-size: var(--company-font-size-2xl);
+  font-weight: var(--company-font-weight-semibold);
+  opacity: 0.8;
 }
 
 </style>

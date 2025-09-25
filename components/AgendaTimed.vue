@@ -59,6 +59,7 @@ const getItemClass = (index) => {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  padding-top: 2rem;
 }
 
 /* Agenda items */

@@ -67,8 +67,6 @@
   /* ===== TYPOGRAPHY ===== */
   --company-font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --company-font-heading: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --company-font-mono: 'Fira Code', 'Monaco', 'Consolas', monospace;
-  --company-font-quote: 'Inter', serif;
   
   /* Font weights */
   --company-font-weight-thin: 100;

@@ -86,7 +86,7 @@ const colorscheme = computed(() => {
       <div class="slidecolor column-title" :class="colorscheme">
         <div class="slidev-layout sidetitle w-full p-6" :class="alignment.l"><slot name="title" /></div>
       </div>
-      <div class="column-content">
+      <div class="slidecolor column-content" :class="colorscheme">
         <div class="slidev-layout h-fit w-full" :class="alignment.r">
           <slot name="content" />
           <slot name="default" />
@@ -94,7 +94,7 @@ const colorscheme = computed(() => {
       </div>
     </div>
     <div v-else class="flex h-full w-full">
-      <div class="column-content">
+      <div class="slidecolor column-content" :class="colorscheme">
         <div class="slidev-layout h-fit w-full" :class="alignment.l">
           <slot name="content" />
           <slot name="default" />

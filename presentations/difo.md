@@ -7,19 +7,21 @@ title: DIFO Digital Solutions
 subtitle: Complete Component & Layout Reference
 date: 23.09.2025
 version: 1.0
-logo: /difo/difo-logo_bright-solid.svg
-clientLogo: /bell/difo-logo_bell-bright.svg
+logos:
+  - '/difo/images/difo-logo_bright-solid.svg'
+  - '/bell/difo-logo_bell-bright.svg'
+  - '/bell/difo-logo_bell-bright.svg'
 logoSize: medium
-backgroundImage: /difo/space.png
+backgroundImage: /difo/images/space.png
 presenters:
   - name: Peter-Christoph Haider
     title: Managing Director, Munich
     email: phaider@difo.de
-    photo: /photo.png
-  - name: Peter-Christoph Haider
-    title: Managing Director, Munich
-    email: phaider@difo.de
-    photo: /photo.png
+    photo: /difo/images/PETER.png
+  - name: Hery-Christian Henry
+    title: Solution Specialist, London
+    email: hhenry@difo.de
+    photo: /difo/images/HENRY.png
 ---
 
 ---
@@ -39,18 +41,17 @@ agenda:
 
 
 ---
-layout: side-title
+layout: two-cols-full
 color: light
-side: left
-titlewidth: is-one-third
-align: auto
+columns: is-5-7
 ---
 
-:: title ::
+:: left ::
 
-# AGENDA
+<img src="/difo/images/agendaLeft.jpg" class="h-full w-full object-cover" alt="Agenda Left" />
 
-:: content ::
+:: right ::
+
 
 <AgendaTimed 
   :agenda="[
@@ -69,20 +70,20 @@ cards:
   - headline: "Strategy"
     content: "Comprehensive planning and strategic guidance for digital transformation initiatives."
     icon: "fas fa-chess"
-    color: "blue"
+    color: "#3b82f6"
   - headline: "Implementation"
     content: "Expert execution of digital solutions with proven methodologies and best practices."
-    icon: "fas fa-cogs"
-    color: "green"
+    icon: "/difo/icons/billing.json"
+    color: "#10b981"
   - headline: "Support"
     content: "Ongoing maintenance and support to ensure optimal performance and continuous improvement."
     icon: "fas fa-hands-helping"
-    color: "orange"
+    color: "#f97316"
 theme: "light"
 sequential: false
 ---
 
-**🎯 All cards visible:** Standard grid display with all cards shown
+# Title
 
 ---
 layout: cards-grid
@@ -91,27 +92,27 @@ cards:
   - headline: "Analytics"
     content: "Data-driven insights and analytics solutions."
     icon: "fas fa-chart-line"
-    color: "blue"
+    color: "#3b82f6"
   - headline: "Security"
     content: "Enterprise-grade security and compliance."
     icon: "fas fa-shield-alt"
-    color: "red"
+    color: "#ef4444"
   - headline: "Cloud"
     content: "Scalable cloud infrastructure and services."
     icon: "fas fa-cloud"
-    color: "teal"
+    color: "#14b8a6"
   - headline: "AI/ML"
     content: "Artificial intelligence and machine learning solutions."
     icon: "fas fa-brain"
-    color: "purple"
+    color: "#8b5cf6"
   - headline: "Integration"
     content: "Seamless system integration and connectivity."
     icon: "fas fa-plug"
-    color: "orange"
+    color: "#f97316"
   - headline: "Automation"
     content: "Process automation and workflow optimization."
     icon: "fas fa-robot"
-    color: "pink"
+    color: "#ec4899"
 theme: "dark"
 sequential: true
 ---
@@ -121,15 +122,13 @@ layout: full
 color: light
 ---
 
-# SVG Animation - Side by Side Test
+# Title
 
-<div class="grid grid-cols-2 gap-8 h-full items-center">
 
-<div class="text-center">
-<h2 class="text-xl mb-4">🎯 Sequential Mode</h2>
-<p class="text-sm mb-4">Use <kbd>→</kbd> arrow key to reveal step-by-step</p>
+<div class="h-3/4 w-full flex items-center justify-center mt-8">
+
 <SvgNative
-  src="/difo/testSvg.svg"
+  src="/difo/images/EPBO-Process-EN-V1.0-Dynamic.svg"
   animation="fade-in"
   :duration="600"
   :stagger="100"
@@ -138,24 +137,8 @@ color: light
   :interactive="true"
   :sequential="true"
   :maxStep="4"
+  class="max-w-full max-h-full"
 />
-</div>
-
-<div class="text-center">
-<h2 class="text-xl mb-4">🖼️ Non-Sequential Mode</h2>
-<p class="text-sm mb-4">All elements shown immediately</p>
-<SvgNative
-  src="/difo/testSvg.svg"
-  animation="fade-in"
-  :duration="600"
-  :stagger="100"
-  layerPrefix="fade-in"
-  :responsive="true"
-  :interactive="true"
-  :sequential="false"
-  :maxStep="4"
-/>
-</div>
 
 </div>
 
@@ -177,25 +160,61 @@ layout: default
     { title: 'Task 5', status: 'in-progress' },
     { title: 'Task 6', status: 'pending' }
   ]"
+  :sequential="true"
 />
 
 ---
+layout: two-cols
+color: light
+columns: is-5-7
+align: lt-lt
+---
+
+:: left ::
+
+# Feature 1
+
+At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.
+
+
+:: right ::
+
+<div class="w-full flex items-center justify-center">
+  <img src="/difo/images/billing-screenshot.png" class="max-h-full max-w-full object-contain" alt="Billing Application Screenshot" />
+</div>
+
+**Caption:** Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus
+
+---
 layout: default
----
-
-# Inspirational Quotes
-
-> "The people in the crazy ones, the misfits, the rebels, the troublemakers, the round pegs in the square holes... the ones who see things differently."
-> 
-> — **Steve Jobs**
-
----
-layout: quote
-author: "Steve Jobs"
 color: light
 ---
 
-The people in the crazy ones, the misfits, the rebels, the troublemakers, the round pegs in the square holes... the ones who see things differently -- they're not fond of rules...
+# Feature 2
+
+<div class="w-full flex items-center justify-center mt-8">
+  <img src="/difo/images/billing-screenshot.png" class="max-h-100 object-contain" alt="Billing Application Screenshot" />
+</div>
+
+
+
+
+---
+layout: two-cols-full
+color: light
+columns: is-6-6
+---
+
+:: left ::
+
+# Slide with image
+
+At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.
+
+
+:: right ::
+
+<img src="/difo/images/agendaLeft.jpg" class="h-full w-full object-cover" alt="Agenda Left" />
 
 ---
 layout: quote
@@ -206,14 +225,6 @@ quotesize: "text-xl"
 
 Imagination is more important than knowledge. For knowledge is limited, whereas imagination embraces the entire world, stimulating progress, giving birth to evolution.
 
----
-layout: quotation
-quote: "Innovation distinguishes between a leader and a follower."
-author: "Steve Jobs"
-quoteStyle: "modern"
-fontSize: "large"
-color: light
----
 
 ---
 layout: quotation
@@ -225,25 +236,7 @@ fontSize: "medium"
 color: dark
 ---
 
----
-layout: quotation
-quote: "Success is not final, failure is not fatal: it is the courage to continue that counts."
-author: "Winston Churchill"
-title: "British Prime Minister"
-source: "Speech, 1942"
-quoteStyle: "elegant"
-fontSize: "large"
-color: light
----
 
----
-layout: quotation
-quote: "The only way to do great work is to love what you do."
-author: "Steve Jobs"
-quoteStyle: "minimal"
-fontSize: "xlarge"
-color: dark
----
 
 ---
 layout: chart

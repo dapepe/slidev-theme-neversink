@@ -69,6 +69,7 @@ const getItemClass = (index) => {
 .slidev-layout.agenda {
   font-family: var(--company-font-primary);
   padding: var(--company-space-8);
+  padding-left:0;
   margin: 0;
 }
 
@@ -85,6 +86,7 @@ const getItemClass = (index) => {
   margin: 0;
   padding: 0;
   line-height: 1.1;
+  padding-left: var(--company-space-8);
 }
 
 /* Content area */

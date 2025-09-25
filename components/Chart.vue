@@ -145,8 +145,8 @@ const getDefaultOptions = () => {
         backgroundColor: theme.background,
         titleColor: theme.text,
         bodyColor: theme.text,
-        borderColor: theme.grid,
-        borderWidth: 1
+        borderColor: 'transparent',
+        borderWidth: 0
       }
     },
     scales: props.type === 'pie' || props.type === 'doughnut' ? {} : {
@@ -188,18 +188,19 @@ const processData = () => {
       if (props.type === 'pie' || props.type === 'doughnut') {
         // For pie/doughnut charts, use different colors for each segment
         dataset.backgroundColor = dataset.backgroundColor || colors.slice(0, dataset.data?.length || colors.length)
-        dataset.borderColor = themes[props.theme].background
-        dataset.borderWidth = 2
+        dataset.borderColor = 'transparent'
+        dataset.borderWidth = 0
       } else if (props.type === 'area') {
         // For area charts, use fill
         dataset.backgroundColor = dataset.backgroundColor || color + '20' // Add transparency
         dataset.borderColor = dataset.borderColor || color
+        dataset.borderWidth = 0
         dataset.fill = true
       } else {
         // For line/bar charts
         dataset.backgroundColor = dataset.backgroundColor || (props.type === 'bar' ? color : color + '20')
         dataset.borderColor = dataset.borderColor || color
-        dataset.borderWidth = dataset.borderWidth || 2
+        dataset.borderWidth = 0
       }
     })
   }
@@ -222,7 +223,11 @@ const createChart = async () => {
     ...props.options,
     plugins: {
       ...defaultOptions.plugins,
-      ...props.options.plugins
+      ...props.options.plugins,
+      title: {
+        ...defaultOptions.plugins.title,
+        ...props.options.plugins?.title
+      }
     },
     scales: {
       ...defaultOptions.scales,
@@ -249,9 +254,22 @@ const destroyChart = () => {
 const updateChart = () => {
   if (chartInstance) {
     chartInstance.data = processData()
+    const defaultOptions = getDefaultOptions()
     chartInstance.options = {
-      ...getDefaultOptions(),
-      ...props.options
+      ...defaultOptions,
+      ...props.options,
+      plugins: {
+        ...defaultOptions.plugins,
+        ...props.options.plugins,
+        title: {
+          ...defaultOptions.plugins.title,
+          ...props.options.plugins?.title
+        }
+      },
+      scales: {
+        ...defaultOptions.scales,
+        ...props.options.scales
+      }
     }
     chartInstance.update()
   }
