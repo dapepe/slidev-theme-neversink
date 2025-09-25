@@ -192,6 +192,17 @@ At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praese
 **Caption:** Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus
 
 ---
+layout: default
+color: light
+---
+
+# Feature 2
+
+<div class="w-full flex items-center justify-center mt-8">
+  <img src="/difo/images/billing-screenshot.png" class="max-h-100 object-contain" alt="Billing Application Screenshot" />
+</div>
+
+---
 layout: quote
 author: "Albert Einstein"
 color: dark
