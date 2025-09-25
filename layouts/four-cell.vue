@@ -204,6 +204,12 @@ const cellcolor = computed(() => {
     br: color(paddedParts[3]),
   }
 })
+
+const colorscheme = computed(() => {
+  // Use the first color for the overall scheme
+  const firstColor = props.color.split(',')[0] || 'light'
+  return `company-${firstColor}-scheme`
+})
 </script>
 <template>
   <div class="grid grid-cols-12 grid-rows-12 w-full h-full auto-rows-fr">
