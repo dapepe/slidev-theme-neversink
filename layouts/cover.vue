@@ -21,11 +21,6 @@ const props = defineProps({
     type: Boolean,
     default: true
   },
-  presenterPosition: {
-    type: String,
-    default: 'bottom-right', // 'bottom-left', 'bottom-right', 'top-left', 'top-right'
-    validator: (value) => ['bottom-left', 'bottom-right', 'top-left', 'top-right'].includes(value)
-  },
   // Frontmatter props
   title: {
     type: String,
@@ -35,33 +30,9 @@ const props = defineProps({
     type: String,
     default: ''
   },
-  logo: {
-    type: String,
-    default: ''
-  },
-  logo2: {
-    type: String,
-    default: ''
-  },
-  clientLogo: {
-    type: String,
-    default: ''
-  },
-  clientLogo2: {
-    type: String,
-    default: ''
-  },
-  presenter: {
-    type: String,
-    default: ''
-  },
-  presenterTitle: {
-    type: String,
-    default: ''
-  },
-  author: {
-    type: String,
-    default: ''
+  logos: {
+    type: Array,
+    default: () => []
   },
   presenters: {
     type: Array,
@@ -116,7 +87,7 @@ const logoClass = computed(() => {
     case 'small':
       return 'w-40 h-40 object-contain';
     case 'medium':
-      return 'w-60 h-60 object-contain';
+      return 'w-50 h-60 object-contain';
     case 'large':
     default:
       return 'w-80 h-80 object-contain';
@@ -136,20 +107,6 @@ const backgroundStyle = computed(() => {
   return {}
 })
 
-const presenterClass = computed(() => {
-  const baseClass = 'presenter-info absolute text-sm font-light'
-  switch(props.presenterPosition) {
-    case 'bottom-left':
-      return `${baseClass} bottom-4 left-4`
-    case 'top-left':
-      return `${baseClass} top-4 left-4`
-    case 'top-right':
-      return `${baseClass} top-4 right-4`
-    case 'bottom-right':
-    default:
-      return `${baseClass} bottom-4 right-4`
-  }
-})
 </script>
 
 <template>
@@ -166,24 +123,14 @@ const presenterClass = computed(() => {
     ></div>
     
     <!-- Logo Header Section -->
-    <div class="logo-header absolute top-6 left-6 right-6 z-10 flex gap-6 items-center">
-      <!-- Left logos -->
-      <div class="flex items-center gap-6">
-        <div v-if="props.logo" class="logo-container">
-          <img :src="props.logo" :class="logoClass" />
-        </div>
-        <div v-if="props.logo2" class="logo-container">
-          <img :src="props.logo2" :class="logoClass" />
-        </div>
-      </div>
-      
-      <!-- Right logos -->
-      <div class="flex items-center gap-6">
-        <div v-if="props.clientLogo" class="client-logo-container">
-          <img :src="props.clientLogo" :class="logoClass" />
-        </div>
-        <div v-if="props.clientLogo2" class="client-logo-container">
-          <img :src="props.clientLogo2" :class="logoClass" />
+    <div v-if="props.logos.length > 0" class="logo-header absolute top-12 left-6 right-6 z-10">
+      <div class="flex items-center justify-start gap-8">
+        <div 
+          v-for="(logo, index) in props.logos" 
+          :key="index" 
+          class="logo-container flex items-center justify-center"
+        >
+          <img :src="logo" :class="logoClass" />
         </div>
       </div>
     </div>
@@ -199,7 +146,7 @@ const presenterClass = computed(() => {
         <slot />
         
         <!-- Version/Date information -->
-        <div v-if="props.version || props.date" class="version-info mt-6 text-white text-lg opacity-90">
+        <div v-if="props.version || props.date" class="version-info mt-6 text-lg opacity-90">
           <span v-if="props.date">{{ props.date }}</span>
           <span v-if="props.version && props.date">, </span>
           <span v-if="props.version">Version {{ props.version }}</span>
@@ -208,9 +155,8 @@ const presenterClass = computed(() => {
     </div>
     
     <!-- Presenter information -->
-    <div v-if="props.showPresenter && (props.presenters.length > 0 || props.presenter || props.author)" class="presenter-section absolute bottom-8 left-6 right-6 z-10">
-      <!-- Multiple presenters -->
-      <div v-if="props.presenters.length > 0" class="flex justify-start gap-12">
+    <div v-if="props.showPresenter && props.presenters.length > 0" class="presenter-section absolute bottom-8 left-6 right-6 z-10">
+      <div class="flex justify-start gap-12">
         <div
           v-for="(presenterItem, index) in props.presenters"
           :key="index"
@@ -221,35 +167,24 @@ const presenterClass = computed(() => {
             <img 
               :src="presenterItem.photo" 
               :alt="presenterItem.name"
-              class="w-16 h-16 rounded-full object-cover border-4 border-green-400"
+              class="w-16 h-16 rounded-full object-cover"
             />
           </div>
           
           <!-- Presenter info -->
           <div class="presenter-info">
-            <div class="presenter-name text-white font-semibold text-lg">
+            <div class="presenter-name font-semibold text-lg">
               {{ presenterItem.name }}
             </div>
-            <div v-if="presenterItem.title" class="presenter-title text-white text-sm opacity-90">
+            <div v-if="presenterItem.title" class="presenter-title text-sm opacity-90">
               {{ presenterItem.title }}
             </div>
-            <div v-if="presenterItem.email" class="presenter-email text-white text-sm opacity-80">
-              {{ presenterItem.email }}
+            <div v-if="presenterItem.email" class="presenter-email text-sm opacity-80">
+              <a :href="`mailto:${presenterItem.email}`" class="no-underline hover:opacity-100 transition-opacity duration-200">
+                {{ presenterItem.email }}
+              </a>
             </div>
           </div>
-        </div>
-      </div>
-      
-      <!-- Single presenter (legacy support) -->
-      <div v-else-if="props.presenter || props.author" :class="presenterClass">
-        <div v-if="props.presenter" class="presenter-name font-medium">
-          {{ props.presenter }}
-        </div>
-        <div v-if="props.author && props.author !== props.presenter" class="author-name text-sm opacity-80">
-          {{ props.author }}
-        </div>
-        <div v-if="props.presenterTitle" class="presenter-title text-xs opacity-70 mt-1">
-          {{ props.presenterTitle }}
         </div>
       </div>
     </div>
@@ -355,22 +290,47 @@ const presenterClass = computed(() => {
   color: var(--company-text-secondary);
 }
 
-/* Logo container styling for consistent sizing */
-.slidev-layout.cover .logo-container,
-.slidev-layout.cover .client-logo-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-width: fit-content;
-  min-height: fit-content;
+/* Logo container styling */
+.slidev-layout.cover .logo-container img {
+  object-fit: contain;
 }
 
-.slidev-layout.cover .logo-container img,
-.slidev-layout.cover .client-logo-container img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-  object-position: center;
+/* Version/Date information styling */
+.slidev-layout.cover .version-info {
+  color: #ffffff;
+}
+
+/* Presenter information styling */
+.slidev-layout.cover .presenter-name,
+.slidev-layout.cover .presenter-title,
+.slidev-layout.cover .presenter-email {
+  color: #ffffff;
+}
+
+/* Presenter email link styling - override global link styles */
+.slidev-layout.cover .presenter-email a {
+  color: #ffffff;
+  text-decoration: none;
+  border: none;
+  outline: none;
+  transition: var(--company-transition-colors);
+}
+
+.slidev-layout.cover .presenter-email a:hover {
+  color: #ffffff;
+  text-decoration: none;
+  border: none;
+  outline: none;
+  opacity: 1;
+}
+
+.slidev-layout.cover .presenter-email a:focus {
+  color: #ffffff;
+  text-decoration: none;
+  border: none;
+  outline: none;
+  opacity: 1;
 }
 
 </style>
+

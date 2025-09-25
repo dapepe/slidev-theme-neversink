@@ -1,6 +1,21 @@
 /* DIFO Digital Solutions - CSS Variables */
 /* Complete control over every visual aspect of DIFO presentations */
 
+/* Local Font Declarations */
+@font-face {
+  font-family: 'Industry';
+  src: url('./fonts/Industry_Book.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Josefin Sans';
+  src: url('./fonts/JosefinSans-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
 :root {
   /* ===== BRAND COLORS ===== */
   --company-primary: #1e3a8a;
@@ -86,10 +101,10 @@
   --company-info: #3b82f6;
   
   /* ===== TYPOGRAPHY ===== */
-  --company-font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --company-font-heading: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --company-font-mono: 'Fira Code', 'Monaco', 'Consolas', monospace;
-  --company-font-quote: 'Inter', serif;
+  --company-font-primary: 'Industry', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --company-font-heading: 'Josefin Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --company-font-mono: 'Industry', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --company-font-quote: 'Industry', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   
   /* Font weights */
   --company-font-weight-thin: 100;
@@ -229,7 +244,7 @@
   --company-code-border-dark: #4a5568;
   --company-code-radius: 0.375rem;
   --company-code-padding: 1rem;
-  --company-code-font: 'Fira Code', monospace;
+  --company-code-font: 'Industry', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   
   /* Highlight styling */
   --company-highlight-bg: #fef3c7;
@@ -330,4 +345,26 @@
   --company-breakpoint-md: 768px;
   --company-breakpoint-lg: 1024px;
   --company-breakpoint-xl: 1280px;
+}
+
+/* Remove title margins for DIFO presentation */
+.slidev-layout h1,
+.slidev-layout h2,
+.slidev-layout h3,
+.slidev-layout h4,
+.slidev-layout h5,
+.slidev-layout h6 {
+  margin: 0 !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+/* Also remove margins from layout-specific headings */
+.slidev-layout.cover h1,
+.slidev-layout.cover h2,
+.slidev-layout.section h1,
+.slidev-layout.default h1 {
+  margin: 0 !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
 }

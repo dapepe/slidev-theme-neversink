@@ -406,6 +406,7 @@
 
 /* Headings styling for both schemes */
 .slidev-layout:not(.cover) h1 {
+  font-family: var(--company-font-heading);
   font-size: 3rem;
   font-weight: 300;
   letter-spacing: 0.05em;
@@ -425,12 +426,14 @@
 }
 
 .slidev-layout:not(.cover) h2 {
+  font-family: var(--company-font-heading);
   font-size: 2rem;
   font-weight: 300;
   margin-bottom: 1.5rem;
 }
 
 .slidev-layout:not(.cover) h3 {
+  font-family: var(--company-font-heading);
   font-size: 1.5rem;
   font-weight: 400;
   margin-bottom: 1rem;

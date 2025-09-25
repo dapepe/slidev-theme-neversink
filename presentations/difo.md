@@ -7,19 +7,21 @@ title: DIFO Digital Solutions
 subtitle: Complete Component & Layout Reference
 date: 23.09.2025
 version: 1.0
-logo: /difo/difo-logo_bright-solid.svg
-clientLogo: /bell/difo-logo_bell-bright.svg
+logos:
+  - '/difo/difo-logo_bright-solid.svg'
+  - '/bell/difo-logo_bell-bright.svg'
+  - '/bell/difo-logo_bell-bright.svg'
 logoSize: medium
 backgroundImage: /difo/space.png
 presenters:
   - name: Peter-Christoph Haider
     title: Managing Director, Munich
     email: phaider@difo.de
-    photo: /photo.png
-  - name: Peter-Christoph Haider
-    title: Managing Director, Munich
-    email: phaider@difo.de
-    photo: /photo.png
+    photo: /difo/PETER.png
+  - name: Hery-Christian Henry
+    title: Solution Specialist, London
+    email: hhenry@difo.de
+    photo: /difo/HENRY.png
 ---
 
 ---

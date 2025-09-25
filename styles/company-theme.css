@@ -665,7 +665,6 @@
   --company-text-primary: var(--company-text-primary-dark);
   --company-text-secondary: var(--company-text-secondary-dark);
   --company-text-tertiary: var(--company-text-tertiary-dark);
-  --company-text-inverse: var(--company-text-inverse-dark);
   --company-text-muted: var(--company-text-muted-dark);
   --company-text-heading: var(--company-text-heading-dark);
   --company-text-quote: var(--company-text-quote-dark);
@@ -811,8 +810,8 @@
 
 /* Size variations based on CSS variable */
 :root[data-logo-size="small"] .slidev-layout::after {
-  width: 4rem;
-  height: 4rem;
+  width: 2.5rem;
+  height: 2.5rem;
 }
 
 :root[data-logo-size="large"] .slidev-layout::after {
