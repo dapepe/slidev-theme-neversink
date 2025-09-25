@@ -215,6 +215,9 @@ columns: is-6-6
 
 # Slide with image
 
+At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.
+
+
 :: right ::
 
 <img src="/difo/images/agendaLeft.jpg" class="h-full w-full object-cover" alt="Agenda Left" />
