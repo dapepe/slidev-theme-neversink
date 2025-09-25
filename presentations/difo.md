@@ -129,8 +129,8 @@ layout: full
 color: light
 ---
 
-# SVG Animation Demo
-## Interactive Step-by-Step Visualization
+# Title
+
 
 <div class="h-3/4 w-full flex items-center justify-center mt-8">
 
