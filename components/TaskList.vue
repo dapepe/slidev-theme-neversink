@@ -1,5 +1,5 @@
 <template>
-  <div class="task-list-component">
+  <div class="task-list-component" ref="taskListRef">
     <!-- Header -->
     <div class="task-header mb-2">
       <h1 v-if="title" class="text-4xl font-bold mb-0">
@@ -12,11 +12,16 @@
 
     <!-- Task List -->
     <div class="task-list">
-      <div v-for="(task, index) in tasks" :key="index" class="task-item mb-0.5">
+      <div 
+        v-for="(task, index) in tasks" 
+        :key="index" 
+        class="task-item mb-0.5"
+        :class="{ 'task-visible': isTaskVisible(index) }"
+      >
         <div class="flex items-center gap-1.5">
           <!-- Task Icon -->
-          <div class="task-icon flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-white text-xs" :class="getTaskIconClass(task.status)">
-            <span v-html="getTaskIconSvg(task.status)"></span>
+          <div class="task-icon flex-shrink-0 flex items-center justify-center" :class="getTaskIconClass(task.status)">
+            <i :class="getTaskIconFA(task.status)" class="text-2xl"></i>
           </div>
           
           <!-- Task Content -->
@@ -24,7 +29,7 @@
             <h3 class="text-2xl font-semibold text-black">
               {{ task.title }}
             </h3>
-            <div v-if="task.comment" class="text-base text-gray-600">
+            <div v-if="task.comment" class="text-lg text-gray-600">
               {{ task.comment }}
             </div>
           </div>
@@ -35,6 +40,9 @@
 </template>
 
 <script setup>
+import { computed, ref, onMounted } from 'vue'
+import { useStepNavigation } from '../composables/useNavigationOverride.js'
+
 const props = defineProps({
   title: {
     type: String,
@@ -47,38 +55,69 @@ const props = defineProps({
   tasks: {
     type: Array,
     default: () => []
+  },
+  sequential: {
+    type: Boolean,
+    default: false
   }
 })
+
+// Create a ref to the TaskList container element
+const taskListRef = ref(null)
+
+// Sequential navigation - only initialize if sequential is true
+let navigation = null
+if (props.sequential) {
+  navigation = useStepNavigation({
+    maxSteps: props.tasks.length,
+    initialStep: 1,
+    slideElement: taskListRef,
+    isActive: () => {
+      // Only active when sequential is enabled and element exists
+      return props.sequential && taskListRef.value !== null
+    },
+    debug: true
+  })
+}
+
+// Check if a task should be visible
+const isTaskVisible = (index) => {
+  if (!props.sequential || !navigation) return true
+  // Show tasks from 0 to currentStep-1 (0-based indexing)
+  const visible = index < navigation.currentStep.value
+  console.log(`Task ${index}: currentStep=${navigation.currentStep.value}, visible=${visible}`)
+  return visible
+}
 
 // Task status icon classes
 const getTaskIconClass = (status) => {
   switch (status) {
     case 'completed':
-      return 'bg-green-500'
+      return 'text-green-600'
     case 'error':
-      return 'bg-red-500'
+      return 'text-red-600'
     case 'in-progress':
-      return 'bg-blue-500'
+      return 'text-blue-600'
     case 'pending':
-      return 'bg-gray-500'
+      return 'text-gray-600'
     default:
-      return 'bg-gray-500'
+      return 'text-gray-600'
   }
 }
 
-// Task status icon SVGs
-const getTaskIconSvg = (status) => {
+// Task status Font Awesome icons
+const getTaskIconFA = (status) => {
   switch (status) {
     case 'completed':
-      return '<svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>'
+      return 'fas fa-check-circle'
     case 'error':
-      return '<svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd" /></svg>'
+      return 'fas fa-exclamation-triangle'
     case 'in-progress':
-      return '<svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" /></svg>'
+      return 'fas fa-play-circle'
     case 'pending':
-      return '<svg class="w-3 h-3 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2" /></svg>'
+      return 'far fa-circle'
     default:
-      return '<svg class="w-3 h-3 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2" /></svg>'
+      return 'far fa-circle'
   }
 }
 </script>
@@ -88,17 +127,37 @@ const getTaskIconSvg = (status) => {
   padding: 0.5rem;
 }
 
-.task-icon {
-  transition: all 0.3s ease;
+.task-icon i {
+  color: inherit !important;
+  font-style: normal !important;
 }
 
-/* Hover effects */
-.task-item:hover .task-icon {
-  transform: scale(1.1);
+/* Task status colors */
+.text-green-600 i {
+  color: #16a34a !important;
 }
 
-.task-item:hover h3 {
-  transform: translateX(4px);
-  transition: transform 0.2s ease;
+.text-red-600 i {
+  color: #dc2626 !important;
+}
+
+.text-blue-600 i {
+  color: #2563eb !important;
+}
+
+.text-gray-600 i {
+  color: #4b5563 !important;
+}
+
+/* Sequential animation */
+.task-item {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease;
+}
+
+.task-item.task-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 </style>

@@ -167,6 +167,7 @@ layout: default
     { title: 'Task 5', status: 'in-progress' },
     { title: 'Task 6', status: 'pending' }
   ]"
+  :sequential="true"
 />
 
 ---

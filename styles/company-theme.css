@@ -408,15 +408,13 @@
   align-items: center;
   padding: var(--company-space-md);
   margin-bottom: var(--company-space-sm);
-  background-color: var(--company-bg-secondary);
+  /* Removed background-color */
   border-radius: var(--company-radius-base);
-  border-left: 4px solid var(--company-border-primary);
-  transition: var(--company-transition-all);
+  /* Removed border-left */
+  /* Removed transition */
 }
 
-.task-item:hover {
-  background-color: var(--company-bg-tertiary);
-}
+/* Removed task-item hover effects */
 
 .task-item .task-icon {
   margin-right: var(--company-space-md);
@@ -437,32 +435,16 @@
 }
 
 /* Status-specific styling */
-.task-item.status-done {
-  border-left-color: var(--company-success);
-}
-
 .task-item.status-done .task-icon {
   color: var(--company-success);
-}
-
-.task-item.status-ongoing {
-  border-left-color: var(--company-info);
 }
 
 .task-item.status-ongoing .task-icon {
   color: var(--company-info);
 }
 
-.task-item.status-feedback {
-  border-left-color: var(--company-warning);
-}
-
 .task-item.status-feedback .task-icon {
   color: var(--company-warning);
-}
-
-.task-item.status-blocked {
-  border-left-color: var(--company-error);
 }
 
 .task-item.status-blocked .task-icon {
@@ -721,7 +703,7 @@
 }
 
 .company-dark-scheme .task-item {
-  background-color: var(--company-bg-secondary);
+  /* Removed background-color */
   border-color: var(--company-border-primary);
 }
 
