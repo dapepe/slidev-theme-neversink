@@ -84,7 +84,7 @@ theme: "light"
 sequential: false
 ---
 
-**🎯 All cards visible:** Standard grid display with all cards shown
+# Title
 
 ---
 layout: cards-grid
@@ -129,13 +129,11 @@ layout: full
 color: light
 ---
 
-# SVG Animation - Side by Side Test
+# SVG Animation Demo
+## Interactive Step-by-Step Visualization
 
-<div class="grid grid-cols-2 gap-8 h-full items-center">
+<div class="h-3/4 w-full flex items-center justify-center mt-8">
 
-<div class="text-center">
-<h2 class="text-xl mb-4">🎯 Sequential Mode</h2>
-<p class="text-sm mb-4">Use <kbd>→</kbd> arrow key to reveal step-by-step</p>
 <SvgNative
   src="/difo/testSvg.svg"
   animation="fade-in"
@@ -146,24 +144,8 @@ color: light
   :interactive="true"
   :sequential="true"
   :maxStep="4"
+  class="max-w-full max-h-full"
 />
-</div>
-
-<div class="text-center">
-<h2 class="text-xl mb-4">🖼️ Non-Sequential Mode</h2>
-<p class="text-sm mb-4">All elements shown immediately</p>
-<SvgNative
-  src="/difo/testSvg.svg"
-  animation="fade-in"
-  :duration="600"
-  :stagger="100"
-  layerPrefix="fade-in"
-  :responsive="true"
-  :interactive="true"
-  :sequential="false"
-  :maxStep="4"
-/>
-</div>
 
 </div>
 
