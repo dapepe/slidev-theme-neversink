@@ -21,7 +21,28 @@
         <div class="flex items-center gap-1.5">
           <!-- Task Icon -->
           <div class="task-icon flex-shrink-0 flex items-center justify-center" :class="getTaskIconClass(task.status)">
-            <i :class="getTaskIconFA(task.status)" class="text-2xl"></i>
+            <!-- Custom Icon (Auto-detected) -->
+            <div v-if="task.icon && isAnimatedIcon(task.icon)" class="lottie-container" style="width: 2rem; height: 2rem;">
+              <lottie-player
+                :src="task.icon"
+                background="transparent"
+                speed="1"
+                loop
+                autoplay
+                direction="1"
+                mode="normal"
+                style="width: 100%; height: 100%;"
+              ></lottie-player>
+            </div>
+            <!-- SVG Icon -->
+            <div 
+              v-else-if="task.icon && isSvgIcon(task.icon)" 
+              class="svg-container"
+              style="width: 2rem; height: 2rem;"
+              v-html="task.icon"
+            ></div>
+            <!-- FontAwesome Icon (Custom or Default) -->
+            <i v-else :class="task.icon || getTaskIconFA(task.status)" class="text-2xl"></i>
           </div>
           
           <!-- Task Content -->
@@ -42,6 +63,7 @@
 <script setup>
 import { computed, ref, onMounted } from 'vue'
 import { useStepNavigation } from '../composables/useNavigationOverride.js'
+import '@lottiefiles/lottie-player'
 
 const props = defineProps({
   title: {
@@ -89,6 +111,15 @@ const isTaskVisible = (index) => {
   return visible
 }
 
+// Auto-detect icon type functions
+const isAnimatedIcon = (icon) => {
+  return icon && (icon.endsWith('.json') || icon.startsWith('http'))
+}
+
+const isSvgIcon = (icon) => {
+  return icon && (icon.includes('<svg') || icon.includes('</svg>'))
+}
+
 // Task status icon classes
 const getTaskIconClass = (status) => {
   switch (status) {
@@ -130,6 +161,26 @@ const getTaskIconFA = (status) => {
 .task-icon i {
   color: inherit !important;
   font-style: normal !important;
+}
+
+/* Lottie Animation Styles */
+.lottie-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* SVG Icon Styles */
+.svg-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.svg-container svg {
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
 }
 
 /* Task status colors */

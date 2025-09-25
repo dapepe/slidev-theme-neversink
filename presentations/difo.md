@@ -153,12 +153,12 @@ layout: default
 <TaskList
   title="Ongoing tasks"
   :tasks="[
-    { title: 'Task 1', status: 'completed' },
-    { title: 'Task 2', status: 'completed', comment: 'Comment' },
-    { title: 'Task 3', status: 'error' },
-    { title: 'Task 4', status: 'in-progress' },
-    { title: 'Task 5', status: 'in-progress' },
-    { title: 'Task 6', status: 'pending' }
+    { title: 'Task 1', status: 'completed', icon: 'fas fa-database' },
+    { title: 'API Integration', status: 'completed', comment: 'REST endpoints configured', icon: 'fas fa-plug' },
+    { title: 'Authentication', status: 'error', icon: 'fas fa-shield-alt' },
+    { title: 'Frontend Development', status: 'in-progress', icon: 'difo/icons/billing.json' },
+    { title: 'Testing Suite', status: 'in-progress', icon: 'fas fa-vial' },
+    { title: 'Deployment', status: 'pending', icon: 'fas fa-rocket' }
   ]"
   :sequential="true"
 />
