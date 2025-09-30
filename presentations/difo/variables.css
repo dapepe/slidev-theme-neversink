@@ -289,7 +289,7 @@
   /* Default layout */
   --company-default-title-size: 2rem;
   --company-default-content-size: 1rem;
-  --company-default-padding: 2rem;
+  --company-default-padding: 1rem;
   
   /* ===== ANIMATION ===== */
   --company-animation-duration: 0.6s;
