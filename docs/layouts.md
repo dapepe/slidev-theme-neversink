@@ -71,6 +71,7 @@ In the following section, we detail specific layouts that are available in this 
 - [`layout: credits`](layouts/credits.md)
 - [`layout: chart`](layouts/chart.md)
 - [`layout: thank-you`](layouts/thank-you.md)
+- [`layout: disclaimer`](layouts/disclaimer.md)
 
 In addition to these custom layouts, you can still access default Slidev layouts. For example, in cases where the layout name is not mentioned you can access the basic versions [described here](https://sli.dev/builtin/layouts).
 
