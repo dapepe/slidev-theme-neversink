@@ -1,296 +1,200 @@
 # Thank You Layout
 
-The `thank-you` layout provides a comprehensive template for ending presentations with style. It supports multiple visual styles, contact information, social links, and animations to create memorable closing slides.
+The `thank-you` layout provides a clean and professional template for ending presentations with contact information displayed in a modern card-based design.
+
+## Design
+
+The layout features:
+- **Company logos** at the top (centered)
+- **Multi-language thank you message** on the left ("Danke! Thank you! Merci! Дякую!")
+- **Contact cards** on the right with photos, names, titles, and emails
+- **Footer disclaimer** at the bottom (optional)
 
 ## Props
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
-| `color` | String | `'white'` | Color scheme for the slide |
-| `style` | String | `'classic'` | Visual style of the thank-you slide |
-| `showContact` | Boolean | `true` | Whether to display contact information |
-| `showSocial` | Boolean | `true` | Whether to display social media links |
-| `animated` | Boolean | `true` | Whether to animate elements on load |
-
-## Styles
-
-The layout supports 7 different visual styles:
-
-### Classic (`style: "classic"`)
-- Clean, traditional design
-- Centered layout with standard typography
-- Works well with any color scheme
-- Professional and timeless
-
-### Modern (`style: "modern"`)
-- Contemporary card-based design
-- White background with shadow
-- Gradient text effects
-- Clean and sophisticated
-
-### Minimal (`style: "minimal"`)
-- Ultra-clean design
-- Reduced visual elements
-- Light typography
-- Perfect for minimalist presentations
-
-### Celebration (`style: "celebration"`)
-- Fun and energetic design
-- Animated confetti background
-- Emoji elements (🎉)
-- Great for project completions
-
-### Corporate (`style: "corporate"`)
-- Professional business style
-- Bordered container
-- Formal typography
-- Ideal for business presentations
-
-### Gradient (`style: "gradient"`)
-- Modern gradient background
-- White text on colorful background
-- Glass-morphism effects
-- Eye-catching and modern
-
-### Elegant (`style: "elegant"`)
-- Sophisticated design
-- Subtle color accent bar
-- Refined typography
-- Perfect for high-end presentations
+| `color` | String | `'white'` | Color scheme for the slide (light/dark/white) |
 
 ## Frontmatter Options
 
 Configure the thank-you slide through frontmatter:
 
-### Basic Configuration
+### Logos
+
+Display company or partner logos at the top of the slide:
 
 ```yaml
----
-layout: thank-you
-style: "modern"
-color: light
-thankYou: "Thank You!"
-subtitle: "Questions & Discussion"
----
+logos:
+  - '/path/to/logo1.svg'
+  - '/path/to/logo2.svg'
+  - '/path/to/logo3.svg'
 ```
 
-### Contact Information
+### Presenters/Contacts
+
+Display contact cards with profile photos:
 
 ```yaml
----
-layout: thank-you
-presenter: "John Doe"
-presenterTitle: "Senior Developer"
-email: "john.doe@company.com"
-phone: "+1 (555) 123-4567"
-website: "https://johndoe.dev"
----
+presenters:
+  - name: Peter-Christoph Haider
+    title: Managing Director, Munich
+    email: phaider@company.com
+    photo: /people/photo1.png
+  - name: Jane Smith
+    title: Solution Specialist, London
+    email: jsmith@company.com
+    photo: /people/photo2.png
 ```
 
-### Social Media Links
+Each presenter card includes:
+- `name` - Full name of the contact
+- `title` - Job title and location
+- `email` - Email address
+- `photo` - Path to circular profile photo
+
+### Disclaimer (Optional)
+
+Add a footer disclaimer or legal text:
 
 ```yaml
----
-layout: thank-you
-social:
-  - name: "LinkedIn"
-    icon: "fa-linkedin"
-    url: "https://linkedin.com/in/johndoe"
-  - name: "Twitter"
-    icon: "fa-twitter"
-    url: "https://twitter.com/johndoe"
-  - name: "GitHub"
-    icon: "fa-github"
-    url: "https://github.com/johndoe"
----
+disclaimer: 'This document contains confidential information. Do not copy or distribute without permission.'
 ```
 
-### Control Visibility
+Alternatively, you can use markdown content in the slide body for more complex disclaimers.
 
-```yaml
----
-layout: thank-you
-showContact: false    # Hide contact information
-showSocial: false     # Hide social media links
-animated: false       # Disable animations
----
-```
+## Usage Example
 
-## Usage Examples
-
-### Professional Business Presentation
+### Complete Example
 
 ```markdown
 ---
 layout: thank-you
-style: "corporate"
-color: light
-thankYou: "Thank You for Your Partnership"
-subtitle: "Driving success together"
-presenter: "Sarah Johnson"
-presenterTitle: "Account Manager"
-email: "sarah.johnson@company.com"
-phone: "+1 (555) 987-6543"
-website: "https://company.com"
-social:
-  - name: "LinkedIn"
-    icon: "fa-linkedin"
-    url: "https://linkedin.com/company/company"
----
-```
-
-### Creative Project Presentation
-
-```markdown
----
-layout: thank-you
-style: "celebration"
-color: light
-thankYou: "Mission Accomplished!"
-subtitle: "Another successful project delivered"
-presenter: "Creative Team"
-showContact: false
-animated: true
----
-```
-
-### Technical Conference Talk
-
-```markdown
----
-layout: thank-you
-style: "modern"
 color: dark
-thankYou: "Thank You for Listening"
-subtitle: "Let's build the future together"
-presenter: "Alex Chen"
-presenterTitle: "Senior Software Engineer"
-email: "alex.chen@techcorp.com"
-website: "https://alexchen.dev"
-social:
-  - name: "GitHub"
-    icon: "fa-github"
-    url: "https://github.com/alexchen"
-  - name: "Twitter"
-    icon: "fa-twitter"
-    url: "https://twitter.com/alexchen_dev"
+logos:
+  - '/company/logo1.svg'
+  - '/company/logo2.svg'
+  - '/company/logo3.svg'
+presenters:
+  - name: Peter-Christoph Haider
+    title: Managing Director, Munich
+    email: phaider@company.com
+    photo: /people/peter.png
+  - name: Jane Smith
+    title: Solution Specialist, London
+    email: jsmith@company.com
+    photo: /people/jane.png
+disclaimer: 'This document contains confidential information. Do not distribute without permission.'
 ---
 ```
 
-### Minimalist Design Presentation
+### With Custom Disclaimer Content
 
 ```markdown
 ---
 layout: thank-you
-style: "minimal"
 color: light
-thankYou: "Thanks"
-subtitle: "Simple. Clean. Effective."
-showContact: false
-showSocial: false
+logos:
+  - '/company/logo.svg'
+presenters:
+  - name: John Doe
+    title: CEO
+    email: john@company.com
+    photo: /people/john.png
 ---
+
+This presentation is confidential and proprietary. All rights reserved © 2025 Company Name.
 ```
-
-### International Presentation
-
-```markdown
----
-layout: thank-you
-style: "elegant"
-color: dark
-thankYou: "Merci Beaucoup"
-subtitle: "Your trust drives our excellence"
-presenter: "Marie Dubois"
-presenterTitle: "International Relations"
-email: "marie.dubois@global.com"
-showSocial: false
----
-```
-
-### Startup Pitch
-
-```markdown
----
-layout: thank-you
-style: "gradient"
-color: dark
-thankYou: "Thank You"
-subtitle: "Ready to disrupt the market together?"
-presenter: "Startup Team"
-email: "hello@startup.com"
-website: "https://startup.com"
-social:
-  - name: "LinkedIn"
-    icon: "fa-linkedin"
-    url: "https://linkedin.com/company/startup"
-  - name: "AngelList"
-    icon: "fa-angellist"
-    url: "https://angel.co/startup"
----
-```
-
-## Frontmatter Reference
-
-### Text Content
-- `thankYou` / `title` - Main thank you message
-- `subtitle` / `message` - Subtitle or additional message
-
-### Contact Information
-- `presenter` / `author` - Presenter's name
-- `presenterTitle` / `position` - Job title or position
-- `email` - Email address (becomes clickable link)
-- `phone` - Phone number (becomes clickable link)
-- `website` - Website URL (becomes clickable link)
-
-### Social Media
-- `social` - Array of social media links
-  - `name` - Display name
-  - `icon` - FontAwesome icon class (e.g., "fa-linkedin")
-  - `url` - Link URL
-
-### Display Options
-- `showContact` - Show/hide contact information section
-- `showSocial` - Show/hide social media links
-- `animated` - Enable/disable entrance animations
-
-## Animations
-
-When `animated: true` (default), elements appear with staggered animations:
-1. **Main title**: Bounces in
-2. **Subtitle**: Fades in with delay
-3. **Contact info**: Slides up with delay
-4. **Social links**: Fades in last
-
-Disable animations for static presentations or when you prefer immediate display.
 
 ## Responsive Design
 
 The layout automatically adapts to different screen sizes:
-- **Desktop**: Full-size layout with all elements
+- **Desktop**: Side-by-side layout with thank you text and contact cards
 - **Tablet**: Adjusted spacing and font sizes
-- **Mobile**: Compact layout with smaller fonts
+- **Mobile**: Stacked layout with smaller elements
 
 ## Color Schemes
 
-Works seamlessly with all theme color schemes:
-- **Light**: Dark text on light background
-- **Dark**: Light text on dark background
-- **Company colors**: Integrates with brand theming
+The layout works with all theme color schemes:
+- **Light**: Light background with dark text
+- **Dark**: Dark background with light text
+- **White**: White background
 
-## Integration Features
+Colors are controlled through CSS variables:
+- `--company-text-primary` - Main text color
+- `--company-text-secondary` - Secondary text color (subtitles)
+- `--company-bg-primary` - Background color
+- `--company-font-heading` - Font for thank you text
+- `--company-font-primary` - Font for body text
 
-- **Company theming**: Automatic font and color integration
-- **Logo support**: Works with theme logo system
-- **Icon support**: FontAwesome icons for contact and social
-- **Accessibility**: Proper contrast and semantic markup
-- **Print-friendly**: Optimized for PDF export
+## Customization
+
+### Custom Thank You Text
+
+While the default text is "Danke! Thank you! Merci! Дякую!", you can customize it by editing the layout file directly if needed, or use CSS to override the content.
+
+### Photo Styling
+
+Profile photos are displayed as circles with a border. Make sure to use:
+- Square images (1:1 aspect ratio)
+- High resolution (at least 512x512px)
+- Good contrast with the background
+
+### Logo Sizing
+
+Logos are automatically sized to fit the layout. For best results:
+- Use SVG format for crisp rendering
+- Ensure logos work on both light and dark backgrounds
+- Logos should have transparent backgrounds
 
 ## Best Practices
 
-1. **Keep it simple**: Don't overwhelm with too much information
-2. **Match the tone**: Choose a style that fits your presentation theme
-3. **Essential contacts only**: Include only the most relevant contact information
-4. **Test animations**: Ensure animations work well in your presentation environment
-5. **Brand consistency**: Use colors that match your brand identity
+1. **Use 2-3 logos maximum**: Too many logos can clutter the top section
+2. **Keep contact info concise**: Include only the most important contacts (2-3 people max)
+3. **Professional photos**: Use high-quality, professional headshots
+4. **Match color scheme**: Choose dark/light based on your brand colors
+5. **Brief disclaimer**: Keep footer text short and readable
 
-The thank-you layout is perfect for ending presentations on a professional and memorable note while providing clear next steps for your audience to connect with you.
+## Integration with Cover Slide
+
+The thank-you layout is designed to complement the `cover` layout. You can use the same logos and presenters data across both slides:
+
+```markdown
+---
+# Cover slide
+layout: cover
+logos:
+  - '/company/logo.svg'
+presenters:
+  - name: John Doe
+    title: CEO
+    email: john@company.com
+    photo: /people/john.png
+---
+
+# Your presentation content...
+
+---
+# Thank you slide
+layout: thank-you
+color: dark
+logos:
+  - '/company/logo.svg'
+presenters:
+  - name: John Doe
+    title: CEO
+    email: john@company.com
+    photo: /people/john.png
+---
+```
+
+## Accessibility
+
+The layout includes:
+- Semantic HTML structure
+- Proper heading hierarchy
+- Alt text for images
+- Sufficient color contrast
+- Responsive text sizing
+
+The thank-you layout provides a professional and memorable way to end your presentations while making it easy for your audience to contact you.
