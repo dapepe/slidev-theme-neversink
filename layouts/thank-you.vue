@@ -144,9 +144,20 @@ const colorscheme = computed(() => {
   font-size: 2.5rem;
   font-weight: bold;
   line-height: 1.2;
-  color: var(--company-text-primary, #fff);
   font-family: var(--company-font-heading, monospace);
   margin-bottom: 0.5rem;
+}
+
+.company-light-scheme .thank-you-line {
+  color: var(--company-text-primary, #000);
+}
+
+.company-dark-scheme .thank-you-line {
+  color: var(--company-text-primary, #fff);
+}
+
+.company-white-scheme .thank-you-line {
+  color: #000;
 }
 
 /* Vertical divider */
@@ -196,26 +207,58 @@ const colorscheme = computed(() => {
 .contact-name {
   font-size: 1.25rem;
   font-weight: bold;
+}
+
+.company-light-scheme .contact-name {
+  color: var(--company-text-primary, #000);
+}
+
+.company-dark-scheme .contact-name {
   color: var(--company-text-primary, #fff);
+}
+
+.company-white-scheme .contact-name {
+  color: #000;
 }
 
 .contact-title {
   font-size: 0.95rem;
-  color: var(--company-text-secondary, #ccc);
   line-height: 1.3;
+}
+
+.company-light-scheme .contact-title {
+  color: var(--company-text-secondary, #666);
+}
+
+.company-dark-scheme .contact-title {
+  color: var(--company-text-secondary, #ccc);
+}
+
+.company-white-scheme .contact-title {
+  color: #666;
 }
 
 .contact-email {
   font-size: 0.9rem;
-  color: var(--company-text-primary, #fff);
   text-decoration: none;
   cursor: pointer;
   transition: opacity 0.2s ease;
   border: none;
 }
 
-.contact-email:hover {
+.company-light-scheme .contact-email {
+  color: var(--company-text-primary, #000);
+}
+
+.company-dark-scheme .contact-email {
   color: var(--company-text-primary, #fff);
+}
+
+.company-white-scheme .contact-email {
+  color: #000;
+}
+
+.contact-email:hover {
   opacity: 0.8;
   text-decoration: none;
   border: none;
@@ -227,19 +270,21 @@ const colorscheme = computed(() => {
   padding:2rem 0;
   font-size: 0.75rem;
   line-height: 1.4;
-  color: var(--company-text-secondary, #999);
   text-align: left;
 }
 
 .company-light-scheme .footer-disclaimer {
+  color: var(--company-text-secondary, #666);
   border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .company-dark-scheme .footer-disclaimer {
+  color: var(--company-text-secondary, #999);
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .company-white-scheme .footer-disclaimer {
+  color: #666;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
