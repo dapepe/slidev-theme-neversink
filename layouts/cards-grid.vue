@@ -142,7 +142,7 @@ const gridLayout = computed(() => {
 
 <template>
   <div class="slidev-layout cards-grid h-full slidecolor" :class="[colorscheme]" ref="layoutRef">
-    <div class="h-full flex flex-col justify-center">
+    <div class="h-full flex flex-col justify-start">
       <!-- Title Slot -->
       <div v-if="$slots.default" class="cards-title mb-8">
         <slot />
