@@ -45,6 +45,18 @@ const props = defineProps({
     type: String,
     default: 'fontawesome', // 'fontawesome', 'animated', 'svg'
     validator: (value) => ['fontawesome', 'animated', 'svg'].includes(value)
+  },
+  iconFontSize: {
+    type: String,
+    default: '3.5rem'
+  },
+  titleFontSize: {
+    type: String,
+    default: '1.25rem'
+  },
+  contentFontSize: {
+    type: String,
+    default: '1rem'
   }
 })
 
@@ -72,6 +84,63 @@ const lineStyle = computed(() => {
   }
 })
 
+const isDirectIconSize = computed(() => {
+  return /^\d+(\.\d+)?(px|rem|em|%|vh|vw)$/i.test(props.iconFontSize)
+})
+
+const isDirectTitleSize = computed(() => {
+  return /^\d+(\.\d+)?(px|rem|em|%|vh|vw)$/i.test(props.titleFontSize)
+})
+
+const isDirectContentSize = computed(() => {
+  return /^\d+(\.\d+)?(px|rem|em|%|vh|vw)$/i.test(props.contentFontSize)
+})
+
+// Icon sizing
+const iconSize = computed(() => {
+  if (isDirectIconSize.value) {
+    return props.iconFontSize
+  }
+  return null
+})
+
+const iconClass = computed(() => {
+  if (isDirectIconSize.value) {
+    return ''
+  }
+  return `text-${props.iconFontSize}`
+})
+
+// Title sizing
+const titleClass = computed(() => {
+  if (isDirectTitleSize.value) {
+    return 'card-headline'
+  }
+  return `card-headline text-${props.titleFontSize}`
+})
+
+const titleStyle = computed(() => {
+  if (isDirectTitleSize.value) {
+    return { fontSize: props.titleFontSize }
+  }
+  return {}
+})
+
+// Content sizing
+const contentClass = computed(() => {
+  if (isDirectContentSize.value) {
+    return 'card-text'
+  }
+  return `card-text text-${props.contentFontSize}`
+})
+
+const contentStyle = computed(() => {
+  if (isDirectContentSize.value) {
+    return { fontSize: props.contentFontSize }
+  }
+  return {}
+})
+
 </script>
 
 <template>
@@ -85,15 +154,15 @@ const lineStyle = computed(() => {
         <!-- FontAwesome Icons -->
         <i 
           v-if="!isAnimatedIcon && !isSvgIcon" 
-          :class="iconClasses" 
-          :style="{ color: props.color, fontSize: '3.5rem' }"
+          :class="[iconClasses, iconClass]" 
+          :style="{ color: props.color, fontSize: iconSize || '3.5rem' }"
         ></i>
         
         <!-- Animated Icon (Auto-detected) -->
         <div 
           v-else-if="isAnimatedIcon" 
           class="lottie-container"
-          :style="{ width: '3.5rem', height: '3.5rem' }"
+          :style="{ width: iconSize || '3.5rem', height: iconSize || '3.5rem' }"
         >
           <lottie-player
             v-if="lottieUrl"
@@ -123,17 +192,17 @@ const lineStyle = computed(() => {
         <div 
           v-else-if="isSvgIcon" 
           class="svg-container"
-          :style="{ width: '3.5rem', height: '3.5rem', color: props.color }"
+          :style="{ width: iconSize || '3.5rem', height: iconSize || '3.5rem', color: props.color }"
           v-html="icon"
         ></div>
       </div>
     </div>
     
     <div class="card-content">
-      <h3 class="card-headline">{{ headline }}</h3>
+      <h3 :class="titleClass" :style="titleStyle">{{ headline }}</h3>
     <div class="card-line" :style="lineStyle"></div>
 
-      <p class="card-text">{{ content }}</p>
+      <p :class="contentClass" :style="contentStyle">{{ content }}</p>
     </div>
   </div>
 </template>
@@ -266,30 +335,12 @@ const lineStyle = computed(() => {
 }
 
 /* ===== THEME SUPPORT ===== */
-.card-theme-light {
-  /* background: white; */
-  /* Removed all shadows */
-}
-
-.card-theme-light:hover {
-  /* Removed hover shadow effects */
-}
-
 .card-theme-light .card-headline {
   color: #1f2937;
 }
 
 .card-theme-light .card-text {
   color: #6b7280;
-}
-
-.card-theme-dark {
-  /* background: #1f2937; */
-  /* Removed all shadows */
-}
-
-.card-theme-dark:hover {
-  /* Removed hover shadow effects */
 }
 
 .card-theme-dark .card-headline {

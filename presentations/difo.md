@@ -66,6 +66,9 @@ columns: is-5-7
 ---
 layout: cards-grid
 color: light
+iconFontSize: "2.5rem"
+titleFontSize: "1.125rem"
+contentFontSize: "0.9rem"
 cards:
   - headline: "Strategy"
     content: "Comprehensive planning and strategic guidance for digital transformation initiatives."

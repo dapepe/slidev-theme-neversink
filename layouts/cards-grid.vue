@@ -24,6 +24,18 @@ const props = defineProps({
   gridId: {
     type: String,
     default: ''
+  },
+  iconFontSize: {
+    type: String,
+    default: '3.5rem'
+  },
+  titleFontSize: {
+    type: String,
+    default: '1.25rem'
+  },
+  contentFontSize: {
+    type: String,
+    default: '1rem'
   }
 })
 
@@ -152,6 +164,9 @@ const gridLayout = computed(() => {
             :theme="props.theme"
             :animated="card.animated"
             :delay="card.delay"
+            :iconFontSize="props.iconFontSize"
+            :titleFontSize="props.titleFontSize"
+            :contentFontSize="props.contentFontSize"
           />
         </div>
       </div>
