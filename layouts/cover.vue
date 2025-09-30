@@ -1,5 +1,8 @@
 <script setup lang="js">
 import { computed } from 'vue'
+import { useSlideContext } from '@slidev/client'
+
+const { $slidev } = useSlideContext()
 
 const props = defineProps({
   color: {
@@ -20,11 +23,6 @@ const props = defineProps({
   showPresenter: {
     type: Boolean,
     default: true
-  },
-  // Frontmatter props
-  title: {
-    type: String,
-    default: 'Presentation Title'
   },
   subtitle: {
     type: String,
@@ -139,7 +137,7 @@ const backgroundStyle = computed(() => {
     <div class="content w-full relative z-10 flex flex-col justify-center items-start pr-6" :class="{ 'myauto': !isCmsitTheme }">
       <div class="main-content-area max-w-4xl">
         <!-- Title and Subtitle -->
-        <h1 v-if="props.title" class="cover-title">{{ props.title }}</h1>
+        <h1 v-if="$slidev?.configs?.title" class="cover-title">{{ $slidev.configs.title }}</h1>
         <h2 v-if="props.subtitle" class="cover-subtitle">{{ props.subtitle }}</h2>
         
         <!-- Slot content (for additional content) -->

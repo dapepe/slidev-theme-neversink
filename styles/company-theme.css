@@ -406,7 +406,7 @@
 .task-item {
   display: flex;
   align-items: center;
-  padding: var(--company-space-md);
+  padding: .4rem var(--company-space-md);
   margin-bottom: var(--company-space-sm);
   /* Removed background-color */
   border-radius: var(--company-radius-base);
@@ -417,9 +417,9 @@
 /* Removed task-item hover effects */
 
 .task-item .task-icon {
-  margin-right: var(--company-space-md);
+  /* margin-right: var(--company-space-md); */
   font-size: var(--company-font-size-lg);
-  width: 24px;
+  /* width: 24px; */
   text-align: center;
 }
 

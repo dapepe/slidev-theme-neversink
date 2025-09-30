@@ -24,6 +24,7 @@ A flexible task management component for displaying project status, todo lists, 
 | `title` | String | `'Ongoing tasks'` | Main title of the task list |
 | `subtitle` | String | `''` | Optional subtitle |
 | `tasks` | Array | `[]` | Array of task objects |
+| `fontSize` | String | `'2xl'` | Font size for task titles, comments, and icons. Can be Tailwind classes (xs, sm, base, lg, xl, 2xl, 3xl, 4xl, 5xl, 6xl) or direct CSS values (e.g., '16px', '1.5rem', '2em'). All text elements use the same size. |
 
 ## Task Object Properties
 
@@ -103,6 +104,41 @@ A flexible task management component for displaying project status, todo lists, 
 </div>
 ```
 
+### Custom Font Size (Tailwind Classes)
+```vue
+<TaskList
+  title="Large Tasks"
+  fontSize="4xl"
+  :tasks="[
+    { title: 'Major Feature', status: 'completed' },
+    { title: 'Critical Bug Fix', status: 'in-progress' },
+    { title: 'Performance Optimization', status: 'pending' }
+  ]"
+/>
+```
+
+### Custom Font Size (Direct CSS Values)
+```vue
+<TaskList
+  title="Precise Sizing"
+  fontSize="24px"
+  :tasks="[
+    { title: 'Exact 24px Title', status: 'completed' },
+    { title: 'Same Size Comment', status: 'in-progress', comment: 'This comment is also 24px' }
+  ]"
+/>
+
+<!-- Or with rem units -->
+<TaskList
+  title="Responsive Sizing"
+  fontSize="1.5rem"
+  :tasks="[
+    { title: 'Responsive Title', status: 'completed' },
+    { title: 'Same Size Comment', status: 'pending' }
+  ]"
+/>
+```
+
 ### Inline Usage
 ```vue
 ## Project Status
@@ -121,6 +157,7 @@ More content here...
 - **Compact Design**: Minimal spacing for clean presentation
 - **Status Icons**: Visual indicators for different task states
 - **Color Coding**: Automatic status-based colors
+- **Flexible Font Sizing**: Support for both Tailwind classes and direct CSS values (px, rem, em, etc.) with automatic icon scaling
 - **Hover Effects**: Smooth animations on interaction
 - **Flexible**: Can be used anywhere in your slides
 - **Responsive**: Works well in different layouts
