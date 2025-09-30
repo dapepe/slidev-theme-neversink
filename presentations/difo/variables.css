@@ -225,6 +225,12 @@
   --company-sticky-size: 180px;
   --company-sticky-radius: 0.25rem;
   
+  /* Timeline styling */
+  --company-timeline-active: #2C3E50;
+  --company-timeline-inactive: #AEB6BF;
+  --company-timeline-dot-size: 25px;
+  --company-timeline-line-height: 5px;
+  
   /* Box components */
   --company-box-bg: #ffffff;
   --company-box-bg-dark: #2d3748;

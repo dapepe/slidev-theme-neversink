@@ -146,7 +146,7 @@ onMounted(() => {
 .input {
   width: v-bind('DOT_SIZE + "px"');
   height: v-bind('DOT_SIZE + "px"');
-  background-color: #2C3E50;
+  background-color: var(--company-timeline-active, #2C3E50);
   position: relative;
   border-radius: 50%;
   cursor: pointer;
@@ -164,7 +164,7 @@ onMounted(() => {
   transform: translateY(-50%);
   width: 100vw;
   height: v-bind('LINE_HEIGHT + "px"');
-  background-color: #2C3E50 !important;
+  background-color: var(--company-timeline-active, #2C3E50) !important;
   background-image: none !important;
 }
 
@@ -183,7 +183,7 @@ onMounted(() => {
   transform: translateY(-50%);
   width: 50px;
   height: v-bind('LINE_HEIGHT + "px"');
-  background-color: #AEB6BF !important;
+  background-color: var(--company-timeline-inactive, #AEB6BF) !important;
   background-image: none !important;
 }
 
@@ -197,13 +197,13 @@ onMounted(() => {
   transform: translateY(-50%);
   width: 50px;
   height: v-bind('LINE_HEIGHT + "px"');
-  background-color: #AEB6BF !important;
+  background-color: var(--company-timeline-inactive, #AEB6BF) !important;
   background-image: none !important;
 }
 
 /* Active state - line after active dot is gray */
 .input.active::after {
-  background-color: #AEB6BF !important;
+  background-color: var(--company-timeline-inactive, #AEB6BF) !important;
 }
 
 .input.active span::before,
@@ -213,11 +213,11 @@ onMounted(() => {
 
 /* Inactive state (all dots after active) */
 .input.active ~ .input {
-  background-color: #AEB6BF;
+  background-color: var(--company-timeline-inactive, #AEB6BF);
 }
 
 .input.active ~ .input::after {
-  background-color: #AEB6BF !important;
+  background-color: var(--company-timeline-inactive, #AEB6BF) !important;
   background-image: none !important;
 }
 
@@ -256,13 +256,14 @@ onMounted(() => {
   font-size: 13px;
 }
 
-/* Event label (above dot, rotated) */
+/* Event label (above dot) */
 .input span::before {
   content: attr(data-info);
-  top: -60px;
-  transform: translateX(-50%) rotateZ(-45deg);
-  transform-origin: center center;
-  font-size: 11px;
+  top: -65px;
+  transform: translateX(-8px) rotateZ(-45deg);
+  font-size: 12px;
+  text-indent: -10px;
+  width: 70px;
 }
 
 /* Description container */

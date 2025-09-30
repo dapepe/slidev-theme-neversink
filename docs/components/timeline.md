@@ -152,70 +152,59 @@ Each item in the `items` array should have the following properties:
 
 ```typescript
 {
-  year: string;        // The year/date to display
-  label: string;       // Short label for the event
-  description: string; // Detailed description shown below timeline
+  year: string;        // The year/date to display (below dot)
+  label: string;       // Short label for the event (above dot)
+  description: string; // Full description shown when active (centered below timeline)
 }
 ```
 
+### Notes on Item Data
+
+- **`year`**: Can be any string - years (`'2024'`), quarters (`'Q1'`), dates (`'Jan'`), etc.
+- **`label`**: Short text label displayed above the dot (keep concise for best appearance)
+- **`description`**: Any length text shown below the timeline when the item is active
+
 ## Styling
 
-The component uses CSS custom properties that can be customized:
+The component uses CSS variables from your company theme that can be customized in `variables.css`:
 
 ```css
-:root {
-  --timeline-num-dots: 10;                    /* Number of timeline items */
-  --timeline-parent-width-base: 0.8;          /* Width as percentage of viewport */
-  --timeline-parent-width: 80vw;              /* Actual width */
-  --timeline-parent-max-width: 1000px;        /* Maximum width */
-  --timeline-dot-width: 25px;                 /* Size of timeline dots */
-  --timeline-dot-width-sm: 17px;              /* Size on smaller screens */
-  --timeline-active-color: #2C3E50;           /* Color for active items */
-  --timeline-inactive-color: #AEB6BF;         /* Color for inactive items */
-}
+/* Timeline styling */
+--company-timeline-active: #2C3E50;         /* Color for active items */
+--company-timeline-inactive: #AEB6BF;       /* Color for inactive items */
+--company-timeline-dot-size: 25px;          /* Size of timeline dots */
+--company-timeline-line-height: 5px;        /* Height of connecting lines */
 ```
 
 ### Customizing Colors
 
-You can override colors by adding a style block:
+To customize timeline colors, modify these variables in your `presentations/{company}/variables.css` file:
 
-```vue
-<Timeline
-  title="Custom Colors"
-  :items="timelineItems"
-  style="
-    --timeline-active-color: #FF6B6B;
-    --timeline-inactive-color: #C7ECEE;
-  "
-/>
+```css
+:root {
+  --company-timeline-active: #1e3a8a;      /* Your brand color */
+  --company-timeline-inactive: #cbd5e0;    /* Your muted color */
+  --company-timeline-dot-size: 30px;       /* Larger dots */
+  --company-timeline-line-height: 6px;     /* Thicker lines */
+}
 ```
 
-## Responsive Behavior
+## Design Specifications
 
-### Desktop (> 600px)
-- Horizontal timeline with connected dots
-- Year labels below dots
-- Event labels above dots (rotated -45°)
-- Description below timeline
+- **Dot Size**: 25px diameter circles
+- **Line Thickness**: 5px connecting lines
+- **Colors**: Active (`#2C3E50`), Inactive (`#AEB6BF`)
+- **Font Sizes**: Year labels (13px), Event labels (11px), Descriptions (20px)
+- **Spacing**: Year labels 30px below dots, Event labels 50px above dots
+- **Layout**: Full-width with automatic spacing between items
 
-### Mobile (≤ 600px)
-- Grid layout with larger circular buttons
-- Year labels centered inside circles
-- Event labels below circles
-- All connecting lines hidden
+## Tips & Best Practices
 
-## Accessibility
-
-- **Keyboard Navigation**: Timeline items are focusable and can be activated with Enter/Space
-- **Interactive**: Uses native button behavior for better accessibility
-- **Visual Feedback**: Clear active states and hover effects
-
-## Tips
-
-1. **Optimal Number of Items**: Works best with 5-12 timeline items
-2. **Short Labels**: Keep event labels concise (1-3 words)
-3. **Consistent Descriptions**: Try to keep descriptions similar in length
-4. **Date Format**: Use consistent formatting for years/dates
+1. **Optimal Number of Items**: Works best with 4-10 timeline items for presentation slides
+2. **Short Labels**: Keep event labels concise (1-2 words) for clean appearance
+3. **Description Length**: Keep descriptions roughly similar length for consistent layout
+4. **Date Format**: Use consistent formatting for years/dates (e.g., all 4-digit years)
+5. **Full Width**: Timeline automatically fills 100% width - works great in two-column layouts
 
 ## Examples in Use
 
