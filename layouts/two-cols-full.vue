@@ -119,7 +119,7 @@ const colorscheme = computed(() => {
 }
 
 .two-cols-full .right-col:not(:has(img)) {
-  padding: 2rem;
+  padding: var(--company-default-padding);
 }
 
 /* 1-11 */
