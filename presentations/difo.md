@@ -152,6 +152,7 @@ layout: default
 ---
 <TaskList
   title="Ongoing tasks"
+  fontSize="1rem"
   :tasks="[
     [
       { title: 'Database Setup', status: 'completed', icon: 'fas fa-database' },

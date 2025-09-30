@@ -11,20 +11,20 @@
     </div>
 
     <!-- Task List -->
-    <div class="task-list" :class="useMultiColumn ? `task-columns-${tasks.length}` : 'task-columns-1'">
+    <div class="task-list" :class="[useMultiColumn ? `task-columns-${tasks.length}` : 'task-columns-1', columnGapClass]" :style="columnGapStyle">
       <!-- Multi-column layout -->
       <div v-if="useMultiColumn" v-for="(column, columnIndex) in tasks" :key="`column-${columnIndex}`" class="task-column">
         <div 
           v-for="(task, taskIndex) in column" 
           :key="`${columnIndex}-${taskIndex}`" 
-          class="task-item mb-0.5"
-          :class="{ 'task-visible': isTaskVisibleInColumn(columnIndex, taskIndex) }"
+          :class="[taskItemClass, { 'task-visible': isTaskVisibleInColumn(columnIndex, taskIndex) }]"
+          :style="taskItemStyle"
         >
-          <div class="flex items-center gap-1.5">
+          <div :class="taskGapClass" :style="taskGapStyle">
             <!-- Task Icon -->
-            <div class="task-icon flex-shrink-0 flex items-center justify-center" :class="getTaskIconClass(task.status)">
+            <div class="task-icon flex-shrink-0" :class="[getTaskIconClass(task.status), iconContainerClass]" :style="iconContainerSize ? { width: iconContainerSize, height: iconContainerSize } : {}">
               <!-- Custom Icon (Auto-detected) -->
-              <div v-if="task.icon && isAnimatedIcon(task.icon)" class="lottie-container" style="width: 2rem; height: 2rem;">
+              <div v-if="task.icon && isAnimatedIcon(task.icon)" class="lottie-container" :style="{ width: iconSize || '2rem', height: iconSize || '2rem' }">
                 <lottie-player
                   :src="task.icon"
                   background="transparent"
@@ -40,19 +40,19 @@
               <div 
                 v-else-if="task.icon && isSvgIcon(task.icon)" 
                 class="svg-container"
-                style="width: 2rem; height: 2rem;"
+                :style="{ width: iconSize || '2rem', height: iconSize || '2rem' }"
                 v-html="task.icon"
               ></div>
               <!-- FontAwesome Icon (Custom or Default) -->
-              <i v-else :class="task.icon || getTaskIconFA(task.status)" class="text-2xl"></i>
+              <i v-else :class="[task.icon || getTaskIconFA(task.status), iconClass]" :style="iconSize ? { fontSize: iconSize } : {}"></i>
             </div>
             
             <!-- Task Content -->
-            <div class="flex-1">
-              <h3 class="text-2xl font-semibold text-black">
+            <div class="flex-1 flex flex-col">
+              <h3 :class="taskTitleClass" :style="taskTitleStyle" class="flex-1">
                 {{ task.title }}
               </h3>
-              <div v-if="task.comment" class="text-lg text-gray-600">
+              <div v-if="task.comment" :class="taskCommentClass" :style="taskCommentStyle" class="mt-0.5">
                 {{ task.comment }}
               </div>
             </div>
@@ -64,14 +64,14 @@
       <div v-else 
         v-for="(task, index) in tasks" 
         :key="index" 
-        class="task-item mb-0.5"
-        :class="{ 'task-visible': isTaskVisible(index) }"
+        :class="[taskItemClass, { 'task-visible': isTaskVisible(index) }]"
+        :style="taskItemStyle"
       >
-        <div class="flex items-center gap-1.5">
+        <div :class="taskGapClass" :style="taskGapStyle">
           <!-- Task Icon -->
-          <div class="task-icon flex-shrink-0 flex items-center justify-center" :class="getTaskIconClass(task.status)">
+          <div class="task-icon flex-shrink-0" :class="[getTaskIconClass(task.status), iconContainerClass]" :style="iconContainerSize ? { width: iconContainerSize, height: iconContainerSize } : {}">
             <!-- Custom Icon (Auto-detected) -->
-            <div v-if="task.icon && isAnimatedIcon(task.icon)" class="lottie-container" style="width: 2rem; height: 2rem;">
+            <div v-if="task.icon && isAnimatedIcon(task.icon)" class="lottie-container" :style="{ width: iconSize || '2rem', height: iconSize || '2rem' }">
               <lottie-player
                 :src="task.icon"
                 background="transparent"
@@ -87,19 +87,19 @@
             <div 
               v-else-if="task.icon && isSvgIcon(task.icon)" 
               class="svg-container"
-              style="width: 2rem; height: 2rem;"
+              :style="{ width: iconSize || '2rem', height: iconSize || '2rem' }"
               v-html="task.icon"
             ></div>
             <!-- FontAwesome Icon (Custom or Default) -->
-            <i v-else :class="task.icon || getTaskIconFA(task.status)" class="text-2xl"></i>
+            <i v-else :class="[task.icon || getTaskIconFA(task.status), iconClass]" :style="iconSize ? { fontSize: iconSize } : {}"></i>
           </div>
           
           <!-- Task Content -->
-          <div class="flex-1">
-            <h3 class="text-2xl font-semibold text-black">
+          <div class="flex-1 flex flex-col">
+            <h3 :class="taskTitleClass" :style="taskTitleStyle" class="flex-1">
               {{ task.title }}
             </h3>
-            <div v-if="task.comment" class="text-lg text-gray-600">
+            <div v-if="task.comment" :class="taskCommentClass" :style="taskCommentStyle" class="mt-0.5">
               {{ task.comment }}
             </div>
           </div>
@@ -130,6 +130,10 @@ const props = defineProps({
   sequential: {
     type: Boolean,
     default: false
+  },
+  fontSize: {
+    type: String,
+    default: '2xl'
   }
 })
 
@@ -139,6 +143,203 @@ const taskListRef = ref(null)
 // Determine if we're using a multi-column structure (multidimensional array)
 const useMultiColumn = computed(() => {
   return props.tasks.length > 0 && Array.isArray(props.tasks[0])
+})
+
+// Check if fontSize is a direct CSS value (contains px, rem, em, etc.)
+const isDirectFontSize = computed(() => {
+  return /^\d+(\.\d+)?(px|rem|em|%|vh|vw)$/i.test(props.fontSize)
+})
+
+// Font size classes based on fontSize prop
+const taskTitleClass = computed(() => {
+  if (isDirectFontSize.value) {
+    return 'font-semibold text-black'
+  }
+  return `text-${props.fontSize} font-semibold text-black`
+})
+
+const taskCommentClass = computed(() => {
+  if (isDirectFontSize.value) {
+    return 'text-gray-600'
+  }
+  // Scale down comment size relative to title size
+  const sizeMap = {
+    'xs': 'text-xs',
+    'sm': 'text-xs', 
+    'base': 'text-sm',
+    'lg': 'text-base',
+    'xl': 'text-lg',
+    '2xl': 'text-lg',
+    '3xl': 'text-xl',
+    '4xl': 'text-2xl',
+    '5xl': 'text-3xl',
+    '6xl': 'text-4xl'
+  }
+  return `${sizeMap[props.fontSize] || 'text-lg'} text-gray-600`
+})
+
+// Dynamic font size styles for direct CSS values
+const taskTitleStyle = computed(() => {
+  if (isDirectFontSize.value) {
+    return { fontSize: props.fontSize }
+  }
+  return {}
+})
+
+const taskCommentStyle = computed(() => {
+  if (isDirectFontSize.value) {
+    // Scale down comment size to 80% of title size
+    const numericValue = parseFloat(props.fontSize)
+    const unit = props.fontSize.replace(numericValue.toString(), '')
+    const commentSize = (numericValue) + unit
+    return { fontSize: commentSize }
+  }
+  return {}
+})
+
+// Icon sizing based on fontSize prop
+const iconSize = computed(() => {
+  if (isDirectFontSize.value) {
+    // Use the same size as the title for both width and height
+    return props.fontSize
+  }
+  return null
+})
+
+// Icon container size for consistent dimensions
+const iconContainerSize = computed(() => {
+  if (isDirectFontSize.value) {
+    // Make container slightly larger than font size for better visual balance
+    const numericValue = parseFloat(props.fontSize)
+    const unit = props.fontSize.replace(numericValue.toString(), '')
+    const containerSize = (numericValue * 1.2) + unit
+    return containerSize
+  }
+  return null
+})
+
+const iconClass = computed(() => {
+  if (isDirectFontSize.value) {
+    return ''
+  }
+  // Use the same size as the title
+  return `text-${props.fontSize}`
+})
+
+// Icon container class for consistent dimensions
+const iconContainerClass = computed(() => {
+  if (isDirectFontSize.value) {
+    return 'flex items-center justify-center'
+  }
+  // Map Tailwind font sizes to container sizes
+  const containerSizeMap = {
+    'xs': 'w-3 h-3',
+    'sm': 'w-4 h-4', 
+    'base': 'w-4 h-4',
+    'lg': 'w-5 h-5',
+    'xl': 'w-6 h-6',
+    '2xl': 'w-6 h-6',
+    '3xl': 'w-8 h-8',
+    '4xl': 'w-10 h-10',
+    '5xl': 'w-12 h-12',
+    '6xl': 'w-16 h-16'
+  }
+  return `flex items-center justify-center ${containerSizeMap[props.fontSize] || 'w-6 h-6'}`
+})
+
+// Dynamic spacing based on font size
+const taskItemStyle = computed(() => {
+  if (isDirectFontSize.value) {
+    const numericValue = parseFloat(props.fontSize)
+    const unit = props.fontSize.replace(numericValue.toString(), '')
+    // Scale margin bottom based on font size (0.05x the font size - much smaller)
+    const marginBottom = (numericValue * 0.05) + unit
+    return { marginBottom }
+  }
+  return {}
+})
+
+const taskItemClass = computed(() => {
+  if (isDirectFontSize.value) {
+    return 'task-item'
+  }
+  // Map Tailwind font sizes to margin classes - much smaller margins
+  const marginMap = {
+    'xs': 'mb-0',
+    'sm': 'mb-0', 
+    'base': 'mb-0',
+    'lg': 'mb-0',
+    'xl': 'mb-0.5',
+    '2xl': 'mb-0.5',
+    '3xl': 'mb-0.5',
+    '4xl': 'mb-1',
+    '5xl': 'mb-1',
+    '6xl': 'mb-1'
+  }
+  return `task-item ${marginMap[props.fontSize] || 'mb-0.5'}`
+})
+
+const taskGapStyle = computed(() => {
+  if (isDirectFontSize.value) {
+    const numericValue = parseFloat(props.fontSize)
+    const unit = props.fontSize.replace(numericValue.toString(), '')
+    // Scale gap based on font size (0.1x the font size - much smaller)
+    const gap = (numericValue * 0.1) + unit
+    return { gap }
+  }
+  return {}
+})
+
+const taskGapClass = computed(() => {
+  if (isDirectFontSize.value) {
+    return 'flex items-baseline'
+  }
+  // Map Tailwind font sizes to gap classes - much smaller gaps
+  const gapMap = {
+    'xs': 'gap-0',
+    'sm': 'gap-0.5', 
+    'base': 'gap-0.5',
+    'lg': 'gap-0.5',
+    'xl': 'gap-1',
+    '2xl': 'gap-1',
+    '3xl': 'gap-1',
+    '4xl': 'gap-1.5',
+    '5xl': 'gap-2',
+    '6xl': 'gap-2'
+  }
+  return `flex items-baseline ${gapMap[props.fontSize] || 'gap-1'}`
+})
+
+// Dynamic spacing for multi-column layouts
+const columnGapStyle = computed(() => {
+  if (isDirectFontSize.value) {
+    const numericValue = parseFloat(props.fontSize)
+    const unit = props.fontSize.replace(numericValue.toString(), '')
+    // Scale column gap based on font size (0.25x the font size - much smaller)
+    const columnGap = (numericValue * 0.25) + unit
+    return { gap: columnGap }
+  }
+  return {}
+})
+
+const columnGapClass = computed(() => {
+  if (isDirectFontSize.value) {
+    return ''
+  }
+  // Map Tailwind font sizes to column gap classes - much smaller gaps
+  const columnGapMap = {
+    'xs': 'gap-0',
+    'sm': 'gap-0.5', 
+    'base': 'gap-0.5',
+    'lg': 'gap-1',
+    'xl': 'gap-1',
+    '2xl': 'gap-1',
+    '3xl': 'gap-1.5',
+    '4xl': 'gap-2',
+    '5xl': 'gap-2',
+    '6xl': 'gap-3'
+  }
+  return columnGapMap[props.fontSize] || 'gap-1'
 })
 
 // Calculate total tasks for navigation
@@ -235,34 +436,34 @@ const getTaskIconFA = (status) => {
 
 <style scoped>
 .task-list-component {
-  padding: 0.5rem;
+  padding: 0;
 }
 
 /* Multi-column layouts */
 .task-columns-1 {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0;
 }
 
 .task-columns-2 {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
+  gap: 0;
   align-items: start;
 }
 
 .task-columns-3 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
+  gap: 0;
   align-items: start;
 }
 
 .task-columns-4 {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
+  gap: 0;
   align-items: start;
 }
 
@@ -306,6 +507,11 @@ const getTaskIconFA = (status) => {
 
 .text-gray-600 i {
   color: #4b5563 !important;
+}
+
+/* Reset margins */
+.task-item h3 {
+  margin: 0;
 }
 
 /* Sequential animation */
