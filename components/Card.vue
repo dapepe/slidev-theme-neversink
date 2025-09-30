@@ -264,7 +264,7 @@ const contentStyle = computed(() => {
 }
 
 .card-headline {
-  font-family: var(--company-font-heading, 'Inter', sans-serif);
+  font-family: var(--company-font-heading, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif);
   font-size: 1.25rem;
   font-weight: 600;
   margin: 0 0 0.5rem 0;
@@ -273,7 +273,7 @@ const contentStyle = computed(() => {
 }
 
 .card-text {
-  font-family: var(--company-font-primary, 'Inter', sans-serif);
+  font-family: var(--company-font-primary, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif);
   font-size: 1rem;
   color: var(--company-text-secondary, #6b7280);
   line-height: 1.5;
