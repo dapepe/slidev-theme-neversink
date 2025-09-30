@@ -121,7 +121,7 @@ const titleClass = computed(() => {
 
 const titleStyle = computed(() => {
   if (isDirectTitleSize.value) {
-    return { fontSize: props.titleFontSize }
+    return { fontSize: props.titleFontSize, textTransform: 'uppercase', marginTop: '.5rem !important' }
   }
   return {}
 })

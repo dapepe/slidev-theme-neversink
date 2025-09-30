@@ -107,7 +107,7 @@ const colorscheme = computed(() => {
 }
 
 .two-cols-full .left-col:not(:has(img)) {
-  padding: 2rem;
+  padding: var(--company-default-padding);
 }
 
 .two-cols-full .right-col {

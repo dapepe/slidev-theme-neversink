@@ -369,3 +369,16 @@
   margin-bottom: 0 !important;
 }
 /* DIFO Slide Logo Switching - Simple and Clear */
+
+
+.slidev-layout h1 {
+  font-size: var(--company-font-size-2xl);
+  text-transform: uppercase;
+  font-weight: var(--company-font-weight-bold);
+}
+
+.slidev-layout h2 {
+  font-size: var(--company-font-size-xs);
+  font-weight: var(--company-font-weight-normal);
+  text-transform: uppercase;
+}
