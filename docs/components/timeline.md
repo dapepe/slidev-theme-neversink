@@ -1,0 +1,256 @@
+# Timeline Component
+
+An interactive horizontal timeline component that displays events chronologically with automatic full-width scaling and integrated navigation controls.
+
+## Features
+
+- **Full-Width Layout**: Automatically fills 100% of available horizontal space with dynamic spacing between items
+- **Compact Design**: Optimized vertical spacing for better slide layout efficiency
+- **Interactive**: Click on any timeline dot to reveal its description
+- **Arrow Key Navigation**: Use left/right arrow keys to step through timeline items during presentations
+- **Navigation Override**: Seamlessly integrates with Slidev - navigate through timeline items before advancing to the next slide
+- **Visual Progress**: Active items shown in dark color, future items in gray, with connecting lines showing progression
+- **Extended Lines**: Timeline extends beyond first and last dots for a continuous appearance
+- **Theme Integration**: Uses company fonts and color variables for consistent theming
+- **Bold Active State**: Year labels and event names appear bold when active
+- **Smooth Transitions**: Animated state changes for professional presentations
+
+## Usage
+
+### Basic Example
+
+```vue
+<Timeline
+  title="Company Growth"
+  subtitle="2018-2024"
+  :items="[
+    { year: '2018', label: 'Foundation', description: 'Company established with vision for innovation' },
+    { year: '2020', label: 'Growth', description: 'Expanded team and operations significantly' },
+    { year: '2022', label: 'Innovation', description: 'Launched breakthrough product line' },
+    { year: '2024', label: 'Leadership', description: 'Recognized as industry leader' }
+  ]"
+  :default-active="0"
+/>
+```
+
+**Result**: A full-width timeline that automatically distributes 4 items evenly across the available space.
+
+### In Slidev Markdown
+
+````markdown
+---
+layout: default
+---
+
+<Timeline
+  title="Notable Inventions"
+  subtitle="1910–2000"
+  :items="[
+    { year: '1910', label: 'headset', description: 'And future Call of Duty players would thank them.' },
+    { year: '1920', label: 'jungle gym', description: 'Because every kid should get to be Tarzan for a day.' },
+    { year: '1930', label: 'chocolate chip cookie', description: 'And the world rejoiced.' },
+    { year: '1940', label: 'Jeep', description: 'Because building roads is inconvenient.' },
+    { year: '1950', label: 'leaf blower', description: 'Ain\'t nobody got time to rake.' },
+    { year: '1960', label: 'magnetic stripe card', description: 'Because paper currency is for noobs.' },
+    { year: '1970', label: 'wireless LAN', description: 'Nobody likes cords. Nobody.' },
+    { year: '1980', label: 'flash memory', description: 'Brighter than glow memory.' },
+    { year: '1990', label: 'World Wide Web', description: 'To capitalize on an as-yet nascent market for cat photos.' },
+    { year: '2000', label: 'Google AdWords', description: 'Because organic search rankings take work.' }
+  ]"
+  :default-active="2"
+/>
+````
+
+### In Two-Column Layout
+
+Combine timeline with supporting content:
+
+````markdown
+---
+layout: two-cols-full
+color: light
+---
+
+# Project Timeline
+
+::left::
+
+## Key Achievements
+
+- Market entry success
+- Team expansion
+- International growth
+- Industry recognition
+
+**Timeline shows our progression through major milestones**
+
+::right::
+
+<Timeline
+  :items="[
+    { year: '2018', label: 'Start', description: 'Founded with vision' },
+    { year: '2020', label: 'Growth', description: 'Expanded operations' },
+    { year: '2022', label: 'Innovation', description: 'New products launched' },
+    { year: '2024', label: 'Leadership', description: 'Market leader' }
+  ]"
+  :default-active="2"
+/>
+````
+
+### Quarterly Roadmap
+
+Use quarters or any custom labels:
+
+```vue
+<Timeline
+  title="Product Roadmap"
+  subtitle="2024"
+  :items="[
+    { year: 'Q1', label: 'Planning', description: 'Requirements and architecture' },
+    { year: 'Q2', label: 'Development', description: 'Core features and MVP' },
+    { year: 'Q3', label: 'Testing', description: 'Beta with early adopters' },
+    { year: 'Q4', label: 'Launch', description: 'Public release' }
+  ]"
+/>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `title` | String | `''` | Main title displayed above the timeline |
+| `subtitle` | String | `''` | Subtitle text (often a date range) |
+| `items` | Array | **Required** | Array of timeline items (see Item Structure) |
+| `defaultActive` | Number | `0` | Index of the initially active item |
+| `enableNavigation` | Boolean | `true` | Enable arrow key navigation override |
+
+## Navigation Override
+
+The Timeline component integrates with Slidev's navigation system using the `useNavigationOverride` composable. When a slide containing a Timeline is visible:
+
+- **Arrow Right/Space**: Move to the next timeline item
+- **Arrow Left**: Move to the previous timeline item
+- Once you reach the last item, the next navigation will move to the next slide
+- When you go back before the first item, it will move to the previous slide
+
+This creates a natural step-by-step progression through your timeline items during presentations.
+
+### Disabling Navigation Override
+
+If you want to disable the arrow key navigation (e.g., for a static timeline):
+
+```vue
+<Timeline
+  :items="timelineItems"
+  :enable-navigation="false"
+/>
+```
+
+## Item Structure
+
+Each item in the `items` array should have the following properties:
+
+```typescript
+{
+  year: string;        // The year/date to display
+  label: string;       // Short label for the event
+  description: string; // Detailed description shown below timeline
+}
+```
+
+## Styling
+
+The component uses CSS custom properties that can be customized:
+
+```css
+:root {
+  --timeline-num-dots: 10;                    /* Number of timeline items */
+  --timeline-parent-width-base: 0.8;          /* Width as percentage of viewport */
+  --timeline-parent-width: 80vw;              /* Actual width */
+  --timeline-parent-max-width: 1000px;        /* Maximum width */
+  --timeline-dot-width: 25px;                 /* Size of timeline dots */
+  --timeline-dot-width-sm: 17px;              /* Size on smaller screens */
+  --timeline-active-color: #2C3E50;           /* Color for active items */
+  --timeline-inactive-color: #AEB6BF;         /* Color for inactive items */
+}
+```
+
+### Customizing Colors
+
+You can override colors by adding a style block:
+
+```vue
+<Timeline
+  title="Custom Colors"
+  :items="timelineItems"
+  style="
+    --timeline-active-color: #FF6B6B;
+    --timeline-inactive-color: #C7ECEE;
+  "
+/>
+```
+
+## Responsive Behavior
+
+### Desktop (> 600px)
+- Horizontal timeline with connected dots
+- Year labels below dots
+- Event labels above dots (rotated -45°)
+- Description below timeline
+
+### Mobile (≤ 600px)
+- Grid layout with larger circular buttons
+- Year labels centered inside circles
+- Event labels below circles
+- All connecting lines hidden
+
+## Accessibility
+
+- **Keyboard Navigation**: Timeline items are focusable and can be activated with Enter/Space
+- **Interactive**: Uses native button behavior for better accessibility
+- **Visual Feedback**: Clear active states and hover effects
+
+## Tips
+
+1. **Optimal Number of Items**: Works best with 5-12 timeline items
+2. **Short Labels**: Keep event labels concise (1-3 words)
+3. **Consistent Descriptions**: Try to keep descriptions similar in length
+4. **Date Format**: Use consistent formatting for years/dates
+
+## Examples in Use
+
+### Tech Company Timeline
+
+```vue
+<Timeline
+  title="Our Journey"
+  subtitle="From Startup to Scale-up"
+  :items="[
+    { year: '2018', label: 'Inception', description: 'Founded by three developers in a garage.' },
+    { year: '2019', label: 'First Product', description: 'Launched our flagship SaaS platform.' },
+    { year: '2020', label: 'Growth', description: 'Reached 1,000 customers and $1M ARR.' },
+    { year: '2021', label: 'Funding', description: 'Closed $5M Series A round.' },
+    { year: '2022', label: 'Expansion', description: 'Opened offices in Europe and Asia.' },
+    { year: '2023', label: 'Today', description: '10,000+ customers across 50 countries.' }
+  ]"
+/>
+```
+
+### Project Timeline
+
+```vue
+<Timeline
+  title="Project Phases"
+  :items="[
+    { year: 'Phase 1', label: 'Discovery', description: 'Research and requirements gathering.' },
+    { year: 'Phase 2', label: 'Design', description: 'UX/UI design and prototyping.' },
+    { year: 'Phase 3', label: 'Build', description: 'Development and implementation.' },
+    { year: 'Phase 4', label: 'Deploy', description: 'Testing and production release.' },
+    { year: 'Phase 5', label: 'Support', description: 'Ongoing maintenance and updates.' }
+  ]"
+/>
+```
+
+## Credits
+
+Inspired by [responsive timeline v3](https://codepen.io/cjl750/pen/mXbMyo) by Clay Larson.

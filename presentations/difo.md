@@ -412,6 +412,60 @@ You can also use the Chart component directly in any slide:
 - **Area Charts** - Excellent for cumulative data
 
 ---
+layout: default
+color: light
+---
+
+# Timeline Component
+
+Interactive horizontal timeline for displaying chronological events and milestones.
+
+<Timeline
+  :items="[
+    { year: '2018', label: 'Foundation', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore' },
+    { year: '2019', label: 'First Client', description: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur' },
+    { year: '2020', label: 'Team Growth', description: 'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim' },
+    { year: '2021', label: 'International', description: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium' },
+    { year: '2022', label: 'Innovation', description: 'Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit sed quia consequuntur' },
+    { year: '2023', label: 'Innovation', description: 'Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur adipisci velit' },
+    { year: '2024', label: 'Recognition', description: 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum' }
+  ]"
+  :default-active="0"
+/>
+
+---
+layout: two-cols-full
+color: light
+---
+::left::
+
+## Project Milestones
+
+Lorem ipsum
+
+**Key Achievements:**
+- Lorem ipsum dolor sit amet
+- Lorem ipsum dolor sit amet
+- Lorem ipsum dolor sit amet
+- Lorem ipsum dolor sit amet
+- Lorem ipsum dolor sit amet
+
+::right::
+
+<Timeline
+  :items="[
+    { year: '2018', label: 'Start', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit' },
+    { year: '2019', label: 'Leadership', description: 'Duis aute irure dolor in reprehenderit in voluptate' },
+    { year: '2020', label: 'Growth', description: 'Excepteur sint occaecat cupidatat non proident' },
+    { year: '2022', label: 'Innovation', description: 'Sed ut perspiciatis unde omnis iste natus error' },
+    { year: '2024', label: 'Leadership', description: 'Nemo enim ipsam voluptatem quia voluptas sit' },
+    { year: '2025', label: 'Leadership', description: 'Neque porro quisquam est qui dolorem ipsum' },
+    { year: '2026', label: 'Leadership', description: 'At vero eos et accusamus et iusto odio' }
+  ]"
+  :default-active="2"
+/>
+
+---
 layout: thank-you
 color: dark
 logos:
