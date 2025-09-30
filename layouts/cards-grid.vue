@@ -178,7 +178,7 @@ const gridLayout = computed(() => {
 /* ===== CARDS GRID LAYOUT STYLING ===== */
 .slidev-layout.cards-grid {
   font-family: var(--company-font-primary);
-  padding: var(--company-space-8);
+  padding: var(--company-default-padding);
   margin: 0;
 }
 

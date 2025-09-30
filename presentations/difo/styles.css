@@ -220,7 +220,7 @@
 .presentation-specific-card {
   background: var(--theme-gradient-primary);
   color: var(--theme-text-inverse);
-  padding: var(--theme-space-8);
+  padding: var(--theme-default-padding);
   border-radius: var(--theme-radius-xl);
   margin: var(--theme-space-4) 0;
   box-shadow: var(--theme-shadow-lg);
