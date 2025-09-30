@@ -55,6 +55,10 @@ const props = defineProps({
   enableNavigation: {
     type: Boolean,
     default: true
+  },
+  sequential: {
+    type: Boolean,
+    default: false
   }
 })
 
@@ -68,17 +72,28 @@ const LINE_HEIGHT = 5         // px - thickness of connecting lines
 const numItems = computed(() => props.items.length)
 
 const selectItem = (index) => {
-  activeIndex.value = index
+  if (props.sequential) {
+    // In sequential mode, only allow moving one step at a time
+    const diff = Math.abs(index - activeIndex.value)
+    if (diff === 1) {
+      activeIndex.value = index
+    }
+    // Ignore clicks that try to skip steps
+  } else {
+    // In non-sequential mode, allow jumping to any item
+    activeIndex.value = index
+  }
 }
 
 // Setup navigation override for arrow key navigation
+// Only active when sequential mode is enabled
 const { currentStep } = useStepNavigation({
   maxSteps: numItems.value,
   initialStep: props.defaultActive + 1, // Steps are 1-based
   onStepChange: (step) => {
     activeIndex.value = step - 1 // Convert back to 0-based index
   },
-  isActive: () => props.enableNavigation,
+  isActive: () => props.enableNavigation && props.sequential,
   slideElement: timelineElement,
   debug: false
 })

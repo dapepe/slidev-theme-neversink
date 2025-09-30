@@ -431,6 +431,7 @@ Interactive horizontal timeline for displaying chronological events and mileston
     { year: '2024', label: 'Recognition', description: 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum' }
   ]"
   :default-active="0"
+  :sequential=true
 />
 
 ---
