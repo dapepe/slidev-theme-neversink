@@ -265,3 +265,16 @@
 .footnotes-sep {
   visibility: hidden;
 }
+
+/* Mermaid diagram styling */
+.mermaid {
+  max-width: 100% !important;
+  width: 100% !important;
+}
+
+/* Ensure Mermaid containers are responsive */
+.slidev-layout .mermaid {
+  max-width: 100% !important;
+  width: 100% !important;
+  overflow: visible !important;
+}
