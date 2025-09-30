@@ -4,7 +4,7 @@ company: difo
 color: dark
 layout: cover
 title: Microsoft Solution Workshop
-subtitle: Bell/CMS
+subtitle: Gemeinsame Strategie und Roadmap
 date: 30.09.2025
 version: 1.0
 logos:
@@ -43,6 +43,7 @@ sequential: true
 ---
 
 # ZIELE
+## Was wollen wir erreichen
 
 ---
 layout: cards-grid
@@ -77,7 +78,7 @@ cards:
     icon: "fas fa-balance-scale"
     color: "#424d90"
   - headline: "Dateiverwaltung"
-    content: "Ablage und Sharing via OneDrive o.ä."
+    content: "Ablage und Sharing via OneDrive, Sharepoint, o.ä."
     icon: "fas fa-file"
     color: "#424d90"
 theme: "light"
@@ -100,6 +101,9 @@ columns: is-5-7
 - Welche Services on Prem benötigen ein lokales Active Directory
   - Client-Zertifikate für NAC
   - LDAP
+  - SAML
+  - File-Server
+  - Windows CA
 - Alternativen:
   - Entra Only
   - Hybrid Join
@@ -163,10 +167,90 @@ columns: is-6-6
 
 :: right ::
 
-
 <img src="/share/Depositphotos_634424958_XL.jpg" class="h-full w-full object-cover" alt="" />
 
+---
+layout: two-cols-full
+title: Test
+color: light
+columns: is-6-6
+---
+
+:: left ::
+
+# Tenants
+
+* Erstellen eines komplett neuen Tenants für difo.de
+* Zentrale 
+
+:: right ::
+
 <img src="/share/Depositphotos_664214602_XL.jpg" class="h-full w-full object-cover" alt="" />
+
+---
+layout: two-cols-full
+title: Test
+color: light
+columns: is-7-5
+---
+
+:: left ::
+
+# Dateiverwaltung
+## Grundsätzliche Überlegungen
+
+* Lokale File Server vs. OneDrive/Sharepoint
+
+:: right ::
+
+<img src="/share/Depositphotos_51675177_XL.jpg" class="h-full w-full object-cover" alt="" />
+
+---
+layout: two-cols-full
+title: Test
+color: light
+columns: is-6-6
+---
+
+:: left ::
+
+# File Share
+## Lokal
+
+* Langlebig
+* Mit Backup und Snapshots
+* Wird nicht indexiert
+  
+:: right ::
+
+# SharePoint
+## bzw. OneDrive über Teams Teams
+
+* Kurzlebig
+* Indexiert und Durchsuchbar
+* Teams Teams werden irgendwann komplett archiviert (Channels können nicht archiviert werden)
+* Archive Storage kosten weniger pro GB
+* Löschen und Archivierung kann automatisiert werden
+* Jedes Team erhält autom. eine eigene Mail Adresse basierend auf dem Teams Namen
+
+---
+layout: two-cols-full
+title: Test
+color: light
+columns: is-7-5
+---
+
+:: left ::
+
+# Automatisierung
+
+* Automatisierung per MS Forms und PowerAutomate
+* Workflows zum Anlegen von Postfächern, Nutzern, etc.
+* Anlegen von Teams (z.B. für Projekte, Vertriebsthemen, etc.)
+
+:: right ::
+
+<img src="/share/Depositphotos_56542659_XL.jpg" class="h-full w-full object-cover" alt="" />
 
 ---
 layout: default
@@ -178,3 +262,5 @@ layout: default
 * Automatisches Labeling (z.B. per AI) per DocFlow
 * Martin wg. difo.de DNS config (SPF record)
 * Postfach und Konfig für meet@difo.de
+* Rollout von Proofpoint auch zu Bell
+* https://cmsitconsulting-admin.sharepoint.com
