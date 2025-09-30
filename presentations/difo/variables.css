@@ -372,13 +372,13 @@
 
 
 .slidev-layout h1 {
-  font-size: var(--company-font-size-2xl);
+  font-size: var(--company-font-size-xl);
   text-transform: uppercase;
   font-weight: var(--company-font-weight-bold);
 }
 
 .slidev-layout h2 {
-  font-size: var(--company-font-size-xs);
+  font-size: var(--company-font-size-sm);
   font-weight: var(--company-font-weight-normal);
   text-transform: uppercase;
 }
