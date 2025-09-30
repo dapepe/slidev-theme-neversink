@@ -241,8 +241,8 @@
 }
 
 .slidev-layout.default h1 {
-  font-size: var(--company-default-title-size);
-  margin-bottom: var(--company-space-lg);
+  /* font-size: var(--company-default-title-size); */
+  /* margin-bottom: var(--company-space-lg); */
 }
 
 .slidev-layout.default p {
