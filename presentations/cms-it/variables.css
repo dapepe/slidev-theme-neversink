@@ -40,9 +40,9 @@
   --company-accent-rgb: 245, 158, 11; 
 
   /* ===== SLIDE LOGOS ===== */
-  --company-slide-logo: url('/cms-it/difo-logo_cms-it-bright.png');
-  --company-slide-logo-light: url('/cms-it/difo-logo_cms-it-bright.png');
-  --company-slide-logo-dark: url('/cms-it/difo-logo_cms-it-dark.png');
+  --company-slide-logo: url('/cms-it/difo-logo_cms-it-bright.svg');
+  --company-slide-logo-light: url('/cms-it/difo-logo_cms-it-bright.svg');
+  --company-slide-logo-dark: url('/cms-it/difo-logo_cms-it-dark.svg');
   --company-slide-logo-position: top-right;
   --company-slide-logo-size: small;
   /* small, medium, large */
