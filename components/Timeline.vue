@@ -299,4 +299,28 @@ onMounted(() => {
 .description-flex-container p.active {
   display: block;
 }
+
+/* PDF/Print: Show active state for last item */
+@media print {
+  .input:last-child {
+    background-color: var(--company-timeline-active, #2C3E50) !important;
+  }
+  
+  .input:last-child::after {
+    background-color: var(--company-timeline-inactive, #AEB6BF) !important;
+  }
+  
+  .input:last-child span::before,
+  .input:last-child span::after {
+    font-weight: 700 !important;
+  }
+  
+  .description-flex-container p:last-child {
+    display: block !important;
+  }
+  
+  .description-flex-container p:not(:last-child) {
+    display: none !important;
+  }
+}
 </style>

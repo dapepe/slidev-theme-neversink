@@ -225,20 +225,45 @@ const gridLayout = computed(() => {
 }
 
 
+/* ===== PDF/PRINT MEDIA QUERIES ===== */
+@media print {
+  /* Force all cards visible for PDF export */
+  .card-wrapper {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    pointer-events: auto !important;
+  }
+  
+  /* Maintain proper grid layout in PDF */
+  .cards-container {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+  
+  /* Override for 2-card layouts in PDF */
+  .cards-container:has(.card-wrapper:nth-child(2):last-child) {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  
+  /* Override for 4-card layouts in PDF */
+  .cards-container:has(.card-wrapper:nth-child(4):last-child) {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
 /* ===== RESPONSIVE BREAKPOINTS FOR MAX 4 COLUMNS ===== */
-@media (max-width: 1400px) {
+@media screen and (max-width: 1400px) {
   .cards-container {
     grid-template-columns: repeat(3, 1fr) !important;
   }
 }
 
-@media (max-width: 1000px) {
+@media screen and (max-width: 1000px) {
   .cards-container {
     grid-template-columns: repeat(2, 1fr) !important;
   }
 }
 
-@media (max-width: 600px) {
+@media screen and (max-width: 600px) {
   .cards-container {
     grid-template-columns: 1fr !important;
     max-width: 350px;

@@ -3,7 +3,7 @@ theme: ../
 company: cms-it
 color: dark
 layout: cover
-title: CMS-IT
+title: CMS-IT Digital Solutions
 subtitle: Complete Component & Layout Reference
 date: 23.09.2025
 version: 1.0

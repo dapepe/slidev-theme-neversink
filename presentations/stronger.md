@@ -3,7 +3,7 @@ theme: ../
 company: stronger
 color: dark
 layout: cover
-title: DIFO Digital Solutions
+title: Stronger Digital Solutions
 subtitle: Complete Component & Layout Reference
 date: 23.09.2025
 version: 1.0

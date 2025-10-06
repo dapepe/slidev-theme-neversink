@@ -59,6 +59,23 @@ const props = defineProps({
 
 const emit = defineEmits(['svg-loaded', 'animation-complete'])
 
+// Check if we're in print/export mode
+const isPrintMode = () => {
+  if (typeof window !== 'undefined') {
+    // Check media query
+    if (window.matchMedia && window.matchMedia('print').matches) {
+      return true
+    }
+    // Check for export mode indicators
+    if (window.location.search.includes('export') || 
+        window.__SLIDEV_EXPORT__ === true ||
+        document.documentElement.classList.contains('print')) {
+      return true
+    }
+  }
+  return false
+}
+
 // Generate truly unique ID for this component instance
 const componentId = `svg-native-${Date.now()}-${Math.random().toString(36).substr(2, 9)}-${performance.now().toString(36).replace('.', '')}`
 const svgContainer = ref(null)
@@ -200,12 +217,12 @@ const setupAnimations = () => {
     
     /* SVG animation styles scoped to this component instance */
     [data-svg-id="${componentId}"] [class*="-${props.layerPrefix}"] {
-      opacity: ${props.sequential ? '0' : '1'};
-      transform: ${getInitialTransform(props.animation)};
+      opacity: ${(props.sequential && !isPrintMode()) ? '0' : '1'};
+      transform: ${isPrintMode() ? 'none' : getInitialTransform(props.animation)};
       transition: all ${props.duration}ms ease-out;
     }
     
-    ${props.sequential ? `
+    ${(props.sequential && !isPrintMode()) ? `
     /* Sequential mode: Show step 1 by default and when active */
     [data-svg-id="${componentId}"] [data-step="1"] {
       opacity: 1;
@@ -217,6 +234,15 @@ const setupAnimations = () => {
       ${getAnimationKeyframes(props.animation)}
     }
     ` : ''}
+    
+    /* Print mode: Show all layers in final state */
+    @media print {
+      [data-svg-id="${componentId}"] [class*="-${props.layerPrefix}"],
+      [data-svg-id="${componentId}"] [data-step] {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+    }
     
     /* Keyframe animations */
     @keyframes bounce-in {
@@ -240,6 +266,17 @@ const setupAnimations = () => {
   // Initialize display based on mode (same pattern as cards grid)
   setTimeout(() => {
     if (svgContainer.value) {
+      // In print mode, show all layers immediately
+      if (isPrintMode()) {
+        const allLayers = svgContainer.value.querySelectorAll(`[class*="-${props.layerPrefix}"], [data-step]`)
+        allLayers.forEach(layer => {
+          layer.classList.add('active')
+          layer.style.opacity = '1'
+          layer.style.transform = 'none'
+        })
+        return
+      }
+      
       if (props.sequential) {
         // Sequential mode: show first step by default
         const firstStepElements = svgContainer.value.querySelectorAll('[data-step="1"]')
@@ -540,5 +577,18 @@ onUnmounted(() => {
 .svg-interactive:hover {
   transform: scale(1.01);
   transition: transform 0.2s ease;
+}
+
+/* PDF/Print: Show all animation layers in final state */
+@media print {
+  .svg-native-container :deep([class*="-"]) {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  
+  .svg-native-container :deep([data-step]) {
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }
 </style>

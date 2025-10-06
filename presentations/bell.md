@@ -3,7 +3,7 @@ theme: ../
 company: bell
 color: dark
 layout: cover
-title: DIFO Digital Solutions
+title: Bell Digital Solutions
 subtitle: Complete Component & Layout Reference
 date: 23.09.2025
 version: 1.0
