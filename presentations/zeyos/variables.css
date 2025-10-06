@@ -40,8 +40,8 @@
   --company-accent-rgb: 245, 158, 11;
 
   /* ===== SLIDE LOGOS ===== */
-  --company-slide-logo: url('/zeyos/logo-black.svg');
-  --company-slide-logo-light: url('/zeyos/logo-black.svg');
+  --company-slide-logo: url('/zeyos/logo-white.svg');
+  --company-slide-logo-light: url('/zeyos/logo-white.svg');
   --company-slide-logo-dark: url('/zeyos/logo-black.svg');
   --company-slide-logo-position: top-right;
   --company-slide-logo-size: small;
