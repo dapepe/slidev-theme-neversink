@@ -17,17 +17,23 @@
 }
 
 :root {
+  /* ===== TYPOGRAPHY ===== */
+  --company-font-primary: 'Industry', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --company-font-heading: 'Josefin Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --company-font-mono: var(--company-font-primary);
+  --company-font-quote: var(--company-font-primary);
+
   /* ===== BRAND COLORS ===== */
   --company-primary: #1e3a8a;
   --company-primary-light: #3b82f6;
   --company-primary-dark: #1e40af;
   --company-primary-rgb: 30, 58, 138;
-  
+
   --company-secondary: #059669;
   --company-secondary-light: #10b981;
   --company-secondary-dark: #047857;
   --company-secondary-rgb: 5, 150, 105;
-  
+
   --company-accent: #f59e0b;
   --company-accent-light: #fbbf24;
   --company-accent-dark: #d97706;
@@ -38,7 +44,8 @@
   --company-slide-logo-light: url('/difo/images/difo-logo_icon-bright-solid.png');
   --company-slide-logo-dark: url('/difo/images/difo-logo_icon-dark-solid.svg');
   --company-slide-logo-position: top-right;
-  --company-slide-logo-size: small; /* small, medium, large */
+  --company-slide-logo-size: small;
+  /* small, medium, large */
   --company-slide-logo-opacity: 1;
   --company-slide-logo-show: true;
 
@@ -53,7 +60,7 @@
   --company-agenda-current-text: var(--company-bg-primary);
   --company-agenda-current-bg-dark: var(--company-text-inverse);
   --company-agenda-current-text-dark: var(--company-text-heading);
-  
+
   /* ===== BACKGROUND COLORS ===== */
   --company-bg-primary: #ffffff;
   --company-bg-primary-dark: #1a202c;
@@ -67,7 +74,7 @@
   --company-bg-cover: linear-gradient(135deg, #1e3a8a, #1e40af);
   --company-bg-quote: #f8fafc;
   --company-bg-code: #f7fafc;
-  
+
   /* ===== TEXT COLORS ===== */
   --company-text-primary: #1a202c;
   --company-text-primary-dark: #ffffff;
@@ -85,7 +92,7 @@
   --company-text-quote-dark: #e2e8f0;
   --company-text-code: #2d3748;
   --company-text-code-dark: #e2e8f0;
-  
+
   /* ===== BORDER & DIVIDER COLORS ===== */
   --company-border-primary: #e2e8f0;
   --company-border-primary-dark: #4a5568;
@@ -93,19 +100,15 @@
   --company-border-secondary-dark: #718096;
   --company-divider: #e2e8f0;
   --company-divider-dark: #4a5568;
-  
+
   /* ===== STATUS COLORS ===== */
   --company-success: #10b981;
   --company-warning: #f59e0b;
   --company-error: #ef4444;
   --company-info: #3b82f6;
-  
-  /* ===== TYPOGRAPHY ===== */
-  --company-font-primary: 'Industry', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --company-font-heading: 'Josefin Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --company-font-mono: 'Industry', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --company-font-quote: 'Industry', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  
+
+
+
   /* Font weights */
   --company-font-weight-thin: 100;
   --company-font-weight-light: 300;
@@ -114,7 +117,7 @@
   --company-font-weight-semibold: 600;
   --company-font-weight-bold: 700;
   --company-font-weight-black: 900;
-  
+
   /* Font sizes */
   --company-font-size-xs: 0.75rem;
   --company-font-size-sm: 0.875rem;
@@ -126,12 +129,12 @@
   --company-font-size-4xl: 2.25rem;
   --company-font-size-5xl: 3rem;
   --company-font-size-6xl: 3.75rem;
-  
+
   /* Line heights */
   --company-line-height-tight: 1.25;
   --company-line-height-normal: 1.5;
   --company-line-height-relaxed: 1.625;
-  
+
   /* ===== SPACING ===== */
   --company-space-px: 1px;
   --company-space-0: 0;
@@ -147,7 +150,7 @@
   --company-space-16: 4rem;
   --company-space-20: 5rem;
   --company-space-24: 6rem;
-  
+
   /* Semantic spacing */
   --company-space-xs: var(--company-space-1);
   --company-space-sm: var(--company-space-2);
@@ -155,13 +158,13 @@
   --company-space-lg: var(--company-space-6);
   --company-space-xl: var(--company-space-8);
   --company-space-2xl: var(--company-space-12);
-  
+
   /* ===== BORDERS & RADIUS ===== */
   --company-border-width: 1px;
   --company-border-width-2: 2px;
   --company-border-width-4: 4px;
   --company-border-width-8: 8px;
-  
+
   --company-radius-none: 0;
   --company-radius-sm: 0.125rem;
   --company-radius-base: 0.25rem;
@@ -171,7 +174,7 @@
   --company-radius-2xl: 1rem;
   --company-radius-3xl: 1.5rem;
   --company-radius-full: 9999px;
-  
+
   /* ===== SHADOWS ===== */
   --company-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
   --company-shadow-base: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
@@ -180,7 +183,7 @@
   --company-shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1), 0 10px 10px rgba(0, 0, 0, 0.04);
   --company-shadow-2xl: 0 25px 50px rgba(0, 0, 0, 0.25);
   --company-shadow-inner: inset 0 2px 4px rgba(0, 0, 0, 0.06);
-  
+
   /* ===== TRANSITIONS ===== */
   --company-transition-none: none;
   --company-transition-all: all 150ms ease-in-out;
@@ -190,7 +193,7 @@
   --company-transition-transform: transform 150ms ease-in-out;
   --company-transition-fast: all 100ms ease-in-out;
   --company-transition-slow: all 300ms ease-in-out;
-  
+
   /* ===== COMPONENT-SPECIFIC ===== */
   /* Button styling */
   --company-button-primary: var(--company-primary);
@@ -199,7 +202,7 @@
   --company-button-secondary-hover: var(--company-secondary-dark);
   --company-button-radius: var(--company-radius-md);
   --company-button-padding: var(--company-space-2) var(--company-space-6);
-  
+
   /* Card styling */
   --company-card-bg: var(--company-bg-primary);
   --company-card-border: var(--company-border-primary);
@@ -208,7 +211,7 @@
   --company-card-padding: var(--company-space-6);
   --company-card-title-size: var(--company-font-size-lg);
   --company-card-content-size: var(--company-font-size-base);
-  
+
   /* Speech bubble styling */
   --company-bubble-bg: var(--company-bg-secondary);
   --company-bubble-border: var(--company-border-primary);
@@ -216,7 +219,7 @@
   --company-bubble-shadow: var(--company-shadow-md);
   --company-bubble-padding: var(--company-space-4);
   --company-bubble-arrow-size: 8px;
-  
+
   /* Sticky note styling */
   --company-sticky-bg: #fef3c7;
   --company-sticky-border: #92400e;
@@ -224,13 +227,13 @@
   --company-sticky-shadow: 5px 4px 6px rgba(0, 0, 0, 0.1);
   --company-sticky-size: 180px;
   --company-sticky-radius: 0.25rem;
-  
+
   /* Timeline styling */
   --company-timeline-active: #2C3E50;
   --company-timeline-inactive: #AEB6BF;
   --company-timeline-dot-size: 25px;
   --company-timeline-line-height: 5px;
-  
+
   /* Box components */
   --company-box-bg: #ffffff;
   --company-box-bg-dark: #2d3748;
@@ -240,7 +243,7 @@
   --company-box-shadow-dark: 0 1px 3px rgba(0, 0, 0, 0.3);
   --company-box-radius: 0.5rem;
   --company-box-padding: 1rem;
-  
+
   /* Code block styling */
   --company-code-bg: #f7fafc;
   --company-code-bg-dark: #2d3748;
@@ -250,8 +253,8 @@
   --company-code-border-dark: #4a5568;
   --company-code-radius: 0.375rem;
   --company-code-padding: 1rem;
-  --company-code-font: 'Industry', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  
+  --company-code-font: var(--company-font-primary);
+
   /* Highlight styling */
   --company-highlight-bg: #fef3c7;
   --company-highlight-bg-dark: #374151;
@@ -259,7 +262,7 @@
   --company-highlight-text-dark: #fbbf24;
   --company-highlight-radius: 0.25rem;
   --company-highlight-padding: 0.25rem 0.5rem;
-  
+
   /* ===== LAYOUT-SPECIFIC ===== */
   /* Cover layout */
   --company-cover-title-size: 2rem;
@@ -270,13 +273,13 @@
   --company-cover-presenter-size: 1rem;
   --company-cover-date-size: 0.875rem;
   --company-cover-padding: 2rem;
-  
+
   /* Section layout */
   --company-section-title-size: 2.25rem;
   --company-section-title-weight: 600;
   --company-section-border-width: 2px;
   --company-section-padding: 2rem;
-  
+
   /* Quote layout */
   --company-quote-font-size: 1.5rem;
   --company-quote-weight: 400;
@@ -285,31 +288,31 @@
   --company-quote-author-size: 1.125rem;
   --company-quote-title-size: 1rem;
   --company-quote-padding: 2rem;
-  
+
   /* Thank you layout */
   --company-thank-you-title-size: 2.5rem;
   --company-thank-you-title-weight: 700;
   --company-thank-you-subtitle-size: 1.25rem;
   --company-thank-you-padding: 2rem;
-  
+
   /* Default layout */
   --company-default-title-size: 2rem;
   --company-default-content-size: 1rem;
   --company-default-padding: 1rem;
-  
+
   /* ===== ANIMATION ===== */
   --company-animation-duration: 0.6s;
   --company-animation-delay: 0.1s;
   --company-animation-stagger: 0.1s;
   --company-animation-easing: ease-out;
-  
+
   /* ===== LIST STYLING ===== */
   --company-list-item-spacing: 1rem;
   --company-list-indent: 1.5rem;
   --company-bullet-color: #4a5568;
   --company-bullet-color-dark: #cbd5e0;
   --company-bullet-size: 0.375rem;
-  
+
   /* ===== TABLE STYLING ===== */
   --company-table-border: #e2e8f0;
   --company-table-border-dark: #4a5568;
@@ -318,7 +321,7 @@
   --company-table-stripe: #f8fafc;
   --company-table-stripe-dark: #374151;
   --company-table-padding: 0.75rem;
-  
+
   /* ===== FORM STYLING ===== */
   --company-input-bg: #ffffff;
   --company-input-bg-dark: #374151;
@@ -328,7 +331,7 @@
   --company-input-focus-dark: #3b82f6;
   --company-input-radius: 0.375rem;
   --company-input-padding: 0.75rem;
-  
+
   /* ===== ALERT/ADMONITION COLORS ===== */
   --company-info-bg: #eff6ff;
   --company-info-bg-dark: #1e3a8a;
@@ -345,7 +348,7 @@
   --company-overlay: rgba(0, 0, 0, 0.5);
   --company-overlay-light: rgba(0, 0, 0, 0.25);
   --company-overlay-dark: rgba(0, 0, 0, 0.75);
-  
+
   /* ===== RESPONSIVE BREAKPOINTS ===== */
   --company-breakpoint-sm: 640px;
   --company-breakpoint-md: 768px;
@@ -374,6 +377,7 @@
   margin-top: 0 !important;
   margin-bottom: 0 !important;
 }
+
 /* DIFO Slide Logo Switching - Simple and Clear */
 
 

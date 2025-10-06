@@ -1,6 +1,6 @@
 ---
 theme: ../
-company: bell
+company: stronger
 color: dark
 layout: cover
 title: DIFO Digital Solutions
@@ -25,7 +25,7 @@ presenters:
 ---
 
 <style>
-@import './bell/variables.css';
+@import './stronger/variables.css';
 </style>
 
 ---

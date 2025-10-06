@@ -21,6 +21,10 @@ presenters:
 
 ---
 
+<style>
+@import './difo/variables.css';
+</style>
+
 
 ---
 layout: cards-grid
