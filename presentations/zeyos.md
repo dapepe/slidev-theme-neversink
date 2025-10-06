@@ -1,679 +1,490 @@
 ---
 theme: ../
 company: zeyos
+color: dark
 layout: cover
-title: ZeyOS Business Solutions
-subtitle: Complete Component & Layout Showcase
+title: Zeyos
+subtitle: Complete Component & Layout Reference
 date: 23.09.2025
 version: 1.0
-logo: /zeyos/logo-black.svg
+logos:
+  - '/difo/images/difo-logo_bright-solid.svg'
+  - '/bell/difo-logo_bell-bright.svg'
+  - '/bell/difo-logo_bell-bright.svg'
+logoSize: medium
+backgroundImage: /difo/images/space.png
 presenters:
-  - name: ZeyOS Team
-    title: Product Development
-    email: team@zeyos.com
-    photo: /people/team-512.png
+  - name: Peter-Christoph Haider
+    title: Managing Director, Munich
+    email: phaider@difo.de
+    photo: /difo/images/PETER.png
+  - name: Hery-Christian Henry
+    title: Solution Specialist, London
+    email: hhenry@difo.de
+    photo: /difo/images/HENRY.png
 ---
 
-# ZeyOS Business Solutions
-
-## Complete Component & Layout Showcase
-
-**Modern business platform with comprehensive UI components**
+<style>
+@import './zeyos/variables.css';
+</style>
 
 ---
 layout: agenda
+color: dark
+currentItem: 1
+highlightCurrent: true
+title: AGENDA
+agenda:
+  - "GRUNDLAGEN"
+  - "RISIKOMANAGEMENT"
+  - "EINSATZSZENARIEN & WERKZEUGE"
+  - "AUSBLICK"
 ---
 
-# Complete Reference Guide
 
-1. **Layouts (17 total)** - Every available layout
-2. **Components (15 total)** - All interactive components  
-3. **Kawaii Components (8 total)** - Animated elements
-4. **Light & Dark Versions** - Both color schemes
-5. **Business Examples** - ZeyOS platform features
+
 
 ---
-layout: section
+layout: two-cols-full
+color: light
+columns: is-5-7
 ---
 
-# Business Solutions Platform
+:: left ::
+
+<img src="/difo/images/agendaLeft.jpg" class="h-full w-full object-cover" alt="Agenda Left" />
+
+:: right ::
+
+
+<AgendaTimed 
+  :agenda="[
+    `That's what we heard from you`,
+    `Demonstration of Digital Foundations' capabilities matching your needs`,
+    `Q&A, Summary & Next Steps`
+  ]"
+  :timing="['15 MIN', '60 MIN', '15 MIN']"
+  :highlightCurrent="false"
+/>
 
 ---
-layout: default
+layout: disclaimer
+leftTitle: 'WICHTIG: VERTRAULICHE UNTERLAGEN'
+rightTitle: 'ATTENTION: CONFIDENTIAL DOCUMENTS'
+color: light
+fontSize: 1rem
+headingSize: 2rem
+columnRatio: '1-1'
+leftBg: '#e5e7eb'
 ---
-
-# Default Layout
-
-ZeyOS modern indigo/purple branding for business solutions.
-
-- **Process automation** - Streamlined workflows
-- **Customer management** - CRM integration
-- **Resource planning** - ERP functionality  
-- **Analytics dashboard** - Business intelligence
-
-> Empowering businesses with intelligent automation
-
----
-layout: two-cols
----
-
-# Two Columns Layout
 
 ::left::
-
-## Platform Features
-- Workflow automation
-- Customer portal
-- Invoice management
-- Reporting tools
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 
 ::right::
-
-## Integrations
-- API connectivity
-- Third-party apps
-- Data synchronization
-- Cloud services
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 
 ---
-layout: two-cols-title
+layout: disclaimer
+mode: detailed
+color: white
+fontSize: .7rem
+headingSize: 1.2rem
 ---
 
-# Two Columns with Title
+# DISCLAIMER - IMPORTANT NOTICE
 
-## ZeyOS Platform Architecture
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 
-::left::
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
 
-### Core Modules
-- **CRM System** - Customer relationship management
-- **ERP Integration** - Enterprise resource planning
-- **Workflow Engine** - Business process automation
-- **Analytics Suite** - Data visualization tools
+Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur.
 
-::right::
+Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur. At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.
 
-### Technical Stack
-- **Cloud Infrastructure** - Scalable architecture
-- **API Gateway** - Secure integrations
-- **Database Layer** - High-performance storage
-- **Security Framework** - Enterprise-grade protection
+**Contact**: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+
+Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus.
 
 ---
-layout: side-title
+layout: cards-grid
+color: light
+iconFontSize: "2.5rem"
+titleFontSize: "1.125rem"
+contentFontSize: "0.9rem"
+cards:
+  - headline: "Strategy"
+    content: "Comprehensive planning and strategic guidance for digital transformation initiatives."
+    icon: "fas fa-chess"
+    color: "#3b82f6"
+  - headline: "Implementation"
+    content: "Expert execution of digital solutions with proven methodologies and best practices."
+    icon: "/difo/icons/billing.json"
+    color: "#10b981"
+  - headline: "Support"
+    content: "Ongoing maintenance and support to ensure optimal performance and continuous improvement."
+    icon: "fas fa-hands-helping"
+    color: "#f97316"
+theme: "light"
+sequential: false
 ---
 
-::title::
-# Side Title Layout
-
-Business Dashboard
-
-::content::
-
-## Key Performance Indicators
-
-<CardGrid :cards="[
-  { 
-    title: 'Active Users', 
-    content: '12,847 users online right now', 
-    icon: 'fa-users',
-    color: '#6366f1'
-  },
-  { 
-    title: 'Monthly Revenue', 
-    content: '€2.4M processed this month', 
-    icon: 'fa-euro-sign',
-    color: '#8b5cf6' 
-  },
-  { 
-    title: 'Automation Tasks', 
-    content: '45,230 workflows executed', 
-    icon: 'fa-cogs',
-    color: '#6366f1'
-  },
-  { 
-    title: 'Customer Satisfaction', 
-    content: '4.8/5 average rating', 
-    icon: 'fa-star',
-    color: '#8b5cf6'
-  }
-]" :columns="2" />
+# Title
 
 ---
-layout: top-title
+layout: cards-grid
+color: dark
+cards:
+  - headline: "Analytics"
+    content: "Data-driven insights and analytics solutions."
+    icon: "fas fa-chart-line"
+    color: "#3b82f6"
+  - headline: "Security"
+    content: "Enterprise-grade security and compliance."
+    icon: "fas fa-shield-alt"
+    color: "#ef4444"
+  - headline: "Cloud"
+    content: "Scalable cloud infrastructure and services."
+    icon: "fas fa-cloud"
+    color: "#14b8a6"
+  - headline: "AI/ML"
+    content: "Artificial intelligence and machine learning solutions."
+    icon: "fas fa-brain"
+    color: "#8b5cf6"
+  - headline: "Integration"
+    content: "Seamless system integration and connectivity."
+    icon: "fas fa-plug"
+    color: "#f97316"
+  - headline: "Automation"
+    content: "Process automation and workflow optimization."
+    icon: "fas fa-robot"
+    color: "#ec4899"
+theme: "dark"
+sequential: true
 ---
-
-# Top Title Layout
-
-## Business Performance Metrics
-
-<div class="mt-8">
-
-| Metric | Current | Previous | Trend |
-|--------|---------|----------|-------|
-| Revenue | €2.4M | €2.1M | 📈 +14.3% |
-| New Customers | 284 | 251 | 📈 +13.1% |
-| User Engagement | 87% | 82% | 📈 +6.1% |
-| System Uptime | 99.97% | 99.94% | 📈 +0.03% |
-
-</div>
-
----
-layout: top-title-two-cols
----
-
-# Top Title Two Columns
-
-## ZeyOS Business Intelligence
-
-::left::
-
-### Analytics Features
-- **Real-time Dashboards** - Live business metrics
-- **Custom Reports** - Tailored insights
-- **Data Visualization** - Interactive charts
-- **Predictive Analytics** - Forecast trends
-
-### Automation Tools
-- **Workflow Builder** - Drag-and-drop designer
-- **Task Scheduling** - Automated processes
-- **Notification System** - Smart alerts
-- **Integration Hub** - Connect everything
-
-::right::
-
-### Customer Management
-- **Contact Database** - Comprehensive profiles
-- **Sales Pipeline** - Deal tracking
-- **Support Tickets** - Issue management
-- **Communication Hub** - Unified inbox
-
-### Financial Tools
-- **Invoice Generation** - Automated billing
-- **Expense Tracking** - Cost management
-- **Payment Processing** - Secure transactions
-- **Financial Reporting** - Compliance ready
 
 ---
 layout: full
+color: light
 ---
 
-<div class="flex items-center justify-center h-full">
+# Title
 
-# Full Layout
 
-<div class="text-center mt-8">
+<div class="h-3/4 w-full flex items-center justify-center mt-8">
 
-## Complete Business Platform
-
-<SvgAnimation src="/svg/business-workflow.svg" />
-
-**Integrated business solutions powered by intelligent automation**
+<SvgNative
+  src="/difo/images/EPBO-Process-EN-V1.0-Dynamic.svg"
+  animation="fade-in"
+  :duration="600"
+  :stagger="100"
+  layerPrefix="fade-in"
+  :responsive="true"
+  :interactive="true"
+  :sequential="true"
+  :maxStep="4"
+  class="max-w-full max-h-full"
+/>
 
 </div>
 
-</div>
 
----
-layout: intro
----
 
-# Intro Layout
 
-Business solutions that scale with your growth
 
-- Automated workflows
-- Integrated systems
-- Real-time analytics
-- Expert support
-
----
-layout: quote
----
-
-# Quote Layout
-
-> "ZeyOS has revolutionized how we manage our business processes. The automation capabilities have saved us countless hours and improved our efficiency dramatically."
-
-**Marcus Weber**  
-*CEO, InnovateTech GmbH*
-
----
-layout: quotation
----
-
-# Quotation Layout
-
-"The best business platform is one that adapts to your unique processes, not the other way around."
-
-**— ZeyOS Development Team**
-
----
-layout: chart
----
-
-# Chart Layout
-
-## Business Process Flow
-
-<div class="mt-8">
-
-```mermaid
-graph TD
-    A[Customer Inquiry] --> B[CRM System]
-    B --> C[Sales Pipeline]
-    C --> D[Quote Generation]
-    D --> E[Approval Process]
-    E --> F[Contract Creation]
-    F --> G[Project Management]
-    G --> H[Invoice Generation]
-    H --> I[Payment Processing]
-    I --> J[Customer Support]
-```
-
-</div>
-
----
-layout: four-cell
----
-
-::cell1::
-### CRM Integration
-Comprehensive customer management
-
-::cell2::
-### Workflow Automation
-Streamlined business processes
-
-::cell3::
-### Analytics Dashboard
-Real-time business insights
-
-::cell4::
-### API Connectivity
-Seamless integrations
-
----
-layout: credits
----
-
-# Credits Layout
-
-## Development Team
-
-- **ZeyOS Core Team** - Platform Architecture
-- **UI/UX Designers** - User Experience
-- **Backend Engineers** - System Integration
-- **QA Team** - Quality Assurance
-
----
-layout: thank-you
----
-
-# Thank You Layout
-
-Thank you for choosing ZeyOS Business Solutions
-
-**Get Started Today:**
-- 🌐 www.zeyos.com
-- 📧 hello@zeyos.com
-- 📞 +49 89 12345678
-
----
-layout: section
-color: dark
----
-
-# Dark Theme Section
-
-Business Intelligence in Dark Mode
 
 ---
 layout: default
-color: dark
 ---
-
-# Dark Theme Default
-
-ZeyOS platform looks stunning in both light and dark themes.
-
-- **Enhanced focus** - Better for data analysis
-- **Reduced eye strain** - Perfect for long work sessions
-- **Modern aesthetics** - Professional dark interfaces
-- **Energy efficient** - Battery-friendly on mobile devices
-
-<Admonition type="info">
-Dark themes are especially popular among developers and analysts who spend long hours working with data.
-</Admonition>
+<TaskList
+  title="Ongoing tasks"
+  fontSize="1rem"
+  :tasks="[
+    [
+      { title: 'Database Setup', status: 'completed', icon: 'fas fa-database' },
+      { title: 'API Integration', status: 'completed', comment: 'REST endpoints configured', icon: 'fas fa-plug' },
+      { title: 'Authentication', status: 'error', icon: 'fas fa-shield-alt' }
+    ],
+    [
+      { title: 'Frontend Development', status: 'in-progress', icon: 'difo/icons/billing.json' },
+      { title: 'Testing Suite', status: 'in-progress', icon: 'fas fa-vial' },
+      { title: 'Deployment', status: 'pending', icon: 'fas fa-rocket' }
+    ]
+  ]"
+  :sequential="true"
+/>
 
 ---
 layout: two-cols
+color: light
+columns: is-5-7
+align: lt-lt
+---
+
+:: left ::
+
+# Feature 1
+
+At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.
+
+
+:: right ::
+
+<div class="w-full flex items-center justify-center">
+  <img src="/difo/images/billing-screenshot.png" class="max-h-full max-w-full object-contain" alt="Billing Application Screenshot" />
+</div>
+
+**Caption:** Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus
+
+---
+layout: default
+color: light
+---
+
+# Feature 2
+
+<div class="w-full flex items-center justify-center mt-8">
+  <img src="/difo/images/billing-screenshot.png" class="max-h-100 object-contain" alt="Billing Application Screenshot" />
+</div>
+
+
+
+
+---
+layout: two-cols-full
+color: light
+columns: is-6-6
+---
+
+:: left ::
+
+# Slide with image
+
+At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.
+
+
+:: right ::
+
+<img src="/difo/images/agendaLeft.jpg" class="h-full w-full object-cover" alt="Agenda Left" />
+
+---
+layout: quote
+author: "Albert Einstein"
+color: dark
+quotesize: "text-xl"
+---
+
+Imagination is more important than knowledge. For knowledge is limited, whereas imagination embraces the entire world, stimulating progress, giving birth to evolution.
+
+
+---
+layout: quotation
+quote: "The way to get started is to quit talking and begin doing."
+author: "Walt Disney"
+title: "Founder of Disney"
+quoteStyle: "classic"
+fontSize: "medium"
 color: dark
 ---
 
-# Dark Theme Components
 
+
+---
+layout: chart
+chartType: "bar"
+color: light
+title: "Quarterly Sales Performance"
+subtitle: "Revenue growth across quarters"
+chartData:
+  labels: ["Q1 2024", "Q2 2024", "Q3 2024", "Q4 2024"]
+  datasets:
+    - label: "Revenue (€M)"
+      data: [2.5, 3.2, 4.1, 3.8]
+    - label: "Profit (€M)"
+      data: [0.8, 1.2, 1.8, 1.5]
+---
+
+**Key insights:** Q3 showed the highest revenue growth with strong profit margins.
+
+---
+layout: chart
+chartType: "line"
+color: dark
+title: "User Growth Trend"
+subtitle: "Monthly active users over time"
+chartData:
+  labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"]
+  datasets:
+    - label: "Active Users"
+      data: [1200, 1350, 1500, 1800, 2100, 2400]
+      tension: 0.4
+---
+
+**Growth rate:** 100% increase in user base over 6 months.
+
+---
+layout: chart
+chartType: "pie"
+color: light
+title: "Market Share Distribution"
+subtitle: "Current market position"
+chartData:
+  labels: ["DIFO", "Competitor A", "Competitor B", "Others"]
+  datasets:
+    - label: "Market Share (%)"
+      data: [35, 25, 20, 20]
+---
+
+**Market position:** DIFO leads with 35% market share in the digital solutions sector.
+
+---
+layout: chart
+chartType: "doughnut"
+color: dark
+title: "Technology Stack"
+subtitle: "Distribution of technologies used"
+chartData:
+  labels: ["Frontend", "Backend", "Database", "DevOps", "AI/ML"]
+  datasets:
+    - label: "Usage (%)"
+      data: [30, 25, 20, 15, 10]
+---
+
+**Technology focus:** Frontend and backend development represent 55% of our technical expertise.
+
+---
+layout: chart
+chartType: "area"
+color: light
+title: "Performance Metrics"
+subtitle: "System performance over time"
+chartData:
+  labels: ["Week 1", "Week 2", "Week 3", "Week 4", "Week 5"]
+  datasets:
+    - label: "Response Time (ms)"
+      data: [120, 110, 95, 85, 75]
+    - label: "Throughput (req/s)"
+      data: [800, 950, 1100, 1250, 1400]
+---
+
+**Performance improvement:** 37% reduction in response time with 75% increase in throughput.
+
+---
+layout: default
+---
+
+# Chart Component Examples
+
+You can also use the Chart component directly in any slide:
+
+<div class="grid grid-cols-2 gap-8">
+
+<Chart
+  type="bar"
+  :data="{
+    labels: ['Product A', 'Product B', 'Product C'],
+    datasets: [{
+      label: 'Sales',
+      data: [120, 190, 300]
+    }]
+  }"
+  height="300px"
+  theme="light"
+/>
+
+<Chart
+  type="line"
+  :data="{
+    labels: ['Jan', 'Feb', 'Mar', 'Apr'],
+    datasets: [{
+      label: 'Growth',
+      data: [10, 25, 40, 60]
+    }]
+  }"
+  height="300px"
+  theme="light"
+/>
+
+</div>
+
+## Available Chart Types
+
+- **Bar Charts** - Perfect for comparing categories
+- **Line Charts** - Great for showing trends over time
+- **Pie Charts** - Ideal for showing proportions
+- **Doughnut Charts** - Modern alternative to pie charts
+- **Area Charts** - Excellent for cumulative data
+
+---
+layout: default
+color: light
+---
+
+# Timeline Component
+
+Interactive horizontal timeline for displaying chronological events and milestones.
+
+<Timeline
+  :items="[
+    { year: '2018', label: 'Foundation', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore' },
+    { year: '2019', label: 'First Client', description: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur' },
+    { year: '2020', label: 'Team Growth', description: 'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim' },
+    { year: '2021', label: 'International', description: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium' },
+    { year: '2022', label: 'Innovation', description: 'Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit sed quia consequuntur' },
+    { year: '2023', label: 'Innovation', description: 'Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur adipisci velit' },
+    { year: '2024', label: 'Recognition', description: 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum' }
+  ]"
+  :default-active="0"
+  :sequential=true
+/>
+
+---
+layout: two-cols-full
+color: light
+---
 ::left::
 
-## Task Management
+## Project Milestones
 
-<TaskOverview :tasks="[
-  { title: 'Customer Onboarding', description: 'Setup new client accounts', status: 'done', icon: 'fa-user-plus' },
-  { title: 'Sales Report', description: 'Generate Q3 sales analytics', status: 'ongoing', icon: 'fa-chart-bar' },
-  { title: 'System Update', description: 'Deploy latest platform features', status: 'pending', icon: 'fa-upload' },
-  { title: 'User Training', description: 'Schedule team workshops', status: 'feedback', icon: 'fa-graduation-cap' }
-]" layout="list" color="dark" />
+Lorem ipsum
+
+**Key Achievements:**
+- Lorem ipsum dolor sit amet
+- Lorem ipsum dolor sit amet
+- Lorem ipsum dolor sit amet
+- Lorem ipsum dolor sit amet
+- Lorem ipsum dolor sit amet
 
 ::right::
 
-## Team Communication
-
-<SpeechBubble position="left" color="dark">
-The new automation workflow is processing orders 40% faster!
-</SpeechBubble>
-
-<SpeechBubble position="right" color="dark" class="mt-4">
-Excellent results! Customer satisfaction scores are up too.
-</SpeechBubble>
-
----
-layout: section
----
-
-# Component Showcase
-
----
-layout: default
----
-
-# Card Grid Component
-
-<CardGrid :cards="[
-  { 
-    title: 'Customer Management', 
-    content: 'Comprehensive CRM system with contact management, sales pipeline, and customer support integration.',
-    icon: 'fa-users',
-    color: '#6366f1'
-  },
-  { 
-    title: 'Process Automation', 
-    content: 'Intelligent workflow automation that streamlines repetitive tasks and improves efficiency.',
-    icon: 'fa-cogs',
-    color: '#8b5cf6'
-  },
-  { 
-    title: 'Business Analytics', 
-    content: 'Real-time dashboards and reporting tools for data-driven business decisions.',
-    icon: 'fa-chart-line',
-    color: '#6366f1'
-  },
-  { 
-    title: 'Financial Management', 
-    content: 'Integrated invoicing, expense tracking, and financial reporting for complete oversight.',
-    icon: 'fa-calculator',
-    color: '#8b5cf6'
-  },
-  { 
-    title: 'Team Collaboration', 
-    content: 'Project management tools with task assignment, progress tracking, and team communication.',
-    icon: 'fa-project-diagram',
-    color: '#6366f1'
-  },
-  { 
-    title: 'API Integration', 
-    content: 'Seamless connectivity with third-party applications and custom development support.',
-    icon: 'fa-plug',
-    color: '#8b5cf6'
-  }
-]" :columns="3" />
-
----
-layout: default
----
-
-# Box Component Variations
-
-<div class="grid grid-cols-3 gap-6 mt-8">
-
-<Box shape="s-s-2-10" color="zeyos" size="200px">
-**Solid Border**
-Customer data security
-</Box>
-
-<Box shape="r-d-3-20" color="zeyos" size="200px">
-**Dashed Rounded**
-Integration sandbox
-</Box>
-
-<Box shape="f-s-4-30" color="zeyos" size="200px">
-**Full Circle**
-User experience zone
-</Box>
-
-</div>
-
----
-layout: default
----
-
-# Sticky Notes & Email
-
-<div class="flex justify-around items-center mt-8">
-
-<StickyNote color="zeyos">
-**Platform Update!**
-New automation features available in v2.4.1
-</StickyNote>
-
-<Email 
-  to="team@zeyos.com"
-  subject="Monthly Business Review"
-  preview="Performance metrics and growth analysis for the current month..."
-  color="zeyos"
-/>
-
-<StickyNote color="zeyos">
-**Reminder**
-Customer feedback session tomorrow at 2 PM
-</StickyNote>
-
-</div>
-
----
-layout: default
----
-
-# Admonition Components
-
-<Admonition type="info">
-**Platform Update**: New workflow automation features are now available. Check the admin panel for details.
-</Admonition>
-
-<Admonition type="warning">
-**Maintenance Notice**: Scheduled system maintenance this Sunday 2-4 AM. Limited functionality during this time.
-</Admonition>
-
-<Admonition type="success">
-**Feature Release**: Advanced analytics dashboard is now live! Access it from the main navigation menu.
-</Admonition>
-
-<Admonition type="error">
-**Service Alert**: Payment gateway experiencing intermittent issues. Engineering team investigating.
-</Admonition>
-
----
-layout: default
----
-
-# Kawaii Components - Business Theme
-
-<div class="grid grid-cols-4 gap-8 mt-8 text-center">
-
-<div>
-<Cat mood="excited" :size="120" color="#6366f1" />
-**Happy Customers**
-Satisfaction guaranteed!
-</div>
-
-<div>
-<Browser mood="happy" :size="120" color="#8b5cf6" />
-**Web Platform**
-Always accessible
-</div>
-
-<div>
-<Mug mood="blissful" :size="120" color="#6366f1" />
-**Productivity Boost**
-Fuel for success
-</div>
-
-<div>
-<Ghost mood="sad" :size="120" color="#8b5cf6" />
-**Manual Processes**
-We automate these!
-</div>
-
-</div>
-
----
-layout: default
----
-
-# More Kawaii Components
-
-<div class="grid grid-cols-4 gap-8 mt-8 text-center">
-
-<div>
-<BackPack mood="happy" :size="120" color="#6366f1" />
-**Mobile Solutions**
-Business on-the-go
-</div>
-
-<div>
-<IceCream mood="excited" :size="120" color="#8b5cf6" />
-**Cool Features**
-Latest innovations
-</div>
-
-<div>
-<Planet mood="blissful" :size="120" color="#6366f1" />
-**Global Platform**
-Worldwide access
-</div>
-
-<div>
-<CreditCard mood="happy" :size="120" color="#8b5cf6" />
-**Payment System**
-Secure transactions
-</div>
-
-</div>
-
----
-layout: default
----
-
-# Line & Arrow Components
-
-<div class="relative h-80 mt-8">
-
-<Line 
-  x1="10%" y1="20%" 
-  x2="90%" y2="20%" 
-  color="#6366f1" 
-  width="3"
-  style="dashed"
-/>
-
-<ArrowDraw 
-  x1="10%" y1="50%" 
-  x2="90%" y2="50%" 
-  color="#8b5cf6"
-  width="4"
-/>
-
-<VDragLine 
-  x1="50%" y1="10%" 
-  x2="50%" y2="90%" 
-  color="#6366f1"
-  width="2"
-/>
-
-<div class="absolute top-4 left-4 bg-white p-2 rounded shadow">
-**Business Process Flow**
-</div>
-
-<div class="absolute bottom-4 right-4 bg-white p-2 rounded shadow">
-**System Architecture**
-</div>
-
-</div>
-
----
-layout: default
----
-
-# Arrow Heads & Thumb Components
-
-<div class="flex justify-around items-center mt-8">
-
-<div class="text-center">
-<ArrowHeads direction="up" color="#6366f1" :size="60" />
-**Revenue Growth**
-+24% this quarter
-</div>
-
-<div class="text-center">
-<ArrowHeads direction="down" color="#8b5cf6" :size="60" />
-**Processing Time**
--45% reduction
-</div>
-
-<div class="text-center">
-<Thumb direction="up" color="#6366f1" :size="80" />
-**User Satisfaction**
-4.8/5 rating
-</div>
-
-<div class="text-center">
-<Thumb direction="down" color="#8b5cf6" :size="80" />
-**Support Tickets**
-Minimal issues
-</div>
-
-</div>
-
----
-layout: default
----
-
-# Credit Scroll Component
-
-<CreditScroll 
-  :credits="[
-    { role: 'Platform Architect', name: 'Alexander Schmidt', company: 'ZeyOS' },
-    { role: 'UX Designer', name: 'Maria Gonzalez', company: 'ZeyOS' },
-    { role: 'Backend Developer', name: 'Thomas Mueller', company: 'ZeyOS' },
-    { role: 'Frontend Developer', name: 'Sarah Johnson', company: 'ZeyOS' },
-    { role: 'Product Manager', name: 'David Wilson', company: 'ZeyOS' }
+<Timeline
+  :items="[
+    { year: '2018', label: 'Start', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit' },
+    { year: '2019', label: 'Leadership', description: 'Duis aute irure dolor in reprehenderit in voluptate' },
+    { year: '2020', label: 'Growth', description: 'Excepteur sint occaecat cupidatat non proident' },
+    { year: '2022', label: 'Innovation', description: 'Sed ut perspiciatis unde omnis iste natus error' },
+    { year: '2024', label: 'Leadership', description: 'Nemo enim ipsam voluptatem quia voluptas sit' },
+    { year: '2025', label: 'Leadership', description: 'Neque porro quisquam est qui dolorem ipsum' },
+    { year: '2026', label: 'Leadership', description: 'At vero eos et accusamus et iusto odio' }
   ]"
-  speed="2"
-  color="zeyos"
+  :default-active="2"
 />
 
 ---
 layout: thank-you
+color: dark
+logos:
+  - '/difo/images/difo-logo_bright-solid.svg'
+  - '/cms-it/difo-logo_cms-it-bright.svg'
+  - '/bell/difo-logo_bell-bright.svg'
+presenters:
+  - name: Peter-Christoph Haider
+    title: Managing Director, Munich
+    email: phaider@difo.de
+    photo: /difo/images/PETER.png
+  - name: Hery-Christian Henry
+    title: Solution Specialist, London
+    email: hhenry@difo.de
+    photo: /difo/images/HENRY.png
+disclaimer: 'Dieses Dokument enthält vertrauliche Informationen. Ohne schriftliche Genehmigung der Digital Foundations GmbH dürfen Sie diese nicht kopieren, verändern, weitergeben.'
 ---
-
-# ZeyOS - Complete
-
-**All components and layouts showcased!**
-
-- ✅ 17 Layouts demonstrated
-- ✅ 15 Components featured  
-- ✅ 8 Kawaii elements included
-- ✅ Light & Dark themes shown
-- ✅ ZeyOS branding throughout
-
-**Start your business transformation:**
-🌐 www.zeyos.com | 📧 hello@zeyos.com

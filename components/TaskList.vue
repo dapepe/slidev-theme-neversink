@@ -525,4 +525,12 @@ const getTaskIconFA = (status) => {
   opacity: 1;
   transform: translateY(0);
 }
+
+/* PDF/Print: Show all tasks in final state */
+@media print {
+  .task-item {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+  }
+}
 </style>

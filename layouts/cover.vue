@@ -10,7 +10,7 @@ const props = defineProps({
     validator: (value) => ['light', 'dark'].includes(value)
   },
   logoSize: {
-    default: 'large', // 'large', 'medium', 'small'
+    default: 'medium', // 'large', 'medium', 'small'
   },
   backgroundImage: {
     type: String,

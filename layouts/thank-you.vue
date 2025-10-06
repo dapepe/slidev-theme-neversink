@@ -288,8 +288,44 @@ const colorscheme = computed(() => {
   border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
+/* Print/PDF: Force desktop layout */
+@media print {
+  .content-container {
+    flex-direction: row !important;
+    gap: 2rem !important;
+  }
+  
+  .thank-you-text {
+    text-align: right !important;
+    padding-right: 2rem !important;
+  }
+  
+  .thank-you-line {
+    font-size: 2.5rem !important;
+  }
+  
+  .divider {
+    width: 2px !important;
+    height: 18rem !important;
+  }
+  
+  .logo {
+    height: 4.5rem !important;
+  }
+  
+  .logo-container {
+    flex-wrap: nowrap !important;
+    gap: 3rem !important;
+  }
+  
+  .contact-photo {
+    width: 5rem !important;
+    height: 5rem !important;
+  }
+}
+
 /* Responsive adjustments */
-@media (max-width: 1024px) {
+@media screen and (max-width: 1024px) {
   .content-container {
     gap: 2rem;
   }
@@ -303,7 +339,7 @@ const colorscheme = computed(() => {
   }
 }
 
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
   .slidev-layout.thank-you {
     padding: 2rem;
   }

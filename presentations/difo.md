@@ -24,6 +24,11 @@ presenters:
     photo: /difo/images/HENRY.png
 ---
 
+<style>
+@import './difo/variables.css';
+</style>
+
+
 ---
 layout: agenda
 color: dark

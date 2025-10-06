@@ -1,9 +1,9 @@
 ---
 theme: ../
-company: bell
+company: stronger
 color: dark
 layout: cover
-title: Bell Digital Solutions
+title: Stronger Digital Solutions
 subtitle: Complete Component & Layout Reference
 date: 23.09.2025
 version: 1.0
@@ -25,7 +25,7 @@ presenters:
 ---
 
 <style>
-@import './bell/variables.css';
+@import './stronger/variables.css';
 </style>
 
 ---

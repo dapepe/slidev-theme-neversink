@@ -37,12 +37,12 @@
   --company-accent: #f59e0b;
   --company-accent-light: #fbbf24;
   --company-accent-dark: #d97706;
-  --company-accent-rgb: 245, 158, 11;
+  --company-accent-rgb: 245, 158, 11; 
 
   /* ===== SLIDE LOGOS ===== */
-  --company-slide-logo: url('/difo/images/difo-logo_bright-solid.svg');
-  --company-slide-logo-light: url('/difo/images/difo-logo_icon-bright-solid.png');
-  --company-slide-logo-dark: url('/difo/images/difo-logo_icon-dark-solid.svg');
+  --company-slide-logo: url('/cms-it/difo-logo_cms-it-bright.svg');
+  --company-slide-logo-light: url('/cms-it/difo-logo_cms-it-bright.svg');
+  --company-slide-logo-dark: url('/cms-it/difo-logo_cms-it-dark.svg');
   --company-slide-logo-position: top-right;
   --company-slide-logo-size: small;
   /* small, medium, large */

@@ -763,8 +763,9 @@
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  width: 6rem;
-  height: 6rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  object-fit: contain;
   top: 1rem;
   right: 1rem;
 }

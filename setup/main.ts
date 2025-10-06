@@ -116,7 +116,7 @@ export default defineAppSetup(({ app, router }) => {
   
   const applyCompanyTheme = (company: string | null | undefined, colorScheme: string | null | undefined = 'light') => {
     // Inject company CSS (only if company changed)
-    injectCompanyCSS(company)
+    // injectCompanyCSS(company)
     
     // Apply color scheme class (only if scheme changed)
     const scheme = colorScheme?.toLowerCase() || 'light'

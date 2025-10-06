@@ -33,6 +33,36 @@ export function useNavigationOverride(options = {}) {
   let slidevOverride = null
   let visibilityObserver = null
 
+  // Check if we're in print/export mode
+  const isPrintMode = ref(false)
+  
+  const checkPrintMode = () => {
+    // Check if we're in print mode via media query
+    if (typeof window !== 'undefined' && window.matchMedia) {
+      const printMediaQuery = window.matchMedia('print')
+      isPrintMode.value = printMediaQuery.matches
+      
+      // Listen for changes in print mode
+      printMediaQuery.addEventListener('change', (e) => {
+        isPrintMode.value = e.matches
+        log(`Print mode changed: ${isPrintMode.value}`)
+      })
+    }
+    
+    // Also check for Slidev export mode indicators
+    if (typeof window !== 'undefined') {
+      // Check for export mode in URL or global variables
+      const isExporting = window.location.search.includes('export') || 
+                         window.__SLIDEV_EXPORT__ === true ||
+                         document.documentElement.classList.contains('print')
+      if (isExporting) {
+        isPrintMode.value = true
+      }
+    }
+    
+    return isPrintMode.value
+  }
+
   // Logging helper
   const log = (...args) => {
     if (debug) {
@@ -87,6 +117,14 @@ export function useNavigationOverride(options = {}) {
    * Combined check for override activation
    */
   const shouldOverrideBeActive = () => {
+    // Always disable override in print/export mode
+    if (isPrintMode.value) {
+      if (debug) {
+        log('Override disabled - print/export mode active')
+      }
+      return false
+    }
+    
     const componentActive = isActive()
     const slideVisible = slideElement ? isSlideVisible.value : true
     const result = componentActive && slideVisible
@@ -258,6 +296,9 @@ export function useNavigationOverride(options = {}) {
    * Auto-setup on mount and cleanup on unmount
    */
   onMounted(() => {
+    // Check print mode first
+    checkPrintMode()
+    
     log('Component mounted, activating navigation override')
     activate()
   })
@@ -307,6 +348,33 @@ export function useStepNavigation(options = {}) {
   } = options
 
   const currentStep = ref(initialStep)
+  
+  // Check if we're in print/export mode
+  const isPrintMode = () => {
+    if (typeof window !== 'undefined') {
+      // Check media query
+      if (window.matchMedia && window.matchMedia('print').matches) {
+        return true
+      }
+      // Check for export mode indicators
+      if (window.location.search.includes('export') || 
+          window.__SLIDEV_EXPORT__ === true ||
+          document.documentElement.classList.contains('print')) {
+        return true
+      }
+    }
+    return false
+  }
+  
+  // If in print mode, immediately show all steps
+  onMounted(() => {
+    if (isPrintMode()) {
+      currentStep.value = maxSteps
+      if (debug) {
+        console.log('[StepNavigation] Print mode detected - showing all steps')
+      }
+    }
+  })
 
   const log = (...args) => {
     if (debug) {
@@ -355,12 +423,25 @@ export function useStepNavigation(options = {}) {
   }
 
   // Setup navigation override with automatic reset on slide visibility
+  // Wrap isActive to also check for print mode
+  const wrappedIsActive = () => {
+    // Disable in print mode
+    if (isPrintMode()) {
+      return false
+    }
+    return isActive()
+  }
+  
   const navigationOverride = useNavigationOverride({
     onNext: nextStep,
     onPrev: prevStep,
-    isActive,
+    isActive: wrappedIsActive,
     slideElement,
     onSlideEnter: () => {
+      // Don't reset in print mode
+      if (isPrintMode()) {
+        return
+      }
       // Reset when slide becomes visible (entering the slide)
       log(`Slide entered - resetting to step ${initialStep}`)
       reset()
